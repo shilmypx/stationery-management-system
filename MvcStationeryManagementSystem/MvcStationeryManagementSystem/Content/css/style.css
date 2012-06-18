@@ -1,6 +1,6 @@
-@import url('../../Content/css/reset.css');
-@import url('../../Content/css/general.css');
-@import url('../../Content/css/styles/default/ui.css');
-@import url('../../Content/css/forms.css');
-@import url('../../Content/css/tables.css');
-@import url('../../Content/css/messages.css');
+@import url('reset.css');
+@import url('general.css');
+@import url('styles/default/ui.css');
+@import url('forms.css');
+@import url('tables.css');
+@import url('messages.css');
