@@ -1,0 +1,5 @@
+C:\Users\user\Documents\Visual Studio 2008\Projects\web\New folder\mvc\doan\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcStationeryManagementSystem.dll
+C:\Users\user\Documents\Visual Studio 2008\Projects\web\New folder\mvc\doan\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcStationeryManagementSystem.pdb
+C:\Users\user\Documents\Visual Studio 2008\Projects\web\New folder\mvc\doan\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\user\Documents\Visual Studio 2008\Projects\web\New folder\mvc\doan\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.dll
+C:\Users\user\Documents\Visual Studio 2008\Projects\web\New folder\mvc\doan\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.pdb

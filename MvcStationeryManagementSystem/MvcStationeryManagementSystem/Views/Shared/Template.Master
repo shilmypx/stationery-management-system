@@ -1,0 +1,215 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+     <link href="../../Content/css/forms.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/general.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/messages.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/tables.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/styles/default/ui.css" rel="stylesheet" type="text/css" />
+    <link href="#" rel="stylesheet" title="style" media="all" />
+    <script type="text/javascript" src="../../Content/js/jquery-1.3.2.js"></script>
+	<script type="text/javascript" src="../../Content/js/superfish.js"></script>
+	<script type="text/javascript" src="../../Content/js/jquery-ui-1.7.2.js"></script>
+	<script type="text/javascript" src="../../Content/js/tooltip.js"></script>
+	<script type="text/javascript" src="../../Content/js/tablesorter.js"></script>
+	<script type="text/javascript" src="../../Content/js/tablesorter-pager.js"></script>
+	<script type="text/javascript" src="../../Content/js/cookie.js"></script>
+	<script type="text/javascript" src="../../Content/js/custom.js"></script>
+</head>
+<body>
+     <div id="header">
+		<div id="top-menu">
+			<a href="#" title="My account">My account</a> |
+			<a href="#" title="Settings">Settings</a> |
+			<a href="#" title="Contact us">Contact us</a>
+			
+			<span>Logged in as <a href="#" title="Logged in as admin">admin</a></span>
+			| <a href="#" title="Edit profile">Edit profile</a>
+			| <a href="#" title="Logout">Logout</a>
+		</div>
+		<div id="sitename">
+			<a href="index.html" class="logo float-left" title="Admintasia">Admintasia</a>
+			<div class="button float-right">
+				<a href="#" id="dialog_link" class="btn ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span>Open Dialog</a>
+				<a href="#" id="login_dialog" class="btn ui-state-default ui-corner-all"><span class="ui-icon ui-icon-image"></span>Open Login Box</a>
+			</div>
+			<div id="login" title="Members Login">
+				<form action="#" method="post" enctype="multipart/form-data" class="forms" name="form" >
+					<ul>
+						<li>
+							<label for="email" class="desc">
+								Email:
+							</label>
+							<div>
+								<input type="text" tabindex="1" maxlength="255" value="" class="field text full" name="email" id="email" />
+							</div>
+						</li>
+						<li>
+							<label for="password" class="desc">
+								Password:
+							</label>
+							<div>
+								<input type="text" tabindex="1" maxlength="255" value="" class="field text full" name="password" id="password" />
+							</div>
+						</li>
+					</ul>
+				</form>
+			</div>
+			<div id="dialog" title="Dialog Title">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+		</div>
+		<ul id="navigation" class="sf-navbar">
+			
+	    <li>
+	        <a href="#">Account</a>
+             <ul>
+		        <li><a href="#">Change The Password </a></li>
+		        <li><a href="#">Eligibility Details </a></li>
+		        <li><a href="msg.html">Manage Role</a></li>
+		         <li><a href="msg.html">Create Acount</a></li>
+                <li><a href="msg.html">Manage Acount</a></li>
+	        </ul>
+        </li>
+			
+			
+				
+			
+			<li>
+				<a href="#">Request</a>
+				<ul>
+					
+					<li>
+						<a href="#">Create Request</a>
+					</li>
+					<li>
+						<a href="#">View Request</a>
+					</li>
+					
+					
+				</ul>
+			</li>
+			
+			
+			
+			<li>
+				<a href="#">Stationery Items</a>
+				    <ul>
+							<li><a href="#">My Stationery Items</a></li>
+							<li><a href="#">Manage Stationery Items</a></li>
+				    </ul>
+				
+			</li>
+			<li>
+						<a href="#">Report</a>
+						
+			</li>
+			<li>
+				<a href="#">Helps</a>
+				
+			</li>
+		</ul>
+	</div>	
+	<div id="page-wrapper">
+		<div id="main-wrapper">
+			<div id="main-content">
+				<div class="title">
+					<h3>Table examples</h3>
+					Below you will find <b>Admintasia</b> table examples.
+				</div>
+				 <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    <div class="hastable">
+
+					
+				</div>
+                </asp:ContentPlaceHolder>
+				
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="sidebar">
+			<div class="side-col ui-sortable">
+			    <div class="other-box yellow-box ui-corner-all">
+					<div class="cont tooltip ui-corner-all" title="Tooltips, tooltips, tooltips !">
+						<h3>Tooltip !</h3>
+						<p>This is a sample tooltip !</p>
+					</div>
+				</div>
+				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+					<div class="portlet-header ui-widget-header">Account</div>
+					<div class="portlet-content">
+						<ul class="side-menu">
+							<li>
+								<a class="set_theme" id="default" href="javascript:void(0);" title="Default Theme">Change The Password</a>
+							</li>
+							<li>
+								<a class="set_theme" id="light_blue" href="javascript:void(0);" title="Light Blue Theme">Eligibility Details </a>
+							</li>
+							<li>
+								<a class="set_theme" id="A1" href="javascript:void(0);" title="Light Blue Theme">Manage Role</a>
+							</li>
+							<li>
+								<a class="set_theme" id="A2" href="javascript:void(0);" title="Light Blue Theme">Create Account </a>
+							</li>
+							<li>
+								<a class="set_theme" id="A3" href="javascript:void(0);" title="Light Blue Theme">Manage Account </a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+					<div class="portlet-header ui-widget-header">Request</div>
+					<div class="portlet-content">
+						<ul class="side-menu">
+							
+							<li id="fixed_layout">
+								<a href="javascript:void(0);" title="Fixed Layout">Create Request</a>
+							</li>
+							<li id="fixed_layout">
+								<a href="javascript:void(0);" title="Fixed Layout">View Request</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+					<div class="portlet-header ui-widget-header">Stationery Items</div>
+					<div class="portlet-content">
+						<ul class="side-menu">
+							
+							<li id="Li1">
+								<a href="javascript:void(0);" title="Fixed Layout">My Stationery Items</a>
+							</li>
+							<li id="Li2">
+								<a href="javascript:void(0);" title="Fixed Layout">Manage Stationery Items</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+					<div class="portlet-header ui-widget-header">Calendar</div>
+					<div class="portlet-content">
+						<div id="datepicker"></div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>	</div>
+	<div class="clearfix"></div>
+	<div id="footer">
+		<div id="menu">
+			<a href="#" title="Home">Home</a>
+			<a href="#" title="Administration">Administration</a>
+			<a href="#" title="Settings">Settings</a>
+			<a href="#" title="Contact">Contact</a>
+		</div>
+		Copyright &copy; 2009 - Horia Simon (WebDesignChimera.com)
+	</div>
+</body>
+</html>
