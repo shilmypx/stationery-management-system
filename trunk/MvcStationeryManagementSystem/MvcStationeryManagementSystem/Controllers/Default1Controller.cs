@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcStationeryManagementSystem.Models;
 
 namespace MvcStationeryManagementSystem.Controllers
 {
@@ -14,6 +15,23 @@ namespace MvcStationeryManagementSystem.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Login(Account ac)
+        {
+           
+            if(!ModelState.IsValid)
+            {
+                 return View();
+            }
+            return RedirectToAction("Index");
+           
         }
 
     }

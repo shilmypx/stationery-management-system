@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="StationeryData" Class="DataClassesStationeryDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=StationeryData;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="StationeryDataConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Account" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="AccountId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RegistrationNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cataloge" Member="Cataloges">
+    <Type Name="Cataloge">
+      <Column Name="CatalogeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CatalogeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Cataloge_Stationery" Member="Stationeries" ThisKey="CatalogeId" OtherKey="CatalogeId" Type="Stationery" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employee" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="EmployeeNumber" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateBirth" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RoleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RegistrationNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Employee_Request" Member="Requests" ThisKey="EmployeeNumber" OtherKey="EmployeeNumber" Type="Request" />
+      <Association Name="Role_Employee" Member="Role" ThisKey="RoleId" OtherKey="RoleId" Type="Role" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CatalogeRQ" Member="CatalogeRQs">
+    <Type Name="CatalogeRQ">
+      <Column Name="CatalogRQId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CatalogRQName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="CatalogeRQ_Request" Member="Requests" ThisKey="CatalogRQId" OtherKey="CatalogRQId" Type="Request" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Request" Member="Requests">
+    <Type Name="Request">
+      <Column Name="RequestId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RequestName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DateDispatch" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DateApprove" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Accept" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RequestContent" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="EmployeeNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CatalogRQId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Request_Request_Stationery" Member="Request_Stationeries" ThisKey="RequestId" OtherKey="RequestId" Type="Request_Stationery" />
+      <Association Name="CatalogeRQ_Request" Member="CatalogeRQ" ThisKey="CatalogRQId" OtherKey="CatalogRQId" Type="CatalogeRQ" IsForeignKey="true" />
+      <Association Name="Employee_Request" Member="Employee" ThisKey="EmployeeNumber" OtherKey="EmployeeNumber" Type="Employee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Request_Stationery" Member="Request_Stationeries">
+    <Type Name="Request_Stationery">
+      <Column Name="RequestId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Arise" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Request_Request_Stationery" Member="Request" ThisKey="RequestId" OtherKey="RequestId" Type="Request" IsForeignKey="true" />
+      <Association Name="Stationery_Request_Stationery" Member="Stationery" ThisKey="ProductId" OtherKey="ProductId" Type="Stationery" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Role" Member="Roles">
+    <Type Name="Role">
+      <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="Role_Employee" Member="Employees" ThisKey="RoleId" OtherKey="RoleId" Type="Employee" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Stationery" Member="Stationeries">
+    <Type Name="Stationery">
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CatalogeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Stationery_Request_Stationery" Member="Request_Stationeries" ThisKey="ProductId" OtherKey="ProductId" Type="Request_Stationery" />
+      <Association Name="Cataloge_Stationery" Member="Cataloge" ThisKey="CatalogeId" OtherKey="CatalogeId" Type="Cataloge" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
