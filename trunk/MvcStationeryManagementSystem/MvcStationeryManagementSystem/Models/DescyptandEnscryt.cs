@@ -32,7 +32,7 @@ namespace MvcStationeryManagementSystem.Models
             List<Employee> le = dcsd.Employees.Where(e => e.EmployeeNumber.Equals(employnumber)).ToList();
             if (le.Count == 1)
             {
-                if (le.FirstOrDefault().EmployeeNumber.Equals(employnumber) && pass.Equals(Decrypt(le.FirstOrDefault().Password)))
+                if (le.FirstOrDefault().EmployeeNumber.Equals(employnumber) && pass.Equals(mahoa_giaima.giaiMa(le.FirstOrDefault().Password)))
                 {
                     el = le.FirstOrDefault();
                 }
