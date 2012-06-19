@@ -74,6 +74,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClassesStationery.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\DescyptandEnscryt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
