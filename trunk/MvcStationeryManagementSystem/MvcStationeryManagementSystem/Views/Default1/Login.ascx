@@ -13,14 +13,17 @@
 			<%--	<form action="#" method="post" enctype="multipart/form-data" class="forms" name="form">--%>
 				<% using (Html.BeginForm("Login", "Default1", FormMethod.Post, new { @class = "forms", @name = "form" })){%>
 				          <%= Html.ValidationSummary(true) %>
-				             
+				         <% if (ViewData["kq"] != null)
+                {%>
+                        <%= ViewData["kq"]%>
+				         <%} %>    
 					<ul>
 						<li>
 							<label for="email" class="desc">
 								Username:
 							</label>
 							<div>
-						        <%= Html.TextBoxFor(model => model.EmployeeNumber, new { @class = "field text full", @id = "email", @maxlength = 50 })%>
+						        <%= Html.TextBoxFor(model => model.EmployeeNumber, new { @class = "field text full", @id = "email", @maxlength = 59 })%>
 						        
 						        <%= Html.ValidationMessageFor(Model=>Model.EmployeeNumber  ) %>
 								<%--<input type="text" tabindex="1" maxlength="255" value="" class="field text full" name="email" id="email">--%>
