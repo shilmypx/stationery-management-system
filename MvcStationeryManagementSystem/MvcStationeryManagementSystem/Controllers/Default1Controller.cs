@@ -9,8 +9,8 @@ namespace MvcStationeryManagementSystem.Controllers
 {
     public class Default1Controller : Controller
     {
-        //
-        // GET: /Default1/
+       //lop chua cac method mahoa va giai ma
+        private DescyptandEnscryt de = new DescyptandEnscryt();
 
         public ActionResult Index()
         {
@@ -27,14 +27,24 @@ namespace MvcStationeryManagementSystem.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Login(Employee em)
+        public ActionResult Login(FormCollection formvalue)
         {
-           
-            if(!ModelState.IsValid)
+            Employee el = new Employee();
+            el = de.Login(formvalue["EmployeeNumber"].ToString(), formvalue["Password"].ToString());
+            if(! ModelState.IsValid)
             {
                  return View();
             }
+
+            if ( el == null)
+           {
+               ViewData["kq"] = "Not found account";
+               return View();
+           }
+            Session["Employee"] = el;
+
             return RedirectToAction("Index1");
+
            
         }
 
