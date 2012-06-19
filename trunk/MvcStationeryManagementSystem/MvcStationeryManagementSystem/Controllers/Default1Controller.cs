@@ -16,6 +16,10 @@ namespace MvcStationeryManagementSystem.Controllers
         {
             return View();
         }
+        public ActionResult Index1()
+        {
+            return View();
+        }
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Login()
         {
@@ -30,7 +34,7 @@ namespace MvcStationeryManagementSystem.Controllers
             {
                  return View();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index1");
            
         }
 

@@ -157,9 +157,11 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\neewnew.css" />
     <Content Include="Content\css\styles\FormatFormlogin.css" />
     <Content Include="Content\css\styles\Site.css" />
     <Content Include="Views\Default1\Index.aspx" />
+    <Content Include="Views\Default1\Index1.aspx" />
     <Content Include="Views\Default1\Login.ascx" />
     <Content Include="Views\Shared\Template.Master" />
   </ItemGroup>

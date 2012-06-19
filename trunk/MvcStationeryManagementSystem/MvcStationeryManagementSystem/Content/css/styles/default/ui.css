@@ -288,7 +288,11 @@ a:hover, .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited
 	border-bottom:#8f8f8f dotted 1px;
 	
 }
-
+.dn .portlet-content .side-menu li {
+	color:#616161;
+	border-bottom:#8f8f8f dotted 1px;
+	margin: 6px;
+}
 .ui-sortable-placeholder {
 	background:#ffffcc;
 }
