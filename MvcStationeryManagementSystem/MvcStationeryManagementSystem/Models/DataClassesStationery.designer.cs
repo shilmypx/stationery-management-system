@@ -484,6 +484,7 @@ namespace MvcStationeryManagementSystem.Models
 		
 		[Column(Storage="_EmployeeNumber", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
         [Required(ErrorMessage=("Please enter Username"))]
+        [StringLength(50, ErrorMessage = ("Please check EmployeeNumber lenght"))]
         [DisplayName("User Name")]
 
 		public string EmployeeNumber
