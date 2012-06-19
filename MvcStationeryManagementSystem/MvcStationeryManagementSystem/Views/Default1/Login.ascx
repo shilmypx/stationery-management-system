@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<MvcStationeryManagementSystem.Models.Account>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<MvcStationeryManagementSystem.Models.Employee>" %>
 
 <script src="../../Scripts/MicrosoftAjax.js" type="text/javascript"></script>
 
@@ -20,9 +20,9 @@
 								Username:
 							</label>
 							<div>
-						        <%= Html.TextBoxFor(model => model.Username, new { @class = "field text full", @id = "email", @maxlength = 255 })%>
+						        <%= Html.TextBoxFor(model => model.EmployeeNumber, new { @class = "field text full", @id = "email", @maxlength = 50 })%>
 						        
-						        <%= Html.ValidationMessageFor(Model=>Model.Username  ) %>
+						        <%= Html.ValidationMessageFor(Model=>Model.EmployeeNumber  ) %>
 								<%--<input type="text" tabindex="1" maxlength="255" value="" class="field text full" name="email" id="email">--%>
 							</div>
 						</li>
