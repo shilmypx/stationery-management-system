@@ -26,7 +26,7 @@
       <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="RoleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="Ntext" CanBeNull="true" />
       <Column Name="RegistrationNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="Employee_Request" Member="Requests" ThisKey="EmployeeNumber" OtherKey="EmployeeNumber" Type="Request" />
       <Association Name="Role_Employee" Member="Role" ThisKey="RoleId" OtherKey="RoleId" Type="Role" IsForeignKey="true" />
