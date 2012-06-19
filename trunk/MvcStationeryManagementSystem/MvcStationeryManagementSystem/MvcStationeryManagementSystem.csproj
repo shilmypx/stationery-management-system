@@ -159,7 +159,6 @@
   <ItemGroup>
     <Content Include="Content\css\styles\FormatFormlogin.css" />
     <Content Include="Content\css\styles\Site.css" />
-    <Content Include="Views\Default1\Index.ascx" />
     <Content Include="Views\Default1\Index.aspx" />
     <Content Include="Views\Default1\Login.ascx" />
     <Content Include="Views\Shared\Template.Master" />
