@@ -189,8 +189,6 @@ namespace MvcStationeryManagementSystem.Models
 		}
 		
 		[Column(Storage="_AccountId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-        [Required(ErrorMessage = "Please en ter Account Id")]
-        [DisplayName("Account Id")]
 		public int AccountId
 		{
 			get
@@ -211,9 +209,6 @@ namespace MvcStationeryManagementSystem.Models
 		}
 		
 		[Column(Storage="_Username", DbType="NVarChar(50)")]
-        [Required(ErrorMessage = ("Please enter Username"))]
-        [StringLength(50)]
-        [DisplayName("User Name")]
 		public string Username
 		{
 			get
@@ -233,9 +228,7 @@ namespace MvcStationeryManagementSystem.Models
 			}
 		}
 		
-		[Column(Storage="_Password", DbType="NText")]
-        [Required(ErrorMessage=("Please enter Password !"))]
-        [DisplayName("Password")]
+		[Column(Storage="_Password", DbType="NVarChar(50)")]
 		public string Password
 		{
 			get
@@ -490,6 +483,9 @@ namespace MvcStationeryManagementSystem.Models
 		}
 		
 		[Column(Storage="_EmployeeNumber", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+        [Required(ErrorMessage=("Please enter Username"))]
+        [DisplayName("User Name")]
+
 		public string EmployeeNumber
 		{
 			get
@@ -510,6 +506,9 @@ namespace MvcStationeryManagementSystem.Models
 		}
 		
 		[Column(Storage="_FullName", DbType="NVarChar(50)")]
+        [Required(ErrorMessage=("Plese enter fullname "))]
+        [DisplayName("Full Name")]
+
 		public string FullName
 		{
 			get
@@ -530,6 +529,10 @@ namespace MvcStationeryManagementSystem.Models
 		}
 		
 		[Column(Storage="_DateBirth", DbType="Date")]
+        [Required(ErrorMessage=("Please enter Birthday"))]
+        [DataType(DataType.Date)]
+        [DisplayName("BirthDay")]
+        
 		public System.Nullable<System.DateTime> DateBirth
 		{
 			get
@@ -550,6 +553,9 @@ namespace MvcStationeryManagementSystem.Models
 		}
 		
 		[Column(Storage="_Email", DbType="VarChar(50)")]
+        [Required(ErrorMessage=("Please enter email"))]
+        [DataType(DataType.EmailAddress)]
+        [DisplayName("Email")]
 		public string Email
 		{
 			get
@@ -570,6 +576,9 @@ namespace MvcStationeryManagementSystem.Models
 		}
 		
 		[Column(Storage="_Address", DbType="NVarChar(50)")]
+        [Required(ErrorMessage=("Please enter address"))]
+        [DisplayName("Addrese")]
+
 		public string Address
 		{
 			get
@@ -590,6 +599,9 @@ namespace MvcStationeryManagementSystem.Models
 		}
 		
 		[Column(Storage="_Phone", DbType="VarChar(50)")]
+        [Required(ErrorMessage="Please enter phone number !")]
+        [DisplayName("Phone number")]
+
 		public string Phone
 		{
 			get
@@ -610,6 +622,8 @@ namespace MvcStationeryManagementSystem.Models
 		}
 		
 		[Column(Storage="_RoleId", DbType="Int")]
+        [Required(ErrorMessage=("Please select Role"))]
+        [DisplayName("Role")]
 		public System.Nullable<int> RoleId
 		{
 			get
@@ -633,7 +647,9 @@ namespace MvcStationeryManagementSystem.Models
 			}
 		}
 		
-		[Column(Storage="_Password", DbType="NVarChar(50)")]
+		[Column(Storage="_Password", DbType="Ntext")]
+        [Required(ErrorMessage=("Please enter password !"))]
+        [DisplayName("Password")]
 		public string Password
 		{
 			get
@@ -654,6 +670,9 @@ namespace MvcStationeryManagementSystem.Models
 		}
 		
 		[Column(Storage="_RegistrationNumber", DbType="VarChar(50)")]
+        [Required(ErrorMessage = ("Please enter RegistrationNumber"))]
+        [DisplayName("RegistrationNumber")]
+
 		public string RegistrationNumber
 		{
 			get
