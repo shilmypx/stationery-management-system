@@ -23,7 +23,7 @@ namespace MvcStationeryManagementSystem.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Login(Account ac)
+        public ActionResult Login(Employee em)
         {
            
             if(!ModelState.IsValid)
