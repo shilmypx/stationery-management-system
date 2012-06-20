@@ -19,8 +19,10 @@ namespace MvcStationeryManagementSystem.Models
             return FormsAuthentication.Encrypt(tk);
         }
         //Decrypt Method 
-        private static string Decrypt(string encryptedString)
+        private static string Decrypt1(string encryptedString)
         {
+            //string a = "";
+            //FormsAuthenticationTicket tk = FormsAuthentication.Decrypt(encryptedString);
             FormsAuthenticationTicket tk = FormsAuthentication.Decrypt(encryptedString);
             return tk.Name;
         }
@@ -32,7 +34,9 @@ namespace MvcStationeryManagementSystem.Models
             List<Employee> le = dcsd.Employees.Where(e => e.EmployeeNumber.Equals(employnumber)).ToList();
             if (le.Count == 1)
             {
+
                 if (le.FirstOrDefault().EmployeeNumber.Equals(employnumber) && pass.Equals(mahoa_giaima.giaiMa(le.FirstOrDefault().Password)))
+
                 {
                     el = le.FirstOrDefault();
                 }
