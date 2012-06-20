@@ -75,6 +75,7 @@
       <DependentUpon>DataClassesStationery.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\DescyptandEnscryt.cs" />
+    <Compile Include="Models\mahoa_giaima.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -158,11 +159,15 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\MvcStationeryManagementSystem.dll" />
+    <Content Include="bin\MvcStationeryManagementSystem.pdb" />
     <Content Include="Content\css\neewnew.css" />
     <Content Include="Content\css\styles\FormatFormlogin.css" />
     <Content Include="Content\css\styles\Site.css" />
-    <Content Include="Views\Default1\Index.aspx" />
-    <Content Include="Views\Default1\Index1.aspx" />
+    <Content Include="obj\Debug\MvcStationeryManagementSystem.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\MvcStationeryManagementSystem.dll" />
+    <Content Include="obj\Debug\MvcStationeryManagementSystem.pdb" />
+    <Content Include="obj\Debug\TempPE\Models.DataClassesStationery.designer.cs.dll" />
     <Content Include="Views\Default1\Login.ascx" />
     <Content Include="Views\Shared\Template.Master" />
   </ItemGroup>
@@ -180,6 +185,9 @@
     <None Include="Models\DataClassesStationery.dbml.layout">
       <DependentUpon>DataClassesStationery.dbml</DependentUpon>
     </None>
+    <Content Include="Views\Default1\Index.aspx" />
+    <Content Include="Views\Default1\Index2.aspx" />
+    <Content Include="Views\Shared\TemplatenewRequest.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -199,7 +207,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51688</DevelopmentServerPort>
+          <DevelopmentServerPort>62007</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
