@@ -22,7 +22,7 @@
 	<script type="text/javascript" src="../../Content/js/custom.js"></script>
     <asp:ContentPlaceHolder ID="css" runat="server">
     </asp:ContentPlaceHolder>
-    >
+    
 </head>
 <body>
      <div id="header">
@@ -126,10 +126,7 @@
 					Below you will find <b>Admintasia</b> table examples.
 				</div>
 				 <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                    <div class="hastable">
-
-					
-				</div>
+                    
                 </asp:ContentPlaceHolder>
 				
 				<div class="clearfix"></div>
