@@ -24,6 +24,7 @@ namespace MvcStationeryManagementSystem.Controllers
         {
             return View();
         }
+       
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Login()
         {
