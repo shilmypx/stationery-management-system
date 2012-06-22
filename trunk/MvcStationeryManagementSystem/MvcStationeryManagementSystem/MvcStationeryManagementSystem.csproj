@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="Models\DescyptandEnscryt.cs" />
     <Compile Include="Models\mahoa_giaima.cs" />
+    <Compile Include="Models\RequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +188,10 @@
     </None>
     <Content Include="Views\Default1\Index.aspx" />
     <Content Include="Views\Default1\Index2.aspx" />
+    <Content Include="Views\Default1\MyRequest.aspx" />
+    <Content Include="Views\Default1\MyRequest1.aspx" />
+    <Content Include="Views\Default1\MyRequest2.aspx" />
+    <Content Include="Views\Default1\RequestsApproved.aspx" />
     <Content Include="Views\Shared\TemplatenewRequest.Master" />
   </ItemGroup>
   <ItemGroup>
@@ -207,7 +212,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>62007</DevelopmentServerPort>
+          <DevelopmentServerPort>53956</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
