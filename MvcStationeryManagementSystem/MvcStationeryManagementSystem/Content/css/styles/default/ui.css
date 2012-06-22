@@ -310,6 +310,7 @@ a:hover, .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited
 #page-wrapper #sidebar {
 	background:#f4f4f4;
 	border-color:#d0d0d0;
+	float:left;
 }
 
 	/* Note */
