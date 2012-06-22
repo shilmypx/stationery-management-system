@@ -66,11 +66,11 @@
 
 	/* Tables Pagination */
 
-#pager {
+.pager {
 	padding:15px;
 }
 
-#pager input, #pager .pagesize {
+.pager input, .pager .pagesize {
 	margin:5px;
 	float: left;
 }

@@ -277,7 +277,8 @@
 	/* Tabs */
 
 .ui-tabs { 
-	padding:.2em;zoom:1;
+	padding:.2em;
+	zoom:1;
 	width: 820px;
 	margin-left: 262px;
 }

@@ -152,8 +152,47 @@ $(document).ready(function() {
 		        } 
 	})
 	
-	.tablesorterPager({container: $("#pager")}); 
+	.tablesorterPager({container: $("#pager")});
+	//1
+	$("#sort-table1")
+	.tablesorter({
+	    widgets: ['zebra'],
+	    headers: {
+	        // assign the secound column (we start counting zero) 
+	        0: {
+	            // disable it by setting the property sorter to false 
+	            sorter: false
+	        },
+	        // assign the third column (we start counting zero) 
+	        6: {
+	            // disable it by setting the property sorter to false 
+	            sorter: false
+	        }
+	    }
+	})
 
+	.tablesorterPager({ container: $("#pager1") });
+	//
+	//2
+	$("#sort-table2")
+	.tablesorter({
+	    widgets: ['zebra'],
+	    headers: {
+	        // assign the secound column (we start counting zero) 
+	        0: {
+	            // disable it by setting the property sorter to false 
+	            sorter: false
+	        },
+	        // assign the third column (we start counting zero) 
+	        6: {
+	            // disable it by setting the property sorter to false 
+	            sorter: false
+	        }
+	    }
+	})
+
+	.tablesorterPager({ container: $("#pager2") }); 
+    //2
 	$(".header").append('<span class="ui-icon ui-icon-carat-2-n-s"></span>');
 
 	
