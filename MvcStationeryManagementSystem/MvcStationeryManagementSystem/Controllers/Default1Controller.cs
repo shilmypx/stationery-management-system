@@ -78,7 +78,7 @@ namespace MvcStationeryManagementSystem.Controllers
            }
             Session["Employee"] = el;
 
-            return RedirectToAction("index");
+            return RedirectToAction("myrequest1");
 
            
         }
