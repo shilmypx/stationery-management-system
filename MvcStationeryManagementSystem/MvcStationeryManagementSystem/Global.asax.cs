@@ -19,7 +19,7 @@ namespace MvcStationeryManagementSystem
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Default1", action = "index2", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Default1", action = "login", id = UrlParameter.Optional } // Parameter defaults
             );
 
         }
