@@ -20,11 +20,41 @@ namespace MvcStationeryManagementSystem.Controllers
         {
             return View();
         }
-        public ActionResult Index2()
+        public ActionResult MyRequest()
         {
+            RequestModel rq = new RequestModel();
+            Employee e = (Employee)Session["Employee"];
+            ViewData["lst"] = rq.ListRQ().Where(r=>e.EmployeeNumber.Equals(r.ENumber1)).ToList();
+            ViewData["lst1"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2")).ToList();
             return View();
         }
-       
+        public ActionResult MyRequest1()
+        {
+            RequestModel rq = new RequestModel();
+            Employee e = (Employee)Session["Employee"];
+            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1)).ToList();
+            ViewData["lst1"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2")).ToList();
+            ViewData["lst2"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2") && r.Acc1==true).ToList();
+            return View();
+        }
+
+        public ActionResult MyRequest2()
+        {
+            RequestModel rq = new RequestModel();
+            Employee e = (Employee)Session["Employee"];
+            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1)).ToList();
+            ViewData["lst1"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2")).ToList();
+            ViewData["lst2"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2") && r.Acc1 == true).ToList();
+            return View();
+        }
+        public ActionResult RequestsApproved()
+        {
+            RequestModel rq = new RequestModel();
+            Employee e = (Employee)Session["Employee"];
+            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2")).ToList();
+            return View();
+        }
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Login()
         {
@@ -48,7 +78,7 @@ namespace MvcStationeryManagementSystem.Controllers
            }
             Session["Employee"] = el;
 
-            return RedirectToAction("Index1");
+            return RedirectToAction("myrequest1");
 
            
         }
