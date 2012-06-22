@@ -125,65 +125,8 @@
 					<h3>Table examples</h3>
 					Below you will find <b>Admintasia</b> table examples.
 				</div>
-				 <div class="column" style="float:left">
-					    <div class="portlet">
-					        <div class="portlet-header ui-widget-header">Requests Sent</div>
-					 <div class="dn">
-					    <div class="portlet-content">
-					    
-						<div id="accordion">
-							<div>
-								<h3><a href="#">Requirements Have Been Approved</a></h3>
-								<div>
-									<ul class="side-menu">
-										<li><a href="index.html" title="Administration">View Requests</a></li>
-										<li><a href="forms.html" title="Forms">My Accept</a></li>
-										<li><a href="tables.html" title="Tables">My Reject </a></li>
-									</ul>
-								</div>
-							</div>
-							<div>
-								<h3><a href="#">Requirements Have Not Been Approved</a></h3>
-								<div>
-									<ul class="side-menu">
-										<li><a href="index.html" title="Administration">View Requests</a></li>
-										
-									</ul>
-								</div>
-							</div>
-						</div>
-						
-					</div>
-					</div>
-							
-						</div>
-					       
-					    
-					    <div class="portlet">
-							<div class="portlet-header">Request Received</div>
-							<div class="dn">
-							<div class="portlet-content">
-							<ul class="side-menu">
-							<li>
-								<a class="set_theme" id="A14" href="javascript:void(0);" title="Default Theme">View Requests</a>
-							</li>
-							<li>
-								<a class="set_theme" id="A15" href="javascript:void(0);" title="Light Blue Theme">Withdraw  Requests </a>
-							</li>
-							<li>
-								<a class="set_theme" id="A16" href="javascript:void(0);" title="Light Blue Theme">Cancel Requests</a>
-							</li>
-							<li>
-								<a class="set_theme" id="A4" href="javascript:void(0);" title="Light Blue Theme">Accepted Requests</a>
-							</li>
-							
-							
-						</ul>
-							</div>
-							</div>
-						</div>
-					</div>
-					<div style="float:left">
+				
+					<div style="float:left;width: 1096px;margin-left: -7px;">
 				 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     
                 </asp:ContentPlaceHolder>
