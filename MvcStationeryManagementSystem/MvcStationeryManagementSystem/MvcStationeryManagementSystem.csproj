@@ -186,10 +186,7 @@
     <None Include="Models\DataClassesStationery.dbml.layout">
       <DependentUpon>DataClassesStationery.dbml</DependentUpon>
     </None>
-    <Content Include="Views\Default1\MyRequest1.aspx" />
     <Content Include="Views\Default1\MyRequest10.aspx" />
-    <Content Include="Views\Default1\MyRequest2.aspx" />
-    <Content Include="Views\Shared\TemplatenewRequest.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
