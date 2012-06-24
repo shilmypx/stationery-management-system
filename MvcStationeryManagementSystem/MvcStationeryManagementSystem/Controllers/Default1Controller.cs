@@ -32,12 +32,25 @@ namespace MvcStationeryManagementSystem.Controllers
         {
             RequestModel rq = new RequestModel();
             Employee e = (Employee)Session["Employee"];
-            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1)).ToList();
-            ViewData["lst1"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2")).ToList();
-            ViewData["lst2"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2") && r.Acc1==true).ToList();
+            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1)).OrderByDescending(r => r.DDispatch1).ToList();
+            ViewData["lst1"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2")).OrderByDescending(r => r.DDispatch1).ToList();
+            ViewData["lst2"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2") && r.Acc1 == true).OrderByDescending(r => r.DDispatch1).ToList();
+            ViewData["lst3"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2") && r.Acc1 == false).OrderByDescending(r => r.DDispatch1).ToList();
             return View();
         }
 
+        public ActionResult MyRequest10()
+        {
+            RequestModel rq = new RequestModel();
+            Employee e = (Employee)Session["Employee"];
+            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1)).OrderByDescending(r => r.DDispatch1).ToList();
+            ViewData["lst1"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2")).OrderByDescending(r => r.DDispatch1).ToList();
+            ViewData["lst2"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2") && r.Acc1 == true).OrderByDescending(r => r.DDispatch1).ToList();
+            ViewData["lst3"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2") && r.Acc1 == false).OrderByDescending(r => r.DDispatch1).ToList();
+            return View();
+        }
+
+        
         public ActionResult MyRequest2()
         {
             RequestModel rq = new RequestModel();
@@ -78,7 +91,7 @@ namespace MvcStationeryManagementSystem.Controllers
            }
             Session["Employee"] = el;
 
-            return RedirectToAction("myrequest1");
+            return RedirectToAction("myrequest10");
 
            
         }

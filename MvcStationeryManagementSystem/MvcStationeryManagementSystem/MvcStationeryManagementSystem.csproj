@@ -186,12 +186,9 @@
     <None Include="Models\DataClassesStationery.dbml.layout">
       <DependentUpon>DataClassesStationery.dbml</DependentUpon>
     </None>
-    <Content Include="Views\Default1\Index.aspx" />
-    <Content Include="Views\Default1\Index2.aspx" />
-    <Content Include="Views\Default1\MyRequest.aspx" />
     <Content Include="Views\Default1\MyRequest1.aspx" />
+    <Content Include="Views\Default1\MyRequest10.aspx" />
     <Content Include="Views\Default1\MyRequest2.aspx" />
-    <Content Include="Views\Default1\RequestsApproved.aspx" />
     <Content Include="Views\Shared\TemplatenewRequest.Master" />
   </ItemGroup>
   <ItemGroup>
@@ -212,7 +209,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>53956</DevelopmentServerPort>
+          <DevelopmentServerPort>64353</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -140,10 +140,7 @@ $(document).ready(function() {
 		widgets: ['zebra'],
 		headers: { 
 		            // assign the secound column (we start counting zero) 
-		            0: { 
-		                // disable it by setting the property sorter to false 
-		                sorter: false 
-		            }, 
+		            
 		            // assign the third column (we start counting zero) 
 		            6: { 
 		                // disable it by setting the property sorter to false 
@@ -159,10 +156,7 @@ $(document).ready(function() {
 	    widgets: ['zebra'],
 	    headers: {
 	        // assign the secound column (we start counting zero) 
-	        0: {
-	            // disable it by setting the property sorter to false 
-	            sorter: false
-	        },
+	       
 	        // assign the third column (we start counting zero) 
 	        6: {
 	            // disable it by setting the property sorter to false 
@@ -179,10 +173,7 @@ $(document).ready(function() {
 	    widgets: ['zebra'],
 	    headers: {
 	        // assign the secound column (we start counting zero) 
-	        0: {
-	            // disable it by setting the property sorter to false 
-	            sorter: false
-	        },
+	      
 	        // assign the third column (we start counting zero) 
 	        6: {
 	            // disable it by setting the property sorter to false 
@@ -191,8 +182,25 @@ $(document).ready(function() {
 	    }
 	})
 
-	.tablesorterPager({ container: $("#pager2") }); 
-    //2
+	.tablesorterPager({ container: $("#pager2") });
+	//2
+	//3
+	$("#sort-table3")
+	.tablesorter({
+	    widgets: ['zebra'],
+	    headers: {
+	        // assign the secound column (we start counting zero) 
+
+	        // assign the third column (we start counting zero) 
+	        6: {
+	            // disable it by setting the property sorter to false 
+	            sorter: false
+	        }
+	    }
+	})
+
+	.tablesorterPager({ container: $("#pager3") });
+    //3
 	$(".header").append('<span class="ui-icon ui-icon-carat-2-n-s"></span>');
 
 	

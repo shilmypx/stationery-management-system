@@ -1,12 +1,22 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/TemplatenewRequest.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Template.Master" Inherits="System.Web.Mvc.ViewPage" %>
 <%@ Import Namespace="MvcStationeryManagementSystem.Models"%>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	MyRequest1
+	MyRequest10
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-         <div id="tabs-1">
+     <div id="tabs" >
+    <ul>
+						<li><a href="#tabs-1">My Request</a></li>
+						<li><a href="#tabs-2">Requests Approved</a></li>
+						<li><a href="#tabs-3">My Accept</a></li>
+						<li><a href="#tabs-4">My Reject</a></li>
+						<li><a href="#tabs-5">My Accept</a></li>
+						<li><a href="#tabs-6">My Accept</a></li>
+	</ul>
+	   <div id="tabs-1">
         <div class="hastable">
 					<form name="myform" class="pager-form" method="post" action="#">
 						<table id="sort-table"> 
@@ -399,9 +409,9 @@
 	</div>
     <div id="tabs-6">
     </div>
-   
+</div>
+     
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
-
 </asp:Content>
