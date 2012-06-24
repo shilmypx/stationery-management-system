@@ -182,7 +182,7 @@
 					</div>
 				</div>
 				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
-					<div class="portlet-header ui-widget-header">Request Received</div>
+					<div class="portlet-header ui-widget-header">Messages Received</div>
 					<div class="portlet-content">
 						<ul class="side-menu">
 							

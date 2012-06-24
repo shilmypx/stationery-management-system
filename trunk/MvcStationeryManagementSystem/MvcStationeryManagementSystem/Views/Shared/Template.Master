@@ -144,55 +144,49 @@
 					</div>
 				</div>
 				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
-					<div class="portlet-header ui-widget-header">Account</div>
+					<div class="portlet-header ui-widget-header">Request Sent</div>
 					<div class="portlet-content">
-						<ul class="side-menu">
-							<li>
-								<a class="set_theme" id="default" href="javascript:void(0);" title="Default Theme">Change The Password</a>
-							</li>
-							<li>
-								<a class="set_theme" id="light_blue" href="javascript:void(0);" title="Light Blue Theme">Eligibility Details </a>
-							</li>
-							<li>
-								<a class="set_theme" id="A1" href="javascript:void(0);" title="Light Blue Theme">Manage Role</a>
-							</li>
-							<li>
-								<a class="set_theme" id="A2" href="javascript:void(0);" title="Light Blue Theme">Create Account </a>
-							</li>
-							<li>
-								<a class="set_theme" id="A3" href="javascript:void(0);" title="Light Blue Theme">Manage Account </a>
-							</li>
-						</ul>
+						<div id="accordion">
+							<div>
+								<h3><a href="#">Requirements Have Been Approved</a></h3>
+								<div>
+									<ul class="side-menu">
+										<li><a href="index.html" title="Administration">View Requests</a></li>
+										<li><a href="forms.html" title="Forms">My Accept</a></li>
+										<li><a href="tables.html" title="Tables">My Reject</a></li>
+									</ul>
+								</div>
+							</div>
+							<div>
+								<h3><a href="#">Requirements Have Not Been Approved</a></h3>
+								<div>
+									<ul class="side-menu">
+										<li><a href="index.html" title="Administration">View Requests</a></li>
+										
+									</ul>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
-					<div class="portlet-header ui-widget-header">Request</div>
+					<div class="portlet-header ui-widget-header">Messages Received</div>
 					<div class="portlet-content">
 						<ul class="side-menu">
 							
 							<li id="fixed_layout">
-								<a href="javascript:void(0);" title="Fixed Layout">Create Request</a>
+								<a href="javascript:void(0);" title="Fixed Layout">Withdraw  Requests </a>
 							</li>
-							<li id="fixed_layout">
-								<a href="javascript:void(0);" title="Fixed Layout">View Request</a>
+							<li id="Li3">
+								<a href="javascript:void(0);" title="Fixed Layout">Cancel  Requests </a>
 							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
-					<div class="portlet-header ui-widget-header">Stationery Items</div>
-					<div class="portlet-content">
-						<ul class="side-menu">
-							
-							<li id="Li1">
-								<a href="javascript:void(0);" title="Fixed Layout">My Stationery Items</a>
-							</li>
-							<li id="Li2">
-								<a href="javascript:void(0);" title="Fixed Layout">Manage Stationery Items</a>
+							<li id="Li4">
+								<a href="javascript:void(0);" title="Fixed Layout">Accepted  Requests </a>
 							</li>
 						</ul>
 					</div>
 				</div>
+				
 				
 				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
 					<div class="portlet-header ui-widget-header">Calendar</div>
