@@ -16,28 +16,7 @@ namespace MvcStationeryManagementSystem.Controllers
         {
             return View();
         }
-        public ActionResult Index1()
-        {
-            return View();
-        }
-        public ActionResult MyRequest()
-        {
-            RequestModel rq = new RequestModel();
-            Employee e = (Employee)Session["Employee"];
-            ViewData["lst"] = rq.ListRQ().Where(r=>e.EmployeeNumber.Equals(r.ENumber1)).ToList();
-            ViewData["lst1"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2")).ToList();
-            return View();
-        }
-        public ActionResult MyRequest1()
-        {
-            RequestModel rq = new RequestModel();
-            Employee e = (Employee)Session["Employee"];
-            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1)).OrderByDescending(r => r.DDispatch1).ToList();
-            ViewData["lst1"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2")).OrderByDescending(r => r.DDispatch1).ToList();
-            ViewData["lst2"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2") && r.Acc1 == true).OrderByDescending(r => r.DDispatch1).ToList();
-            ViewData["lst3"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2") && r.Acc1 == false).OrderByDescending(r => r.DDispatch1).ToList();
-            return View();
-        }
+      
 
         public ActionResult MyRequest10()
         {
@@ -51,22 +30,7 @@ namespace MvcStationeryManagementSystem.Controllers
         }
 
         
-        public ActionResult MyRequest2()
-        {
-            RequestModel rq = new RequestModel();
-            Employee e = (Employee)Session["Employee"];
-            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1)).ToList();
-            ViewData["lst1"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2")).ToList();
-            ViewData["lst2"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2") && r.Acc1 == true).ToList();
-            return View();
-        }
-        public ActionResult RequestsApproved()
-        {
-            RequestModel rq = new RequestModel();
-            Employee e = (Employee)Session["Employee"];
-            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2")).ToList();
-            return View();
-        }
+       
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Login()
