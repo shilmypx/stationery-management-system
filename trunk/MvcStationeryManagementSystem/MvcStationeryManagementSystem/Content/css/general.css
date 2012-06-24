@@ -519,18 +519,20 @@ button { float: right; margin: .5em .4em .5em 0; cursor: pointer; padding: .2em 
 
 	/* Main content */
 
-#page-wrapper {
+#page-wrapper 
+{
+	float:left;
 
 }
 
 #page-wrapper #main-wrapper {
 	float:left;
 
-	width:100%;
+	width:81%;
 }
 
 #page-wrapper #main-wrapper #main-content {
-	margin-right:242px;
+	margin-right:0px;
 	padding:10px 10px 10px;
 }
 
@@ -790,8 +792,8 @@ button { float: right; margin: .5em .4em .5em 0; cursor: pointer; padding: .2em 
 
 #page-wrapper #sidebar {
 	float:left;
-	margin:0 0 0 -246px;
-	width:224px;
+	/*margin:0 0 0 7px;*/
+	width:235px;
 	padding:10px;
 	border-left-width:1px;
 	border-bottom-width:1px;
