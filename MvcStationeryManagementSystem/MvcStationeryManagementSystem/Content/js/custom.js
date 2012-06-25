@@ -200,10 +200,43 @@ $(document).ready(function() {
 	})
 
 	.tablesorterPager({ container: $("#pager3") });
-    //3
-	$(".header").append('<span class="ui-icon ui-icon-carat-2-n-s"></span>');
+	//3
+	//4
+	$("#sort-table4")
+	.tablesorter({
+	    widgets: ['zebra'],
+	    headers: {
+	        // assign the secound column (we start counting zero) 
 
-	
+	        // assign the third column (we start counting zero) 
+	        6: {
+	            // disable it by setting the property sorter to false 
+	            sorter: false
+	        }
+	    }
+	})
+
+	.tablesorterPager({ container: $("#pager4") });
+	//4
+	//5
+	$("#sort-table5")
+	.tablesorter({
+	    widgets: ['zebra'],
+	    headers: {
+	        // assign the secound column (we start counting zero) 
+
+	        // assign the third column (we start counting zero) 
+	        6: {
+	            // disable it by setting the property sorter to false 
+	            sorter: false
+	        }
+	    }
+	})
+
+	.tablesorterPager({ container: $("#pager5") });
+	//5
+	$(".header").append('<span class="ui-icon ui-icon-carat-2-n-s"></span>');
+		
 });
 
 	/* Tooltip */

@@ -175,7 +175,10 @@
 						<ul class="side-menu">
 							
 							<li id="fixed_layout">
-								<a href="javascript:void(0);" title="Fixed Layout">Withdraw  Requests </a>
+								<a href="javascript:void(0);" title="Fixed Layout">New  Requests </a>
+							</li>
+							<li id="Li1">
+								<a href="javascript:void(0);" title="Fixed Layout">Withdraw   Requests </a>
 							</li>
 							<li id="Li3">
 								<a href="javascript:void(0);" title="Fixed Layout">Cancel  Requests </a>
