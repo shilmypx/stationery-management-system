@@ -9,14 +9,15 @@
 
      <div id="tabs" >
        <ul>
-						<li><a href="#tabs-1">My Request</a></li>
+						<li><a href="#tabs-1">My NewRequest</a></li>
 						<li><a href="#tabs-2">Requests Approved</a></li>
 						<li><a href="#tabs-3">My Accept</a></li>
 						<li><a href="#tabs-4">My Reject</a></li>
 						<li><a href="#tabs-5">Requests No Approved</a></li>
 						<li><a href="#tabs-6">New Requests</a></li>
-						<li><a href="#tabs-7">Cancel Requests</a></li>
-						<li><a href="#tabs-8">Accept Requests</a></li>
+						<li><a href="#tabs-7">Withdraw Requests</a></li>
+						<li><a href="#tabs-8">Cancel Requests</a></li>
+						<li><a href="#tabs-9">Accept Requests</a></li>
 	</ul>
 	   <div id="tabs-1">
         <div class="hastable">
@@ -502,7 +503,7 @@
 				</div>
                
     </div>
-	<div id="tabs-6">
+	   <div id="tabs-6">
                 <div class="hastable">
 					<form name="myform" class="pager-form" method="post" action="#">
 						<table id="sort-table5"> 
@@ -604,6 +605,7 @@
     
     <div id="tabs-7"></div>
     <div id="tabs-8"></div>
+    <div id="tabs-9"></div>
 </div>
      
 </asp:Content>
