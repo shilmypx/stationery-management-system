@@ -76,6 +76,7 @@
     <Compile Include="Models\DescyptandEnscryt.cs" />
     <Compile Include="Models\mahoa_giaima.cs" />
     <Compile Include="Models\RequestModel.cs" />
+    <Compile Include="Models\RequestModel22.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +173,12 @@
     <Content Include="Views\Shared\Template.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Default1\MyRequest10.aspx" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Models\DataClassesStationery.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClassesStationery.designer.cs</LastGenOutput>
@@ -179,13 +186,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Models\DataClassesStationery.dbml.layout">
       <DependentUpon>DataClassesStationery.dbml</DependentUpon>
     </None>
-    <Content Include="Views\Default1\MyRequest10.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace MvcStationeryManagementSystem.Models
 {
-    public class RequestModel
+    public class RequestModel22
     {
         private DataClassesStationeryDataContext dc = new DataClassesStationeryDataContext();
         private string ENumber;
@@ -24,12 +24,12 @@ namespace MvcStationeryManagementSystem.Models
             get { return ENumber; }
             set { ENumber = value; }
         }
-        private string RName;
+        private string Rname;
 
-        public string RName1
+        public string Rname1
         {
-            get { return RName; }
-            set { RName = value; }
+            get { return Rname; }
+            set { Rname = value; }
         }
         private string CRQName;
 
@@ -80,34 +80,40 @@ namespace MvcStationeryManagementSystem.Models
             get { return Acc; }
             set { Acc = value; }
         }
+        private string RNumber;
 
-       
-        public RequestModel()
-        { }
-        //chi duoc anh xa co so du lieu len thoi 
-        public List<RequestModel> ListRQ()
+        public string RNumber1
         {
-            List<RequestModel> Listr = new List<RequestModel>();
-            var requests = from r in dc.Requests
-                           join ca in dc.CatalogeRQs on r.CatalogRQId equals ca.CatalogRQId
-                           
+            get { return RNumber; }
+            set { RNumber = value; }
+        }
+        public RequestModel22()
+        {}
+        public List<RequestModel22> Listrq2()
+        {
+            List<RequestModel22> listrq = new List<RequestModel22>();
+            var request = from r in dc.Requests
+                          join ca in dc.CatalogeRQs on r.CatalogRQId equals ca.CatalogRQId
+                           join el in dc.Employees on r.EmployeeNumber equals el.EmployeeNumber
+
                           select new
                           {
-                              EmployeeNumber=r.EmployeeNumber,
+                              EmployeeNumber = r.EmployeeNumber,
                               RequestName = r.RequestName,
                               CatalogRQName = ca.CatalogRQName,
                               DateDispatch = r.DateDispatch,
                               DateApprove = r.DateApprove,
-                              RequestContent=r.RequestContent,
-                              Description=r.Description,
-                              State=r.State,
-                              Accept=r.Accept
+                              RequestContent = r.RequestContent,
+                              Description = r.Description,
+                              State = r.State,
+                              Accept = r.Accept,
+                              RegistrationNumber = el.RegistrationNumber
                           };
-            foreach (var rr in requests)
+            foreach (var rr in request)
             {
-                RequestModel obrq = new RequestModel();
+                RequestModel22 obrq = new RequestModel22();
                 obrq.ENumber = rr.EmployeeNumber;
-                obrq.RName = rr.RequestName;
+                obrq.Rname = rr.RequestName;
                 obrq.CRQName = rr.CatalogRQName;
                 obrq.DDispatch = Convert.ToDateTime(rr.DateDispatch);
                 obrq.DApprove = Convert.ToDateTime(rr.DateApprove);
@@ -115,10 +121,10 @@ namespace MvcStationeryManagementSystem.Models
                 obrq.Dtion = rr.Description;
                 obrq.Stte = rr.State;
                 obrq.Acc = Convert.ToBoolean(rr.Accept);
-                Listr.Add(obrq);
+                obrq.RNumber = rr.RegistrationNumber;
+                listrq.Add(obrq);
             }
-            return Listr;
+            return listrq;
         }
-      
     }
 }
