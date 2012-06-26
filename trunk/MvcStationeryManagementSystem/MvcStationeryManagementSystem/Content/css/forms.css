@@ -89,7 +89,7 @@ input.small, select.small{
 }
 
 input.medium, select.medium{
-	width:50%;
+	width:200%;
 }
 
 input.large, select.large, textarea.textarea {
