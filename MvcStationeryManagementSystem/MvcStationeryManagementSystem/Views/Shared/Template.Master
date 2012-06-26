@@ -75,8 +75,8 @@
 		        <li><a href="#">Change The Password </a></li>
 		        <li><a href="#">Eligibility Details </a></li>
 		        <li><a href="msg.html">Manage Role</a></li>
-		         <li><a href="msg.html">Create Acount</a></li>
-                <li><a href="msg.html">Manage Acount</a></li>
+		         <li><%= Html.ActionLink("Create Employee", "AddEmployee", "Employee") %></li>
+                <li><%= Html.ActionLink("Manage Employee", "ManageEmployee", "Employee") %></li>
 	        </ul>
         </li>
 			
