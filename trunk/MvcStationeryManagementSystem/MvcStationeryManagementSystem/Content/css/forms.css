@@ -96,8 +96,9 @@ input.large, select.large, textarea.textarea {
 	width:70%;
 }
 
+/*moi sua css o day*/
 input.full, select.full, textarea.full {
-	width:99%;
+	width:305%;
 }
 
 textarea.small{
