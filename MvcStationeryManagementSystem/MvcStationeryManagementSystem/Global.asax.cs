@@ -30,5 +30,12 @@ namespace MvcStationeryManagementSystem
 
             RegisterRoutes(RouteTable.Routes);
         }
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
+
+            Application[HttpContext.Current.Request.UserHostAddress.ToString()] = ex;
+        }
+    
     }
 }
