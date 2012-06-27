@@ -18,6 +18,10 @@ namespace MvcStationeryManagementSystem.Controllers
         }
         public ActionResult MyRequest10()
         {
+            if (Session["Employee"] == null)
+            {
+                return RedirectToAction("Login");
+            }
             RequestModel rq = new RequestModel();
             RequestModel22 rq22 = new RequestModel22();
             Employee e = (Employee)Session["Employee"];
@@ -60,6 +64,13 @@ namespace MvcStationeryManagementSystem.Controllers
             return RedirectToAction("myrequest10");
 
            
+        }
+
+        //logout
+        public ActionResult logout()
+        {
+            Session.Remove("Employee");
+            return RedirectToAction("MyRequest10");
         }
 
     }
