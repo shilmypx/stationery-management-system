@@ -83,7 +83,7 @@ namespace MvcStationeryManagementSystem.Models
 
         public List<Employee> ListEmployee()
         {
-            return dcs.Employees.OrderByDescending(em => em.DateBuild).ToList();
+            return dcs.Employees.OrderByDescending(e => e.DateBuild).ToList();
         }
 
         public List<Role> ListRole()
