@@ -30,31 +30,31 @@ namespace MvcStationeryManagementSystem.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertStationery(Stationery instance);
-    partial void UpdateStationery(Stationery instance);
-    partial void DeleteStationery(Stationery instance);
-    partial void InsertRole(Role instance);
-    partial void UpdateRole(Role instance);
-    partial void DeleteRole(Role instance);
-    partial void InsertRequest_Stationery(Request_Stationery instance);
-    partial void UpdateRequest_Stationery(Request_Stationery instance);
-    partial void DeleteRequest_Stationery(Request_Stationery instance);
-    partial void InsertRequest(Request instance);
-    partial void UpdateRequest(Request instance);
-    partial void DeleteRequest(Request instance);
+    partial void InsertCataloge(Cataloge instance);
+    partial void UpdateCataloge(Cataloge instance);
+    partial void DeleteCataloge(Cataloge instance);
     partial void InsertEmployee(Employee instance);
     partial void UpdateEmployee(Employee instance);
     partial void DeleteEmployee(Employee instance);
     partial void InsertCatalogeRQ(CatalogeRQ instance);
     partial void UpdateCatalogeRQ(CatalogeRQ instance);
     partial void DeleteCatalogeRQ(CatalogeRQ instance);
-    partial void InsertCataloge(Cataloge instance);
-    partial void UpdateCataloge(Cataloge instance);
-    partial void DeleteCataloge(Cataloge instance);
+    partial void InsertStationery(Stationery instance);
+    partial void UpdateStationery(Stationery instance);
+    partial void DeleteStationery(Stationery instance);
+    partial void InsertRequest(Request instance);
+    partial void UpdateRequest(Request instance);
+    partial void DeleteRequest(Request instance);
+    partial void InsertRequest_Stationery(Request_Stationery instance);
+    partial void UpdateRequest_Stationery(Request_Stationery instance);
+    partial void DeleteRequest_Stationery(Request_Stationery instance);
+    partial void InsertRole(Role instance);
+    partial void UpdateRole(Role instance);
+    partial void DeleteRole(Role instance);
     #endregion
 		
 		public DataClassesStationeryDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["StationeryDataConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["StationeryDataConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -83,35 +83,11 @@ namespace MvcStationeryManagementSystem.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Stationery> Stationeries
+		public System.Data.Linq.Table<Cataloge> Cataloges
 		{
 			get
 			{
-				return this.GetTable<Stationery>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Role> Roles
-		{
-			get
-			{
-				return this.GetTable<Role>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Request_Stationery> Request_Stationeries
-		{
-			get
-			{
-				return this.GetTable<Request_Stationery>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Request> Requests
-		{
-			get
-			{
-				return this.GetTable<Request>();
+				return this.GetTable<Cataloge>();
 			}
 		}
 		
@@ -131,144 +107,69 @@ namespace MvcStationeryManagementSystem.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Cataloge> Cataloges
+		public System.Data.Linq.Table<Stationery> Stationeries
 		{
 			get
 			{
-				return this.GetTable<Cataloge>();
+				return this.GetTable<Stationery>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Request> Requests
+		{
+			get
+			{
+				return this.GetTable<Request>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Request_Stationery> Request_Stationeries
+		{
+			get
+			{
+				return this.GetTable<Request_Stationery>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Role> Roles
+		{
+			get
+			{
+				return this.GetTable<Role>();
 			}
 		}
 	}
 	
-	[Table(Name="dbo.Stationery")]
-	public partial class Stationery : INotifyPropertyChanging, INotifyPropertyChanged
+	[Table(Name="dbo.Cataloge")]
+	public partial class Cataloge : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _ProductId;
+		private int _CatalogeId;
 		
-		private string _ProductName;
+		private string _CatalogeName;
 		
-		private System.Nullable<decimal> _Rate;
-		
-		private System.Nullable<int> _Quantity;
-		
-		private System.Nullable<int> _CatalogeId;
-		
-		private string _Description;
-		
-		private EntitySet<Request_Stationery> _Request_Stationeries;
-		
-		private EntityRef<Cataloge> _Cataloge;
+		private EntitySet<Stationery> _Stationeries;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnProductIdChanging(int value);
-    partial void OnProductIdChanged();
-    partial void OnProductNameChanging(string value);
-    partial void OnProductNameChanged();
-    partial void OnRateChanging(System.Nullable<decimal> value);
-    partial void OnRateChanged();
-    partial void OnQuantityChanging(System.Nullable<int> value);
-    partial void OnQuantityChanged();
-    partial void OnCatalogeIdChanging(System.Nullable<int> value);
+    partial void OnCatalogeIdChanging(int value);
     partial void OnCatalogeIdChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
+    partial void OnCatalogeNameChanging(string value);
+    partial void OnCatalogeNameChanged();
     #endregion
 		
-		public Stationery()
+		public Cataloge()
 		{
-			this._Request_Stationeries = new EntitySet<Request_Stationery>(new Action<Request_Stationery>(this.attach_Request_Stationeries), new Action<Request_Stationery>(this.detach_Request_Stationeries));
-			this._Cataloge = default(EntityRef<Cataloge>);
+			this._Stationeries = new EntitySet<Stationery>(new Action<Stationery>(this.attach_Stationeries), new Action<Stationery>(this.detach_Stationeries));
 			OnCreated();
 		}
 		
-		[Column(Storage="_ProductId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ProductId
-		{
-			get
-			{
-				return this._ProductId;
-			}
-			set
-			{
-				if ((this._ProductId != value))
-				{
-					this.OnProductIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProductId = value;
-					this.SendPropertyChanged("ProductId");
-					this.OnProductIdChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_ProductName", DbType="NVarChar(50)")]
-		public string ProductName
-		{
-			get
-			{
-				return this._ProductName;
-			}
-			set
-			{
-				if ((this._ProductName != value))
-				{
-					this.OnProductNameChanging(value);
-					this.SendPropertyChanging();
-					this._ProductName = value;
-					this.SendPropertyChanged("ProductName");
-					this.OnProductNameChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Rate", DbType="Money")]
-		public System.Nullable<decimal> Rate
-		{
-			get
-			{
-				return this._Rate;
-			}
-			set
-			{
-				if ((this._Rate != value))
-				{
-					this.OnRateChanging(value);
-					this.SendPropertyChanging();
-					this._Rate = value;
-					this.SendPropertyChanged("Rate");
-					this.OnRateChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Quantity", DbType="Int")]
-		public System.Nullable<int> Quantity
-		{
-			get
-			{
-				return this._Quantity;
-			}
-			set
-			{
-				if ((this._Quantity != value))
-				{
-					this.OnQuantityChanging(value);
-					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_CatalogeId", DbType="Int")]
-		public System.Nullable<int> CatalogeId
+		[Column(Storage="_CatalogeId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CatalogeId
 		{
 			get
 			{
@@ -278,10 +179,6 @@ namespace MvcStationeryManagementSystem.Models
 			{
 				if ((this._CatalogeId != value))
 				{
-					if (this._Cataloge.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnCatalogeIdChanging(value);
 					this.SendPropertyChanging();
 					this._CatalogeId = value;
@@ -291,70 +188,36 @@ namespace MvcStationeryManagementSystem.Models
 			}
 		}
 		
-		[Column(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string Description
+		[Column(Storage="_CatalogeName", DbType="NVarChar(50)")]
+		public string CatalogeName
 		{
 			get
 			{
-				return this._Description;
+				return this._CatalogeName;
 			}
 			set
 			{
-				if ((this._Description != value))
+				if ((this._CatalogeName != value))
 				{
-					this.OnDescriptionChanging(value);
+					this.OnCatalogeNameChanging(value);
 					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
+					this._CatalogeName = value;
+					this.SendPropertyChanged("CatalogeName");
+					this.OnCatalogeNameChanged();
 				}
 			}
 		}
 		
-		[Association(Name="Stationery_Request_Stationery", Storage="_Request_Stationeries", ThisKey="ProductId", OtherKey="ProductId")]
-		public EntitySet<Request_Stationery> Request_Stationeries
+		[Association(Name="Cataloge_Stationery", Storage="_Stationeries", ThisKey="CatalogeId", OtherKey="CatalogeId")]
+		public EntitySet<Stationery> Stationeries
 		{
 			get
 			{
-				return this._Request_Stationeries;
+				return this._Stationeries;
 			}
 			set
 			{
-				this._Request_Stationeries.Assign(value);
-			}
-		}
-		
-		[Association(Name="Cataloge_Stationery", Storage="_Cataloge", ThisKey="CatalogeId", OtherKey="CatalogeId", IsForeignKey=true)]
-		public Cataloge Cataloge
-		{
-			get
-			{
-				return this._Cataloge.Entity;
-			}
-			set
-			{
-				Cataloge previousValue = this._Cataloge.Entity;
-				if (((previousValue != value) 
-							|| (this._Cataloge.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Cataloge.Entity = null;
-						previousValue.Stationeries.Remove(this);
-					}
-					this._Cataloge.Entity = value;
-					if ((value != null))
-					{
-						value.Stationeries.Add(this);
-						this._CatalogeId = value.CatalogeId;
-					}
-					else
-					{
-						this._CatalogeId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Cataloge");
-				}
+				this._Stationeries.Assign(value);
 			}
 		}
 		
@@ -378,806 +241,16 @@ namespace MvcStationeryManagementSystem.Models
 			}
 		}
 		
-		private void attach_Request_Stationeries(Request_Stationery entity)
+		private void attach_Stationeries(Stationery entity)
 		{
 			this.SendPropertyChanging();
-			entity.Stationery = this;
+			entity.Cataloge = this;
 		}
 		
-		private void detach_Request_Stationeries(Request_Stationery entity)
+		private void detach_Stationeries(Stationery entity)
 		{
 			this.SendPropertyChanging();
-			entity.Stationery = null;
-		}
-	}
-	
-	[Table(Name="dbo.Role")]
-	public partial class Role : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _RoleId;
-		
-		private string _RoleName;
-		
-		private System.Nullable<decimal> _Amount;
-		
-		private EntitySet<Employee> _Employees;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnRoleIdChanging(int value);
-    partial void OnRoleIdChanged();
-    partial void OnRoleNameChanging(string value);
-    partial void OnRoleNameChanged();
-    partial void OnAmountChanging(System.Nullable<decimal> value);
-    partial void OnAmountChanged();
-    #endregion
-		
-		public Role()
-		{
-			this._Employees = new EntitySet<Employee>(new Action<Employee>(this.attach_Employees), new Action<Employee>(this.detach_Employees));
-			OnCreated();
-		}
-		
-		[Column(Storage="_RoleId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int RoleId
-		{
-			get
-			{
-				return this._RoleId;
-			}
-			set
-			{
-				if ((this._RoleId != value))
-				{
-					this.OnRoleIdChanging(value);
-					this.SendPropertyChanging();
-					this._RoleId = value;
-					this.SendPropertyChanged("RoleId");
-					this.OnRoleIdChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_RoleName", DbType="NVarChar(50)")]
-		public string RoleName
-		{
-			get
-			{
-				return this._RoleName;
-			}
-			set
-			{
-				if ((this._RoleName != value))
-				{
-					this.OnRoleNameChanging(value);
-					this.SendPropertyChanging();
-					this._RoleName = value;
-					this.SendPropertyChanged("RoleName");
-					this.OnRoleNameChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Amount", DbType="Money")]
-		public System.Nullable<decimal> Amount
-		{
-			get
-			{
-				return this._Amount;
-			}
-			set
-			{
-				if ((this._Amount != value))
-				{
-					this.OnAmountChanging(value);
-					this.SendPropertyChanging();
-					this._Amount = value;
-					this.SendPropertyChanged("Amount");
-					this.OnAmountChanged();
-				}
-			}
-		}
-		
-		[Association(Name="Role_Employee", Storage="_Employees", ThisKey="RoleId", OtherKey="RoleId")]
-		public EntitySet<Employee> Employees
-		{
-			get
-			{
-				return this._Employees;
-			}
-			set
-			{
-				this._Employees.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Employees(Employee entity)
-		{
-			this.SendPropertyChanging();
-			entity.Role = this;
-		}
-		
-		private void detach_Employees(Employee entity)
-		{
-			this.SendPropertyChanging();
-			entity.Role = null;
-		}
-	}
-	
-	[Table(Name="dbo.Request_Stationery")]
-	public partial class Request_Stationery : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _RequestId;
-		
-		private int _ProductId;
-		
-		private int _Quantity;
-		
-		private System.Nullable<decimal> _Rate;
-		
-		private System.Nullable<int> _Arise;
-		
-		private string _Description;
-		
-		private EntityRef<Stationery> _Stationery;
-		
-		private EntityRef<Request> _Request;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnRequestIdChanging(int value);
-    partial void OnRequestIdChanged();
-    partial void OnProductIdChanging(int value);
-    partial void OnProductIdChanged();
-    partial void OnQuantityChanging(int value);
-    partial void OnQuantityChanged();
-    partial void OnRateChanging(System.Nullable<decimal> value);
-    partial void OnRateChanged();
-    partial void OnAriseChanging(System.Nullable<int> value);
-    partial void OnAriseChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    #endregion
-		
-		public Request_Stationery()
-		{
-			this._Stationery = default(EntityRef<Stationery>);
-			this._Request = default(EntityRef<Request>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_RequestId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int RequestId
-		{
-			get
-			{
-				return this._RequestId;
-			}
-			set
-			{
-				if ((this._RequestId != value))
-				{
-					if (this._Request.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnRequestIdChanging(value);
-					this.SendPropertyChanging();
-					this._RequestId = value;
-					this.SendPropertyChanged("RequestId");
-					this.OnRequestIdChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_ProductId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ProductId
-		{
-			get
-			{
-				return this._ProductId;
-			}
-			set
-			{
-				if ((this._ProductId != value))
-				{
-					if (this._Stationery.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProductIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProductId = value;
-					this.SendPropertyChanged("ProductId");
-					this.OnProductIdChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Quantity", DbType="Int NOT NULL")]
-		public int Quantity
-		{
-			get
-			{
-				return this._Quantity;
-			}
-			set
-			{
-				if ((this._Quantity != value))
-				{
-					this.OnQuantityChanging(value);
-					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Rate", DbType="Money")]
-		public System.Nullable<decimal> Rate
-		{
-			get
-			{
-				return this._Rate;
-			}
-			set
-			{
-				if ((this._Rate != value))
-				{
-					this.OnRateChanging(value);
-					this.SendPropertyChanging();
-					this._Rate = value;
-					this.SendPropertyChanged("Rate");
-					this.OnRateChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Arise", DbType="Int")]
-		public System.Nullable<int> Arise
-		{
-			get
-			{
-				return this._Arise;
-			}
-			set
-			{
-				if ((this._Arise != value))
-				{
-					this.OnAriseChanging(value);
-					this.SendPropertyChanging();
-					this._Arise = value;
-					this.SendPropertyChanged("Arise");
-					this.OnAriseChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[Association(Name="Stationery_Request_Stationery", Storage="_Stationery", ThisKey="ProductId", OtherKey="ProductId", IsForeignKey=true)]
-		public Stationery Stationery
-		{
-			get
-			{
-				return this._Stationery.Entity;
-			}
-			set
-			{
-				Stationery previousValue = this._Stationery.Entity;
-				if (((previousValue != value) 
-							|| (this._Stationery.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Stationery.Entity = null;
-						previousValue.Request_Stationeries.Remove(this);
-					}
-					this._Stationery.Entity = value;
-					if ((value != null))
-					{
-						value.Request_Stationeries.Add(this);
-						this._ProductId = value.ProductId;
-					}
-					else
-					{
-						this._ProductId = default(int);
-					}
-					this.SendPropertyChanged("Stationery");
-				}
-			}
-		}
-		
-		[Association(Name="Request_Request_Stationery", Storage="_Request", ThisKey="RequestId", OtherKey="RequestId", IsForeignKey=true)]
-		public Request Request
-		{
-			get
-			{
-				return this._Request.Entity;
-			}
-			set
-			{
-				Request previousValue = this._Request.Entity;
-				if (((previousValue != value) 
-							|| (this._Request.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Request.Entity = null;
-						previousValue.Request_Stationeries.Remove(this);
-					}
-					this._Request.Entity = value;
-					if ((value != null))
-					{
-						value.Request_Stationeries.Add(this);
-						this._RequestId = value.RequestId;
-					}
-					else
-					{
-						this._RequestId = default(int);
-					}
-					this.SendPropertyChanged("Request");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[Table(Name="dbo.Request")]
-	public partial class Request : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _RequestId;
-		
-		private string _RequestName;
-		
-		private string _State;
-		
-		private System.Nullable<System.DateTime> _DateDispatch;
-		
-		private System.Nullable<System.DateTime> _DateApprove;
-		
-		private System.Nullable<bool> _Accept;
-		
-		private string _RequestContent;
-		
-		private string _EmployeeNumber;
-		
-		private string _Description;
-		
-		private System.Nullable<int> _CatalogRQId;
-		
-		private EntitySet<Request_Stationery> _Request_Stationeries;
-		
-		private EntityRef<Employee> _Employee;
-		
-		private EntityRef<CatalogeRQ> _CatalogeRQ;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnRequestIdChanging(int value);
-    partial void OnRequestIdChanged();
-    partial void OnRequestNameChanging(string value);
-    partial void OnRequestNameChanged();
-    partial void OnStateChanging(string value);
-    partial void OnStateChanged();
-    partial void OnDateDispatchChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateDispatchChanged();
-    partial void OnDateApproveChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateApproveChanged();
-    partial void OnAcceptChanging(System.Nullable<bool> value);
-    partial void OnAcceptChanged();
-    partial void OnRequestContentChanging(string value);
-    partial void OnRequestContentChanged();
-    partial void OnEmployeeNumberChanging(string value);
-    partial void OnEmployeeNumberChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    partial void OnCatalogRQIdChanging(System.Nullable<int> value);
-    partial void OnCatalogRQIdChanged();
-    #endregion
-		
-		public Request()
-		{
-			this._Request_Stationeries = new EntitySet<Request_Stationery>(new Action<Request_Stationery>(this.attach_Request_Stationeries), new Action<Request_Stationery>(this.detach_Request_Stationeries));
-			this._Employee = default(EntityRef<Employee>);
-			this._CatalogeRQ = default(EntityRef<CatalogeRQ>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_RequestId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int RequestId
-		{
-			get
-			{
-				return this._RequestId;
-			}
-			set
-			{
-				if ((this._RequestId != value))
-				{
-					this.OnRequestIdChanging(value);
-					this.SendPropertyChanging();
-					this._RequestId = value;
-					this.SendPropertyChanged("RequestId");
-					this.OnRequestIdChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_RequestName", DbType="NVarChar(50)")]
-		public string RequestName
-		{
-			get
-			{
-				return this._RequestName;
-			}
-			set
-			{
-				if ((this._RequestName != value))
-				{
-					this.OnRequestNameChanging(value);
-					this.SendPropertyChanging();
-					this._RequestName = value;
-					this.SendPropertyChanged("RequestName");
-					this.OnRequestNameChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_State", DbType="VarChar(50)")]
-		public string State
-		{
-			get
-			{
-				return this._State;
-			}
-			set
-			{
-				if ((this._State != value))
-				{
-					this.OnStateChanging(value);
-					this.SendPropertyChanging();
-					this._State = value;
-					this.SendPropertyChanged("State");
-					this.OnStateChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_DateDispatch", DbType="Date")]
-		public System.Nullable<System.DateTime> DateDispatch
-		{
-			get
-			{
-				return this._DateDispatch;
-			}
-			set
-			{
-				if ((this._DateDispatch != value))
-				{
-					this.OnDateDispatchChanging(value);
-					this.SendPropertyChanging();
-					this._DateDispatch = value;
-					this.SendPropertyChanged("DateDispatch");
-					this.OnDateDispatchChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_DateApprove", DbType="Date")]
-		public System.Nullable<System.DateTime> DateApprove
-		{
-			get
-			{
-				return this._DateApprove;
-			}
-			set
-			{
-				if ((this._DateApprove != value))
-				{
-					this.OnDateApproveChanging(value);
-					this.SendPropertyChanging();
-					this._DateApprove = value;
-					this.SendPropertyChanged("DateApprove");
-					this.OnDateApproveChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Accept", DbType="Bit")]
-		public System.Nullable<bool> Accept
-		{
-			get
-			{
-				return this._Accept;
-			}
-			set
-			{
-				if ((this._Accept != value))
-				{
-					this.OnAcceptChanging(value);
-					this.SendPropertyChanging();
-					this._Accept = value;
-					this.SendPropertyChanged("Accept");
-					this.OnAcceptChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_RequestContent", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string RequestContent
-		{
-			get
-			{
-				return this._RequestContent;
-			}
-			set
-			{
-				if ((this._RequestContent != value))
-				{
-					this.OnRequestContentChanging(value);
-					this.SendPropertyChanging();
-					this._RequestContent = value;
-					this.SendPropertyChanged("RequestContent");
-					this.OnRequestContentChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_EmployeeNumber", DbType="VarChar(50)")]
-		public string EmployeeNumber
-		{
-			get
-			{
-				return this._EmployeeNumber;
-			}
-			set
-			{
-				if ((this._EmployeeNumber != value))
-				{
-					if (this._Employee.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnEmployeeNumberChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeNumber = value;
-					this.SendPropertyChanged("EmployeeNumber");
-					this.OnEmployeeNumberChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_CatalogRQId", DbType="Int")]
-		public System.Nullable<int> CatalogRQId
-		{
-			get
-			{
-				return this._CatalogRQId;
-			}
-			set
-			{
-				if ((this._CatalogRQId != value))
-				{
-					if (this._CatalogeRQ.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCatalogRQIdChanging(value);
-					this.SendPropertyChanging();
-					this._CatalogRQId = value;
-					this.SendPropertyChanged("CatalogRQId");
-					this.OnCatalogRQIdChanged();
-				}
-			}
-		}
-		
-		[Association(Name="Request_Request_Stationery", Storage="_Request_Stationeries", ThisKey="RequestId", OtherKey="RequestId")]
-		public EntitySet<Request_Stationery> Request_Stationeries
-		{
-			get
-			{
-				return this._Request_Stationeries;
-			}
-			set
-			{
-				this._Request_Stationeries.Assign(value);
-			}
-		}
-		
-		[Association(Name="Employee_Request", Storage="_Employee", ThisKey="EmployeeNumber", OtherKey="EmployeeNumber", IsForeignKey=true)]
-		public Employee Employee
-		{
-			get
-			{
-				return this._Employee.Entity;
-			}
-			set
-			{
-				Employee previousValue = this._Employee.Entity;
-				if (((previousValue != value) 
-							|| (this._Employee.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employee.Entity = null;
-						previousValue.Requests.Remove(this);
-					}
-					this._Employee.Entity = value;
-					if ((value != null))
-					{
-						value.Requests.Add(this);
-						this._EmployeeNumber = value.EmployeeNumber;
-					}
-					else
-					{
-						this._EmployeeNumber = default(string);
-					}
-					this.SendPropertyChanged("Employee");
-				}
-			}
-		}
-		
-		[Association(Name="CatalogeRQ_Request", Storage="_CatalogeRQ", ThisKey="CatalogRQId", OtherKey="CatalogRQId", IsForeignKey=true)]
-		public CatalogeRQ CatalogeRQ
-		{
-			get
-			{
-				return this._CatalogeRQ.Entity;
-			}
-			set
-			{
-				CatalogeRQ previousValue = this._CatalogeRQ.Entity;
-				if (((previousValue != value) 
-							|| (this._CatalogeRQ.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CatalogeRQ.Entity = null;
-						previousValue.Requests.Remove(this);
-					}
-					this._CatalogeRQ.Entity = value;
-					if ((value != null))
-					{
-						value.Requests.Add(this);
-						this._CatalogRQId = value.CatalogRQId;
-					}
-					else
-					{
-						this._CatalogRQId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("CatalogeRQ");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Request_Stationeries(Request_Stationery entity)
-		{
-			this.SendPropertyChanging();
-			entity.Request = this;
-		}
-		
-		private void detach_Request_Stationeries(Request_Stationery entity)
-		{
-			this.SendPropertyChanging();
-			entity.Request = null;
+			entity.Cataloge = null;
 		}
 	}
 	
@@ -1200,6 +273,8 @@ namespace MvcStationeryManagementSystem.Models
 		private string _Address;
 		
 		private string _Phone;
+		
+		private string _Images;
 		
 		private System.Nullable<int> _RoleId;
 		
@@ -1229,6 +304,8 @@ namespace MvcStationeryManagementSystem.Models
     partial void OnAddressChanged();
     partial void OnPhoneChanging(string value);
     partial void OnPhoneChanged();
+    partial void OnImagesChanging(string value);
+    partial void OnImagesChanged();
     partial void OnRoleIdChanging(System.Nullable<int> value);
     partial void OnRoleIdChanged();
     partial void OnPasswordChanging(string value);
@@ -1380,6 +457,26 @@ namespace MvcStationeryManagementSystem.Models
 					this._Phone = value;
 					this.SendPropertyChanged("Phone");
 					this.OnPhoneChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Images", DbType="VarChar(50)")]
+		public string Images
+		{
+			get
+			{
+				return this._Images;
+			}
+			set
+			{
+				if ((this._Images != value))
+				{
+					this.OnImagesChanging(value);
+					this.SendPropertyChanging();
+					this._Images = value;
+					this.SendPropertyChanged("Images");
+					this.OnImagesChanged();
 				}
 			}
 		}
@@ -1642,36 +739,135 @@ namespace MvcStationeryManagementSystem.Models
 		}
 	}
 	
-	[Table(Name="dbo.Cataloge")]
-	public partial class Cataloge : INotifyPropertyChanging, INotifyPropertyChanged
+	[Table(Name="dbo.Stationery")]
+	public partial class Stationery : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _CatalogeId;
+		private int _ProductId;
 		
-		private string _CatalogeName;
+		private string _ProductName;
 		
-		private EntitySet<Stationery> _Stationeries;
+		private System.Nullable<decimal> _Rate;
+		
+		private System.Nullable<int> _Quantity;
+		
+		private System.Nullable<int> _CatalogeId;
+		
+		private string _Description;
+		
+		private EntitySet<Request_Stationery> _Request_Stationeries;
+		
+		private EntityRef<Cataloge> _Cataloge;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnCatalogeIdChanging(int value);
+    partial void OnProductIdChanging(int value);
+    partial void OnProductIdChanged();
+    partial void OnProductNameChanging(string value);
+    partial void OnProductNameChanged();
+    partial void OnRateChanging(System.Nullable<decimal> value);
+    partial void OnRateChanged();
+    partial void OnQuantityChanging(System.Nullable<int> value);
+    partial void OnQuantityChanged();
+    partial void OnCatalogeIdChanging(System.Nullable<int> value);
     partial void OnCatalogeIdChanged();
-    partial void OnCatalogeNameChanging(string value);
-    partial void OnCatalogeNameChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
     #endregion
 		
-		public Cataloge()
+		public Stationery()
 		{
-			this._Stationeries = new EntitySet<Stationery>(new Action<Stationery>(this.attach_Stationeries), new Action<Stationery>(this.detach_Stationeries));
+			this._Request_Stationeries = new EntitySet<Request_Stationery>(new Action<Request_Stationery>(this.attach_Request_Stationeries), new Action<Request_Stationery>(this.detach_Request_Stationeries));
+			this._Cataloge = default(EntityRef<Cataloge>);
 			OnCreated();
 		}
 		
-		[Column(Storage="_CatalogeId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int CatalogeId
+		[Column(Storage="_ProductId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ProductId
+		{
+			get
+			{
+				return this._ProductId;
+			}
+			set
+			{
+				if ((this._ProductId != value))
+				{
+					this.OnProductIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProductId = value;
+					this.SendPropertyChanged("ProductId");
+					this.OnProductIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ProductName", DbType="NVarChar(50)")]
+		public string ProductName
+		{
+			get
+			{
+				return this._ProductName;
+			}
+			set
+			{
+				if ((this._ProductName != value))
+				{
+					this.OnProductNameChanging(value);
+					this.SendPropertyChanging();
+					this._ProductName = value;
+					this.SendPropertyChanged("ProductName");
+					this.OnProductNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Rate", DbType="Money")]
+		public System.Nullable<decimal> Rate
+		{
+			get
+			{
+				return this._Rate;
+			}
+			set
+			{
+				if ((this._Rate != value))
+				{
+					this.OnRateChanging(value);
+					this.SendPropertyChanging();
+					this._Rate = value;
+					this.SendPropertyChanged("Rate");
+					this.OnRateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Quantity", DbType="Int")]
+		public System.Nullable<int> Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this.OnQuantityChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_CatalogeId", DbType="Int")]
+		public System.Nullable<int> CatalogeId
 		{
 			get
 			{
@@ -1681,6 +877,10 @@ namespace MvcStationeryManagementSystem.Models
 			{
 				if ((this._CatalogeId != value))
 				{
+					if (this._Cataloge.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnCatalogeIdChanging(value);
 					this.SendPropertyChanging();
 					this._CatalogeId = value;
@@ -1690,36 +890,70 @@ namespace MvcStationeryManagementSystem.Models
 			}
 		}
 		
-		[Column(Storage="_CatalogeName", DbType="NVarChar(50)")]
-		public string CatalogeName
+		[Column(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Description
 		{
 			get
 			{
-				return this._CatalogeName;
+				return this._Description;
 			}
 			set
 			{
-				if ((this._CatalogeName != value))
+				if ((this._Description != value))
 				{
-					this.OnCatalogeNameChanging(value);
+					this.OnDescriptionChanging(value);
 					this.SendPropertyChanging();
-					this._CatalogeName = value;
-					this.SendPropertyChanged("CatalogeName");
-					this.OnCatalogeNameChanged();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
 				}
 			}
 		}
 		
-		[Association(Name="Cataloge_Stationery", Storage="_Stationeries", ThisKey="CatalogeId", OtherKey="CatalogeId")]
-		public EntitySet<Stationery> Stationeries
+		[Association(Name="Stationery_Request_Stationery", Storage="_Request_Stationeries", ThisKey="ProductId", OtherKey="ProductId")]
+		public EntitySet<Request_Stationery> Request_Stationeries
 		{
 			get
 			{
-				return this._Stationeries;
+				return this._Request_Stationeries;
 			}
 			set
 			{
-				this._Stationeries.Assign(value);
+				this._Request_Stationeries.Assign(value);
+			}
+		}
+		
+		[Association(Name="Cataloge_Stationery", Storage="_Cataloge", ThisKey="CatalogeId", OtherKey="CatalogeId", IsForeignKey=true)]
+		public Cataloge Cataloge
+		{
+			get
+			{
+				return this._Cataloge.Entity;
+			}
+			set
+			{
+				Cataloge previousValue = this._Cataloge.Entity;
+				if (((previousValue != value) 
+							|| (this._Cataloge.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Cataloge.Entity = null;
+						previousValue.Stationeries.Remove(this);
+					}
+					this._Cataloge.Entity = value;
+					if ((value != null))
+					{
+						value.Stationeries.Add(this);
+						this._CatalogeId = value.CatalogeId;
+					}
+					else
+					{
+						this._CatalogeId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Cataloge");
+				}
 			}
 		}
 		
@@ -1743,16 +977,806 @@ namespace MvcStationeryManagementSystem.Models
 			}
 		}
 		
-		private void attach_Stationeries(Stationery entity)
+		private void attach_Request_Stationeries(Request_Stationery entity)
 		{
 			this.SendPropertyChanging();
-			entity.Cataloge = this;
+			entity.Stationery = this;
 		}
 		
-		private void detach_Stationeries(Stationery entity)
+		private void detach_Request_Stationeries(Request_Stationery entity)
 		{
 			this.SendPropertyChanging();
-			entity.Cataloge = null;
+			entity.Stationery = null;
+		}
+	}
+	
+	[Table(Name="dbo.Request")]
+	public partial class Request : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RequestId;
+		
+		private string _RequestName;
+		
+		private string _State;
+		
+		private System.Nullable<System.DateTime> _DateDispatch;
+		
+		private System.Nullable<System.DateTime> _DateApprove;
+		
+		private System.Nullable<bool> _Accept;
+		
+		private string _RequestContent;
+		
+		private string _EmployeeNumber;
+		
+		private string _Description;
+		
+		private System.Nullable<int> _CatalogRQId;
+		
+		private EntitySet<Request_Stationery> _Request_Stationeries;
+		
+		private EntityRef<CatalogeRQ> _CatalogeRQ;
+		
+		private EntityRef<Employee> _Employee;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRequestIdChanging(int value);
+    partial void OnRequestIdChanged();
+    partial void OnRequestNameChanging(string value);
+    partial void OnRequestNameChanged();
+    partial void OnStateChanging(string value);
+    partial void OnStateChanged();
+    partial void OnDateDispatchChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateDispatchChanged();
+    partial void OnDateApproveChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateApproveChanged();
+    partial void OnAcceptChanging(System.Nullable<bool> value);
+    partial void OnAcceptChanged();
+    partial void OnRequestContentChanging(string value);
+    partial void OnRequestContentChanged();
+    partial void OnEmployeeNumberChanging(string value);
+    partial void OnEmployeeNumberChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnCatalogRQIdChanging(System.Nullable<int> value);
+    partial void OnCatalogRQIdChanged();
+    #endregion
+		
+		public Request()
+		{
+			this._Request_Stationeries = new EntitySet<Request_Stationery>(new Action<Request_Stationery>(this.attach_Request_Stationeries), new Action<Request_Stationery>(this.detach_Request_Stationeries));
+			this._CatalogeRQ = default(EntityRef<CatalogeRQ>);
+			this._Employee = default(EntityRef<Employee>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_RequestId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int RequestId
+		{
+			get
+			{
+				return this._RequestId;
+			}
+			set
+			{
+				if ((this._RequestId != value))
+				{
+					this.OnRequestIdChanging(value);
+					this.SendPropertyChanging();
+					this._RequestId = value;
+					this.SendPropertyChanged("RequestId");
+					this.OnRequestIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_RequestName", DbType="NVarChar(50)")]
+		public string RequestName
+		{
+			get
+			{
+				return this._RequestName;
+			}
+			set
+			{
+				if ((this._RequestName != value))
+				{
+					this.OnRequestNameChanging(value);
+					this.SendPropertyChanging();
+					this._RequestName = value;
+					this.SendPropertyChanged("RequestName");
+					this.OnRequestNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_State", DbType="VarChar(50)")]
+		public string State
+		{
+			get
+			{
+				return this._State;
+			}
+			set
+			{
+				if ((this._State != value))
+				{
+					this.OnStateChanging(value);
+					this.SendPropertyChanging();
+					this._State = value;
+					this.SendPropertyChanged("State");
+					this.OnStateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_DateDispatch", DbType="Date")]
+		public System.Nullable<System.DateTime> DateDispatch
+		{
+			get
+			{
+				return this._DateDispatch;
+			}
+			set
+			{
+				if ((this._DateDispatch != value))
+				{
+					this.OnDateDispatchChanging(value);
+					this.SendPropertyChanging();
+					this._DateDispatch = value;
+					this.SendPropertyChanged("DateDispatch");
+					this.OnDateDispatchChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_DateApprove", DbType="Date")]
+		public System.Nullable<System.DateTime> DateApprove
+		{
+			get
+			{
+				return this._DateApprove;
+			}
+			set
+			{
+				if ((this._DateApprove != value))
+				{
+					this.OnDateApproveChanging(value);
+					this.SendPropertyChanging();
+					this._DateApprove = value;
+					this.SendPropertyChanged("DateApprove");
+					this.OnDateApproveChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Accept", DbType="Bit")]
+		public System.Nullable<bool> Accept
+		{
+			get
+			{
+				return this._Accept;
+			}
+			set
+			{
+				if ((this._Accept != value))
+				{
+					this.OnAcceptChanging(value);
+					this.SendPropertyChanging();
+					this._Accept = value;
+					this.SendPropertyChanged("Accept");
+					this.OnAcceptChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_RequestContent", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string RequestContent
+		{
+			get
+			{
+				return this._RequestContent;
+			}
+			set
+			{
+				if ((this._RequestContent != value))
+				{
+					this.OnRequestContentChanging(value);
+					this.SendPropertyChanging();
+					this._RequestContent = value;
+					this.SendPropertyChanged("RequestContent");
+					this.OnRequestContentChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_EmployeeNumber", DbType="VarChar(50)")]
+		public string EmployeeNumber
+		{
+			get
+			{
+				return this._EmployeeNumber;
+			}
+			set
+			{
+				if ((this._EmployeeNumber != value))
+				{
+					if (this._Employee.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnEmployeeNumberChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeNumber = value;
+					this.SendPropertyChanged("EmployeeNumber");
+					this.OnEmployeeNumberChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_CatalogRQId", DbType="Int")]
+		public System.Nullable<int> CatalogRQId
+		{
+			get
+			{
+				return this._CatalogRQId;
+			}
+			set
+			{
+				if ((this._CatalogRQId != value))
+				{
+					if (this._CatalogeRQ.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCatalogRQIdChanging(value);
+					this.SendPropertyChanging();
+					this._CatalogRQId = value;
+					this.SendPropertyChanged("CatalogRQId");
+					this.OnCatalogRQIdChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Request_Request_Stationery", Storage="_Request_Stationeries", ThisKey="RequestId", OtherKey="RequestId")]
+		public EntitySet<Request_Stationery> Request_Stationeries
+		{
+			get
+			{
+				return this._Request_Stationeries;
+			}
+			set
+			{
+				this._Request_Stationeries.Assign(value);
+			}
+		}
+		
+		[Association(Name="CatalogeRQ_Request", Storage="_CatalogeRQ", ThisKey="CatalogRQId", OtherKey="CatalogRQId", IsForeignKey=true)]
+		public CatalogeRQ CatalogeRQ
+		{
+			get
+			{
+				return this._CatalogeRQ.Entity;
+			}
+			set
+			{
+				CatalogeRQ previousValue = this._CatalogeRQ.Entity;
+				if (((previousValue != value) 
+							|| (this._CatalogeRQ.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CatalogeRQ.Entity = null;
+						previousValue.Requests.Remove(this);
+					}
+					this._CatalogeRQ.Entity = value;
+					if ((value != null))
+					{
+						value.Requests.Add(this);
+						this._CatalogRQId = value.CatalogRQId;
+					}
+					else
+					{
+						this._CatalogRQId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("CatalogeRQ");
+				}
+			}
+		}
+		
+		[Association(Name="Employee_Request", Storage="_Employee", ThisKey="EmployeeNumber", OtherKey="EmployeeNumber", IsForeignKey=true)]
+		public Employee Employee
+		{
+			get
+			{
+				return this._Employee.Entity;
+			}
+			set
+			{
+				Employee previousValue = this._Employee.Entity;
+				if (((previousValue != value) 
+							|| (this._Employee.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employee.Entity = null;
+						previousValue.Requests.Remove(this);
+					}
+					this._Employee.Entity = value;
+					if ((value != null))
+					{
+						value.Requests.Add(this);
+						this._EmployeeNumber = value.EmployeeNumber;
+					}
+					else
+					{
+						this._EmployeeNumber = default(string);
+					}
+					this.SendPropertyChanged("Employee");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Request_Stationeries(Request_Stationery entity)
+		{
+			this.SendPropertyChanging();
+			entity.Request = this;
+		}
+		
+		private void detach_Request_Stationeries(Request_Stationery entity)
+		{
+			this.SendPropertyChanging();
+			entity.Request = null;
+		}
+	}
+	
+	[Table(Name="dbo.Request_Stationery")]
+	public partial class Request_Stationery : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RequestId;
+		
+		private int _ProductId;
+		
+		private int _Quantity;
+		
+		private System.Nullable<decimal> _Rate;
+		
+		private System.Nullable<int> _Arise;
+		
+		private string _Description;
+		
+		private EntityRef<Request> _Request;
+		
+		private EntityRef<Stationery> _Stationery;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRequestIdChanging(int value);
+    partial void OnRequestIdChanged();
+    partial void OnProductIdChanging(int value);
+    partial void OnProductIdChanged();
+    partial void OnQuantityChanging(int value);
+    partial void OnQuantityChanged();
+    partial void OnRateChanging(System.Nullable<decimal> value);
+    partial void OnRateChanged();
+    partial void OnAriseChanging(System.Nullable<int> value);
+    partial void OnAriseChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    #endregion
+		
+		public Request_Stationery()
+		{
+			this._Request = default(EntityRef<Request>);
+			this._Stationery = default(EntityRef<Stationery>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_RequestId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int RequestId
+		{
+			get
+			{
+				return this._RequestId;
+			}
+			set
+			{
+				if ((this._RequestId != value))
+				{
+					if (this._Request.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnRequestIdChanging(value);
+					this.SendPropertyChanging();
+					this._RequestId = value;
+					this.SendPropertyChanged("RequestId");
+					this.OnRequestIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ProductId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ProductId
+		{
+			get
+			{
+				return this._ProductId;
+			}
+			set
+			{
+				if ((this._ProductId != value))
+				{
+					if (this._Stationery.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProductIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProductId = value;
+					this.SendPropertyChanged("ProductId");
+					this.OnProductIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Quantity", DbType="Int NOT NULL")]
+		public int Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this.OnQuantityChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Rate", DbType="Money")]
+		public System.Nullable<decimal> Rate
+		{
+			get
+			{
+				return this._Rate;
+			}
+			set
+			{
+				if ((this._Rate != value))
+				{
+					this.OnRateChanging(value);
+					this.SendPropertyChanging();
+					this._Rate = value;
+					this.SendPropertyChanged("Rate");
+					this.OnRateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Arise", DbType="Int")]
+		public System.Nullable<int> Arise
+		{
+			get
+			{
+				return this._Arise;
+			}
+			set
+			{
+				if ((this._Arise != value))
+				{
+					this.OnAriseChanging(value);
+					this.SendPropertyChanging();
+					this._Arise = value;
+					this.SendPropertyChanged("Arise");
+					this.OnAriseChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Request_Request_Stationery", Storage="_Request", ThisKey="RequestId", OtherKey="RequestId", IsForeignKey=true)]
+		public Request Request
+		{
+			get
+			{
+				return this._Request.Entity;
+			}
+			set
+			{
+				Request previousValue = this._Request.Entity;
+				if (((previousValue != value) 
+							|| (this._Request.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Request.Entity = null;
+						previousValue.Request_Stationeries.Remove(this);
+					}
+					this._Request.Entity = value;
+					if ((value != null))
+					{
+						value.Request_Stationeries.Add(this);
+						this._RequestId = value.RequestId;
+					}
+					else
+					{
+						this._RequestId = default(int);
+					}
+					this.SendPropertyChanged("Request");
+				}
+			}
+		}
+		
+		[Association(Name="Stationery_Request_Stationery", Storage="_Stationery", ThisKey="ProductId", OtherKey="ProductId", IsForeignKey=true)]
+		public Stationery Stationery
+		{
+			get
+			{
+				return this._Stationery.Entity;
+			}
+			set
+			{
+				Stationery previousValue = this._Stationery.Entity;
+				if (((previousValue != value) 
+							|| (this._Stationery.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Stationery.Entity = null;
+						previousValue.Request_Stationeries.Remove(this);
+					}
+					this._Stationery.Entity = value;
+					if ((value != null))
+					{
+						value.Request_Stationeries.Add(this);
+						this._ProductId = value.ProductId;
+					}
+					else
+					{
+						this._ProductId = default(int);
+					}
+					this.SendPropertyChanged("Stationery");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Role")]
+	public partial class Role : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RoleId;
+		
+		private string _RoleName;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private EntitySet<Employee> _Employees;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRoleIdChanging(int value);
+    partial void OnRoleIdChanged();
+    partial void OnRoleNameChanging(string value);
+    partial void OnRoleNameChanged();
+    partial void OnAmountChanging(System.Nullable<decimal> value);
+    partial void OnAmountChanged();
+    #endregion
+		
+		public Role()
+		{
+			this._Employees = new EntitySet<Employee>(new Action<Employee>(this.attach_Employees), new Action<Employee>(this.detach_Employees));
+			OnCreated();
+		}
+		
+		[Column(Storage="_RoleId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int RoleId
+		{
+			get
+			{
+				return this._RoleId;
+			}
+			set
+			{
+				if ((this._RoleId != value))
+				{
+					this.OnRoleIdChanging(value);
+					this.SendPropertyChanging();
+					this._RoleId = value;
+					this.SendPropertyChanged("RoleId");
+					this.OnRoleIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_RoleName", DbType="NVarChar(50)")]
+		public string RoleName
+		{
+			get
+			{
+				return this._RoleName;
+			}
+			set
+			{
+				if ((this._RoleName != value))
+				{
+					this.OnRoleNameChanging(value);
+					this.SendPropertyChanging();
+					this._RoleName = value;
+					this.SendPropertyChanged("RoleName");
+					this.OnRoleNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Amount", DbType="Money")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Role_Employee", Storage="_Employees", ThisKey="RoleId", OtherKey="RoleId")]
+		public EntitySet<Employee> Employees
+		{
+			get
+			{
+				return this._Employees;
+			}
+			set
+			{
+				this._Employees.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Employees(Employee entity)
+		{
+			this.SendPropertyChanging();
+			entity.Role = this;
+		}
+		
+		private void detach_Employees(Employee entity)
+		{
+			this.SendPropertyChanging();
+			entity.Role = null;
 		}
 	}
 }
