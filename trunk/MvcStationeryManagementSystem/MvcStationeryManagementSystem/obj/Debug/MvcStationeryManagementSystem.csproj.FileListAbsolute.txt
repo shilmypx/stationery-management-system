@@ -8,27 +8,14 @@ D:\Project\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcSt
 D:\Project\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\ResolveAssemblyReference.cache
 D:\Project\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.dll
 D:\Project\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.pdb
-D:\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcStationeryManagementSystem.dll
-D:\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcStationeryManagementSystem.pdb
-D:\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\ResolveAssemblyReference.cache
-D:\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.dll
-D:\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.pdb
-<<<<<<< .mine
-D:\IT\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcStationeryManagementSystem.dll
-D:\IT\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcStationeryManagementSystem.pdb
-D:\IT\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\ResolveAssemblyReference.cache
-D:\IT\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.dll
-D:\IT\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.pdb
-=======
-D:\PRO3\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcStationeryManagementSystem.dll
-D:\PRO3\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcStationeryManagementSystem.pdb
-D:\PRO3\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\ResolveAssemblyReference.cache
-D:\PRO3\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.dll
-D:\PRO3\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.pdb
 D:\PRO4\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcStationeryManagementSystem.dll
 D:\PRO4\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcStationeryManagementSystem.pdb
 D:\PRO4\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\ResolveAssemblyReference.cache
 D:\PRO4\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.dll
 D:\PRO4\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.pdb
->>>>>>> .r73
->>>>>>> .r75
+D:\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcStationeryManagementSystem.dll
+D:\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcStationeryManagementSystem.pdb
+D:\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\ResolveAssemblyReference.cache
+D:\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.dll
+D:\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.pdb
+

@@ -235,6 +235,57 @@ $(document).ready(function() {
 
 	.tablesorterPager({ container: $("#pager5") });
 	//5
+	//6
+	$("#sort-table6")
+	.tablesorter({
+	    widgets: ['zebra'],
+	    headers: {
+	        // assign the secound column (we start counting zero) 
+
+	        // assign the third column (we start counting zero) 
+	        6: {
+	            // disable it by setting the property sorter to false 
+	            sorter: false
+	        }
+	    }
+	})
+
+	.tablesorterPager({ container: $("#pager6") });
+	//6
+	//7
+	$("#sort-table7")
+	.tablesorter({
+	    widgets: ['zebra'],
+	    headers: {
+	        // assign the secound column (we start counting zero) 
+
+	        // assign the third column (we start counting zero) 
+	        6: {
+	            // disable it by setting the property sorter to false 
+	            sorter: false
+	        }
+	    }
+	})
+
+	.tablesorterPager({ container: $("#pager7") });
+	//7
+	//8
+	$("#sort-table8")
+	.tablesorter({
+	    widgets: ['zebra'],
+	    headers: {
+	        // assign the secound column (we start counting zero) 
+
+	        // assign the third column (we start counting zero) 
+	        6: {
+	            // disable it by setting the property sorter to false 
+	            sorter: false
+	        }
+	    }
+	})
+
+	.tablesorterPager({ container: $("#pager8") });
+	//8
 	$(".header").append('<span class="ui-icon ui-icon-carat-2-n-s"></span>');
 		
 });

@@ -107,6 +107,7 @@ textarea.small{
 
 textarea.medium{
 	height:10em;
+	width: 720px;
 }
 
 textarea.large{

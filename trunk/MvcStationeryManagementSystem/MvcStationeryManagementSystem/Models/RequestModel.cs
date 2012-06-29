@@ -17,6 +17,28 @@ namespace MvcStationeryManagementSystem.Models
     public class RequestModel
     {
         private DataClassesStationeryDataContext dc = new DataClassesStationeryDataContext();
+        private int CRQId;
+
+        public int CRQId1
+        {
+            get { return CRQId; }
+            set { CRQId = value; }
+        }
+        private int RId;
+        public int RId1
+        {
+            get { return RId; }
+            set { RId = value; }
+        }
+
+        private string FName;
+
+        public string FName1
+        {
+            get { return FName; }
+            set { FName = value; }
+        }
+        
         private string ENumber;
 
         public string ENumber1
@@ -90,10 +112,13 @@ namespace MvcStationeryManagementSystem.Models
             List<RequestModel> Listr = new List<RequestModel>();
             var requests = from r in dc.Requests
                            join ca in dc.CatalogeRQs on r.CatalogRQId equals ca.CatalogRQId
-                           
+                           join el in dc.Employees on r.EmployeeNumber equals el.EmployeeNumber
                           select new
                           {
+                              CatalogRQId=ca.CatalogRQId,
+                              RequestId=r.RequestId,
                               EmployeeNumber=r.EmployeeNumber,
+                              FullName=el.FullName,
                               RequestName = r.RequestName,
                               CatalogRQName = ca.CatalogRQName,
                               DateDispatch = r.DateDispatch,
@@ -106,7 +131,10 @@ namespace MvcStationeryManagementSystem.Models
             foreach (var rr in requests)
             {
                 RequestModel obrq = new RequestModel();
+                obrq.CRQId1 = rr.CatalogRQId;
+                obrq.RId = rr.RequestId;
                 obrq.ENumber = rr.EmployeeNumber;
+                obrq.FName = rr.FullName;
                 obrq.RName = rr.RequestName;
                 obrq.CRQName = rr.CatalogRQName;
                 obrq.DDispatch = Convert.ToDateTime(rr.DateDispatch);
@@ -119,6 +147,30 @@ namespace MvcStationeryManagementSystem.Models
             }
             return Listr;
         }
-      
+        public RequestModel Infomation(int rqid)
+        {
+            RequestModel r = new RequestModel();
+            return r.ListRQ().Where(l => l.RId == rqid).ToList().First(); 
+            
+        }
+        //public Request infor1(int rid)
+        //{
+        //    return dc.Requests.Where(r => r.RequestId == rid).ToList().First();
+        //}
+       
+        public void update1(int requestid,string rname,string st,DateTime dd, DateTime da,bool acc, string rc, string en, string dt, int ctid)
+        {
+            Request rq = dc.Requests.Where(r => r.RequestId == requestid).ToList().First();
+            rq.RequestName = rname;
+            rq.State = st;
+            rq.DateDispatch = dd;
+            rq.DateApprove = da;
+            rq.Accept = acc;
+            rq.RequestContent = rc;
+            rq.EmployeeNumber = en;
+            rq.Description = dt;
+            rq.CatalogRQId = ctid;
+            dc.SubmitChanges();
+        }
     }
 }
