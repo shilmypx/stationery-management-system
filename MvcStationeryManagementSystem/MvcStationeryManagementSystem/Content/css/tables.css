@@ -60,7 +60,8 @@
 	width:5px;
 }
 
-.hastable table a.btn span.ui-icon {
+.hastable table a.btn span
+ {
 	left:0.1em;
 }
 

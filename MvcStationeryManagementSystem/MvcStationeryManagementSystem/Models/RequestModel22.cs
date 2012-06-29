@@ -87,6 +87,13 @@ namespace MvcStationeryManagementSystem.Models
             get { return RNumber; }
             set { RNumber = value; }
         }
+        private int RId;
+
+        public int RId1
+        {
+            get { return RId; }
+            set { RId = value; }
+        }
         public RequestModel22()
         {}
         public List<RequestModel22> Listrq2()
@@ -98,6 +105,7 @@ namespace MvcStationeryManagementSystem.Models
 
                           select new
                           {
+                              RequestId=r.RequestId,
                               EmployeeNumber = r.EmployeeNumber,
                               RequestName = r.RequestName,
                               CatalogRQName = ca.CatalogRQName,
@@ -112,6 +120,7 @@ namespace MvcStationeryManagementSystem.Models
             foreach (var rr in request)
             {
                 RequestModel22 obrq = new RequestModel22();
+                obrq.RId = rr.RequestId;
                 obrq.ENumber = rr.EmployeeNumber;
                 obrq.Rname = rr.RequestName;
                 obrq.CRQName = rr.CatalogRQName;
