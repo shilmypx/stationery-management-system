@@ -80,6 +80,7 @@
     <Compile Include="Models\mahoa_giaima.cs" />
     <Compile Include="Models\RequestModel.cs" />
     <Compile Include="Models\RequestModel22.cs" />
+    <Compile Include="Models\Request_StationeryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +181,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Default1\DetailRQ.aspx" />
+    <Content Include="Views\Default1\DetailRQ2.aspx" />
+    <Content Include="Views\Default1\DetailRQ3.aspx" />
     <Content Include="Views\Default1\MyRequest10.aspx" />
     <Content Include="Views\Employee\AddEmployee.aspx" />
     <Content Include="Views\Employee\Detail.aspx" />
@@ -187,6 +190,7 @@
     <Content Include="Views\Employee\ManageEmployee.aspx" />
     <Content Include="Views\Employee\RemoveEmployee.aspx" />
     <Content Include="Views\Error404\Error.ascx" />
+    <Content Include="Views\Shared\ViewUserControl1.ascx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\DataClassesStationery.dbml">

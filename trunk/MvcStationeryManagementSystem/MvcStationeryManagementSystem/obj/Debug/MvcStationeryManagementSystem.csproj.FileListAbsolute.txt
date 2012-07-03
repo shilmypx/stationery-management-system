@@ -18,4 +18,3 @@ D:\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManag
 D:\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\ResolveAssemblyReference.cache
 D:\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.dll
 D:\stationery-management-system\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.pdb
-

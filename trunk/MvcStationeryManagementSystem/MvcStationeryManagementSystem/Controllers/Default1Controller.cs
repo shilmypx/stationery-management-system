@@ -15,7 +15,9 @@ namespace MvcStationeryManagementSystem.Controllers
         public ActionResult Index()
         {
             return View();
+
         }
+       
         public ActionResult MyRequest10()
         {
             if (Session["Employee"] == null)
@@ -43,22 +45,20 @@ namespace MvcStationeryManagementSystem.Controllers
             ViewData["lst7"] = rq22.Listrq2().Where(r1 => e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("2") && r1.Acc1 == false).OrderByDescending(r => r.DDispatch1).ToList();
             //Accept Request
             ViewData["lst8"] = rq22.Listrq2().Where(r1 => e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("4") && r1.Acc1 == true).OrderByDescending(r => r.DDispatch1).ToList();
+            //Request_Stationery
             return View();
         }
 
-
+        //bat dau
         public ActionResult DetailRQ(int id)
         {
             RequestModel rm = new RequestModel();
+            Request_StationeryModel rm1 = new Request_StationeryModel();
             ViewData["if"] = rm.Infomation(id);
+            ViewData["if1"] = rm1.ListR_S(id);
+
             return View();
         }
-        //public ActionResult infor1(int rid)
-        //{
-        //    RequestModel rq = new RequestModel();
-        //    ViewData["if1"] = rq.infor1(rid);
-        //    return View();
-        //}
         public ActionResult update11(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
         {
             RequestModel rq = new RequestModel();
@@ -66,11 +66,165 @@ namespace MvcStationeryManagementSystem.Controllers
           
             ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("1")).OrderByDescending(r => r.DDispatch1).ToList();
            
-            rq.update1(requestid,rname,st, dd,da,acc,rc, en, dt, ctid);
+            rq.update(requestid,rname,st, dd,da,acc,rc, en, dt, ctid);
             return RedirectToAction("MyRequest10");
         
         }
+        //ket thuc
+        //2
+        public ActionResult DetailRQ2(int id)
+        {
+            RequestModel rm = new RequestModel();
+            Request_StationeryModel rm1 = new Request_StationeryModel();
+            ViewData["if"] = rm.Infomation(id);
+            ViewData["if1"] = rm1.ListR_S(id);
 
+            return View();
+        }
+        public ActionResult update2(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
+        {
+            RequestModel rq = new RequestModel();
+            RequestModel22 rq22 = new RequestModel22();
+            Employee e = (Employee)Session["Employee"];
+
+            ViewData["lst1"] = rq22.Listrq2().Where(r => (e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2")) || (e.EmployeeNumber.Equals(r.RNumber1) && r.Stte1.Equals("6") && r.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
+
+            rq.update(requestid, rname, st, dd, da, acc, rc, en, dt, ctid);
+            return RedirectToAction("MyRequest10");
+
+        }
+        //
+        //3
+        public ActionResult DetailRQ3(int id)
+        {
+            RequestModel rm = new RequestModel();
+            Request_StationeryModel rm1 = new Request_StationeryModel();
+            ViewData["if"] = rm.Infomation(id);
+            ViewData["if1"] = rm1.ListR_S(id);
+
+            return View();
+        }
+        public ActionResult update3(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
+        {
+            RequestModel rq = new RequestModel();
+            Employee e = (Employee)Session["Employee"];
+
+            ViewData["lst2"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("4") && r.Acc1 == true).OrderByDescending(r => r.DDispatch1).ToList();
+            rq.update(requestid, rname, st, dd, da, acc, rc, en, dt, ctid);
+            return RedirectToAction("MyRequest10");
+
+        }
+        //
+        //4
+        public ActionResult DetailRQ4(int id)
+        {
+            RequestModel rm = new RequestModel();
+            Request_StationeryModel rm1 = new Request_StationeryModel();
+            ViewData["if"] = rm.Infomation(id);
+            ViewData["if1"] = rm1.ListR_S(id);
+
+            return View();
+        }
+        public ActionResult update4(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
+        {
+            RequestModel rq = new RequestModel();
+            Employee e = (Employee)Session["Employee"];
+
+            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("1")).OrderByDescending(r => r.DDispatch1).ToList();
+
+            rq.update(requestid, rname, st, dd, da, acc, rc, en, dt, ctid);
+            return RedirectToAction("MyRequest10");
+
+        }
+        //
+        //5
+        public ActionResult DetailRQ5(int id)
+        {
+            RequestModel rm = new RequestModel();
+            Request_StationeryModel rm1 = new Request_StationeryModel();
+            ViewData["if"] = rm.Infomation(id);
+            ViewData["if1"] = rm1.ListR_S(id);
+
+            return View();
+        }
+        public ActionResult update5(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
+        {
+            RequestModel rq = new RequestModel();
+            Employee e = (Employee)Session["Employee"];
+
+            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("1")).OrderByDescending(r => r.DDispatch1).ToList();
+
+            rq.update(requestid, rname, st, dd, da, acc, rc, en, dt, ctid);
+            return RedirectToAction("MyRequest10");
+
+        }
+        //
+        //6
+        public ActionResult DetailRQ6(int id)
+        {
+            RequestModel rm = new RequestModel();
+            Request_StationeryModel rm1 = new Request_StationeryModel();
+            ViewData["if"] = rm.Infomation(id);
+            ViewData["if1"] = rm1.ListR_S(id);
+
+            return View();
+        }
+        public ActionResult update6(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
+        {
+            RequestModel rq = new RequestModel();
+            Employee e = (Employee)Session["Employee"];
+
+            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("1")).OrderByDescending(r => r.DDispatch1).ToList();
+
+            rq.update(requestid, rname, st, dd, da, acc, rc, en, dt, ctid);
+            return RedirectToAction("MyRequest10");
+
+        }
+        //
+        //7
+        public ActionResult DetailRQ7(int id)
+        {
+            RequestModel rm = new RequestModel();
+            Request_StationeryModel rm1 = new Request_StationeryModel();
+            ViewData["if"] = rm.Infomation(id);
+            ViewData["if1"] = rm1.ListR_S(id);
+
+            return View();
+        }
+        public ActionResult update7(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
+        {
+            RequestModel rq = new RequestModel();
+            Employee e = (Employee)Session["Employee"];
+
+            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("1")).OrderByDescending(r => r.DDispatch1).ToList();
+
+            rq.update(requestid, rname, st, dd, da, acc, rc, en, dt, ctid);
+            return RedirectToAction("MyRequest10");
+
+        }
+        //
+        //8
+        public ActionResult DetailRQ8(int id)
+        {
+            RequestModel rm = new RequestModel();
+            Request_StationeryModel rm1 = new Request_StationeryModel();
+            ViewData["if"] = rm.Infomation(id);
+            ViewData["if1"] = rm1.ListR_S(id);
+
+            return View();
+        }
+        public ActionResult update8(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
+        {
+            RequestModel rq = new RequestModel();
+            Employee e = (Employee)Session["Employee"];
+
+            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("1")).OrderByDescending(r => r.DDispatch1).ToList();
+
+            rq.update(requestid, rname, st, dd, da, acc, rc, en, dt, ctid);
+            return RedirectToAction("MyRequest10");
+
+        }
+        //
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Login()
         {

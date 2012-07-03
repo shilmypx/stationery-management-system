@@ -149,16 +149,12 @@ namespace MvcStationeryManagementSystem.Models
         }
         public RequestModel Infomation(int rqid)
         {
+         //   Request_StationeryModel rs = new Request_StationeryModel();
             RequestModel r = new RequestModel();
             return r.ListRQ().Where(l => l.RId == rqid).ToList().First(); 
             
         }
-        //public Request infor1(int rid)
-        //{
-        //    return dc.Requests.Where(r => r.RequestId == rid).ToList().First();
-        //}
-       
-        public void update1(int requestid,string rname,string st,DateTime dd, DateTime da,bool acc, string rc, string en, string dt, int ctid)
+        public void update(int requestid,string rname,string st,DateTime dd, DateTime da,bool acc, string rc, string en, string dt, int ctid)
         {
             Request rq = dc.Requests.Where(r => r.RequestId == requestid).ToList().First();
             rq.RequestName = rname;
