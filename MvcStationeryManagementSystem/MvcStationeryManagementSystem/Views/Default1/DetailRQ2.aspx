@@ -1,26 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Template.Master" Inherits="System.Web.Mvc.ViewPage" %>
 <%@ Import Namespace="MvcStationeryManagementSystem.Models" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	DetailRQ
+	DetailRQ2
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-   
-   <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form elements in box</div>
 					<div class="portlet-content">
-					      <% using (Html.BeginForm("update11", "default1"))
+					      <% using (Html.BeginForm("update2", "default1"))
               {%>
                             <% RequestModel rm = (RequestModel)ViewData["if"];
                                List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
                                 <ul>
                                 
                                 <%= Html.Hidden("requestid", rm.RId1)%> 
-                                 <%= Html.Hidden("st", rm.Stte1)%>  
+                                 <%= Html.Hidden("st", 4)%>  
                                 
                                 <%= Html.Hidden("da", rm.DApprove1)%>
                                <%-- <%bool ac=(bool)ViewData["acc1"]%>--%>
-                              <%= Html.Hidden("acc", false)%>
+                              <%= Html.Hidden("acc", true)%>
                                  
                                 <%= Html.Hidden("en", rm.ENumber1)%>
                                    <%= Html.Hidden("ctid", rm.CRQId1)%>
@@ -127,31 +128,72 @@
 				</div>
                                 </li>
                                 
-                                <li style="width:1007px">
-                                <input type="submit" name="submitButton" value="WithdrawRequest"/>
-                               <%-- <input type="submit" name="submitButton" value="MyAccept"/>
-                                 <input type="submit" name="submitButton" value="MyReject"/>
-                               
-                                  <input type="submit" name="submitButton" value="Approved"/>
-                                   <input type="submit" name="submitButton" value="SentDirector"/>
-                                 <input type="submit" name="submitButton" value="NoApproved"/>--%>
-                                 <input type="submit" name="submitButton" value="Back"/>
+                                <li style="float:left">
+                                <input type="submit" name="submitButton" value="     Accept     "/>
+                             
+                                
                                 </li>
                               
                                
                                 </ul>
                             <%}%>
+                            <%Html.EndForm();%>
+                            <%--sumit2--%>
 					    
+					     <% using (Html.BeginForm("update2", "default1"))
+             {%>
+                            <% RequestModel rm = (RequestModel)ViewData["if"];
+                               List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
+                                <ul>
+                                
+                                <%= Html.Hidden("requestid", rm.RId1)%> 
+                                 <%= Html.Hidden("st", 2)%>  
+                                
+                                <%= Html.Hidden("da", rm.DApprove1)%>
+                              <%= Html.Hidden("acc", false)%>
+                                 
+                                <%= Html.Hidden("en", rm.ENumber1)%>
+                                   <%= Html.Hidden("ctid", rm.CRQId1)%>
+                              
+                               
+                                
+                                <%= Html.Hidden("rname", rm.RName1)%>
+                               
+                               <%= Html.Hidden("dd", rm.DDispatch1.ToString("dd-MM-yyyy"))%>
+                               
+                               
+                                 <%if (!rm.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
+                                   {%>
+                                 <%= Html.Hidden("da", rm.DApprove1)%>
+                           <% }
+                                   else
+                                   { %>
+                                     <%= Html.Hidden("da", "null")%>
+                                        
+                                
+                                   <% }
+                            %>
+                               
+                               
+                               <%= Html.Hidden("rc", rm.RContent1)%>
+                              
+                              
+                                
+                               <%= Html.Hidden("dt", rm.Dtion1)%>
+                              
+                                 <li style="float:left;margin-left: 102px;margin-top: -40px">
+                                 <input type="submit" name="submitButton" value="      Reject      "/>
+                                 </li>
+                              
+                               
+                                </ul>
+                            <%}%>
+                            <%Html.EndForm();%>
 					</div>
 				</div>
 
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
-<script language="javascript" type="text/javascript">
-    function xl() {
-        alert("ssss");
-    }
-</script>
-    <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
+      <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
 </asp:Content>

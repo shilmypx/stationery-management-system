@@ -96,7 +96,7 @@
 						<a href="#">Create Request</a>
 					</li>
 					<li>
-						<a href="#">View Request</a>
+						<%=Html.ActionLink("Views Request", "myrequest10", "default1")%>
 					</li>
 					
 					
