@@ -129,19 +129,24 @@
                                 
                                 <li style="width:1007px">
                                 <input type="submit" name="submitButton" value="WithdrawRequest"/>
-                               <%-- <input type="submit" name="submitButton" value="MyAccept"/>
-                                 <input type="submit" name="submitButton" value="MyReject"/>
-                               
-                                  <input type="submit" name="submitButton" value="Approved"/>
-                                   <input type="submit" name="submitButton" value="SentDirector"/>
-                                 <input type="submit" name="submitButton" value="NoApproved"/>--%>
-                                 <input type="submit" name="submitButton" value="Back"/>
+                              
                                 </li>
                               
                                
                                 </ul>
                             <%}%>
-					    
+                            <%Html.EndForm();%>
+					     <% using (Html.BeginForm("back", "default1"))
+             {%>
+                                <ul>
+                                 <li style="float:left;margin-left: 140px;margin-top: -40px">
+                                 <input type="submit" name="submitButton" value="      Back      "/>
+                                 </li>
+                              
+                          
+                                </ul>
+                            <%}%>
+                            <%Html.EndForm();%>
 					</div>
 				</div>
 

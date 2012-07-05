@@ -20,7 +20,7 @@
                                  <%= Html.Hidden("st", 4)%>  
                                 
                                 <%= Html.Hidden("da", rm.DApprove1)%>
-                               <%-- <%bool ac=(bool)ViewData["acc1"]%>--%>
+                               
                               <%= Html.Hidden("acc", true)%>
                                  
                                 <%= Html.Hidden("en", rm.ENumber1)%>
@@ -189,6 +189,20 @@
                                 </ul>
                             <%}%>
                             <%Html.EndForm();%>
+                            <%--//back--%>
+                             <% using (Html.BeginForm("back", "default1"))
+             {%>
+                                <ul>
+                                 <li style="float:left;margin-left: 210px;margin-top: -40px">
+                                 <input type="submit" name="submitButton" value="      Back      "/>
+                                 </li>
+                              
+                          
+                                </ul>
+                            <%}%>
+                            <%Html.EndForm();%>
+                          <%--  //back--%>
+                            
 					</div>
 				</div>
 
