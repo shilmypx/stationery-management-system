@@ -11,9 +11,9 @@
 								<h3><a href="#">Requirements Have Been Approved</a></h3>
 								<div>
 									<ul class="side-menu">
-										<li><a href="index.html" title="Administration">View Requests</a></li>
-										<li><a href="forms.html" title="Forms">My Accept</a></li>
-										<li><a href="tables.html" title="Tables">My Reject</a></li>
+										<li  onclick="xl1()"><a href="#" title="View Requests">View Requests</a></li>
+										<li  onclick="xl2()"><a href="#" title="My Accept">My Accept</a></li>
+										<li  onclick="xl3()"><a href="#" title="My Reject">My Reject</a></li>
 									</ul>
 								</div>
 							</div>
@@ -21,7 +21,7 @@
 								<h3><a href="#">Requirements Have Not Been Approved</a></h3>
 								<div>
 									<ul class="side-menu">
-										<li><a href="index.html" title="Administration">View Requests</a></li>
+										<li onclick="xl4()"><a href="#" title="View Requests">View Requests</a></li>
 										
 									</ul>
 								</div>

@@ -21,7 +21,7 @@ $(document).ready(function() {
 	$("#accordion, #accordion2").accordion({ header: "h3" });
 
 	// Tabs
-	$('#tabs, #tabs2, #tabs5').tabs();
+	$('#tabs').tabs();
 
 	// Dialog			
 	$('#dialog').dialog({
@@ -286,6 +286,23 @@ $(document).ready(function() {
 
 	.tablesorterPager({ container: $("#pager8") });
 	//8
+	//9
+	$("#sort-table9")
+	.tablesorter({
+	    widgets: ['zebra'],
+	    headers: {
+	        // assign the secound column (we start counting zero) 
+
+	        // assign the third column (we start counting zero) 
+	        6: {
+	            // disable it by setting the property sorter to false 
+	            sorter: false
+	        }
+	    }
+	})
+
+	.tablesorterPager({ container: $("#pager9") });
+	//9
 	$(".header").append('<span class="ui-icon ui-icon-carat-2-n-s"></span>');
 		
 });
