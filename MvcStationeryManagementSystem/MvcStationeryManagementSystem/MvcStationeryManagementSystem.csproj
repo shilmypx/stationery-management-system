@@ -184,7 +184,9 @@
     <Content Include="Views\Default1\DetailRQ2.aspx" />
     <Content Include="Views\Default1\DetailRQ3.aspx" />
     <Content Include="Views\Default1\DetailRQ4.aspx" />
+    <Content Include="Views\Default1\Index.aspx" />
     <Content Include="Views\Default1\MyRequest10.aspx" />
+    <Content Include="Views\Default1\MyRequest101.aspx" />
     <Content Include="Views\Employee\AddEmployee.aspx" />
     <Content Include="Views\Employee\Detail.aspx" />
     <Content Include="Views\Employee\EditEmployee.aspx" />
@@ -193,6 +195,7 @@
     <Content Include="Views\Error404\Error.ascx" />
     <Content Include="Views\Shared\ViewUserControl1.ascx" />
     <Content Include="Views\Shared\ViewUserControl2.ascx" />
+    <Content Include="Views\Shared\ViewUserControl3.ascx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\DataClassesStationery.dbml">
@@ -224,7 +227,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50008</DevelopmentServerPort>
+          <DevelopmentServerPort>50532</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -150,7 +150,7 @@
 				</div>
 				    <%Html.RenderPartial("ViewUserControl1");%>
 				    <%Html.RenderPartial("ViewUserControl2");%>
-				
+				     <%Html.RenderPartial("ViewUserControl3");%>
 				
 				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
 					<div class="portlet-header ui-widget-header">Calendar</div>
