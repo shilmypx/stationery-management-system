@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <%@ Import Namespace=" MvcStationeryManagementSystem.Models" %>
 <%Employee e = (Employee)Session["Employee"];
- // if (e.RoleId == 3 || e.RoleId==2)
+  if (e.RoleId == 3 || e.RoleId==2)
   {%> 
     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
 					<div class="portlet-header ui-widget-header">Request Sent</div>

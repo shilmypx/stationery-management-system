@@ -9,15 +9,7 @@
 
     <div id="tabs" >
        <ul>
-						<%--<li id="t1" ><a  href="#tabs-1" onclick="xl()">My NewRequest</a></li>
-						<li id="t2"><a href="#tabs-2">Requests Approved</a></li>
-						<li><a href="#tabs-3">My Accept</a></li>
-						<li><a href="#tabs-4">My Reject</a></li>
-						<li><a href="#tabs-5">Requests No Approved</a></li>
-						<li><a href="#tabs-6">New Requests</a></li>
-						<li><a href="#tabs-7">Withdraw Requests</a></li>
-						<li><a href="#tabs-8">Cancel Requests</a></li>
-						<li><a href="#tabs-9">Accept Requests</a></li>--%>
+						
 
 						<li id="t1"><a href="#tabs-1">My NewRequest</a></li>
 						<li id="t2"><a href="#tabs-2">Requests Approved</a></li>
@@ -29,7 +21,11 @@
 						<li id="t7"><a href="#tabs-7">Withdraw Requests</a></li>
 						<li id="t8"><a href="#tabs-8">Cancel Requests</a></li>
 						<li id="t9"><a href="#tabs-9">Accept Requests</a></li>
-
+                        
+                        <li id="t10"><a href="#tabs-10">New Requests</a></li>
+                        <li id="t11"><a href="#tabs-11">Withdraw Requests</a></li>
+						<li id="t12"><a href="#tabs-12">Cancel Requests</a></li>
+						<li id="t13"><a href="#tabs-13">Accept Requests</a></li>
 	</ul>
 	
     <div id="tabs-1">
