@@ -17,7 +17,7 @@
 							<li id="Li3" onclick="xl11()">
 								<a href="javascript:void(0);" title="Fixed Layout">Cancel  Requests </a>
 							</li>
-							<li id="Li4" onclick="xl2()">
+							<li id="Li4" onclick="xl12()">
 								<a href="javascript:void(0);" title="Fixed Layout">Accepted  Requests </a>
 							</li>
 						</ul>
