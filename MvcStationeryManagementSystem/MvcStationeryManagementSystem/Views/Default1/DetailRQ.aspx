@@ -128,7 +128,7 @@
                                 </li>
                                 
                                 <li style="width:1007px">
-                                <input type="submit" name="submitButton" value="WithdrawRequest"/>
+                                <input type="submit" name="submitButton" style="margin-left: 90px" value="WithdrawRequest"/>
                               
                                 </li>
                               
@@ -139,7 +139,7 @@
 					     <% using (Html.BeginForm("back", "default1"))
              {%>
                                 <ul>
-                                 <li style="float:left;margin-left: 140px;margin-top: -40px">
+                                 <li style="float:left;margin-top: -40px">
                                  <input type="submit" name="submitButton" value="      Back      "/>
                                  </li>
                               
