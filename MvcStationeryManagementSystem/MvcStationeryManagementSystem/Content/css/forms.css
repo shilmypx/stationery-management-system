@@ -1,5 +1,25 @@
 
 	/* General */
+.myimg
+{
+	width: 150px;
+	height: 200px;
+	margin: 20px 5px -182px 509px;	
+}
+
+.myimages
+{
+	width: 120px;
+	height:150px;	
+}
+
+.myimages:hover
+{
+	width: 150px;
+	height: 200px;
+	cursor: pointer;
+}
+
 
 .column-fixed .form-container {
 	margin:0 1em 1em 0;
@@ -55,8 +75,9 @@ input.text, textarea.textarea{
 	border-right:1px solid #c3c3c3;
 	border-bottom:1px solid #ddd;
 }
+/*sua margin-right 5px -> 1px*/
 select.select{
-	padding:1px 5px 0 0;
+	padding:1px 1px 0 0;
 }
 
 input.checkbox, input.radio{
@@ -92,8 +113,9 @@ input.medium, select.medium{
 	width:200%;
 }
 
+/*Edit 70% thanh 123%*/
 input.large, select.large, textarea.textarea {
-	width:70%;
+	width:123%;
 }
 
 /*moi sua css o day*/
