@@ -180,10 +180,13 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\js\jquery-1.4.2.min.js" />
+    <Content Include="Content\js\jquery.validate.js" />
     <Content Include="Views\Default1\DetailRQ.aspx" />
     <Content Include="Views\Default1\DetailRQ2.aspx" />
     <Content Include="Views\Default1\DetailRQ3.aspx" />
     <Content Include="Views\Default1\DetailRQ4.aspx" />
+    <Content Include="Views\Default1\DetailRQ5.aspx" />
     <Content Include="Views\Default1\Index.aspx" />
     <Content Include="Views\Default1\MyRequest10.aspx" />
     <Content Include="Views\Default1\MyRequest101.aspx" />

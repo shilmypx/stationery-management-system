@@ -2,7 +2,7 @@
 <%@ Import Namespace="MvcStationeryManagementSystem.Models" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	DetailRQ2
+	DetailRQ5
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -13,29 +13,34 @@
 					 <% RequestModel r = (RequestModel)ViewData["if"];
                             string a = r.Stte1; bool b = r.Acc1;
 					    %>
-					      <% using (Html.BeginForm("update2", "default1"))
+					      
+					      <% using (Html.BeginForm("update5", "default1"))
               {%>
                             <% RequestModel rm = (RequestModel)ViewData["if"];
                                List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
                                 <ul>
                                 
                                 <%= Html.Hidden("requestid", rm.RId1)%> 
-                                <%if(a.Equals("2"))
-                                  {%>
                                 
-                                 <%= Html.Hidden("st", 4)%>  
-                                  <%= Html.Hidden("acc", true)%>
                                 
-                                <%}
-                                  else if ((a.Equals("6") && b == true) || (a.Equals("7") && b == false))
-                                  {%> 
-                                     <%= Html.Hidden("st", 7)%>  
-                                     <%= Html.Hidden("acc", true)%>
-                                  
-                                      <%} %>
                                 <%= Html.Hidden("da", rm.DApprove1)%>
+                              <%if (a.Equals("2") && (b == false))
+                                 {%>
+                                    <%var a1="4"; var b1=false;%>
+                                     
+                                      <%=Html.Hidden("st", a1)%>
+                                       <%=Html.Hidden("acc", b1)%>
+                                 <%}
+                                 else if(rm.Stte1.Equals("7") && (rm.Acc1 == false))
+                                 {%>
+                                     
+                                    <%var a1 = "8"; var b1 = true;%>
+                                     
+                                      <%=Html.Hidden("st", a1)%>
+                                       <%=Html.Hidden("acc", b1)%>
+                                
+                                <%}%>
                                
-                             
                                  
                                 <%= Html.Hidden("en", rm.ENumber1)%>
                                    <%= Html.Hidden("ctid", rm.CRQId1)%>
@@ -77,7 +82,7 @@
                                 </li>
                                  <li>Stationery Items</li>
                                 <li>
-                    <div class="hastable" style="width:278%">
+                                     <div class="hastable" style="width:278%">
 					<form name="myform" class="pager-form" method="post" action="#">
 						<table id="sort-table"> 
 						<thead> 
@@ -142,8 +147,8 @@
 				</div>
                                 </li>
                                 
-                                <li style="float:left;margin-left:102px">
-                                <input type="submit" name="submitButton" value="     Accept     "/>
+                                <li style="float:left;margin-left: 120px">
+                                <input type="submit" name="submitButton" value="     Approved     "/>
                              
                                 
                                 </li>
@@ -152,72 +157,62 @@
                                 </ul>
                             <%}%>
                             <%Html.EndForm();%>
+                          <%-- <% RequestModel rm = (RequestModel)ViewData["if"]; %>--%>
+                           
                             <%--sumit2--%>
-					    
-					     <% using (Html.BeginForm("update2", "default1"))
-             {%>
-                            <% RequestModel rm = (RequestModel)ViewData["if"];
+					   
+					       <% using (Html.BeginForm("update5", "default1"))
+              {%>
+                            <% RequestModel rmm = (RequestModel)ViewData["if"];
                                List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
                                 <ul>
                                 
-                                <%= Html.Hidden("requestid", rm.RId1)%> 
-                                  <%if(a.Equals("2"))
-                                  {%>
+                                <%= Html.Hidden("requestid", rmm.RId1)%> 
                                 
-                                 <%= Html.Hidden("st", 2)%>  
-                                  <%= Html.Hidden("acc", false)%>
                                 
-                                <%}
-                                  else if (a.Equals("6") && b == true)
-                                  {%> 
-                                     <%= Html.Hidden("st", 7)%>  
-                                     <%= Html.Hidden("acc", false)%>
-                                  
-                                      <%} %>
-                                
-                                <%= Html.Hidden("da", rm.DApprove1)%>
-                            
-                                 
-                                <%= Html.Hidden("en", rm.ENumber1)%>
-                                   <%= Html.Hidden("ctid", rm.CRQId1)%>
+                               <%= Html.Hidden("da", rmm.DApprove1)%>
                               
+                    
+                                <%=Html.Hidden("st",rmm.Stte1)%>
+                                     <%=Html.Hidden("acc",rmm.Acc1)%>
+                                 
+                                <%= Html.Hidden("en", rmm.ENumber1)%>
+                                   <%= Html.Hidden("ctid", rmm.CRQId1)%>
+                           
+                               
+                               <%= Html.Hidden("rname", rmm.RName1)%>
+                               
                                
                                 
-                                <%= Html.Hidden("rname", rm.RName1)%>
+                                <%= Html.Hidden("dd", rmm.DDispatch1.ToString("dd-MM-yyyy"))%>
                                
-                               <%= Html.Hidden("dd", rm.DDispatch1.ToString("dd-MM-yyyy"))%>
-                               
-                               
-                                 <%if (!rm.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
-                                   {%>
-                                 <%= Html.Hidden("da", rm.DApprove1)%>
-                           <% }
-                                   else
-                                   { %>
-                                     <%= Html.Hidden("da", "null")%>
+                                     <%= Html.Hidden("da", DateTime.Now.ToString("dd-MM-yyyy"))%>
                                         
                                 
-                                   <% }
-                            %>
                                
-                               
-                               <%= Html.Hidden("rc", rm.RContent1)%>
-                              
+                                
+                                <%= Html.Hidden("rc", rmm.RContent1)%>
+
                               
                                 
-                               <%= Html.Hidden("dt", rm.Dtion1)%>
-                              
-                                 <li style="float:left;margin-left: 210px;margin-top: -40px">
-                                 <input type="submit" name="submitButton" value="      Reject      "/>
-                                 </li>
+                               
+                                <%= Html.Hidden("dt", rmm.Dtion1)%>
+                               
+                                <li style="float:left;margin-left: 254px;margin-top: -40px">
+                                <input type="submit" name="submitButton" value="    No Approved     "/>
+                             
+                                
+                                </li>
                               
                                
                                 </ul>
                             <%}%>
                             <%Html.EndForm();%>
+                          
                             <%--//back--%>
+                            
                              <% using (Html.BeginForm("back", "default1"))
-             {%>
+                                {%>
                                 <ul>
                                  <li style="float:left;margin-top: -40px">
                                  <input type="submit" name="submitButton" value="      Back      "/>
@@ -225,8 +220,9 @@
                               
                           
                                 </ul>
-                            <%}%>
-                            <%Html.EndForm();%>
+                            <%}
+                            Html.EndForm();%>
+                                
                           <%--  //back--%>
                             
 					</div>
@@ -235,5 +231,5 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
-      <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
+ <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
 </asp:Content>
