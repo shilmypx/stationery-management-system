@@ -165,8 +165,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\MvcStationeryManagementSystem.dll" />
-    <Content Include="bin\MvcStationeryManagementSystem.pdb" />
     <Content Include="Content\css\neewnew.css" />
     <Content Include="Content\css\styles\FormatFormlogin.css" />
     <Content Include="Content\css\styles\Site.css" />
@@ -194,8 +192,6 @@
     <Content Include="Views\Employee\AddEmployee.aspx" />
     <Content Include="Views\Employee\Detail.aspx" />
     <Content Include="Views\Employee\EditEmployee.aspx" />
-    <Content Include="Views\Employee\FindNames.aspx" />
-    <Content Include="Views\Employee\Identical.aspx" />
     <Content Include="Views\Employee\ManageEmployee.aspx" />
     <Content Include="Views\Error404\Error.ascx" />
     <Content Include="Views\Shared\ViewUserControl1.ascx" />
@@ -216,6 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
     <Folder Include="Content\Upload\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
