@@ -16,6 +16,11 @@
 					<div class="portlet-header ui-widget-header"><span class="ui-icon ui-icon-circle-arrow-s"></span>Form registering employee</div>
 					<div class="mydiv1">
 					    <div class="portlet-content-new" style="display: block;">
+					        
+					        <div class="myimg">
+					        <p align="center"><b>Images</b></p>
+								        <img src="../../Content/Upload/<%= em.Images %>" alt="" class="myimages" />
+								    </div>
 							<ul>
 							    <li>
 							        <label class="desc">
@@ -32,6 +37,13 @@
 									<div>
 									<input type="text" name="DateBirth" id="FullName" class="field text medium" value="<%= em.FullName %>" readonly="readonly" size="2" maxlength="50" tabindex="2" />
 									</div>
+								</li>
+								<li class="date">
+									<label class="desc" id="Label1" for="Field2">
+										DateBuild
+									</label>
+										<input type="text" name="DateBuild" id="datebuild" class="field text medium" value="<%= em.DateBuild %>" readonly="readonly" size="2" maxlength="50" tabindex="3" />
+										
 								</li>
 								<li class="date">
 									<label class="desc" id="title2" for="Field2">
@@ -70,24 +82,11 @@
 									<label class="desc">
 										Role Id
 									</label>
-									<div class=desc>
+									<div class="desc">
 									
 									    <input type="text" name="roleid" id="RoleID" class="field text medium" value="<%= em.RoleId %>" readonly="readonly" tabindex="7" />
 									</div>
-									<%--%>
 									
-									<div class="float-left">
-										<select tabindex="3" class="field select large" name="RoleId" >
-										 <% foreach(Role ro in (List<Role>)ViewData["dsrole"]){%>
-										    <option value="<%=ro.RoleId%>">
-												<%=ro.RoleName%>
-												
-											</option>
-										 <%}%>
-											
-										</select>
-									
-									</div>--%>
 									
 								</li>
 								
@@ -101,9 +100,10 @@
 									</div>
 								</li>
 								<li>
+								    
 								<a>
 									<%= Html.ActionLink("Manage Employee ►►", "ManageEmployee", "Employee") %>
-								</a>    
+								</a> 
 								</li>
 							</ul>
 					
@@ -111,7 +111,9 @@
 					</div>
 				</div>
             <%} %>
-
+   
+    </label>
+   
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
