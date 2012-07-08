@@ -8,78 +8,83 @@ namespace MvcStationeryManagementSystem.Models
     public class EmployeeModel
     {
         private DataClassesStationeryDataContext dcs = new DataClassesStationeryDataContext();
-        private string EmployeeNumber;
+        //private string employeeNumber;
 
-        public string EmployeeNumber1
-        {
-            get { return EmployeeNumber; }
-            set { EmployeeNumber = value; }
-        }
-        private string fullname;
+        //public string EmployeeNumber
+        //{
+        //    get { return employeeNumber; }
+        //    set { employeeNumber = value; }
+        //}
+        //private string fullname;
 
-        public string Fullname
-        {
-            get { return fullname; }
-            set { fullname = value; }
-        }
+        //public string Fullname
+        //{
+        //    get { return fullname; }
+        //    set { fullname = value; }
+        //}
+        //private DateTime datebuild;
 
-        private DateTime datebuild;
+        //public DateTime Datebuild
+        //{
+        //    get { return datebuild; }
+        //    set { datebuild = value; }
+        //}
+        //private DateTime dateBirth;
 
-        public DateTime Datebuild
-        {
-            get { return datebuild; }
-            set { datebuild = value; }
-        }
+        //public DateTime DateBirth
+        //{
+        //    get { return dateBirth; }
+        //    set { dateBirth = value; }
+        //}
+        //private string email;
 
-        private DateTime dateBirth;
+        //public string Email
+        //{
+        //    get { return email; }
+        //    set { email = value; }
+        //}
+        //private string address;
 
-        public DateTime DateBirth
-        {
-            get { return dateBirth; }
-            set { dateBirth = value; }
-        }
-        private string email;
+        //public string Address
+        //{
+        //    get { return address; }
+        //    set { address = value; }
+        //}
+        //private string phone;
 
-        public string Email
-        {
-            get { return email; }
-            set { email = value; }
-        }
-        private string address;
+        //public string Phone
+        //{
+        //    get { return phone; }
+        //    set { phone = value; }
+        //}
+        //private string images;
 
-        public string Address
-        {
-            get { return address; }
-            set { address = value; }
-        }
-        private string phone;
+        //public string Images
+        //{
+        //    get { return images; }
+        //    set { images = value; }
+        //}
+        //private int roleId;
 
-        public string Phone
-        {
-            get { return phone; }
-            set { phone = value; }
-        }
-        private int roleid;
+        //public int RoleId
+        //{
+        //    get { return roleId; }
+        //    set { roleId = value; }
+        //}
+        //private string password;
 
-        public int Roleid
-        {
-            get { return roleid; }
-            set { roleid = value; }
-        }
-        private string password;
+        //public string Password
+        //{
+        //    get { return password; }
+        //    set { password = value; }
+        //}
+        //private string registrationNumber;
 
-        public string Password
-        {
-            get { return password; }
-            set { password = value; }
-        }
-        private string RegistrationNumber;
-
-        public string RegistrationNumber1
-        {
-            get { return RegistrationNumber; }
-            set { RegistrationNumber = value; }
-        }
+        //public string RegistrationNumber
+        //{
+        //    get { return registrationNumber; }
+        //    set { registrationNumber = value; }
+        //}
 
         public List<Employee> ListEmployee()
         {
@@ -91,19 +96,15 @@ namespace MvcStationeryManagementSystem.Models
             return dcs.Roles.ToList();
         }
 
-        public void ComboRole(string employee, int roleid)
-        {
-            dcs.Employees.Where(em => em.RoleId == roleid).First();
-            dcs.Employees.Where(r => r.EmployeeNumber == employee).First();
-        }
 
-        public Role ro(int idrole)
+        public void role_em(string employ,int idrole)
         {
-            return dcs.Roles.Where(r => r.RoleId == idrole).ToList().First();
+            dcs.Employees.Single(e => e.EmployeeNumber == employ);
+            dcs.Roles.Where(r => r.RoleId == idrole).First();
         }
         public Employee info(string id)
         {
-            return dcs.Employees.Where(en => en.EmployeeNumber.Equals(id)).First();
+            return dcs.Employees.Where(en => en.EmployeeNumber==id).FirstOrDefault();
         }
 
         public Employee ttct(string id)
@@ -111,43 +112,61 @@ namespace MvcStationeryManagementSystem.Models
             return dcs.Employees.Single(e => e.EmployeeNumber == id);
         }
 
-        public void ThemTK(string EmployeeNumber, string fullname, DateTime datebuild, DateTime dateBirth, string email, string address, string phone, int roleid, string password, string RegistrationNumber)
+        public void ThemTK(string EmployeeNumber, string fullname, DateTime datebuild, DateTime dateBirth, string email, string address, string phone, string images, int roleid, string password, string RegistrationNumber)
         {
-            Employee e = new Employee();
-            e.EmployeeNumber = EmployeeNumber;
+                Employee e = new Employee();
+                e.EmployeeNumber = EmployeeNumber;
+                e.FullName = fullname;
+                e.DateBuild = datebuild;
+                e.DateBirth = dateBirth;
+                e.Email = email;
+                e.Address = address;
+                e.Phone = phone;
+                e.Images = images;
+                e.RoleId = roleid;
+                e.Password = password;
+                e.RegistrationNumber = RegistrationNumber;
+                dcs.Employees.InsertOnSubmit(e);
+                dcs.SubmitChanges();
+        }
+
+        public void EditEm(string employeeNumber, string fullname, string email, string address, DateTime dateBirth, string phone, string images, string registrationNumber)
+        {
+            Employee e = dcs.Employees.Where(em => em.EmployeeNumber == employeeNumber).SingleOrDefault();
             e.FullName = fullname;
-            e.DateBuild = datebuild;
             e.DateBirth = dateBirth;
             e.Email = email;
             e.Address = address;
             e.Phone = phone;
-            e.RoleId = roleid;
-            e.Password = password;
-            e.RegistrationNumber = RegistrationNumber;
-            dcs.Employees.InsertOnSubmit(e);
+            e.Images = images;
+            e.RegistrationNumber = registrationNumber;
             dcs.SubmitChanges();
         }
 
-        public void EditEm(string employeeNumber)
+        public void EditEmployee(string EmployeeNumber, string FullName, string Email, string Address, DateTime DateBirth, string Phone, string Images, string RegistrationNumber)
         {
-            Employee e = dcs.Employees.Single(em => em.EmployeeNumber.Equals(employeeNumber));
-            e.FullName = fullname;
-            e.DateBirth = Convert.ToDateTime(dateBirth);
-            e.Email = email;
-            e.Address = address;
-            e.Phone = phone;
-            e.RoleId = roleid;
-            e.Password = password;
-            e.RegistrationNumber = RegistrationNumber;
+            Employee em = dcs.Employees.Where(eml => eml.RegistrationNumber == EmployeeNumber).FirstOrDefault();
+            em.FullName = FullName;
+            em.Email = Email;
+            em.Address = Address;
+            em.DateBirth = DateBirth;
+            em.Phone = Phone;
+            em.Images = Images;
+            em.RegistrationNumber = RegistrationNumber;
             dcs.SubmitChanges();
         }
 
         public void DeleteEmployee(string id)
         {
-            Employee el = dcs.Employees.Where(e => e.EmployeeNumber == id).First();
+            Employee el = dcs.Employees.Where(e => e.EmployeeNumber==id).First();
             dcs.Employees.DeleteOnSubmit(el);
             dcs.SubmitChanges();
-
         }
+
+        public List<Employee> SearchEmloyee(string employee)
+        {
+            return dcs.Employees.Where(e => e.EmployeeNumber.Trim().ToLower().Contains(employee.Trim().ToLower())).ToList();
+        }
+
     }
 }
