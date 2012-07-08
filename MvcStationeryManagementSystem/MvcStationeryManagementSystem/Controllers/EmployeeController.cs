@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcStationeryManagementSystem.Models;
+using System.IO;
 
 namespace MvcStationeryManagementSystem.Controllers
 {
@@ -18,6 +19,19 @@ namespace MvcStationeryManagementSystem.Controllers
             return View();
         }
 
+        //Upload imeges
+        [HttpPost]
+        public ActionResult ProcessUpload(HttpPostedFileBase fileUpload)
+        {
+            if (fileUpload.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(fileUpload.FileName);
+                var path = Path.Combine(Server.MapPath("~/Content/Upload"), fileName);
+                fileUpload.SaveAs(path);
+            }
+            return View();
+        }
+
         [HttpGet]
         public ActionResult AddEmployee()
         {
@@ -27,19 +41,37 @@ namespace MvcStationeryManagementSystem.Controllers
 
 
         [HttpPost]
-        public ActionResult AddEmployee(string EmployeeNumber, string fullname, DateTime datebuild, DateTime dateBirth, string email, string address, string phone, int roleid, string password, string RegistrationNumber)
+        public ActionResult AddEmployee(string EmployeeNumber, string fullname, DateTime datebuild, DateTime dateBirth, string email, string address, string phone, string images, int roleid, string password, string RegistrationNumber, HttpPostedFileBase fileUpload)
         {
-            em.ThemTK(EmployeeNumber, fullname, datebuild, dateBirth, email, address, phone, roleid, password, RegistrationNumber);
-            return RedirectToAction("ManageEmployee", "Employee");
-
+            DataClassesStationeryDataContext dcs = new DataClassesStationeryDataContext();
+            var rs = dcs.Employees.Where(e => e.EmployeeNumber == EmployeeNumber).ToList();
+            if (rs.Count > 0)
+            {
+                ViewData["id"] = rs.Equals(EmployeeNumber);
+                return View("Identical");
+            }
+            else
+            {
+                if (fileUpload.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(fileUpload.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/Upload"), fileName);
+                    fileUpload.SaveAs(path);
+                }
+                em.ThemTK(EmployeeNumber, fullname, datebuild, dateBirth, email, address, phone, fileUpload.FileName, roleid, mahoa_giaima.maHoa(password), RegistrationNumber);
+                return RedirectToAction("ManageEmployee");
+            }
         }
+
 
 
         //Ket thuc Tao employee
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ManageEmployee()
+        public ActionResult ManageEmployee(string employee)
         {
+            //ViewData["rss"] = em.SearchEmloyee(employee).ToList();
             ViewData["ListAccount"] = em.ListEmployee();
+            
             return View("ManageEmployee");
         }
 
@@ -57,17 +89,15 @@ namespace MvcStationeryManagementSystem.Controllers
         public ActionResult EditEmployee(string id)
         {
             ViewData["info"] = em.info(id);
-            ViewData["dsrole"] = em.ListRole();
-            //ViewData["new"] = am.ro();
-            //ViewData["employe"] = id;
+            //ViewData["dsrole"] = em.ListRole();
             return View("EditEmployee");
         }
 
-        public ActionResult ProcessingEmployee(string employeeNumber)
+        public ActionResult ProcessingEmployee(string EmployeeNumber, string FullName, string Email, string Address, DateTime DateBirth, string Phone, string Images, string RegistrationNumber)
         {
-            em.EditEm(employeeNumber);
-            //ViewData["ListAccount"] = em.ListEmployee();
-            return RedirectToAction("ManageEmployee", "Employee");
+            em.EditEm(EmployeeNumber, FullName, Email, Address, DateBirth, Phone, Images, RegistrationNumber);
+            //ViewData["proc"] = em.ListEmployee();
+            return RedirectToAction("ManageEmployee");
         }
 
         public ActionResult RemoveEmployee(string id)
@@ -77,18 +107,26 @@ namespace MvcStationeryManagementSystem.Controllers
             return View("RemoveEmployee");
         }
 
-        public ActionResult Delete(string employ)
+        public ActionResult Delete(string id)
         {
-            em.DeleteEmployee(employ);
-            return View("ManageEmployee");
+            em.DeleteEmployee(id);
+            return RedirectToAction("ManageEmployee");
+            //View("ManageEmployee");
         }
+
 
         public ActionResult Detail(string id)
         {
             ViewData["ct"] = em.ttct(id);
-            return View("Detail");
+            //return View("Detail");
+            return View();
         }
 
+        public ActionResult Search(string employee)
+        {
+            ViewData["ListAccount"] = em.SearchEmloyee(employee).ToList();
+            return View("ManageEmployee");
+        }
 
     }
 }
