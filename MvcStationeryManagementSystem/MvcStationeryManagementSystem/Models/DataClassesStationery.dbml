@@ -8,6 +8,18 @@
       <Association Name="Cataloge_Stationery" Member="Stationeries" ThisKey="CatalogeId" OtherKey="CatalogeId" Type="Stationery" />
     </Type>
   </Table>
+  <Table Name="dbo.Stationery" Member="Stationeries">
+    <Type Name="Stationery">
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CatalogeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Stationery_Request_Stationery" Member="Request_Stationeries" ThisKey="ProductId" OtherKey="ProductId" Type="Request_Stationery" />
+      <Association Name="Cataloge_Stationery" Member="Cataloge" ThisKey="CatalogeId" OtherKey="CatalogeId" Type="Cataloge" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.CatalogeRQ" Member="CatalogeRQs">
     <Type Name="CatalogeRQ">
       <Column Name="CatalogRQId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -24,6 +36,7 @@
       <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Images" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="RoleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Password" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="RegistrationNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -66,18 +79,6 @@
       <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Association Name="Role_Employee" Member="Employees" ThisKey="RoleId" OtherKey="RoleId" Type="Employee" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Stationery" Member="Stationeries">
-    <Type Name="Stationery">
-      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ProductName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Rate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CatalogeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="Stationery_Request_Stationery" Member="Request_Stationeries" ThisKey="ProductId" OtherKey="ProductId" Type="Request_Stationery" />
-      <Association Name="Cataloge_Stationery" Member="Cataloge" ThisKey="CatalogeId" OtherKey="CatalogeId" Type="Cataloge" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
