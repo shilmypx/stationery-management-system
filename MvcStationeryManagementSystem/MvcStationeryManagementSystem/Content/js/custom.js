@@ -135,7 +135,7 @@ $(document).ready(function() {
 
 
 	/* Table Sorter */
-	$("#sort-table")
+	$("#sort-table,#sort-table1,#sort-table2,#sort-table3,#sort-table4,#sort-table5,#sort-table6,#sort-table7,#sort-table8,#sort-table9,#sort-table10,#sort-table11,#sort-table12,#sort-table13")
 	.tablesorter({
 		widgets: ['zebra'],
 		headers: { 
@@ -149,160 +149,9 @@ $(document).ready(function() {
 		        } 
 	})
 	
-	.tablesorterPager({container: $("#pager")});
-	//1
-	$("#sort-table1")
-	.tablesorter({
-	    widgets: ['zebra'],
-	    headers: {
-	        // assign the secound column (we start counting zero) 
-	       
-	        // assign the third column (we start counting zero) 
-	        6: {
-	            // disable it by setting the property sorter to false 
-	            sorter: false
-	        }
-	    }
-	})
-
-	.tablesorterPager({ container: $("#pager1") });
-	//
-	//2
-	$("#sort-table2")
-	.tablesorter({
-	    widgets: ['zebra'],
-	    headers: {
-	        // assign the secound column (we start counting zero) 
-	      
-	        // assign the third column (we start counting zero) 
-	        6: {
-	            // disable it by setting the property sorter to false 
-	            sorter: false
-	        }
-	    }
-	})
-
-	.tablesorterPager({ container: $("#pager2") });
-	//2
-	//3
-	$("#sort-table3")
-	.tablesorter({
-	    widgets: ['zebra'],
-	    headers: {
-	        // assign the secound column (we start counting zero) 
-
-	        // assign the third column (we start counting zero) 
-	        6: {
-	            // disable it by setting the property sorter to false 
-	            sorter: false
-	        }
-	    }
-	})
-
-	.tablesorterPager({ container: $("#pager3") });
-	//3
-	//4
-	$("#sort-table4")
-	.tablesorter({
-	    widgets: ['zebra'],
-	    headers: {
-	        // assign the secound column (we start counting zero) 
-
-	        // assign the third column (we start counting zero) 
-	        6: {
-	            // disable it by setting the property sorter to false 
-	            sorter: false
-	        }
-	    }
-	})
-
-	.tablesorterPager({ container: $("#pager4") });
-	//4
-	//5
-	$("#sort-table5")
-	.tablesorter({
-	    widgets: ['zebra'],
-	    headers: {
-	        // assign the secound column (we start counting zero) 
-
-	        // assign the third column (we start counting zero) 
-	        6: {
-	            // disable it by setting the property sorter to false 
-	            sorter: false
-	        }
-	    }
-	})
-
-	.tablesorterPager({ container: $("#pager5") });
-	//5
-	//6
-	$("#sort-table6")
-	.tablesorter({
-	    widgets: ['zebra'],
-	    headers: {
-	        // assign the secound column (we start counting zero) 
-
-	        // assign the third column (we start counting zero) 
-	        6: {
-	            // disable it by setting the property sorter to false 
-	            sorter: false
-	        }
-	    }
-	})
-
-	.tablesorterPager({ container: $("#pager6") });
-	//6
-	//7
-	$("#sort-table7")
-	.tablesorter({
-	    widgets: ['zebra'],
-	    headers: {
-	        // assign the secound column (we start counting zero) 
-
-	        // assign the third column (we start counting zero) 
-	        6: {
-	            // disable it by setting the property sorter to false 
-	            sorter: false
-	        }
-	    }
-	})
-
-	.tablesorterPager({ container: $("#pager7") });
-	//7
-	//8
-	$("#sort-table8")
-	.tablesorter({
-	    widgets: ['zebra'],
-	    headers: {
-	        // assign the secound column (we start counting zero) 
-
-	        // assign the third column (we start counting zero) 
-	        6: {
-	            // disable it by setting the property sorter to false 
-	            sorter: false
-	        }
-	    }
-	})
-
-	.tablesorterPager({ container: $("#pager8") });
-	//8
-	//9
-	$("#sort-table9")
-	.tablesorter({
-	    widgets: ['zebra'],
-	    headers: {
-	        // assign the secound column (we start counting zero) 
-
-	        // assign the third column (we start counting zero) 
-	        6: {
-	            // disable it by setting the property sorter to false 
-	            sorter: false
-	        }
-	    }
-	})
-
-	.tablesorterPager({ container: $("#pager9") });
-	//9
+	.tablesorterPager({container: $("#pager,#pager1,#pager2,#pager3,#pager4,#pager5,#pager6,#pager7,#pager8,#pager9,#pager10,#pager11,#pager12,#pager13")});
+	
+	
 	$(".header").append('<span class="ui-icon ui-icon-carat-2-n-s"></span>');
 		
 });
