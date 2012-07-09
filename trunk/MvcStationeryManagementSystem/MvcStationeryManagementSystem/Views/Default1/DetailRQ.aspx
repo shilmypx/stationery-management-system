@@ -9,10 +9,13 @@
    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form elements in box</div>
 					<div class="portlet-content">
-					      <% using (Html.BeginForm("update11", "default1"))
-              {%>
-                            <% RequestModel rm = (RequestModel)ViewData["if"];
-                               List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
+					 <% RequestModel rm = (RequestModel)ViewData["if"];
+         Employee eml = (Employee)Session["Employee"];		     
+        
+             using (Html.BeginForm("update11", "default1"))
+             {
+
+                 List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
                                 <ul>
                                 
                                 <%= Html.Hidden("requestid", rm.RId1)%> 
@@ -40,11 +43,11 @@
                                 <li>
                                 DateApproved: 
                                  <%if (!rm.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
-                             {%>
+                                   {%>
                                  <%= Html.TextBox("da", rm.DApprove1, new { @class = "aa", @readonly = "readonly" })%>
                            <% }
-                                else
-                                { %>
+                                   else
+                                   { %>
                                      <%= Html.TextBox("da", "null", new { @class = "aa", @readonly = "readonly" })%>
                                         
                                 
@@ -126,16 +129,31 @@
 					
 				</div>
                                 </li>
-                                
+                                 <% if (rm.Stte1.Equals("1")||(rm.Stte1.Equals("5") && eml.RoleId==3))
+                                    {%>
                                 <li style="width:1007px">
                                 <input type="submit" name="submitButton" style="margin-left: 90px" value="WithdrawRequest"/>
                               
                                 </li>
+                              <%}
+                                    else {%> 
+                                   <li style="width:1007px">
+                                
                               
+                                </li>
+                                <li style="width:1007px">
+                               
+                              
+                                </li>
+                                    <%}
+                                        %>
                                
                                 </ul>
-                            <%}%>
-                            <%Html.EndForm();%>
+                            
+             <%Html.EndForm();
+         }%>
+                            
+					     
 					     <% using (Html.BeginForm("back", "default1"))
              {%>
                                 <ul>

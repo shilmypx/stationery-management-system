@@ -18,8 +18,9 @@ namespace MvcStationeryManagementSystem.Controllers
 
         }
        
-        public ActionResult MyRequest10()
+        public ActionResult MyRequest10(string id)
         {
+            Session["ac"] = id;
             if (Session["Employee"] == null)
             {
                 return RedirectToAction("Login");
