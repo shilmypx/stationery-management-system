@@ -147,7 +147,7 @@
 				</div>
                                 </li>
                                 
-                                <li style="float:left;;margin-left: 120px">
+                                <li style="float:left;margin-left: 120px">
                                 <input type="submit" name="submitButton" value="     Approved     "/>
                              
                                 
