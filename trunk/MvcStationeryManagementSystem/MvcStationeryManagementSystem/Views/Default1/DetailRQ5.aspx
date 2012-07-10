@@ -172,6 +172,23 @@
                                 
                                <%= Html.Hidden("da", rmm.DApprove1)%>
                               
+                                <%if (a.Equals("2"))
+                                 {%>
+                                    <%var a1="2"; var b1=true
+;%>
+                                     
+                                      <%=Html.Hidden("st", a1)%>
+                                       <%=Html.Hidden("acc", b1)%>
+                                 <%}
+                                 else if(a.Equals("7") && (b == false))
+                                 {%>
+                                     
+                                    <%var a1 = "66"; var b1 = true;%>
+                                     
+                                      <%=Html.Hidden("st", a1)%>
+                                       <%=Html.Hidden("acc", b1)%>
+                                
+                                <%}%>
                     
                                 <%=Html.Hidden("st",rmm.Stte1)%>
                                      <%=Html.Hidden("acc",rmm.Acc1)%>
