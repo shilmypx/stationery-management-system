@@ -48,7 +48,7 @@
                            <% }
                                    else
                                    { %>
-                                     <%= Html.TextBox("da", "null", new { @class = "aa", @readonly = "readonly" })%>
+                                     <%= Html.TextBox("da", " ", new { @class = "aa", @readonly = "readonly" })%>
                                         
                                 
                                    <% }

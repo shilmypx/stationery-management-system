@@ -865,7 +865,7 @@ namespace MvcStationeryManagementSystem.Models
 			}
 		}
 		
-		[Column(Storage="_DateDispatch", DbType="Date")]
+		[Column(Storage="_DateDispatch", DbType="DateTime")]
 		public System.Nullable<System.DateTime> DateDispatch
 		{
 			get
@@ -885,7 +885,7 @@ namespace MvcStationeryManagementSystem.Models
 			}
 		}
 		
-		[Column(Storage="_DateApprove", DbType="Date")]
+		[Column(Storage="_DateApprove", DbType="DateTime")]
 		public System.Nullable<System.DateTime> DateApprove
 		{
 			get
