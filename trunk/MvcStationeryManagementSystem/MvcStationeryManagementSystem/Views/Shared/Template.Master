@@ -94,7 +94,8 @@
 				<ul>
 					
 					<li>
-						<a href="#">Create Request</a>
+						<%--<a href="#"></a>--%>
+						<%= Html.ActionLink("Create Request","Index", "Request")%>
 					</li>
 					<li>
 						<%=Html.ActionLink("Views Request", "myrequest10", "default1")%>
