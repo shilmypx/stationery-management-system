@@ -65,7 +65,7 @@
                            <% }
                                 else
                                 { %>
-                                     <%= Html.TextBox("da", "null", new { @class = "aa", @readonly = "readonly" })%>
+                                     <%= Html.TextBox("da", DateTime.Now, new { @class = "aa", @readonly = "readonly" })%>
                                         
                                 
                                    <% }
@@ -146,13 +146,20 @@
 					
 				</div>
                                 </li>
-                                
+                                <%
+                                    Employee em1 = (Employee)Session["Employee"];
+                  if (!(a.Equals("7") && b == false) && !(a.Equals("9") && b == false))
+                                  {%>
                                 <li style="float:left;margin-left: 120px">
                                 <input type="submit" name="submitButton" value="     Approved     "/>
                              
                                 
                                 </li>
-                              
+                              <%}
+                  else if (em1.RoleId == 1) {%> 
+                     <li style="float:left;margin-left: 120px">
+                                <input type="submit" name="submitButton" value="     Approved     "/></li>
+                  <%}%>
                                
                                 </ul>
                             <%}%>
@@ -174,7 +181,7 @@
                               
                                 <%if (a.Equals("2"))
                                  {%>
-                                    <%var a1="2"; var b1=true
+                                    <%var a1="9"; var b1=false
 ;%>
                                      
                                       <%=Html.Hidden("st", a1)%>
@@ -214,13 +221,18 @@
                                 
                                
                                 <%= Html.Hidden("dt", rmm.Dtion1)%>
-                               
+                                <%Employee em1 = (Employee)Session["Employee"];
+                   if (!(a.Equals("7") && b == false) && !(a.Equals("9") && b == false))
+                                  {%>
                                 <li style="float:left;margin-left: 254px;margin-top: -40px">
                                 <input type="submit" name="submitButton" value="    No Approved     "/>
                              
                                 
                                 </li>
-                              
+                              <%}else if(em1.RoleId==1){%>
+                                <li style="float:left;margin-left: 254px;margin-top: -40px">
+                                <input type="submit" name="submitButton" value="    No Approved     "/>
+                              <%} %>
                                
                                 </ul>
                             <%}%>
@@ -231,10 +243,28 @@
                              <% using (Html.BeginForm("back", "default1"))
                                 {%>
                                 <ul>
+                                 <%Employee em1=(Employee)Session["Employee"];
+                                    if (!(em1.RoleId==2)&&!(a.Equals("7") && b == false) && !(a.Equals("9") && b == false))
+                                   {%>
+                               
                                  <li style="float:left;margin-top: -40px">
                                  <input type="submit" name="submitButton" value="      Back      "/>
                                  </li>
-                              
+                              <%}
+                                    else if (em1.RoleId == 1)
+                                    { %>
+                                          <li style="float:left;margin-top: -40px">
+                                 <input type="submit" name="submitButton" value="      Back      "/>
+                                 </li>
+                                    <%}
+                                    else
+                                    { %>
+                                        <li></li>
+                                <li></li>
+                                 <li style="float:left;margin-top: -40px">
+                                 <input type="submit" name="submitButton" value="      Back      "/>
+                                 </li>
+                                   <% }%>
                           
                                 </ul>
                             <%}

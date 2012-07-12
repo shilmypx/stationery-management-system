@@ -12,6 +12,7 @@
 					<div class="portlet-content">
 					 <% RequestModel r = (RequestModel)ViewData["if"];
                             string a = r.Stte1; bool b = r.Acc1;
+                          
 					    %>
 					      <% using (Html.BeginForm("update2", "default1"))
               {%>
@@ -20,14 +21,14 @@
                                 <ul>
                                 
                                 <%= Html.Hidden("requestid", rm.RId1)%> 
-                                <%if(a.Equals("2"))
+                                <%if (a.Equals("2"))
                                   {%>
                                 
                                  <%= Html.Hidden("st", 4)%>  
                                   <%= Html.Hidden("acc", true)%>
                                 
                                 <%}
-                                  else if ((a.Equals("6") && b == true) || (a.Equals("7") && b == false))
+                                  else if ((a.Equals("66") && b == true) || (a.Equals("6") && b == true) || (a.Equals("7") && b == false))
                                   {%> 
                                      <%= Html.Hidden("st", 7)%>  
                                      <%= Html.Hidden("acc", true)%>
@@ -55,12 +56,12 @@
                                 <li>
                                 DateApproved: 
                                  <%if (!rm.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
-                             {%>
+                                   {%>
                                  <%= Html.TextBox("da", rm.DApprove1, new { @class = "aa", @readonly = "readonly" })%>
                            <% }
-                                else
-                                { %>
-                                     <%= Html.TextBox("da", "null", new { @class = "aa", @readonly = "readonly" })%>
+                                   else
+                                   { %>
+                                     <%= Html.TextBox("da", " ", new { @class = "aa", @readonly = "readonly" })%>
                                         
                                 
                                    <% }
@@ -141,13 +142,22 @@
 					
 				</div>
                                 </li>
-                                
+                                 <%
+                  Employee em=(Employee)Session["Employee"];
+                  if (!a.Equals("6")&& em.RoleId!=2)
+                                   {  %> 
                                 <li style="float:left;margin-left:102px">
                                 <input type="submit" name="submitButton" value="     Accept     "/>
                              
                                 
                                 </li>
-                              
+                              <%}
+                  else if (a.Equals("6") && em.RoleId != 2) { %>
+                   
+                    <li style="float:left;margin-left:102px">
+                                <input type="submit" name="submitButton" value="     Accept     "/>
+                                </li>
+                  <%} %>
                                
                                 </ul>
                             <%}%>
@@ -161,15 +171,15 @@
                                 <ul>
                                 
                                 <%= Html.Hidden("requestid", rm.RId1)%> 
-                                  <%if(a.Equals("2"))
-                                  {%>
+                                  <%if (a.Equals("2"))
+                                    {%>
                                 
                                  <%= Html.Hidden("st", 2)%>  
                                   <%= Html.Hidden("acc", false)%>
                                 
                                 <%}
-                                  else if (a.Equals("6") && b == true)
-                                  {%> 
+                                    else if (a.Equals("6") && b == true)
+                                    {%> 
                                      <%= Html.Hidden("st", 7)%>  
                                      <%= Html.Hidden("acc", false)%>
                                   
@@ -206,22 +216,41 @@
                               
                                 
                                <%= Html.Hidden("dt", rm.Dtion1)%>
-                              
-                                 <li style="float:left;margin-left: 210px;margin-top: -40px">
+                               <%Employee em1 = (Employee)Session["Employee"];
+                 if (!(em1.RoleId==2 && a.Equals("6") && b==true)&&!(em1.RoleId==2 && a.Equals("66") && b==true)&&!(a.Equals("2") && b == false) && !(a.Equals(" 9") && b == false) && !(a.Equals("7") && b == false))
+                                 {%>                
+                 <li style="float:left;margin-left: 210px;margin-top: -40px">
                                  <input type="submit" name="submitButton" value="      Reject      "/>
                                  </li>
-                              
+                               <%}%>
                                
                                 </ul>
                             <%}%>
                             <%Html.EndForm();%>
                             <%--//back--%>
+                            
                              <% using (Html.BeginForm("back", "default1"))
              {%>
                                 <ul>
-                                 <li style="float:left;margin-top: -40px">
+                                <%
+                                    Employee em1 = (Employee)Session["Employee"];
+                                    if ((em1.RoleId == 2 && a.Equals("6") && b == true) ||(em1.RoleId == 2 && a.Equals("66") && b == true) ||(a.Equals("2") && b == false) || (a.Equals(" 9") && b == false) || (a.Equals("7") && b == false))
+                                    {%> 
+                                    <li></li>
+                                     <li></li>
+                                     <li style="float:left;margin-top: -40px">
                                  <input type="submit" name="submitButton" value="      Back      "/>
                                  </li>
+                                    <%}
+                                    else
+                                    {%> 
+                                         <li style="float:left;margin-top: -40px">
+                                 <input type="submit" name="submitButton" value="      Back      "/>
+                                 </li>
+                                    <%}
+                                    %>
+                                
+                                
                               
                           
                                 </ul>
