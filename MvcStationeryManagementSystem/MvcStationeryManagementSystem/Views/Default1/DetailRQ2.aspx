@@ -242,7 +242,7 @@
                                  <input type="submit" name="submitButton" value="      Reject      "/>
                                  </li>
                                  <%}
-                                 else if ((em1.RoleId == 2 && a.Equals("2") && b == false) || (em1.RoleId == 2 && a.Equals("6") && b == true) || (a.Equals("66") && b == true) || (a.Equals("7") && b == false))
+                                 else if ((a.Equals("2") && b == false) || (em1.RoleId == 2 && a.Equals("6") && b == true) || (a.Equals("66") && b == true) || (a.Equals("7") && b == false))
                                  {%> 
                                  
                                  <%}
