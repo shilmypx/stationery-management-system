@@ -197,7 +197,7 @@
                                 
                                 <%= Html.Hidden("dd", rmm.DDispatch1.ToString("dd-MM-yyyy"))%>
                                
-                                     <%= Html.Hidden("da", DateTime.Now.ToString("dd-MM-yyyy"))%>
+                                     <%= Html.Hidden("da",rmm.DApprove1)%>
                                         
                                 
                                

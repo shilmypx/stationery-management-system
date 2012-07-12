@@ -160,7 +160,7 @@ namespace MvcStationeryManagementSystem.Controllers
             RequestModel22 rq22 = new RequestModel22();
             ViewData["lst5"] = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("1") && r1.Acc1 == true) || (r1.Stte1.Equals("5") && r1.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
 
-            rq.update(requestid, rname, st, dd, da, acc, rc, en, dt, ctid);
+            rq.update(requestid, rname, st, dd, DateTime.Now, acc, rc, en, dt, ctid);
             return RedirectToAction("MyRequest10");
 
         }

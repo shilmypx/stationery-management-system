@@ -257,6 +257,11 @@
                                  <input type="submit" name="submitButton" value="      Back      "/>
                                  </li>
                                     <%}
+                                    else if (a.Equals("2") && b == false)
+                                    { %>
+                                        <li style="float:left;margin-top: -40px">
+                                 <input type="submit" name="submitButton" value="      Back      "/>
+                                    <%}
                                     else
                                     { %>
                                         <li></li>
