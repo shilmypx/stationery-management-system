@@ -242,7 +242,7 @@
                                  <input type="submit" name="submitButton" value="      Reject      "/>
                                  </li>
                                  <%}
-                                 else if (em1.RoleId == 2 && a.Equals("2") && b == false)
+                                 else if ((em1.RoleId == 2 && a.Equals("2") && b == false) || (em1.RoleId == 2 && a.Equals("6") && b == true) || (a.Equals("66") && b == true) || (a.Equals("7") && b == false))
                                  {%> 
                                  
                                  <%}
@@ -263,14 +263,22 @@
                                 <ul>
                                 <%
                                     Employee em1 = (Employee)Session["Employee"];
-                                    if ((em1.RoleId == 2 && a.Equals("6") && b == true) ||(em1.RoleId == 2 && a.Equals("66") && b == true) ||(a.Equals("2") && b == false) || (a.Equals(" 9") && b == false) || (a.Equals("7") && b == false))
+                                    if ((em1.RoleId == 2 && a.Equals("66") && b == true) ||(a.Equals("2") && b == false) || (a.Equals(" 9") && b == false) || (a.Equals("7") && b == false))
                                     {%> 
                                    
                                      <li style="float:left;margin-top: -40px">
                                  <input type="submit" name="submitButton" value="      Back      "/>
                                  </li>
                                     <%}
-                                   
+                                    else if ((em1.RoleId == 2 && a.Equals("6") && b == true))
+                                    {%>
+                                    <li></li>
+                                    <li></li>
+                                    
+                                             <li style="float:left;margin-top: -40px">
+                                 <input type="submit" name="submitButton" value="      Back      "/>
+                                 </li>
+                                     <%}
                                     else
                                     {%> 
                                          <li style="float:left;margin-top: -40px">
