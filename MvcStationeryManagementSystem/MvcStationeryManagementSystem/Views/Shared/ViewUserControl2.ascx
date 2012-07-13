@@ -9,16 +9,16 @@
 						<ul class="side-menu">
 							
 							<li id="ll" onclick="xl5()">
-								<a href="javascript:void(0);" title="Fixed Layout">New  Requests </a>
+								<a href="javascript:void(0);" title="Fixed Layout"><%=Html.ActionLink("New Requests","Myrequest10/#tabs-6","default1")%></a>
 							</li>
 							<li id="Li1" onclick="xl6()">
-								<a href="javascript:void(0);" title="Fixed Layout">Withdraw   Requests </a>
+								<a href="javascript:void(0);" title="Fixed Layout"><%=Html.ActionLink("Withdraw Requests","Myrequest10/#tabs-7","default1")%> </a>
 							</li>
 							<li id="Li3" onclick="xl7()">
-								<a href="javascript:void(0);" title="Fixed Layout">Cancel  Requests </a>
+								<a href="javascript:void(0);" title="Fixed Layout"><%=Html.ActionLink("Cancel Requests","Myrequest10/#tabs-8","default1")%> </a>
 							</li>
 							<li id="Li4" onclick="xl8()">
-								<a href="javascript:void(0);" title="Fixed Layout">Accepted  Requests </a>
+								<a href="javascript:void(0);" title="Fixed Layout"><%=Html.ActionLink("Accept Requests","Myrequest10/#tabs-2","default1")%> </a>
 							</li>
 						</ul>
 					</div>

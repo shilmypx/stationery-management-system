@@ -11,9 +11,9 @@
 								<h3><a href="#">Requirements Have Been Approved</a></h3>
 								<div>
 									<ul class="side-menu">
-										<li  onclick="xl1()"><a href="#" title="View Requests">View Requests</a></li>
-										<li  onclick="xl2()"><a href="#" title="My Accept">My Accept</a></li>
-										<li  onclick="xl3()"><a href="#" title="My Reject">My Reject</a></li>
+										<li  onclick="xl1()"><a href="#" title="View Requests"><%=Html.ActionLink("View Requests","Myrequest10/#tabs-2","default1")%></a></li>
+										<li  onclick="xl2()"><a href="#" title="My Accept"><%=Html.ActionLink("My Accept","Myrequest10/#tabs-3","default1")%></a></li>
+										<li  onclick="xl3()"><a href="#" title="My Reject"><%=Html.ActionLink("My Reject","Myrequest10/#tabs-4","default1")%></a></li>
 									</ul>
 								</div>
 							</div>
@@ -21,7 +21,7 @@
 								<h3><a href="#">Requirements Have Not Been Approved</a></h3>
 								<div>
 									<ul class="side-menu">
-										<li onclick="xl4()"><a href="#" title="View Requests">View Requests</a></li>
+										<li onclick="xl4()"><a href="#" title="View Requests"><%=Html.ActionLink("View Requests","Myrequest10/#tabs-5","default1")%></a></li>
 										
 									</ul>
 								</div>
