@@ -12,6 +12,13 @@
 					<div class="portlet-content">
 					 <% RequestModel r = (RequestModel)ViewData["if"];
                             string a = r.Stte1; bool b = r.Acc1;
+                            Role rr = (Role)ViewData["role"];
+                            double amount = Convert.ToDouble(rr.Amount);
+                            double total = 0;
+                            foreach (Request_StationeryModel rq in (List<Request_StationeryModel>)ViewData["if1"])
+                            {
+                                total = total + Convert.ToDouble(rq.Qty1 * rq.Rte1);
+                            }
 					    %>
 					      
 					      <% using (Html.BeginForm("update4", "default1"))
@@ -146,12 +153,13 @@
 					
 				</div>
                                 </li>
-                                
-                                <li style="float:left;margin-left: 120px">
-                                <input type="submit" name="submitButton" value="     Approved     "/>
-                             
-                                
+                                <%if (total < amount)
+                                  {%> 
+                                    <li style="float:left;margin-left: 120px">
+                                    <input type="submit" name="submitButton" value="     Approved     "/>
+                      
                                 </li>
+                                <%}%>
                               
                                
                                 </ul>
@@ -208,13 +216,14 @@
                                 
                                
                                 <%= Html.Hidden("dt", rmm.Dtion1)%>
-                               
+                               <%if (total < amount)
+                                 {%> 
                                 <li style="float:left;margin-left: 254px;margin-top: -40px">
                                 <input type="submit" name="submitButton" value="    No Approved     "/>
                              
                                 
                                 </li>
-                              
+                              <%} %>
                                
                                 </ul>
                             <%}%>
@@ -266,10 +275,17 @@
                               
                                 
                                <%= Html.Hidden("dt", rm.Dtion1)%>
-                              
-                                 <li style="float:left;margin-left: 402px;margin-top: -40px">
+                              <%
+                                 
+                                          if(total>amount) 
+                                {%>
+                                <li></li>
+                                <li></li>
+                                
+                                 <li style="float:left;margin-left: 90px;margin-top: -40px">
                                  <input type="submit" name="submitButton" value="     Sent to Director     "/>
                                  </li>
+                                 <%}%>
                               </ul>
                             <%}
                             Html.EndForm();}%>
@@ -298,5 +314,12 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function() {
+
+       
+        });
+    </script>
     <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
+    
 </asp:Content>
