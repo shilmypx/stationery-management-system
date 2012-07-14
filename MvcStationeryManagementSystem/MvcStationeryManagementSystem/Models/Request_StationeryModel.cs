@@ -81,11 +81,7 @@ namespace MvcStationeryManagementSystem.Models
         }
         public Request_StationeryModel()
         {}
-        //public List<Request_StationeryModel> Infomation1(int rqid)
-        //{
-        //    //Request_StationeryModel rs = new Request_StationeryModel();
-        //    return ListR_S().Where(rr => rr.RqId1 == rqid).ToList();
-        //}
+        
         public List<Request_StationeryModel> ListR_S(int rqid)
         {
             List<Request_StationeryModel> l = new List<Request_StationeryModel>();
@@ -98,7 +94,7 @@ namespace MvcStationeryManagementSystem.Models
                                     ProductId=rs.ProductId,
                                     Quantity=rs.Quantity,
                                     Rate = rs.Rate,
-                                    Arise=rs.Arise,
+                                    //Arise=rs.Arise,
                                     Description=rs.Description,
                                     CatalogeId=cl.CatalogeId,
                                     CatalogeName=cl.CatalogeName,
@@ -111,7 +107,7 @@ namespace MvcStationeryManagementSystem.Models
                 obrq.PdId = r.ProductId;
                 obrq.Qty = r.Quantity;
                 obrq.Rte = Convert.ToDouble(r.Rate);
-                obrq.Ar = Convert.ToDouble(r.Arise);
+                //obrq.Ar = Convert.ToDouble(r.Arise);
                 obrq.Dtion = r.Description;
                 obrq.CtalogId = r.CatalogeId;
                 obrq.CtalogeName = r.CatalogeName;

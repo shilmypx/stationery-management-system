@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcStationeryManagementSystem.Models;
+using System.Net.Mail;
+using System.Text;
 
 namespace MvcStationeryManagementSystem.Controllers
 {
@@ -11,7 +13,7 @@ namespace MvcStationeryManagementSystem.Controllers
     {
        //lop chua cac method mahoa va giai ma
         private DescyptandEnscryt de = new DescyptandEnscryt();
-
+        private DataClassesStationeryDataContext dc = new DataClassesStationeryDataContext();
         public ActionResult Index()
         {
             return View();
@@ -70,20 +72,49 @@ namespace MvcStationeryManagementSystem.Controllers
             Request_StationeryModel rm1 = new Request_StationeryModel();
             ViewData["if"] = rm.Infomation(id);
             ViewData["if1"] = rm1.ListR_S(id);
-
+            Employee el = (Employee)Session["Employee"];
+            ViewData["em"] = dc.Employees.Where(i => i.EmployeeNumber.Equals(el.RegistrationNumber)).ToList().First();
             return View();
         }
-        public ActionResult update11(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult update11()
         {
-            RequestModel rq = new RequestModel();
-            Employee e = (Employee)Session["Employee"];
-          
-            ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("1")).OrderByDescending(r => r.DDispatch1).ToList();
-           
-            rq.update(requestid,rname,st, dd,DateTime.Now,acc,rc, en, dt, ctid);
-            return RedirectToAction("MyRequest10");
-        
+            return View();
         }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult update11(FormCollection form)
+        {
+            //try
+            //{
+                RequestModel rq = new RequestModel();
+                Employee e = (Employee)Session["Employee"];
+
+                ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("1")).OrderByDescending(r => r.DDispatch1).ToList();
+          
+                string From = "nguyenthang1010a@gmail.com";// form["From1"].ToString();
+                //string Pass = Form["Password"].ToString();
+                string To = "quoctuan06122009@gmail.com";//"quoctuan06122009@gmail.com";//form["to"].ToString();//form["To1"].ToString();
+               
+                string Subject = "Request Name:" + form["rname"].ToString()+"</br>";
+                string Message = "<html> <body>" + "<tr><td>From: " + e.FullName + "</td></tr></br>" + "___" + "<tr><td>Date Dispatch: " + form["dd"].ToString() + "</td></tr></br>" + "___" + "<tr><td>Content:" + form["rc"].ToString() + "</td></tr></br>" + "___" + "<tr><td>Description:" + form["dt"].ToString()+"</td></tr>" + "</body></html>";
+
+                MailMessage nmsg = new MailMessage(From, To, Subject, Message);
+                nmsg.Priority = MailPriority.High;
+                SmtpClient smtpc = new SmtpClient("smtp.gmail.com", 587);
+            
+                smtpc.Credentials = new System.Net.NetworkCredential("nguoigiahung.net@gmail.com", "giahungquetoi");
+                smtpc.EnableSsl = true;
+                smtpc.Send(nmsg);
+            //
+                rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
+                
+            Response.Write("<script type='text/javascript'>alert('Please enter the correct information as required')</script>");
+             return RedirectToAction("MyRequest10");
+           
+           
+
+        }
+       
         //ket thuc
         //2
         public ActionResult DetailRQ2(int id)
@@ -132,11 +163,12 @@ namespace MvcStationeryManagementSystem.Controllers
         //4
         public ActionResult DetailRQ4(int id)
         {
+            Employee el = (Employee)Session["Employee"];
             RequestModel rm = new RequestModel();
             Request_StationeryModel rm1 = new Request_StationeryModel();
             ViewData["if"] = rm.Infomation(id);
             ViewData["if1"] = rm1.ListR_S(id);
-
+            ViewData["role"] = dc.Roles.Where(r => r.RoleId == el.RoleId).ToList().First();
             return View();
         }
         public ActionResult update4(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)

@@ -12,7 +12,7 @@
 					 <% RequestModel rm = (RequestModel)ViewData["if"];
          Employee eml = (Employee)Session["Employee"];		     
         
-             using (Html.BeginForm("update11", "default1"))
+             using (Html.BeginForm("update11", "default1",FormMethod.Post))
              {
 
                  List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>

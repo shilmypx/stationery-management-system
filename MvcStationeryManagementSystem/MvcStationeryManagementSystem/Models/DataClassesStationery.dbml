@@ -15,6 +15,18 @@
       <Association Name="CatalogeRQ_Request" Member="Requests" ThisKey="CatalogRQId" OtherKey="CatalogRQId" Type="Request" />
     </Type>
   </Table>
+  <Table Name="dbo.Config" Member="Configs">
+    <Type Name="Config">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MailName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MailNetwork" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ports" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BuildDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Employee" Member="Employees">
     <Type Name="Employee">
       <Column Name="EmployeeNumber" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -55,7 +67,6 @@
       <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Rate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="Arise" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="Request_Request_Stationery" Member="Request" ThisKey="RequestId" OtherKey="RequestId" Type="Request" IsForeignKey="true" />
       <Association Name="Stationery_Request_Stationery" Member="Stationery" ThisKey="ProductId" OtherKey="ProductId" Type="Stationery" IsForeignKey="true" />
@@ -75,6 +86,7 @@
       <Column Name="ProductName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Rate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Arise" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="CatalogeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="Stationery_Request_Stationery" Member="Request_Stationeries" ThisKey="ProductId" OtherKey="ProductId" Type="Request_Stationery" />

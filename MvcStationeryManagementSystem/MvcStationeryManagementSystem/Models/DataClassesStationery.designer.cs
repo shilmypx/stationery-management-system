@@ -36,6 +36,9 @@ namespace MvcStationeryManagementSystem.Models
     partial void InsertCatalogeRQ(CatalogeRQ instance);
     partial void UpdateCatalogeRQ(CatalogeRQ instance);
     partial void DeleteCatalogeRQ(CatalogeRQ instance);
+    partial void InsertConfig(Config instance);
+    partial void UpdateConfig(Config instance);
+    partial void DeleteConfig(Config instance);
     partial void InsertEmployee(Employee instance);
     partial void UpdateEmployee(Employee instance);
     partial void DeleteEmployee(Employee instance);
@@ -96,6 +99,14 @@ namespace MvcStationeryManagementSystem.Models
 			get
 			{
 				return this.GetTable<CatalogeRQ>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Config> Configs
+		{
+			get
+			{
+				return this.GetTable<Config>();
 			}
 		}
 		
@@ -365,6 +376,236 @@ namespace MvcStationeryManagementSystem.Models
 		{
 			this.SendPropertyChanging();
 			entity.CatalogeRQ = null;
+		}
+	}
+	
+	[Table(Name="dbo.Config")]
+	public partial class Config : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _MailName;
+		
+		private string _MailNetwork;
+		
+		private string _Password;
+		
+		private string _Ports;
+		
+		private string _Type;
+		
+		private System.Nullable<System.DateTime> _BuildDate;
+		
+		private string _Description;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnMailNameChanging(string value);
+    partial void OnMailNameChanged();
+    partial void OnMailNetworkChanging(string value);
+    partial void OnMailNetworkChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnPortsChanging(string value);
+    partial void OnPortsChanged();
+    partial void OnTypeChanging(string value);
+    partial void OnTypeChanged();
+    partial void OnBuildDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnBuildDateChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    #endregion
+		
+		public Config()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_MailName", DbType="VarChar(50)")]
+		public string MailName
+		{
+			get
+			{
+				return this._MailName;
+			}
+			set
+			{
+				if ((this._MailName != value))
+				{
+					this.OnMailNameChanging(value);
+					this.SendPropertyChanging();
+					this._MailName = value;
+					this.SendPropertyChanged("MailName");
+					this.OnMailNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_MailNetwork", DbType="VarChar(50)")]
+		public string MailNetwork
+		{
+			get
+			{
+				return this._MailNetwork;
+			}
+			set
+			{
+				if ((this._MailNetwork != value))
+				{
+					this.OnMailNetworkChanging(value);
+					this.SendPropertyChanging();
+					this._MailNetwork = value;
+					this.SendPropertyChanged("MailNetwork");
+					this.OnMailNetworkChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Password", DbType="VarChar(50)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Ports", DbType="VarChar(50)")]
+		public string Ports
+		{
+			get
+			{
+				return this._Ports;
+			}
+			set
+			{
+				if ((this._Ports != value))
+				{
+					this.OnPortsChanging(value);
+					this.SendPropertyChanging();
+					this._Ports = value;
+					this.SendPropertyChanged("Ports");
+					this.OnPortsChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Type", DbType="VarChar(50)")]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_BuildDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> BuildDate
+		{
+			get
+			{
+				return this._BuildDate;
+			}
+			set
+			{
+				if ((this._BuildDate != value))
+				{
+					this.OnBuildDateChanging(value);
+					this.SendPropertyChanging();
+					this._BuildDate = value;
+					this.SendPropertyChanged("BuildDate");
+					this.OnBuildDateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Description", DbType="NChar(10)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -1141,8 +1382,6 @@ namespace MvcStationeryManagementSystem.Models
 		
 		private System.Nullable<decimal> _Rate;
 		
-		private System.Nullable<int> _Arise;
-		
 		private string _Description;
 		
 		private EntityRef<Request> _Request;
@@ -1161,8 +1400,6 @@ namespace MvcStationeryManagementSystem.Models
     partial void OnQuantityChanged();
     partial void OnRateChanging(System.Nullable<decimal> value);
     partial void OnRateChanged();
-    partial void OnAriseChanging(System.Nullable<int> value);
-    partial void OnAriseChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
     #endregion
@@ -1258,26 +1495,6 @@ namespace MvcStationeryManagementSystem.Models
 					this._Rate = value;
 					this.SendPropertyChanged("Rate");
 					this.OnRateChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Arise", DbType="Int")]
-		public System.Nullable<int> Arise
-		{
-			get
-			{
-				return this._Arise;
-			}
-			set
-			{
-				if ((this._Arise != value))
-				{
-					this.OnAriseChanging(value);
-					this.SendPropertyChanging();
-					this._Arise = value;
-					this.SendPropertyChanged("Arise");
-					this.OnAriseChanged();
 				}
 			}
 		}
@@ -1543,6 +1760,8 @@ namespace MvcStationeryManagementSystem.Models
 		
 		private System.Nullable<int> _Quantity;
 		
+		private System.Nullable<decimal> _Arise;
+		
 		private System.Nullable<int> _CatalogeId;
 		
 		private string _Description;
@@ -1563,6 +1782,8 @@ namespace MvcStationeryManagementSystem.Models
     partial void OnRateChanged();
     partial void OnQuantityChanging(System.Nullable<int> value);
     partial void OnQuantityChanged();
+    partial void OnAriseChanging(System.Nullable<decimal> value);
+    partial void OnAriseChanged();
     partial void OnCatalogeIdChanging(System.Nullable<int> value);
     partial void OnCatalogeIdChanged();
     partial void OnDescriptionChanging(string value);
@@ -1652,6 +1873,26 @@ namespace MvcStationeryManagementSystem.Models
 					this._Quantity = value;
 					this.SendPropertyChanged("Quantity");
 					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Arise", DbType="Money")]
+		public System.Nullable<decimal> Arise
+		{
+			get
+			{
+				return this._Arise;
+			}
+			set
+			{
+				if ((this._Arise != value))
+				{
+					this.OnAriseChanging(value);
+					this.SendPropertyChanging();
+					this._Arise = value;
+					this.SendPropertyChanged("Arise");
+					this.OnAriseChanged();
 				}
 			}
 		}
