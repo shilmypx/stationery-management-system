@@ -57,6 +57,20 @@ namespace MvcStationeryManagementSystem.Controllers
             ViewData["lst8"] = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("4") && r1.Acc1 == true) || (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("7") && r1.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
             // 
             ViewData["lst88"] = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("4") && r1.Acc1 == true) || (r1.Stte1.Equals("7") && r1.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
+            if (Session["email"] == null)
+            {
+                Response.Write(" ");
+            }
+            else if (Convert.ToInt32(Session["email"]) == 1)
+            {
+                Response.Write("<Script type='text/javascript'>alert('Succesfull')</script>");
+                Session.Remove("email");
+            }
+            else
+            {
+                Response.Write("<Script type='text/javascript'>alert('No Succesfull')</script>");
+                Session.Remove("email");
+            }
             //Request_Stationery
             return View("myrequest10");
         }
@@ -83,36 +97,35 @@ namespace MvcStationeryManagementSystem.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult update11(FormCollection form)
         {
-            //try
-            //{
+            try
+            {
                 RequestModel rq = new RequestModel();
                 Employee e = (Employee)Session["Employee"];
 
                 ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("1")).OrderByDescending(r => r.DDispatch1).ToList();
-          
+
                 string From = "nguyenthang1010a@gmail.com";// form["From1"].ToString();
                 //string Pass = Form["Password"].ToString();
-                string To = "quoctuan06122009@gmail.com";//"quoctuan06122009@gmail.com";//form["to"].ToString();//form["To1"].ToString();
-               
-                string Subject = "Request Name:" + form["rname"].ToString()+"</br>";
-                string Message = "<html> <body>" + "<tr><td>From: " + e.FullName + "</td></tr></br>" + "___" + "<tr><td>Date Dispatch: " + form["dd"].ToString() + "</td></tr></br>" + "___" + "<tr><td>Content:" + form["rc"].ToString() + "</td></tr></br>" + "___" + "<tr><td>Description:" + form["dt"].ToString()+"</td></tr>" + "</body></html>";
+                string To = "tuan06122009@yahoo.com.vn";//"quoctuan06122009@gmail.com";//form["to"].ToString();//form["To1"].ToString();
 
-                MailMessage nmsg = new MailMessage(From, To, Subject, Message);
-                nmsg.Priority = MailPriority.High;
-                SmtpClient smtpc = new SmtpClient("smtp.gmail.com", 587);
-            
-                smtpc.Credentials = new System.Net.NetworkCredential("nguoigiahung.net@gmail.com", "giahungquetoi");
-                smtpc.EnableSsl = true;
-                smtpc.Send(nmsg);
-            //
-                rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
-                
-            Response.Write("<script type='text/javascript'>alert('Please enter the correct information as required')</script>");
+                string Subject = "Request Name: " + form["rname"].ToString();
+                string Message = "From: " + e.FullName + "___" + "Date Dispatch: " + form["dd"].ToString() + "___" + "Content: " + form["rc"].ToString() + "___" + "Description: " + form["dt"].ToString();
+                  if (rq.Send(From, To, "nguyenthang@gmail.com", Subject, Message, "smtp.gmail.com", 587, "nguoigiahung.net@gmail.com", "giahungquetoi"))
+                {
+                    rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
+                    Session["email"] = 1;
+                }
+              }
+            catch
+            {
+                Session["email"] = 2; 
+            }
+              
              return RedirectToAction("MyRequest10");
-           
-           
-
+            
         }
+        [AcceptVerbs(HttpVerbs.Post)]
+       
        
         //ket thuc
         //2

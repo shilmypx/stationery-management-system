@@ -65,14 +65,21 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CatalogeController.cs" />
+    <Compile Include="Controllers\CatalogeRQController.cs" />
     <Compile Include="Controllers\ChangePasswordsController.cs" />
     <Compile Include="Controllers\Default1Controller.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\Error404Controller.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\StationeryController.cs" />
     <Compile Include="Controllers\ViewRoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CatalogeModel.cs" />
+    <Compile Include="Models\CatalogeRQModel.cs" />
     <Compile Include="Models\ChangePasswordsModel.cs" />
     <Compile Include="Models\DataClassesStationery.designer.cs">
       <AutoGen>True</AutoGen>
@@ -81,10 +88,15 @@
     </Compile>
     <Compile Include="Models\DescyptandEnscryt.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
+    <Compile Include="Models\GiohangModel.cs" />
     <Compile Include="Models\mahoa_giaima.cs" />
     <Compile Include="Models\RequestModel.cs" />
     <Compile Include="Models\RequestModel22.cs" />
     <Compile Include="Models\Request_StationeryModel.cs" />
+    <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Models\StationeryModel.cs" />
+    <Compile Include="Models\StationeryModelcs.cs" />
+    <Compile Include="Models\ViewModel.cs" />
     <Compile Include="Models\ViewRoleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -183,8 +195,16 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\MvcStationeryManagementSystem.dll" />
+    <Content Include="bin\MvcStationeryManagementSystem.pdb" />
     <Content Include="Content\js\jquery-1.4.2.min.js" />
     <Content Include="Content\js\jquery.validate.js" />
+    <Content Include="Views\CatalogeRQ\CatalogeRQ.aspx" />
+    <Content Include="Views\CatalogeRQ\insertRQ.aspx" />
+    <Content Include="Views\CatalogeRQ\updateRQ.aspx" />
+    <Content Include="Views\Cataloge\Cataloge.aspx" />
+    <Content Include="Views\Cataloge\InsertCataloge.aspx" />
+    <Content Include="Views\Cataloge\updateCataloge.aspx" />
     <Content Include="Views\ChangePasswords\ChangePasswords.aspx" />
     <Content Include="Views\Default1\DetailRQ.aspx" />
     <Content Include="Views\Default1\DetailRQ2.aspx" />
@@ -199,9 +219,16 @@
     <Content Include="Views\Employee\EditEmployee.aspx" />
     <Content Include="Views\Employee\ManageEmployee.aspx" />
     <Content Include="Views\Error404\Error.ascx" />
+    <Content Include="Views\Request\Index.aspx" />
+    <Content Include="Views\Request\test.aspx" />
+    <Content Include="Views\Role\Rolement.aspx" />
+    <Content Include="Views\Role\UpdateRole.aspx" />
     <Content Include="Views\Shared\ViewUserControl1.ascx" />
     <Content Include="Views\Shared\ViewUserControl2.ascx" />
     <Content Include="Views\Shared\ViewUserControl3.ascx" />
+    <Content Include="Views\Stationery\InsertSta.aspx" />
+    <Content Include="Views\Stationery\Statioery.aspx" />
+    <Content Include="Views\Stationery\Update.aspx" />
     <Content Include="Views\ViewRole\ViewRole.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -218,7 +245,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="bin\" />
     <Folder Include="Content\Upload\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

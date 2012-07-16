@@ -30,9 +30,6 @@ namespace MvcStationeryManagementSystem.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertAccount(Account instance);
-    partial void UpdateAccount(Account instance);
-    partial void DeleteAccount(Account instance);
     partial void InsertCataloge(Cataloge instance);
     partial void UpdateCataloge(Cataloge instance);
     partial void DeleteCataloge(Cataloge instance);
@@ -60,7 +57,7 @@ namespace MvcStationeryManagementSystem.Models
     #endregion
 		
 		public DataClassesStationeryDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["StationeryDataConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["StationeryDataConnectionString2"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -87,14 +84,6 @@ namespace MvcStationeryManagementSystem.Models
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<Account> Accounts
-		{
-			get
-			{
-				return this.GetTable<Account>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Cataloge> Cataloges
@@ -158,164 +147,6 @@ namespace MvcStationeryManagementSystem.Models
 			get
 			{
 				return this.GetTable<Stationery>();
-			}
-		}
-	}
-	
-	[Table(Name="dbo.Account")]
-	public partial class Account : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _AccountId;
-		
-		private string _Username;
-		
-		private string _Password;
-		
-		private string _Email;
-		
-		private string _RegistrationNumber;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnAccountIdChanging(int value);
-    partial void OnAccountIdChanged();
-    partial void OnUsernameChanging(string value);
-    partial void OnUsernameChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnRegistrationNumberChanging(string value);
-    partial void OnRegistrationNumberChanged();
-    #endregion
-		
-		public Account()
-		{
-			OnCreated();
-		}
-		
-		[Column(Storage="_AccountId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int AccountId
-		{
-			get
-			{
-				return this._AccountId;
-			}
-			set
-			{
-				if ((this._AccountId != value))
-				{
-					this.OnAccountIdChanging(value);
-					this.SendPropertyChanging();
-					this._AccountId = value;
-					this.SendPropertyChanged("AccountId");
-					this.OnAccountIdChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Username", DbType="NVarChar(50)")]
-		public string Username
-		{
-			get
-			{
-				return this._Username;
-			}
-			set
-			{
-				if ((this._Username != value))
-				{
-					this.OnUsernameChanging(value);
-					this.SendPropertyChanging();
-					this._Username = value;
-					this.SendPropertyChanged("Username");
-					this.OnUsernameChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Password", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Email", DbType="VarChar(50)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_RegistrationNumber", DbType="VarChar(50)")]
-		public string RegistrationNumber
-		{
-			get
-			{
-				return this._RegistrationNumber;
-			}
-			set
-			{
-				if ((this._RegistrationNumber != value))
-				{
-					this.OnRegistrationNumberChanging(value);
-					this.SendPropertyChanging();
-					this._RegistrationNumber = value;
-					this.SendPropertyChanged("RegistrationNumber");
-					this.OnRegistrationNumberChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -788,6 +619,8 @@ namespace MvcStationeryManagementSystem.Models
 		
 		private string _FullName;
 		
+		private System.Nullable<System.DateTime> _DateBuild;
+		
 		private System.Nullable<System.DateTime> _DateBirth;
 		
 		private string _Email;
@@ -796,15 +629,13 @@ namespace MvcStationeryManagementSystem.Models
 		
 		private string _Phone;
 		
+		private string _Images;
+		
 		private System.Nullable<int> _RoleId;
 		
 		private string _Password;
 		
 		private string _RegistrationNumber;
-		
-		private System.Nullable<System.DateTime> _DateBuild;
-		
-		private string _Images;
 		
 		private EntitySet<Request> _Requests;
 		
@@ -818,6 +649,8 @@ namespace MvcStationeryManagementSystem.Models
     partial void OnEmployeeNumberChanged();
     partial void OnFullNameChanging(string value);
     partial void OnFullNameChanged();
+    partial void OnDateBuildChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateBuildChanged();
     partial void OnDateBirthChanging(System.Nullable<System.DateTime> value);
     partial void OnDateBirthChanged();
     partial void OnEmailChanging(string value);
@@ -826,16 +659,14 @@ namespace MvcStationeryManagementSystem.Models
     partial void OnAddressChanged();
     partial void OnPhoneChanging(string value);
     partial void OnPhoneChanged();
+    partial void OnImagesChanging(string value);
+    partial void OnImagesChanged();
     partial void OnRoleIdChanging(System.Nullable<int> value);
     partial void OnRoleIdChanged();
     partial void OnPasswordChanging(string value);
     partial void OnPasswordChanged();
     partial void OnRegistrationNumberChanging(string value);
     partial void OnRegistrationNumberChanged();
-    partial void OnDateBuildChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateBuildChanged();
-    partial void OnImagesChanging(string value);
-    partial void OnImagesChanged();
     #endregion
 		
 		public Employee()
@@ -881,6 +712,26 @@ namespace MvcStationeryManagementSystem.Models
 					this._FullName = value;
 					this.SendPropertyChanged("FullName");
 					this.OnFullNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_DateBuild", DbType="Date")]
+		public System.Nullable<System.DateTime> DateBuild
+		{
+			get
+			{
+				return this._DateBuild;
+			}
+			set
+			{
+				if ((this._DateBuild != value))
+				{
+					this.OnDateBuildChanging(value);
+					this.SendPropertyChanging();
+					this._DateBuild = value;
+					this.SendPropertyChanged("DateBuild");
+					this.OnDateBuildChanged();
 				}
 			}
 		}
@@ -965,6 +816,26 @@ namespace MvcStationeryManagementSystem.Models
 			}
 		}
 		
+		[Column(Storage="_Images", DbType="NVarChar(50)")]
+		public string Images
+		{
+			get
+			{
+				return this._Images;
+			}
+			set
+			{
+				if ((this._Images != value))
+				{
+					this.OnImagesChanging(value);
+					this.SendPropertyChanging();
+					this._Images = value;
+					this.SendPropertyChanged("Images");
+					this.OnImagesChanged();
+				}
+			}
+		}
+		
 		[Column(Storage="_RoleId", DbType="Int")]
 		public System.Nullable<int> RoleId
 		{
@@ -1025,46 +896,6 @@ namespace MvcStationeryManagementSystem.Models
 					this._RegistrationNumber = value;
 					this.SendPropertyChanged("RegistrationNumber");
 					this.OnRegistrationNumberChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_DateBuild", DbType="Date")]
-		public System.Nullable<System.DateTime> DateBuild
-		{
-			get
-			{
-				return this._DateBuild;
-			}
-			set
-			{
-				if ((this._DateBuild != value))
-				{
-					this.OnDateBuildChanging(value);
-					this.SendPropertyChanging();
-					this._DateBuild = value;
-					this.SendPropertyChanged("DateBuild");
-					this.OnDateBuildChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Images", DbType="NVarChar(50)")]
-		public string Images
-		{
-			get
-			{
-				return this._Images;
-			}
-			set
-			{
-				if ((this._Images != value))
-				{
-					this.OnImagesChanging(value);
-					this.SendPropertyChanging();
-					this._Images = value;
-					this.SendPropertyChanged("Images");
-					this.OnImagesChanged();
 				}
 			}
 		}
