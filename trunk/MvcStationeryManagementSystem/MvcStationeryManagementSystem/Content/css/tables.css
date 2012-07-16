@@ -6,6 +6,8 @@
 	width:99%;
 	border:1px solid #dedede;
 	border-bottom:none;
+	text-align:center;
+	padding:center;
 }
 
 .hastable thead td, .hastable thead th {
@@ -14,7 +16,7 @@
 
 .hastable tr td, .hastable thead th {
 	border-left:1px solid #ccc;
-	text-align:left;
+	text-align:center;
 	padding:8px;
 	color:#616161;
 	vertical-align:middle;
@@ -75,3 +77,35 @@
 	margin:5px;
 	float: left;
 }
+.lk
+{
+	font-size:13px;
+	font-family:Verdana;
+	font-style:italic;
+	color:Red;
+	}
+
+	
+#a 
+{
+	
+	color:Green !important;
+	font-size:15px;
+	font-family:Verdana;
+	font-style:inherit;
+	margin:0 10000px 0 0;
+}
+.D4
+{
+	text-align:center;
+	width:500px;
+	margin-right:5000px;
+	}
+.green
+{
+	color:Green;
+	font-family:Verdana;
+	font-size:15px;
+	font-style:inherit;
+	}
+	.portlet-content #bb

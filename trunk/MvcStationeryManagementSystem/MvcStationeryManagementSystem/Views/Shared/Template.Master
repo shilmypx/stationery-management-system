@@ -80,7 +80,7 @@
              <ul>
 		        <li><a href="#">Change The Password </a></li>
 		        <li><a href="#">Eligibility Details </a></li>
-		        <li><a href="msg.html">Manage Role</a></li>
+		         <li><%= Html.ActionLink("Manage Role", "Rolement", "Role")%> </li>
 		         <li><%= Html.ActionLink("Create Employee", "AddEmployee", "Employee") %></li>
                 <li><%= Html.ActionLink("Manage Employee", "ManageEmployee", "Employee") %></li>
 	        </ul>
@@ -92,6 +92,9 @@
 			<li>
 				<a href="#">Request</a>
 				<ul>
+				    <li>
+				        <%=Html.ActionLink("CatalogeRQ", "CatalogeRQ", "CatalogeRQ")%>
+				    </li>
 					
 					<li>
 						<%--<a href="#"></a>--%>
@@ -110,8 +113,9 @@
 			<li>
 				<a href="#">Stationery Items</a>
 				    <ul>
+				            <li><%= Html.ActionLink("Cataloge", "Cataloge", "Cataloge")%></li>
 							<li><a href="#">My Stationery Items</a></li>
-							<li><a href="#">Manage Stationery Items</a></li>
+							<li><%= Html.ActionLink("Manage  Stationery Items", "Statioery", "Stationery")%></li>
 				    </ul>
 				
 			</li>
