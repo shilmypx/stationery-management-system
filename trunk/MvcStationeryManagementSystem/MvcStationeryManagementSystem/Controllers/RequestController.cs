@@ -51,7 +51,7 @@ namespace MvcStationeryManagementSystem.Controllers
                 
                 chuoi += "</tr>";
             }
-        System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(2000);
             Response.Write(chuoi);
             return null;
 
@@ -79,7 +79,7 @@ namespace MvcStationeryManagementSystem.Controllers
                  a += String.Format("<td>{0}</td>", gl.ProductName);
                  a += String.Format("<td>{0}</td>", gl.Quality);
                  a += String.Format("<td>{0}</td>", gl.Descript);
-                 a += String.Format("<td><input type='type' class='sl' value='{0}'  /></td>", gl.Soluong);
+                 a += String.Format("<td><input type='type' name='sl' class='sl' value='{0}'  /></td>", gl.Soluong);
                  a += String.Format("<td><button class='remove1'>Remove</button><input type='hidden' class='giatri1' value='{0}'></td></td>", gl.Productid);
                  a += "</tr>";
 
@@ -100,7 +100,7 @@ namespace MvcStationeryManagementSystem.Controllers
                          
                          a1 += String.Format("<td>{0}</td>", g.Quality);
                          a1 += String.Format("<td>{0}</td>", g.Descript);
-                         a1 += String.Format("<td><input type='type' class='sl' value='{0}' /></td>", g.Soluong);
+                         a1 += String.Format("<td><input type='type' name='sl' class='sl' value='{0}' /></td>", g.Soluong);
                          a1 += String.Format("<td><button class='remove1'>Remove</button><input type='hidden' class='giatri1' value='{0}'></td></td>", g.Productid);
                          a1 += "</tr>";
                      }
@@ -129,7 +129,7 @@ namespace MvcStationeryManagementSystem.Controllers
                         
                          a2 += String.Format("<td>{0}</td>", g.Quality);
                          a2 += String.Format("<td>{0}</td>", g.Descript);
-                         a2 += String.Format("<td><input type='type' class='sl' value='{0}' /></td>", g.Soluong);
+                         a2 += String.Format("<td><input type='type' name='sl' class='sl' value='{0}' /></td>", g.Soluong);
                          a2 += String.Format("<td><button class='remove1'>Remove</button><input type='hidden' class='giatri1' value='{0}'></td></td>", g.Productid);
                          a2 += "</tr>";
                      }
@@ -195,5 +195,97 @@ namespace MvcStationeryManagementSystem.Controllers
             }
             return null;
         }
+
+
+        public bool TestSo(string id)
+        {
+            bool kq = true;
+            try
+            {
+                Convert.ToInt32(id);
+            }
+            catch
+            {
+                kq = false;
+            }
+            kq = true;
+            return kq;
+        }
+        
+        public ActionResult Capnhapsoluong(string a , string a1)
+        {
+            List<GiohangModel> lg = (List<GiohangModel>)Session["giohang"];
+            GiohangModel obj = new GiohangModel();
+            if(!TestSo(a))
+            {
+
+            }
+            else
+            {
+                obj = lg.Where(e => e.Productid == Convert.ToInt32(a1)).FirstOrDefault();
+              GiohangModel g = new GiohangModel();
+              g.Productid = Convert.ToInt32(a1);
+              g.ProductName = obj.ProductName;
+              g.Quality = obj.Quality;
+              g.Descript = obj.Descript;
+              g.Soluong = Convert.ToInt32(a);
+              lg.RemoveAll(x=>x.Productid==Convert.ToInt32(a1));
+            
+            lg.Insert(0, g);
+            Session["giohang"] = lg;
+            Response.Write("ok");
+  
+            }
+            return null;
+        }
+
+        public ActionResult AddRequest()
+        {
+            Response.Write("aaa");
+            return null;
+        }
+
+        [ValidateInput(false)]
+        public ActionResult Addrq()
+        {
+            ValidateRequest = false;
+          string a = Request.QueryString["a"];
+        
+           if (Session["giohang"]== null)
+           {
+               Response.Write("Ban chua lua chon san pham !");
+           }
+           else
+           {
+               List<Request_Stationery> ls = new List<Request_Stationery>();
+               foreach( GiohangModel gm in (List<GiohangModel>)Session["giohang"] )
+               {
+                   Request_Stationery s = new Request_Stationery();
+                   s.ProductId = gm.Productid;
+                   s.Quantity = gm.Soluong;
+                   ls.Add(s);
+               }
+               string chuoi = "";
+
+               Request_StationeryModel rsm = new Request_StationeryModel();
+               Request r = new Request();
+               string[] kq = a.Split('|');
+               chuoi +=  kq[0] + kq[1] + kq[2];
+               r.RequestName = kq[0];
+               r.RequestContent = kq[1];
+               r.Description = kq[2];
+               r.DateDispatch = DateTime.Now;
+               rsm.inserdata(r);
+               int a1 = r.RequestId;
+               foreach( Request_Stationery r1 in ls )
+               {
+                   r1.RequestId = a1;
+                   rsm.insert2(r1);
+               }
+               Response.Write(ls.Count);
+           }
+            return null;
+        }
+
     }
 }
