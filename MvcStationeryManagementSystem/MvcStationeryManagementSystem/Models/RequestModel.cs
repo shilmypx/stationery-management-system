@@ -11,6 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Web.UI.MobileControls;
 using System.Collections.Generic;
+using System.Net.Mail;
 
 namespace MvcStationeryManagementSystem.Models
 {
@@ -167,6 +168,32 @@ namespace MvcStationeryManagementSystem.Models
             rq.Description = dt;
             rq.CatalogRQId = ctid;
             dc.SubmitChanges();
+        }
+        public bool Send(string from, string to, string cc, string subject, string messeage, string smtp, int post, string netw, string pass)
+        {
+            bool bl;
+            try
+            {
+                MailMessage nmsg = new MailMessage();
+                nmsg.From = new MailAddress(from);
+                nmsg.To.Add(to);
+                nmsg.CC.Add(cc);
+                nmsg.Subject = subject;
+                nmsg.Body = messeage;
+                nmsg.IsBodyHtml = true;
+                nmsg.Priority = MailPriority.High;
+
+                SmtpClient smtpc = new SmtpClient(smtp, post);
+                smtpc.Credentials = new System.Net.NetworkCredential(netw, pass);
+                smtpc.EnableSsl = true;
+                smtpc.SendAsync(nmsg, null);
+                bl = true;
+            }
+            catch
+            {
+                bl = false;
+            }
+            return bl;
         }
     }
 }
