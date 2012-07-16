@@ -1,5 +1,14 @@
 
 	/* General */
+#myuser
+{
+	color:Black;
+	background-color:#DFEFFC;
+	font-family: Verdana;
+	font-weight:bold;
+	font-style:italic;	
+}
+	
 .myimg
 {
 	width: 150px;
@@ -170,6 +179,16 @@ label.desc{
 	font-size:95%;
 	font-weight:bold;
 	color:#222;
+	line-height:150%;
+	margin:0;
+	padding:0 0 3px 0;
+	border:none;
+	display:block;
+}
+.username{
+	font-size:20px;
+	font-weight:bold;
+	color:Red;
 	line-height:150%;
 	margin:0;
 	padding:0 0 3px 0;

@@ -39,6 +39,7 @@ namespace MvcStationeryManagementSystem.Models
 
                 {
                     el = le.FirstOrDefault();
+                    HttpContext.Current.Session["username"] = employnumber;
                 }
                 else
                 {

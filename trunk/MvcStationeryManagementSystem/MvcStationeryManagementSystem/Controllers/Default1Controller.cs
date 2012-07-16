@@ -17,7 +17,6 @@ namespace MvcStationeryManagementSystem.Controllers
         public ActionResult Index()
         {
             return View();
-
         }
        
         public ActionResult MyRequest10(string id)
