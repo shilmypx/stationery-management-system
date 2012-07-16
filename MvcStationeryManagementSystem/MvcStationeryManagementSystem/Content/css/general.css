@@ -749,6 +749,10 @@ button { float: right; margin: .5em .4em .5em 0; cursor: pointer; padding: .2em 
 	margin:0;
 	padding:7px;
 }
+.portlet-content #a
+{
+	color:Blue!important;
+	}
 
 .portlet-header .ui-icon { 
 	float:right;
