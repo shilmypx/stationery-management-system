@@ -1,7 +1,7 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Template.Master" Inherits="System.Web.Mvc.ViewPage" %>
 <%@ Import Namespace="MvcStationeryManagementSystem.Models" %>
-<%@ Register Assembly="MSCaptcha" Namespace="MSCaptcha" TagPrefix="cc1" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+<%--<%@ Register Assembly="MSCaptcha" Namespace="MSCaptcha" TagPrefix="cc1" %>
+--%><asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	AddEmployee
 </asp:Content>
 
@@ -194,7 +194,7 @@
 								</li>
 								
 								<li>
-								    <label class="desc">
+								   <%-- <label class="desc">
 								        Capcha
 								    </label>
 								    <div>
@@ -207,7 +207,7 @@
                                     </div>
                                     <div>
                                         <input type="text" id="txtCaptcha" />
-                                    </div>
+                                    </div>--%>
 								</li>
 								
 								<li class="buttons">

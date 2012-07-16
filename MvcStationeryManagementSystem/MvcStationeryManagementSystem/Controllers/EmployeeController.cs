@@ -39,7 +39,6 @@ namespace MvcStationeryManagementSystem.Controllers
             return View("AddEmployee");
         }
 
-
         [HttpPost]
         public ActionResult AddEmployee(string EmployeeNumber, string fullname, DateTime datebuild, DateTime dateBirth, string email, string address, string phone, string images, int roleid, string password, string RegistrationNumber, HttpPostedFileBase fileUpload)
         {

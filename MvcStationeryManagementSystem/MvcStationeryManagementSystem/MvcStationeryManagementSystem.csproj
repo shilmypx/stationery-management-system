@@ -65,12 +65,15 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ChangePasswordsController.cs" />
     <Compile Include="Controllers\Default1Controller.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\Error404Controller.cs" />
+    <Compile Include="Controllers\ViewRoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChangePasswordsModel.cs" />
     <Compile Include="Models\DataClassesStationery.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,6 +85,7 @@
     <Compile Include="Models\RequestModel.cs" />
     <Compile Include="Models\RequestModel22.cs" />
     <Compile Include="Models\Request_StationeryModel.cs" />
+    <Compile Include="Models\ViewRoleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +185,7 @@
   <ItemGroup>
     <Content Include="Content\js\jquery-1.4.2.min.js" />
     <Content Include="Content\js\jquery.validate.js" />
+    <Content Include="Views\ChangePasswords\ChangePasswords.aspx" />
     <Content Include="Views\Default1\DetailRQ.aspx" />
     <Content Include="Views\Default1\DetailRQ2.aspx" />
     <Content Include="Views\Default1\DetailRQ3.aspx" />
@@ -188,6 +193,7 @@
     <Content Include="Views\Default1\DetailRQ5.aspx" />
     <Content Include="Views\Default1\Index.aspx" />
     <Content Include="Views\Default1\MyRequest10.aspx" />
+    <Content Include="Views\Employee\AddEmp.aspx" />
     <Content Include="Views\Employee\AddEmployee.aspx" />
     <Content Include="Views\Employee\Detail.aspx" />
     <Content Include="Views\Employee\EditEmployee.aspx" />
@@ -196,6 +202,7 @@
     <Content Include="Views\Shared\ViewUserControl1.ascx" />
     <Content Include="Views\Shared\ViewUserControl2.ascx" />
     <Content Include="Views\Shared\ViewUserControl3.ascx" />
+    <Content Include="Views\ViewRole\ViewRole.aspx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\DataClassesStationery.dbml">
