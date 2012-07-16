@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Template.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Template.Master" Inherits="System.Web.Mvc.ViewPage"  validateRequest=false %>
 <%@ Import Namespace="MvcStationeryManagementSystem.Models" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Request 
@@ -24,12 +24,12 @@
     
     <script type="text/javascript" language="javascript">
         $(document).ready(function() {
+
+
             $(".rte-zone").rte({
                 content_css_url: "../../Content/css/rte.css",
                 media_url: "../../Content/img/"
             });
-
-
 
 
 
@@ -64,7 +64,19 @@
                             complete: function() {
                                 $(".sl").jStepper({ minValue: 1, maxValue: 1000, minLength: 4, disableNonNumeric: true, allowDecimals: false });
 
-
+                                $(".sl").blur(function() {
+                                    var a = $(this).val();
+                                    var a1 = $(this).parents('tr.remove').find('td.id').html();
+                                    //alert(a + "|" + a1);
+                                    $.ajax({
+                                        // type: "GET",
+                                        data: a + "|" + a1,
+                                        url: '/Request/Capnhapsoluong/' + a + '/' + a1,
+                                        success: function(msg) {
+                                            //  alert(msg);   
+                                        }
+                                    });
+                                });
 
 
                                 $(".remove1").click(function() {
@@ -87,6 +99,8 @@
 
 
                                 });
+
+
                             }
                         });
                     });
@@ -99,10 +113,34 @@
 
             });
 
-            $("#send").click(function() {
 
-           
+            //xu ly khi them
+            $(".send").click(function() {
+                var value = $("iframe#id_description1").contents().find("body").html();
+                var value1 = $("iframe#id_description").contents().find("body").html();
+                var value2 = $("#vaname").attr("value");
+                if (value === '<br>' || value1 === '<br>' || value2 === '') {
+                    $(".loi").html("<b>Vui long kiem tra lai thong tin<b>");
+                    return false;
+                }
+                else {
+                    data1 = value2 + '|' + value1 + '|' + value;
+                   // alert(value2 + " | " + value + " | " + value1);
+                    $(".loi").html("");
+                    $.ajax({
+                    type: "GET",
+                    dataType: 'html',
+                        url: "/Request/Addrq/?a=" + data1, //+value2+'/'+value1+'/'+value,
+                        contentType: 'application/json; charset=utf-8',
+                        //data : data1,
+                        success: function(msg) {
+                           alert(msg);
+                        }
+                    });
+                }
+                return false;
             });
+
 
 
 
@@ -134,11 +172,11 @@
     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header"><span class="ui-icon ui-icon-circle-arrow-s ui-icon-circle-arrow-n"></span>Create New Request</div>
 					<div class="portlet-content" style="display: none; ">
-						<div class="ct"><!--Div chua noi dung cua toan  bo cac noi dung trong request -->
+						<div class="ct"><!-- Div chua noi dung cua toan  bo cac noi dung trong request -->
 						    <div class=" tableform" >
 						      <%--<p class>Request Name:</p>  <input type="text" class="testinput dd1" />--%>
 						     <%-- <form  action="#" class="form1" >--%>
-						      <% Html.BeginForm("#", "#", FormMethod.Post, new { @class = "sent" });
+						      <% Html.BeginForm("AddRequest", "Request", FormMethod.Post, new { @class = "sent" , @id = "formq1" });
                { %>
 						        <table id="mytable" width="288" height="129" border="1" >
                                   <tr>
@@ -147,7 +185,7 @@
                                   </tr>
                                   <tr align="center">
                                     <td class="td1" ><p class="tp2"> Name: </p></td>
-                                    <td > <input name="textfield" id="textfield"   />
+                                    <td > <input name="textfield" id="vaname"   />
                                   
                                     
                                      </td>
@@ -159,13 +197,11 @@
                                   </tr>
                                   <tr>
                                     <td><p class="tp">Descript:</p> </td>
-                                    <td> <textarea class="rte-zone" name="description1" class="description1" id="id_description1" rows="7" cols="38">
-                                    
-                                    </textarea></td>
+                                    <td> <textarea class="rte-zone" name="description1" class="description1" id="id_description1" rows="7" cols="38"></textarea></td>
                                   </tr>
                                 </table>
-                                <input type="submit" id="send" class="send" value="Send Request" />
-						      <%} %>
+                                <input type="submit" id="send" class="send" value="Send Request" /><div class="loi" ></div>
+						      
 						    </div>
 						    <div class=" gh">
 						       
@@ -199,12 +235,13 @@
 						            </tbody>
 						         </table>
 						         <div id="echolink1"></div>
-						         
+						         <%} %>
 						         
 						      
 						    </div>
 						</div>          <!-- end div class="ct" -->
 					</div>
+					
 				</div>
 
  
