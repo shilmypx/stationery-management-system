@@ -119,5 +119,19 @@ namespace MvcStationeryManagementSystem.Models
             
         }
 
+
+       //them  gio hang 
+        public void inserdata(Request rs)
+        {
+            dc.Requests.InsertOnSubmit(rs);
+            dc.SubmitChanges();
+        }
+        //them vao bang thu 2
+        public void insert2(Request_Stationery rs1)
+        {
+            dc.Request_Stationeries.InsertOnSubmit(rs1);
+            dc.SubmitChanges();
+
+        }
     }
 }
