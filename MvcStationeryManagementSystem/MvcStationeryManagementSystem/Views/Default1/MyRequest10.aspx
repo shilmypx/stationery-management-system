@@ -7,6 +7,32 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+<%if (Session["email"] != null)
+  { %>
+
+  <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+					<div class="portlet-header ui-widget-header">Messages</div>
+					<div class="portlet-content">
+					<%if (Convert.ToInt32(Session["email"]) == 2) {%> 
+					<div class="response-msg error ui-corner-all">
+									<span>Error message</span>
+									Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+								</div>
+								<%Session.Remove("email");%>
+					<%}
+                       else if (Convert.ToInt32(Session["email"]) == 1)
+                                        
+                       {%> 
+     			
+					<div class="response-msg success ui-corner-all">
+									<span>Success message</span>
+									Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+								</div>
+								<%Session.Remove("email");%>
+						<%} %>
+					</div>
+				</div>
+    <%}%>
     <div id="tabs" >
     <%string ss = Session["ac"]==null ? "0" : (string)(Session["ac"]);%>
       <%=Html.Hidden("ac", ss, new {@id="idtabs"})%>
@@ -54,7 +80,8 @@
        
          
      <div id="tabs-1">
-        <div class="hastable">
+    
+     <div class="hastable">
 					<form name="myform" class="pager-form" method="post" action="#">
 						<table id="sort-table"> 
 						<thead> 

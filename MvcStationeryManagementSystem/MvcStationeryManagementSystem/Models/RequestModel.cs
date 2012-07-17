@@ -179,10 +179,15 @@ namespace MvcStationeryManagementSystem.Models
                 nmsg.To.Add(to);
                 nmsg.CC.Add(cc);
                 nmsg.Subject = subject;
-                nmsg.Body = messeage;
+               // nmsg.Body = messeage;
+                nmsg.Body = "<html><body>"+messeage;
+                nmsg.Body += "</body></html>";
                 nmsg.IsBodyHtml = true;
                 nmsg.Priority = MailPriority.High;
-
+               // nmsg.BodyEncoding = Encoding.UTF8;//Nội dung có dấu
+                //newMail.SubjectEncoding = Encoding.UTF8;//Tiêu đề có dấu
+               
+                //newMail.IsBodyHtml = true;//Chấp nhận code HTML/
                 SmtpClient smtpc = new SmtpClient(smtp, post);
                 smtpc.Credentials = new System.Net.NetworkCredential(netw, pass);
                 smtpc.EnableSsl = true;
