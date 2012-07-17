@@ -1,5 +1,84 @@
 
 	/* General */
+#idd
+{
+	width:80px;
+	height:30px;	
+}
+	
+.dec
+{
+	font-family:Verdana;
+	font-size:18px;
+	font-weight:bold;
+	color:Black;	
+}
+
+#textd
+{
+	font-family:Verdana;
+	font-size:20px;
+	font-weight:bold;
+	color:Red;	
+	width:400px;
+}
+.count
+{
+	margin: 0px 0px 0px 250px;
+	font-family: Verdana;
+	font-size: 17px;
+	width: 200%;	
+}
+
+
+.find_rs
+{
+	margin: -21px 0px 0px 0px;	
+}
+
+.divtd
+{
+	margin: -37px 0px 0px 865px;
+	font-family: Verdana;
+	font-size: 17px;
+	font-weight: bold;
+	width: 200%;	
+}
+	
+.divs input.medium, select.medium
+{
+	margin: -24px 0px 0px 250px;
+	width:130%;
+	height:20px;
+}
+.submit3
+{
+	width: 130px;
+	height: 30px;
+}
+	
+.ssubmit
+{
+	width: 90px;
+	height: 30px;
+	margin: -31px 0px 0px 737px;
+}
+
+.submit2
+{
+	width: 90px;
+	height: 30px;	
+}
+	
+.mytext
+{
+	font-family: Verdana;
+	font-size: 12px;
+	color:Red;
+	width: 200%;
+	
+}	
+	
 #myuser
 {
 	color:Black;

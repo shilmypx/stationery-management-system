@@ -11,42 +11,59 @@
 <script language="javascript" type="text/javascript">
     $(document).ready(function() {
         $('#MyClass').validate({
-                rules: {
+            rules: {
                 employee: {
-                    required: true,
-                        maxlength: 20
-                    }
-                },
-                messages: {
-                employee: {
+                    //required: true,
+                    maxlength: 50
                 }
+            },
+            messages: {
+                employee: {
             }
-        });    
-        
-        $('.mydel').click(function() {
-            return confirm('Are you sure Delete?');
-        });
-        
-        
-        
-        $(function() {
-            $("#rss").autocomplete({
-                source: function(request, response) {
-                    $.ajax({
-                    url: "/Employee/findnames", type: "POST", dataType: "json",
-                        data: {searchtext: request.term, maxResults: 10},
-                            success: function(data){
-                                response($.map(data, function(item){
-                                return { label: item.EmployeeNumber, value: item.EmployeeNumber, id: item.EmployeeNumber }
-                                }))
-                            }
-                        
-                    })
-                }
-            });
-        });
-
+        }
     });
+
+    $('.mydel').click(function() {
+        return confirm('Are you sure Delete?');
+        
+    });
+
+    /*
+    $('.ssubmit').click(function() {
+    var id = $('#employee').val();
+    if(id.indexOf(' ') != -1)
+    //$('#texte').html("ko dc chua khoang trang");
+    alert('Tu can tim ko dc chua khoang trang');
+    else
+    return true;
+    });
+    });
+    */
+    $('#employee').keyup(function() {
+        $('#texte').html("");
+    });
+
+    //search auto complete
+    /*
+    $('#employee').keyup(function() {
+
+            var keysearch = $(this).val();
+
+            $.ajax({
+    //   type: 'GET',
+    url: '/Employee/Search2/' + keysearch,
+    success: function(data) {
+    //    alert(data);
+    $('tbody#mytbody').html("");
+    $('tbody#mytbody').html(data);
+    }
+    });
+
+        });
+    */
+
+
+});
 </script>
 </asp:Content>
 
@@ -54,22 +71,29 @@
     <% using (Html.BeginForm("Search", "Employee",FormMethod.Post ,new {@id="MyClass"}))
        {%>
    
-    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
-					<div class="portlet-header ui-widget-header">Form elements in box</div>
+    <div class="portlet ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+					<div class="portlet-header ui-widget-header">Form search and management employee</div>
 					<div class="portlet-content">
 						<form action="#" method="post" enctype="multipart/form-data" class="forms" name="form" >
 							<ul>
-								
 								<li>
-									<label  class="desc">
-										Search With Employee Name:
-									</label>
-									<div>
-										<%--<%=Html.TextBox("employee", null, new { @id="rss" })%>--%>
-										<input type="text" name="employee" id="employee" class="field text medium" value="" tabindex="1" />
-									</div>
-									<div>
-									    <input type="submit" value="Submit" class="submit" />
+								    <div class="divs">
+									    <label class="dec">
+										    Search with username:
+									    </label>
+									    <% string rs2 = (string)ViewData["countrs"]; %>
+									    <label class="dec">
+									            Total Account: <%= rs2 %>      
+									    </label>
+									    <div class="find_rs">
+										    <input type="text" name="employee" id="employee" class="field text medium" value="" tabindex="1" />
+										    <input type="submit" value="Search" class="ssubmit" id="submit" />
+										    
+										</div>
+    									<div class="count">
+									        <% string rs = (string)ViewData["total"]; %>
+									        <label id="texte"><%= rs %></label>
+									    </div>
 									</div>
 								</li>
 							</ul>
@@ -82,13 +106,13 @@
 						<thead> 
 						<tr>
 							<th class="header">Employee Number</th>
-						    <th class="style1">Full Name</th>
+						    <th class="header">Full Name</th>
 						    <th class="header">Address</th> 
 						    <th class="header">Phone</th>
 							<th style="width:132px" class="">Options</th> 
 						</tr> 
 						</thead> 
-						<tbody> 
+						<tbody id="mytbody"> 
 						<% foreach (Employee am in (List<Employee>)ViewData["ListAccount"])
          {%>
 						<tr>
@@ -101,10 +125,7 @@
                                     <%= Html.ActionLink("Edit", "EditEmployee/" + am.EmployeeNumber, "Employee")%>
 								</a>&nbsp|&nbsp
 								<a >
-								    <% EmployeeModel c = new EmployeeModel(); %>
-								    <%= Html.ActionLink("Delete", "Delete/" + am.EmployeeNumber, "Employee", new { @class = "mydel" })%>
-
-								    
+								    <%= Html.ActionLink("Delete", "Delete/" + am.EmployeeNumber, "Employee", null ,new { @class = "mydel" })%>
 								</a>&nbsp|&nbsp
 								<a>
 								    <%= Html.ActionLink("Detail", "Detail/" + am.EmployeeNumber, "Employee")%>

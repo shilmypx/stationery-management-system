@@ -2,106 +2,48 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Text.RegularExpressions;
 
 namespace MvcStationeryManagementSystem.Models
 {
     public class EmployeeModel
     {
         private DataClassesStationeryDataContext dcs = new DataClassesStationeryDataContext();
-        //private string employeeNumber;
-
-        //public string EmployeeNumber
-        //{
-        //    get { return employeeNumber; }
-        //    set { employeeNumber = value; }
-        //}
-        //private string fullname;
-
-        //public string Fullname
-        //{
-        //    get { return fullname; }
-        //    set { fullname = value; }
-        //}
-        //private DateTime datebuild;
-
-        //public DateTime Datebuild
-        //{
-        //    get { return datebuild; }
-        //    set { datebuild = value; }
-        //}
-        //private DateTime dateBirth;
-
-        //public DateTime DateBirth
-        //{
-        //    get { return dateBirth; }
-        //    set { dateBirth = value; }
-        //}
-        //private string email;
-
-        //public string Email
-        //{
-        //    get { return email; }
-        //    set { email = value; }
-        //}
-        //private string address;
-
-        //public string Address
-        //{
-        //    get { return address; }
-        //    set { address = value; }
-        //}
-        //private string phone;
-
-        //public string Phone
-        //{
-        //    get { return phone; }
-        //    set { phone = value; }
-        //}
-        //private string images;
-
-        //public string Images
-        //{
-        //    get { return images; }
-        //    set { images = value; }
-        //}
-        //private int roleId;
-
-        //public int RoleId
-        //{
-        //    get { return roleId; }
-        //    set { roleId = value; }
-        //}
-        //private string password;
-
-        //public string Password
-        //{
-        //    get { return password; }
-        //    set { password = value; }
-        //}
-        //private string registrationNumber;
-
-        //public string RegistrationNumber
-        //{
-        //    get { return registrationNumber; }
-        //    set { registrationNumber = value; }
-        //}
 
         public List<Employee> ListEmployee()
         {
-            return dcs.Employees.OrderByDescending(e => e.DateBuild).ToList();
+            return dcs.Employees.OrderByDescending(e => e.DateBuild.Value).ToList();
+        }
+
+        public List<Employee>Total()
+        {
+            return dcs.Employees.ToList();
         }
 
         public List<Role> ListRole()
         {
-            return dcs.Roles.ToList();
+            return dcs.Roles.Where(e=>e.RoleId>1).ToList();
         }
 
-
-        public void role_em(string employ,int idrole)
+       
+       public List<Employee> ListRegistr(string id)
         {
-            dcs.Employees.Single(e => e.EmployeeNumber == employ);
-            dcs.Roles.Where(r => r.RoleId == idrole).First();
+            return dcs.Employees.Where(eml=>eml.EmployeeNumber==id).ToList();
         }
+       public List<Employee> ListRegistr2()
+       {
+           return dcs.Employees.Where(e=>e.RoleId==2).ToList();
+       }
+       public Employee ListRegistr1(string id)
+       {
+           return dcs.Employees.Where(eml => eml.EmployeeNumber == id).ToList().First();
+       }
+
+        public List<Employee> chonquyen(string id)
+        {
+            return dcs.Employees.Where(e => e.RoleId == 2 || e.RoleId == 3).ToList();
+        }
+
         public Employee info(string id)
         {
             return dcs.Employees.Where(en => en.EmployeeNumber==id).FirstOrDefault();
@@ -158,15 +100,68 @@ namespace MvcStationeryManagementSystem.Models
 
         public void DeleteEmployee(string id)
         {
-            Employee el = dcs.Employees.Where(e => e.EmployeeNumber==id).First();
-            dcs.Employees.DeleteOnSubmit(el);
-            dcs.SubmitChanges();
+            try
+            {
+                Employee el = dcs.Employees.Where(e => e.EmployeeNumber == id).First();
+                dcs.Employees.DeleteOnSubmit(el);
+                dcs.SubmitChanges();
+            }
+            catch
+            { 
+            
+            }
         }
 
         public List<Employee> SearchEmloyee(string employee)
         {
-            return dcs.Employees.Where(e => e.EmployeeNumber.Trim().ToLower().Contains(employee.Trim().ToLower())).ToList();
+             return dcs.Employees.Where(e => e.EmployeeNumber.Trim().ToLower().Contains(employee.Trim().ToLower())).ToList();
         }
+
+        public List<Employee> ListEmployeeSearch(string keysearch)
+        {
+            return this.dcs.Employees.Where(b => b.EmployeeNumber.ToLower().Contains(keysearch.Trim().ToLower())).ToList();
+        }
+
+        public int idemployee(int id)
+        {
+            int a = 0;
+            if(id == 3 )
+            {
+                a = 2;
+            }
+            if(id == 2)
+            {
+                a = 1;
+            }
+            return a;
+        }
+        
+        public string Dsach(int id)
+        {
+            List<Employee> ls = new List<Employee>();
+            string chuoi = " ";
+
+            ls = dcs.Employees.Where(el =>el.RoleId==idemployee(id)).ToList();
+            foreach(Employee e in ls )
+            {
+                chuoi += "<option value='"+e.EmployeeNumber+"'>"+e.EmployeeNumber+"</option>";
+            }
+            return chuoi;
+        }
+
+        public bool CheckAlphaNumeric(string id)
+        {
+            try
+            {
+                return Regex.Match(id.Trim(), @"^[a-zA-Z0-9]*$").Success;
+            }
+            catch
+            {
+                
+            }
+            return true;
+        }
+
 
     }
 }
