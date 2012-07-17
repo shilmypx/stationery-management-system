@@ -61,7 +61,7 @@
                             success: function(msg) {
                                 $(".remove").remove();
                                 $(".bd").append(msg);
-                                count1 = $(".id").size();
+                                count1 = $(".id").size() + 1;
                                 //  alert(count1);
                                 $('#echolink1').smartpaginator({ totalrecords: count1, recordsperpage: 5, initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'green', datacontainer: 'Table1', dataelement: 'tr', display: 'double' });
 
