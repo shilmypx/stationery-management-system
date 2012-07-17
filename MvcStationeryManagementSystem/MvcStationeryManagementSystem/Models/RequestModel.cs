@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using System.Web.UI.MobileControls;
 using System.Collections.Generic;
 using System.Net.Mail;
+using System.Text;
 
 namespace MvcStationeryManagementSystem.Models
 {
@@ -169,7 +170,7 @@ namespace MvcStationeryManagementSystem.Models
             rq.CatalogRQId = ctid;
             dc.SubmitChanges();
         }
-        public bool Send(string from, string to, string cc, string subject, string messeage, string smtp, int post, string netw, string pass)
+        public bool Send(string from, string to, string subject, string messeage, string smtp, int post, string netw, string pass)
         {
             bool bl;
             try
@@ -177,11 +178,13 @@ namespace MvcStationeryManagementSystem.Models
                 MailMessage nmsg = new MailMessage();
                 nmsg.From = new MailAddress(from);
                 nmsg.To.Add(to);
-                nmsg.CC.Add(cc);
+                //nmsg.CC.Add(cc);
                 nmsg.Subject = subject;
                // nmsg.Body = messeage;
                 nmsg.Body = "<html><body>"+messeage;
                 nmsg.Body += "</body></html>";
+                nmsg.BodyEncoding = Encoding.UTF8;//Nội dung có dấu
+                nmsg.SubjectEncoding = Encoding.UTF8;//Tiêu đề có dấu
                 nmsg.IsBodyHtml = true;
                 nmsg.Priority = MailPriority.High;
                // nmsg.BodyEncoding = Encoding.UTF8;//Nội dung có dấu

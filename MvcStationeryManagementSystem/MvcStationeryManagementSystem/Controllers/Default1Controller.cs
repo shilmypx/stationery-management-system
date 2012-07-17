@@ -87,6 +87,7 @@ namespace MvcStationeryManagementSystem.Controllers
             ViewData["if1"] = rm1.ListR_S(id);
             Employee el = (Employee)Session["Employee"];
             ViewData["em"] = dc.Employees.Where(i => i.EmployeeNumber.Equals(el.RegistrationNumber)).ToList().First();
+            
             return View();
         }
         [AcceptVerbs(HttpVerbs.Get)]
@@ -97,19 +98,21 @@ namespace MvcStationeryManagementSystem.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult update11(FormCollection form)
         {
-            
+            Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
                 RequestModel rq = new RequestModel();
                 Employee e = (Employee)Session["Employee"];
-
+                Employee e1 = dc.Employees.Where(ee => ee.EmployeeNumber == e.RegistrationNumber).ToList().First();
                 ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("1")).OrderByDescending(r => r.DDispatch1).ToList();
 
-                string From = "nguyenthang1010a@gmail.com";// form["From1"].ToString();
-                //string Pass = Form["Password"].ToString();
-                string To = "nguyenthang1010a@yahoo.com.vn";//"quoctuan06122009@gmail.com";//form["to"].ToString();//form["To1"].ToString();
-
+                string From = cf.MailName;
+                string To = e1.Email;
+                string type = cf.Type;
+                int post = Convert.ToInt32(cf.Ports);
+                string mailnetword = cf.MailNetwork;
+                string pass = cf.Password;
                 string Subject = "Request Name: " + form["rname"].ToString();
                 string Message = "<span>From: " + e.FullName + "</span><br/>" + "Date Dispatch: " + form["dd"].ToString() + "<br/>" + "Content: " + form["rc"].ToString() + "<br/>" + "Description: " + form["dt"].ToString();
-                if (rq.Send(From, To, "nguyenthang1010a@gmail.com", Subject, Message, "smtp.gmail.com", 587, "nguoigiahung.net@gmail.com", "giahungquetoi"))
+                if (rq.Send(From, To, Subject, Message, "type", post, mailnetword, pass))
                 {
                     rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
                     Session["email"] = 1;
@@ -127,6 +130,15 @@ namespace MvcStationeryManagementSystem.Controllers
         //ket thuc
         //2
         public ActionResult DetailRQ2(int id)
+        {
+            RequestModel rm = new RequestModel();
+            Request_StationeryModel rm1 = new Request_StationeryModel();
+            ViewData["if"] = rm.Infomation(id);
+            ViewData["if1"] = rm1.ListR_S(id);
+
+            return View();
+        }
+        public ActionResult DetailRQ22(int id)
         {
             RequestModel rm = new RequestModel();
             Request_StationeryModel rm1 = new Request_StationeryModel();
