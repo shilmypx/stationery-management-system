@@ -179,10 +179,10 @@
                
     </div>
 
-       <div id="tabs-2">
+      <div id="tabs-2">
         <div class="hastable">
 					<form name="myform" class="pager-form" method="post" action="#">
-						<table id="sort-table1"> 
+						<table id="sort-table"> 
 						<thead> 
 						<tr>
 							<%--<th><input type="checkbox" value="check_none" onclick="this.value=check(this.form.list)" class="submit"/></th>--%>
@@ -238,7 +238,7 @@
 						   
 						    <td>
 							
-						        <%=Html.ActionLink("Select","DetailRQ2/"+rq.RId1,"Default1")%>
+						        <%=Html.ActionLink("Select","DetailRQ22/"+rq.RId1,"Default1")%>
 							
 							</td>
 							
@@ -248,7 +248,7 @@
 						
 						</tbody>
 						</table>
-						<div id="pager1">
+						<div id="pager">
 					
 								<a class="btn_no_text btn ui-state-default ui-corner-all first" title="First Page" href="#">
 									<span class="ui-icon ui-icon-arrowthickstop-1-w"></span>
@@ -1122,7 +1122,7 @@
 						   
 						    <td>
 							
-						        <%=Html.ActionLink("Select","DetailRQ2/"+rq.RId1,"Default1")%>
+						        <%=Html.ActionLink("Select","DetailRQ22/"+rq.RId1,"Default1")%>
 							
 							</td>
 							

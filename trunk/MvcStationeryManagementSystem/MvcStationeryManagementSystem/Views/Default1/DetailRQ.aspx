@@ -28,7 +28,7 @@
                                 <%= Html.Hidden("en", rm.ENumber1)%>
                                    <%= Html.Hidden("ctid", rm.CRQId1)%>
                                 <li>
-                                CatalogRequestName:<%= Html.TextBox("a", rm.CRQName1, new { @class = "aa", @readonly = "readonly" })%>
+                                CatalogRequestName:<%= Html.TextBox("aa", rm.CRQName1, new { @class = "aa", @readonly = "readonly" })%>
                                 </li>
                                
                                 <li>
@@ -37,7 +37,7 @@
                                  <li>Employee Name:<%= Html.TextBox("b", rm.FName1, new { @class = "aa", @readonly = "readonly" })%>
                                  </li>
                                 <li>
-                                DateDispatch: <%= Html.TextBox("dd", rm.DDispatch1.ToString("dd-MM-yyyy"), new { @class = "aa", @readonly = "readonly" })%>
+                                DateDispatch: <%= Html.TextBox("dd", rm.DDispatch1, new { @class = "aa", @readonly = "readonly" })%>
                                 </li>
                                 
                                 <li>
@@ -56,12 +56,12 @@
                                
                                 </li>
                                 <li>
-                                Reques Content: <%= Html.TextArea("rc", rm.RContent1, new { @class = "aa", @readonly = "readonly" })%><br /> 
+                                Reques Content: <%= Html.TextArea("rc", rm.RContent1, new { @class = "aa"})%><br /> 
                                 </li>
                               
                                 
                                 <li>
-                                Descripton:<%= Html.TextArea("dt", rm.Dtion1, new { @class = "aa", @readonly = "readonly" })%><br /> 
+                                Descripton:<%= Html.TextArea("dt", rm.Dtion1, new { @class = "aa"})%><br /> 
                                 </li>
                                  <li>Stationery Items</li>
                                 <li>
@@ -76,15 +76,15 @@
 						    <th>Stationery Name</th> 
 						    <th>Quantity</th> 
 						    <th>Rate</th>
-						    <th>Arise</th>
-						    <%--<th>Description</th>--%>
-						    
+						   
 						   
 						</tr> 
 						</thead> 
 						<tbody> 
 	
-          <%foreach (Request_StationeryModel rq in (List<Request_StationeryModel>)ViewData["if1"])
+          <%
+              double total = 0;
+                 foreach (Request_StationeryModel rq in (List<Request_StationeryModel>)ViewData["if1"])
             {%>
 						<tr>
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
@@ -93,8 +93,8 @@
 						    <td><%=rq.Qty1%></td> 
 						    <td><%=rq.Rte1%></td> 
                            
-						    <td><%=rq.Ar1%></td> 
-						   
+						    
+						 <%total = total + Convert.ToDouble(rq.Qty1 * rq.Rte1);%>
 						</tr> 
 						<% }%>
 						
@@ -121,7 +121,10 @@
 									<option value="20">20 results</option>
 									<option value="30">30 results</option>
 									<option value="40">40 results</option>
-								</select>								
+								</select>
+								<a>
+								<span style="float:none">Total Money:<%=total%></span>								
+								</a>
 						</div>
 					</form>
 
