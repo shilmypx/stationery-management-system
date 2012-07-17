@@ -7,12 +7,12 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <% using (Html.BeginForm("Detail", "Employee"))
+    <% using (Html.BeginForm("BackSubmit", "Employee"))
         {%>
     <%  Employee em = (Employee)ViewData["ct"]; %>
     
     
-    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+    <div class="portlet ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header"><span class="ui-icon ui-icon-circle-arrow-s"></span>Form registering employee</div>
 					<div class="mydiv1">
 					    <div class="portlet-content-new" style="display: block;">
@@ -24,7 +24,7 @@
 							<ul>
 							    <li>
 							        <label class="desc">
-							            EmployeeNumber
+							            Username
 							        </label>
 							        <div>
 							        <input type="text" name="DateBirth" id="EmployeeNumber" class="field text medium" value="<%= em.EmployeeNumber %>" readonly="readonly" size="2" maxlength="50" tabindex="1" />
@@ -38,15 +38,15 @@
 									<input type="text" name="DateBirth" id="FullName" class="field text medium" value="<%= em.FullName %>" readonly="readonly" size="2" maxlength="50" tabindex="2" />
 									</div>
 								</li>
-								<li class="date">
-									<label class="desc" id="Label1" for="Field2">
+								<li>
+									<label class="desc">
 										DateBuild
 									</label>
 										<input type="text" name="DateBuild" id="datebuild" class="field text medium" value="<%= em.DateBuild %>" readonly="readonly" size="2" maxlength="50" tabindex="3" />
 										
 								</li>
-								<li class="date">
-									<label class="desc" id="title2" for="Field2">
+								<li>
+									<label class="desc">
 										DateBirth
 									</label>
 										<input type="text" name="DateBirth" id="datebirth" class="field text medium" value="<%= em.DateBirth %>" readonly="readonly" size="2" maxlength="50" tabindex="3" />
@@ -80,7 +80,7 @@
 								</li>
 								<li>
 									<label class="desc">
-										Role Id
+										Role
 									</label>
 									<div class="desc">
 									
@@ -93,18 +93,21 @@
 								
 								<li>
 									<label class="desc" id="title4" for="Field4">
-										RegistrationNumber
+										Manager
 									</label>
 									<div class="col">
 										<input type="text" name="RegistrationNumber" id="RegistrationNumber" value="<%= em.RegistrationNumber %>" readonly="readonly" class="field text medium" readonly="readonly" tabindex="9" />
 									</div>
 								</li>
-								<li>
+								<li class="buttons">
+									<input type="submit" class="submit3" id="submit3" value="◄◄List Manager" />
+								</li>
+								<%--<li>
 								    
 								<a>
 									<%= Html.ActionLink("Manage Employee ►►", "ManageEmployee", "Employee") %>
 								</a> 
-								</li>
+								</li>--%>
 							</ul>
 					
 					</div>

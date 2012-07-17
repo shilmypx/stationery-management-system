@@ -213,7 +213,6 @@
     <Content Include="Views\Default1\DetailRQ5.aspx" />
     <Content Include="Views\Default1\Index.aspx" />
     <Content Include="Views\Default1\MyRequest10.aspx" />
-    <Content Include="Views\Employee\AddEmp.aspx" />
     <Content Include="Views\Employee\AddEmployee.aspx" />
     <Content Include="Views\Employee\Detail.aspx" />
     <Content Include="Views\Employee\EditEmployee.aspx" />
