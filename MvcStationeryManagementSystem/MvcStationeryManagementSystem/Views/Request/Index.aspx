@@ -25,7 +25,9 @@
     <script type="text/javascript" language="javascript">
         $(document).ready(function() {
 
-
+            var count = $("#count").val();
+            var count1;
+            //  alert(count);
             $(".rte-zone").rte({
                 content_css_url: "../../Content/css/rte.css",
                 media_url: "../../Content/img/"
@@ -46,9 +48,10 @@
 
                 },
                 complete: function() {
-                    $('#echolink').smartpaginator({ totalrecords: 11, recordsperpage: 5, initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'green', datacontainer: 'mtb', dataelement: 'tr', display: 'double' });
+                    $('#echolink').smartpaginator({ totalrecords: count, recordsperpage: 5, initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'green', datacontainer: 'mtb', dataelement: 'tr', display: 'double' });
                     $(".luachon").click(function() {
                         // alert("ok");
+
                         var id = $(this).parent().find(".giatri").attr("value");
                         //alert(masp);
                         $.ajax({
@@ -58,7 +61,9 @@
                             success: function(msg) {
                                 $(".remove").remove();
                                 $(".bd").append(msg);
-                                $('#echolink1').smartpaginator({ totalrecords: 11, recordsperpage: 5, initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'green', datacontainer: 'Table1', dataelement: 'tr', display: 'double' });
+                                count1 = $(".id").size();
+                                //  alert(count1);
+                                $('#echolink1').smartpaginator({ totalrecords: count1, recordsperpage: 5, initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'green', datacontainer: 'Table1', dataelement: 'tr', display: 'double' });
 
                             },
                             complete: function() {
@@ -81,7 +86,9 @@
 
                                 $(".remove1").click(function() {
                                     //alert("ok");
+                                    count1--;
                                     $(this).parent().parent().remove();
+                                    $('#echolink1').smartpaginator({ totalrecords: count1, recordsperpage: 5, initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'green', datacontainer: 'Table1', dataelement: 'tr', display: 'double' });
                                     var id = $(this).parent().find(".giatri1").val();
                                     $.ajax({
                                         type: "GET",
@@ -125,16 +132,16 @@
                 }
                 else {
                     data1 = value2 + '|' + value1 + '|' + value;
-                   // alert(value2 + " | " + value + " | " + value1);
+                    // alert(value2 + " | " + value + " | " + value1);
                     $(".loi").html("");
                     $.ajax({
-                    type: "GET",
-                    dataType: 'html',
+                        type: "GET",
+                        dataType: 'html',
                         url: "/Request/Addrq/?a=" + data1, //+value2+'/'+value1+'/'+value,
                         contentType: 'application/json; charset=utf-8',
                         //data : data1,
                         success: function(msg) {
-                           alert(msg);
+                            alert(msg);
                         }
                     });
                 }
@@ -244,6 +251,6 @@
 					
 				</div>
 
- 
+            <input type="hidden" value='<%= ViewData["count"] %>' id="count" />
 </asp:Content>
 <%--</asp:Content>--%>
