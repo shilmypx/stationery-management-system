@@ -10,6 +10,7 @@ namespace MvcStationeryManagementSystem.Controllers
     {
 
         private StationeryModelcs s = new StationeryModelcs();
+        private StationeryModel s1 = new StationeryModel();
 
 
         //mo ve view Request
@@ -23,6 +24,7 @@ namespace MvcStationeryManagementSystem.Controllers
                 return RedirectToAction("Login" , "Default1");
             }
             ViewData["sanpham"] = s.ListStationery();
+            ViewData["count"] = s1.count();
             return View();
         }
         public ActionResult test()

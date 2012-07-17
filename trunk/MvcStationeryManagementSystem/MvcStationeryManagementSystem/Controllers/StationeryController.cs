@@ -126,7 +126,7 @@ namespace MvcStationeryManagementSystem.Controllers
                     chuoi += "<td>" + s.ProductName + "</td>";
                     chuoi += "<td>" + s.Rate + "</td>";
                     chuoi += "<td>" + s.Quantity + "</td>";
-                    chuoi += "<td>" + s.Arise + "</td>";
+                  //  chuoi += "<td>" + s.Arise + "</td>";
                     chuoi += "<td>" + s.CatalogeId + "</td>";
                     chuoi += "<td>" + s.Description + "</td>";
                     chuoi += "<td><a href='/Stationery/ProcessUpdate/" + s.ProductId + "'>Edit</a>||<a href='/Stationery/DeleteStationery/" + s.ProductId + "' class='xoa'>Delete</a></td>";
