@@ -98,7 +98,7 @@ namespace MvcStationeryManagementSystem.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult update11(FormCollection form)
         {
-            Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
+                Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
                 RequestModel rq = new RequestModel();
                 Employee e = (Employee)Session["Employee"];
                 Employee e1 = dc.Employees.Where(ee => ee.EmployeeNumber == e.RegistrationNumber).ToList().First();
@@ -110,9 +110,9 @@ namespace MvcStationeryManagementSystem.Controllers
                 int post = Convert.ToInt32(cf.Ports);
                 string mailnetword = cf.MailNetwork;
                 string pass = cf.Password;
-                string Subject = "Request Name: " + form["rname"].ToString();
-                string Message = "<span>From: " + e.FullName + "</span><br/>" + "Date Dispatch: " + form["dd"].ToString() + "<br/>" + "Content: " + form["rc"].ToString() + "<br/>" + "Description: " + form["dt"].ToString();
-                if (rq.Send(From, To, Subject, Message, "type", post, mailnetword, pass))
+                string Subject = "Withdraw Request " + form["rname"].ToString();
+                string Message = "<span><b>From:</b> " + e.FullName + "</span><br/>" + "<b>Date Dispatch:</b> " + form["dd"].ToString() + "<br/>" + "<b>Content: </b>" + form["rc"].ToString() + "<br/>" + "<b>Description:</b> " + form["dt"].ToString();
+                if (rq.Send(From, To, Subject, Message, type, post, mailnetword, pass))
                 {
                     rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
                     Session["email"] = 1;
@@ -124,9 +124,6 @@ namespace MvcStationeryManagementSystem.Controllers
              return RedirectToAction("MyRequest10");
             
         }
-        [AcceptVerbs(HttpVerbs.Post)]
-       
-       
         //ket thuc
         //2
         public ActionResult DetailRQ2(int id)
@@ -147,15 +144,74 @@ namespace MvcStationeryManagementSystem.Controllers
 
             return View();
         }
-        public ActionResult update2(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult update2()
         {
+            return View();
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult update2(FormCollection form)
+        {
+            Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
             RequestModel rq = new RequestModel();
             RequestModel22 rq22 = new RequestModel22();
             Employee e = (Employee)Session["Employee"];
-
+            Employee e1 = dc.Employees.Where(ee => ee.EmployeeNumber == e.RegistrationNumber).ToList().First();
             ViewData["lst1"] = rq22.Listrq2().Where(r => (e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2")) || (e.EmployeeNumber.Equals(r.RNumber1) && r.Stte1.Equals("6") && r.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
+            //
+            string From = cf.MailName;
+            string To = e1.Email;
+            string type = cf.Type;
+            int post = Convert.ToInt32(cf.Ports);
+            string mailnetword = cf.MailNetwork;
+            string pass = cf.Password;
+            string Subject = "Accept Request " + form["rname"].ToString();
+            string Message = "<span><b>From:</b> " + e.FullName + "</span><br/>" + "<b>Date Dispatch:</b> " + form["dd"].ToString() + "<br/>" + "<b>Content:</b> " + form["rc"].ToString() + "<br/>" + "<b>Description:</b> " + form["dt"].ToString();
+            if (rq.Send(From, To, Subject, Message, type, post, mailnetword, pass))
+            {
+                rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
+                Session["email"] = 1;
+            }
+            else
+                Session["email"] = 2;
+            //
+            rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
+            return RedirectToAction("MyRequest10");
 
-            rq.update(requestid, rname, st, dd, da, acc, rc, en, dt, ctid);
+        }
+        //
+        //
+        public ActionResult update22()
+        {
+            return View();
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult update22(FormCollection form)
+        {
+            Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
+            RequestModel rq = new RequestModel();
+            RequestModel22 rq22 = new RequestModel22();
+            Employee e = (Employee)Session["Employee"];
+            Employee e1 = dc.Employees.Where(ee => ee.EmployeeNumber == e.RegistrationNumber).ToList().First();
+            ViewData["lst1"] = rq22.Listrq2().Where(r => (e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("2")) || (e.EmployeeNumber.Equals(r.RNumber1) && r.Stte1.Equals("6") && r.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
+            //
+            string From = cf.MailName;
+            string To = e1.Email;
+            string type = cf.Type;
+            int post = Convert.ToInt32(cf.Ports);
+            string mailnetword = cf.MailNetwork;
+            string pass = cf.Password;
+            string Subject = "Reject Request " + form["rname"].ToString();
+            string Message = "<span><b>From:</b> " + e.FullName + "</span><br/>" + "<b>Date Dispatch:</b> " + form["dd"].ToString() + "<br/>" + "<b>Content:</b> " + form["rc"].ToString() + "<br/>" + "<b>Description:</b> " + form["dt"].ToString();
+            if (rq.Send(From, To, Subject, Message, type, post, mailnetword, pass))
+            {
+                rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
+                Session["email"] = 1;
+            }
+            else
+                Session["email"] = 2;
+            //
+            rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
             return RedirectToAction("MyRequest10");
 
         }
@@ -190,16 +246,43 @@ namespace MvcStationeryManagementSystem.Controllers
             ViewData["if"] = rm.Infomation(id);
             ViewData["if1"] = rm1.ListR_S(id);
             ViewData["role"] = dc.Roles.Where(r => r.RoleId == el.RoleId).ToList().First();
+            Session["eplo"]=dc.Employees.Where(e=>e.EmployeeNumber==((RequestModel)ViewData["if"]).ENumber1).ToList().First();
             return View();
         }
-        public ActionResult update4(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult update4()
         {
+            return View();
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult update4(FormCollection form)
+        {
+            Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
             RequestModel rq = new RequestModel();
             Employee e = (Employee)Session["Employee"];
-            RequestModel22 rq22 = new RequestModel22();
-            ViewData["lst5"] = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("1") && r1.Acc1 == true) || (r1.Stte1.Equals("5") && r1.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
+            Employee e1 = (Employee)Session["eplo"];
 
-            rq.update(requestid, rname, st, dd, DateTime.Now, acc, rc, en, dt, ctid);
+            RequestModel22 rq22 = new RequestModel22();
+           // Employee e1 = dc.Employees.Where(ee => ee.EmployeeNumber == e.RegistrationNumber).ToList().First();
+            ViewData["lst5"] = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("1") && r1.Acc1 == true) || (r1.Stte1.Equals("5") && r1.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
+            //
+            string From = cf.MailName;
+            string To = e1.Email;
+            string type = cf.Type;
+            int post = Convert.ToInt32(cf.Ports);
+            string mailnetword = cf.MailNetwork;
+            string pass = cf.Password;
+            string Subject = "Approved Request " + form["rname"].ToString();
+            string Message = "<span><b>From:</b> " + e.FullName + "</span><br/>" + "<b>Date Dispatch:</b> " + form["dd"].ToString() + "<br/>" + "<b>Content:</b> " + form["rc"].ToString() + "<br/>" + "<b>Description:</b> " + form["dt"].ToString();
+            if (rq.Send(From, To, Subject, Message, type, post, mailnetword, pass))
+            {
+                rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
+                Session["email"] = 1;
+            }
+            else
+                Session["email"] = 2;
+            //
+            rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
             return RedirectToAction("MyRequest10");
 
         }

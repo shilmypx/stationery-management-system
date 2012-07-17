@@ -8,13 +8,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+					
 					<div class="portlet-header ui-widget-header">Form elements in box</div>
 					<div class="portlet-content">
 					 <% RequestModel r = (RequestModel)ViewData["if"];
                             string a = r.Stte1; bool b = r.Acc1;
                           
 					    %>
-					      <% using (Html.BeginForm("update2", "default1"))
+					      <% using (Html.BeginForm("update2", "default1", FormMethod.Post))
               {%>
                             <% RequestModel rm = (RequestModel)ViewData["if"];
                                List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
@@ -41,7 +42,7 @@
                                 <%= Html.Hidden("en", rm.ENumber1)%>
                                    <%= Html.Hidden("ctid", rm.CRQId1)%>
                                 <li>
-                                CatalogRequestName:<%= Html.TextBox("a", rm.CRQName1, new { @class = "aa", @readonly = "readonly" })%>
+                                CatalogRequestName:<%= Html.TextBox("aa", rm.CRQName1, new { @class = "aa", @readonly = "readonly" })%>
                                 </li>
                                
                                 <li>
@@ -69,12 +70,12 @@
                                
                                 </li>
                                 <li>
-                                Reques Content: <%= Html.TextArea("rc", rm.RContent1, new { @class = "aa", @readonly = "readonly" })%><br /> 
+                                Reques Content: <%= Html.TextArea("rc", rm.RContent1, new { @class = "aa" })%><br /> 
                                 </li>
                               
                                 
                                 <li>
-                                Descripton:<%= Html.TextArea("dt", rm.Dtion1, new { @class = "aa", @readonly = "readonly" })%><br /> 
+                                Descripton:<%= Html.TextArea("dt", rm.Dtion1, new { @class = "aa"})%><br /> 
                                 </li>
                                  <li>Stationery Items</li>
                                 <li>
@@ -89,7 +90,7 @@
 						    <th>Stationery Name</th> 
 						    <th>Quantity</th> 
 						    <th>Rate</th>
-						    <th>Arise</th>
+						    
 						    <%--<th>Description</th>--%>
 						    
 						   
@@ -97,7 +98,9 @@
 						</thead> 
 						<tbody> 
 	
-          <%foreach (Request_StationeryModel rq in (List<Request_StationeryModel>)ViewData["if1"])
+          <%
+              double total = 0;
+                  foreach (Request_StationeryModel rq in (List<Request_StationeryModel>)ViewData["if1"])
             {%>
 						<tr>
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
@@ -105,8 +108,8 @@
 						    <td><%=rq.PName1%></td> 
 						    <td><%=rq.Qty1%></td> 
 						    <td><%=rq.Rte1%></td> 
-                           
-						    <td><%=rq.Ar1%></td> 
+                           <%total = total + Convert.ToDouble(rq.Qty1 * rq.Rte1);%>
+						   
 						   
 						</tr> 
 						<% }%>
@@ -134,7 +137,8 @@
 									<option value="20">20 results</option>
 									<option value="30">30 results</option>
 									<option value="40">40 results</option>
-								</select>								
+								</select>	
+								<a><span style="float:none">Total Money:<%=total%></span></a>							
 						</div>
 					</form>
 
@@ -177,7 +181,7 @@
                             <%Html.EndForm();%>
                             <%--sumit2--%>
 					    
-					     <% using (Html.BeginForm("update2", "default1"))
+					     <% using (Html.BeginForm("update22", "default1",FormMethod.Post))
              {%>
                             <% RequestModel rm = (RequestModel)ViewData["if"];
                                List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
