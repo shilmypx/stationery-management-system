@@ -1,7 +1,7 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Template.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Template.Master" Inherits="System.Web.Mvc.ViewPage" %>
 <%@ Import Namespace="MvcStationeryManagementSystem.Models" %>
-<%--<%@ Register Assembly="MSCaptcha" Namespace="MSCaptcha" TagPrefix="cc1" %>
---%><asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+
 	AddEmployee
 </asp:Content>
 
@@ -13,10 +13,30 @@
     <script language="javascript" type="text/javascript">
         $(document).ready(function() {
 
+            //validate combobox
+        $.validator.addMethod('selectNone',
+          function(value, element) {
+              return this.optional(element) ||
+                (value.indexOf("--Select--") == -1);
+          }, "Please select an option");
+            
+
+            //ket thuc combo
+            $('#idd').click(function() {
+                var username = $('#EmployeeNumber').val();
+                if (username.indexOf(' ') != -1)
+                //alert('Username can not contain spaces!');
+                    $('#text').html('Username can not contain spaces!');
+                else
+                    return true;
+            });
+
+
+            //form
             $('#MyClass').validate({
                 rules: {
                     EmployeeNumber: {
-                    required: true,
+                        required: true,
                         minlength: 6,
                         maxlength: 30
                     },
@@ -44,17 +64,22 @@
                         required: true,
                         minlength: 6,
                         maxlength: 30
+                    },
+                    fileUpload: {
+                        required: true,
+                        accept: "jpg|png|gif"
+                    },
+                    RoleId: {
+                        selectNone: true
                     }
                 },
                 messages: {
                     EmployeeNumber: {
                 }
-
-
-
             }
         });
 
+        
 
         //su dung datepicker
         $('input[name = DateBirth]').datepicker({
@@ -67,6 +92,49 @@
         });
         //Ket thuc datepicker
 
+        //json lay ket qua
+        $('#role').change(function() {
+
+            var ma = $('#role option:checked').val();
+            // alert (ma);
+
+            $.ajax({
+                type: 'POST',
+                url: '/employee/HienThiDanhSach/' + ma,
+                success: function(data) {
+                    $("#RegistrationNumber").html(data);
+                }
+            });
+            //end json
+        });
+        //Kiem tra trung username
+        $('#EmployeeNumber').keyup(function() {
+
+            var id = $("#EmployeeNumber").val();
+            //$(".bb").html(rse);
+            $.ajax({
+                //   type: 'GET',
+                url: '/employee/Identical/' + id,
+                success: function(data) {
+
+                    $('#text').html(data);
+                    //$('#idd').hide();
+                }
+            });
+        });
+        //and ktt
+        $('#Email').keyup(function() {
+            var id = $('#Email').val();
+            $.ajax({
+                url: '/employee/IdenEmail/' + id,
+                success: function(data) {
+                    $('#textb').html(data);
+                }
+            });
+        });
+
+
+
 
     });
 </script>
@@ -77,40 +145,54 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <% using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post, new {@id="MyClass", enctype = "multipart/form-data" }))
-       {%>
-       
+    <div class="bb"></div>
+    <%int i =Session["kt"]==null ? 1 : 0;%>
+        <%=Html.Hidden("v",i,new{@id="id1"})%>
+    <% using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post, new { @id = "MyClass", @name = "MyClass", @class = "MyClass", enctype = "multipart/form-data" }))
+       {%>  
     <div id="addemployee">
-        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+        <div class="portlet ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form elements in box</div>
 					<div class="portlet-content-new">
 							<ul>
 							    <li>
-							    
 							        <label class="desc">
 							            Username
 							        </label>
 							        <div>
 							            <input type="text" name="EmployeeNumber" id="EmployeeNumber" class="field text medium" value="" tabindex="1" />
+							            <label id="text" class="mytext"></label>
+							            <% string emm = (string)Session["Username"]; %>
+							            <%=Html.Hidden("b", emm, new {@id="bbb" })%>
 							            
 							        </div>
 							    </li>
+							    
+							    <li>
+									<label class="desc">
+										Password
+									</label>
+									<div>
+										<input type="password" name="Password" id="Password" class="field text medium" value="" tabindex="2" />
+									</div>
+								</li>
+							    
 								<li>
 									<label class="desc">
 										FullName
 									</label>
 									<div>
-										<input type="text" name="FullName" id="FullName" class="field text medium" value="" maxlength="255" tabindex="2" />
+										<input type="text" name="FullName" id="FullName" class="field text medium" value="" maxlength="255" tabindex="3" />
 									</div>
 								</li>
 								
-								<%=Html.Hidden("datebuild", DateTime.Now)%>
+								
 								
 								<li class="date">
 									<label class="desc" id="title2" for="Field2">
 										DateBirth
 									</label>
-										<input type="text" name="DateBirth" id="DateBirth" class="field text medium" value="" size="2" maxlength="50" tabindex="3" />
+										<input type="text" name="DateBirth" id="DateBirth" class="field text medium" value="" readonly="readonly" size="2" maxlength="50" tabindex="4" />
 										
 								</li>
 								<li>
@@ -118,15 +200,16 @@
 										Email
 									</label>
 									<div>
-										<input type="text" name="Email" id="Email" class="field text medium" value="" maxlength="255" tabindex="4" />
+										<input type="text" name="Email" id="Email" class="field text medium" value="" maxlength="255" tabindex="5" />
 									</div>
+									<label id="textb" class="mytext"></label>
 								</li>
 								<li>
 									<label class="desc">
 										Address
 									</label>
 									<div>
-										<input type="text" name="Address" id="Address" class="field text medium" value="" maxlength="255" tabindex="5" />
+										<input type="text" name="Address" id="Address" class="field text medium" value="" maxlength="255" tabindex="6" />
 									</div>
 								</li>
 								<li>
@@ -134,7 +217,7 @@
 										Phone
 									</label>
 									<div>
-										<input type="text" name="Phone" id="Phone" class="field text medium" rows="5" cols="50" tabindex="6" />
+										<input type="text" name="Phone" id="Phone" class="field text medium" rows="5" cols="50" tabindex="7" />
 									</div>
 								</li>
 								<li>
@@ -142,18 +225,20 @@
 								    Images
 								</label>
 								    <div>
-								        Select a file: <input type="file" name="fileUpload" tabindex="7" />
+								        Select a file: <input type="file" name="fileUpload" id="file_upload" tabindex="8" />
 								    </div>
+								    <label id="file_erro"></label>
 								</li>
 								
 								<li>
 									<label class="desc">
-										Role Id
+										Role
 									</label>
 									<div class="float-left">
-										<select tabindex="8" id="role" class="field select large" name="RoleId" tabindex="8" >
+										<select tabindex="8" id="role" class="field select large" name="RoleId" tabindex="9" >
+										<option>--Select--</option>
 										 <% foreach (Role ro in (List<Role>)ViewData["dsrole"])
-              {%>
+              {%>                           
 										    <option value="<%=ro.RoleId%>">
 												<%=ro.RoleName%>
 											</option>
@@ -163,55 +248,23 @@
 									
 									</div>
 									
-									
 								</li>
-								<li>
-									<label class="desc">
-										Password
-									</label>
-									<div>
-										<input type="password" name="Password" id="Password" class="field text medium" value="" tabindex="9" />
-									</div>
-								</li>
-								
 								<li>
 									<label class="desc" id="title4" for="Field4">
-										RegistrationNumber
+										Manager
 									</label>
 									<div class="col">
-										<%--<input type="text" name="RegistrationNumber" id="RegistrationNumber" class="field text medium" tabindex="10" />--%>
 									    <div class="float-left">
-										<select tabindex="8" class="field select large" name="RoleId" tabindex="10">
-										    <option value="re">
-												RegistrationNumber
-											</option>
-										 
-											
+										    <select  class="field select large" id="RegistrationNumber" name="RegistrationNumber" tabindex="10">
+										    
 										</select>
 									
 									</div>
 									</div>
 								</li>
 								
-								<li>
-								   <%-- <label class="desc">
-								        Capcha
-								    </label>
-								    <div>
-                                        <cc1:CaptchaControl ID="Captcha1" runat="server" 
-                                        CaptchaBackgroundNoise="Low" CaptchaLength="5" 
-                                        CaptchaHeight="60" CaptchaWidth="200" 
-                                        CaptchaLineNoise="None" CaptchaMinTimeout="5" 
-                                        CaptchaMaxTimeout="240" FontColor = "#529E00" />
-                                          
-                                    </div>
-                                    <div>
-                                        <input type="text" id="txtCaptcha" />
-                                    </div>--%>
-								</li>
-								
 								<li class="buttons">
-									<input type="submit" class="submit" value="Save" tabindex="11" />
+									<input type="submit" class="submit" id="idd" name="idd" value="Insert" tabindex="11" />
 								</li>
 							</ul>
 					</div>
