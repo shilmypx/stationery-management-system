@@ -46,12 +46,13 @@ namespace MvcStationeryManagementSystem.Models
 
         //}
 
-        public void Edit(int id,string ProductName, double Rate, int Quantity, int CatalogeId, string Description)
+        public void Edit(int id, string ProductName, double Rate, int Quantity, double Arise, int CatalogeId, string Description)
         {
             Stationery sta = dct.Stationeries.Where(st => st.ProductId == id).ToList().First();
             sta.ProductName = ProductName;
             sta.Rate = Convert.ToDecimal(Rate);
             sta.Quantity = Convert.ToInt32(Quantity);
+            sta.Arise=Convert.ToDecimal(Arise);
             sta.CatalogeId = Convert.ToInt32(CatalogeId);
             sta.Description = Description;
             dct.SubmitChanges();
