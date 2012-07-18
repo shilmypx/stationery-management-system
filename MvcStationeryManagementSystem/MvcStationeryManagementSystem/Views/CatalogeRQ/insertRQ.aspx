@@ -26,7 +26,7 @@
 									
 								</li>
 								<li class="buttons">
-									<input type="submit" class="submit" value="Insert" tabindex="11"/>
+									<input type="submit" id="ck" class="submit" value="Insert" tabindex="11"/>
 								</li>
 							</ul>
 						</form>
@@ -94,7 +94,7 @@
                     });
 
              });
-             $('#ck').submit(function() {
+             $('#ck').click(function() {
                  a = $('#a').attr("value");
                  if (a == 1)
                      return true;

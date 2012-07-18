@@ -30,7 +30,7 @@
 								
 							
 								<li class="buttons">
-									<input type="submit" class="submit" value="Insert" tabindex="11"/>
+									<input type="submit" id="ck" class="submit" value="Insert" tabindex="11"/>
 								</li>
 							</ul>
 						</form>
@@ -64,16 +64,16 @@
     </script>
    <script type="text/javascript">
 
-       $(document).ready(function() {
 
-       $("#CatalogeName").keyup(function() {
+       $(document).ready(function() {
+           $("#CatalogeName").keyup(function() {
                var status = $("#bb");
                status.html("");
                $('#a').attr("value", 0);
            });
            $("#CatalogeName").blur(function() {
 
-           var name = $("#CatalogeName").val();
+               var name = $("#CatalogeName").val();
 
                var status = $("#bb");
 
@@ -88,8 +88,9 @@
                             status.html(name + "is available!").addClass("green");
                             $('#a').attr("value", 1);
 
+
                         }
-                      
+
                         else {
                             status.html(name + " is not available!").addClass("red");
                             $('#a').attr("value", 0);
@@ -97,17 +98,25 @@
                         }
 
                     });
+               
 
            });
-           $('#ck').submit(function() {
-               a = $('#a').attr("value");
-               if (a == 1)
-                   return true;
-               return false;
-           });
-
+         
        });
     </script>  
 
- 
+ <script language="javascript" type="text/javascript">
+     $(document).ready(function() {
+         $('#ck').click(function() {
+             a = $('#a').attr("value");
+                      if (a == 1)
+                          return true;
+                      return false;
+         });
+
+
+     });
+
+    
+    </script>
 </asp:Content>

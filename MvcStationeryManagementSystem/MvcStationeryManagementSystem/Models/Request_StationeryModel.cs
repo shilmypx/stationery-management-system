@@ -94,7 +94,10 @@ namespace MvcStationeryManagementSystem.Models
                                     ProductId=rs.ProductId,
                                     Quantity=rs.Quantity,
                                     Rate = rs.Rate,
+
+
                                     //Arise=rs.Arise,
+
                                     Description=rs.Description,
                                     CatalogeId=cl.CatalogeId,
                                     CatalogeName=cl.CatalogeName,
@@ -107,7 +110,9 @@ namespace MvcStationeryManagementSystem.Models
                 obrq.PdId = r.ProductId;
                 obrq.Qty = r.Quantity;
                 obrq.Rte = Convert.ToDouble(r.Rate);
+
                 //obrq.Ar = Convert.ToDouble(r.Arise);
+
                 obrq.Dtion = r.Description;
                 obrq.CtalogId = r.CatalogeId;
                 obrq.CtalogeName = r.CatalogeName;
@@ -134,4 +139,5 @@ namespace MvcStationeryManagementSystem.Models
 
         }
     }
+
 }

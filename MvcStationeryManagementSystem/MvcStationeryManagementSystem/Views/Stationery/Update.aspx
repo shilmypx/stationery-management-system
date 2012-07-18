@@ -14,6 +14,7 @@
 					<div class="portlet-header ui-widget-header">Form Update Stationey</div>
 					<div class="portlet-content">
 							<ul>
+							<li><%=Html.Hidden("ProductId",s.ProductId) %> </li>
 							    <li>
 							        <label class="desc">
 							            ProductName:
@@ -40,6 +41,16 @@
 										Quantity
 									</label>
 										<input type="text" name="Quantity" id="Quantity" class="field text medium" value="<%=s.Quantity %>" size="2" tabindex="3" />
+										
+							
+							
+								
+							</li>
+							<li class="date">
+									<label class="desc" id="Label2" for="Field2">
+										Arise
+									</label>
+										<input type="text" name="Arise" id="Arise" class="field text medium" value="<%=s.Arise %>" size="2" tabindex="3" />
 										
 							
 							

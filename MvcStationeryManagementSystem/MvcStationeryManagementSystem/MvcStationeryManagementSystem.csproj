@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -46,6 +46,9 @@
     <Reference Include="System.Data.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\Program Files\Microsoft ASP.NET\ASP.NET MVC 2\\Assemblies\System.Web.Mvc.dll</HintPath>
@@ -65,12 +68,14 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    
+    <Compile Include="Controllers\ChangePassController.cs" />
     <Compile Include="Controllers\CatalogeController.cs" />
     <Compile Include="Controllers\CatalogeRQController.cs" />
-    <Compile Include="Controllers\ChangePasswordsController.cs" />
     <Compile Include="Controllers\Default1Controller.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
-    <Compile Include="Controllers\Error404Controller.cs" />
+    <Compile Include="Controllers\Error404Controller.cs" />    	
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\StationeryController.cs" />
@@ -78,9 +83,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    
+       <Compile Include="Models\ChangePassModel.cs" />
     <Compile Include="Models\CatalogeModel.cs" />
     <Compile Include="Models\CatalogeRQModel.cs" />
-    <Compile Include="Models\ChangePasswordsModel.cs" />
+    
     <Compile Include="Models\DataClassesStationery.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -195,10 +202,32 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\request.css" />
+    <Content Include="Content\css\rte.css" />
+    <Content Include="Content\google-404-not-found-error.png" />
+    <Content Include="Content\images\icons\1342022341_tick.png" />
+    <Content Include="Content\images\icons\load.gif" />
+    <Content Include="Content\img\bold.gif" />
+    <Content Include="Content\img\close.gif" />
+    <Content Include="Content\img\image.png" />
+    <Content Include="Content\img\italic.gif" />
+    <Content Include="Content\img\link.png" />
+    <Content Include="Content\img\unordered.gif" />
+    <Content Include="Content\js\jquery-1.6.2.js" />
+    <Content Include="Content\js\jquery.validate.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\smartpaginator.css" />
+    <Content Include="Views\CatalogeRQ\CatalogeRQ.aspx" />
+    <Content Include="Views\CatalogeRQ\insertRQ.aspx" />
+    <Content Include="Views\CatalogeRQ\updateRQ.aspx" />
+    <Content Include="Views\Cataloge\Cataloge.aspx" />
+    <Content Include="Views\Cataloge\InsertCataloge.aspx" />
+    <Content Include="Views\Cataloge\updateCataloge.aspx" />
     <Content Include="bin\MvcStationeryManagementSystem.dll" />
     <Content Include="bin\MvcStationeryManagementSystem.pdb" />
     <Content Include="Content\js\jquery-1.4.2.min.js" />
     <Content Include="Content\js\jquery.validate.js" />
+    <Content Include="Views\ChangePass\ChangePass.aspx" />
     <Content Include="Views\CatalogeRQ\CatalogeRQ.aspx" />
     <Content Include="Views\CatalogeRQ\insertRQ.aspx" />
     <Content Include="Views\CatalogeRQ\updateRQ.aspx" />
@@ -224,6 +253,9 @@
     <Content Include="Views\Role\Rolement.aspx" />
     <Content Include="Views\Role\UpdateRole.aspx" />
     <Content Include="Views\Shared\ViewUserControl1.ascx" />
+    <Content Include="Views\Stationery\InsertSta.aspx" />
+    <Content Include="Views\Stationery\Statioery.aspx" />
+    <Content Include="Views\Stationery\Update.aspx" />
     <Content Include="Views\Shared\ViewUserControl2.ascx" />
     <Content Include="Views\Shared\ViewUserControl3.ascx" />
     <Content Include="Views\Stationery\InsertSta.aspx" />
