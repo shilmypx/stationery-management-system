@@ -17,6 +17,21 @@ namespace MvcStationeryManagementSystem.Models
     public class ViewRoleModel
     {
         private DataClassesStationeryDataContext dcsd = new DataClassesStationeryDataContext();
+        public List<Role> dsRole()
+        {
+            return dcsd.Roles.ToList();
+        }
+
+        public Role quyen(int id)
+        {
+            return dcsd.Roles.Where(r => r.RoleId == id).FirstOrDefault();
+        }
+
+
+        public Role ro(int id)
+        {
+            return dcsd.Roles.Where(r => r.RoleId.Equals(id)).FirstOrDefault();
+        }
         
     }
 }
