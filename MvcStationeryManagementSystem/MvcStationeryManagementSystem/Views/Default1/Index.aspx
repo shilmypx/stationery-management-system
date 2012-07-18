@@ -45,12 +45,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.Rname1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else

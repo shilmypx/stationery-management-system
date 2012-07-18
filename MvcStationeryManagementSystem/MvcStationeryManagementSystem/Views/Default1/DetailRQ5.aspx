@@ -14,12 +14,12 @@
                             string a = r.Stte1; bool b = r.Acc1;
 					    %>
 					      
-					      <% using (Html.BeginForm("update5", "default1"))
+					      <% using (Html.BeginForm("update5", "default1", FormMethod.Post))
               {%>
                             <% RequestModel rm = (RequestModel)ViewData["if"];
                                List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
                                 <ul>
-                                
+                                 <%= Html.Hidden("st5", rm.Stte1)%>
                                 <%= Html.Hidden("requestid", rm.RId1)%> 
                                 
                                 
@@ -45,7 +45,7 @@
                                 <%= Html.Hidden("en", rm.ENumber1)%>
                                    <%= Html.Hidden("ctid", rm.CRQId1)%>
                                 <li>
-                                CatalogRequestName:<%= Html.TextBox("a", rm.CRQName1, new { @class = "aa", @readonly = "readonly" })%>
+                                CatalogRequestName:<%= Html.TextBox("aa", rm.CRQName1, new { @class = "aa", @readonly = "readonly" })%>
                                 </li>
                                
                                 <li>
@@ -54,7 +54,7 @@
                                  <li>Employee Name:<%= Html.TextBox("b", rm.FName1, new { @class = "aa", @readonly = "readonly" })%>
                                  </li>
                                 <li>
-                                DateDispatch: <%= Html.TextBox("dd", rm.DDispatch1.ToString("dd-MM-yyyy"), new { @class = "aa", @readonly = "readonly" })%>
+                                DateDispatch: <%= Html.TextBox("dd", rm.DDispatch1, new { @class = "aa", @readonly = "readonly" })%>
                                 </li>
                                 
                                 <li>
@@ -73,12 +73,12 @@
                                
                                 </li>
                                 <li>
-                                Reques Content: <%= Html.TextArea("rc", rm.RContent1, new { @class = "aa", @readonly = "readonly" })%><br /> 
+                                Reques Content: <%= Html.TextArea("rc", rm.RContent1, new { @class = "aa"})%><br /> 
                                 </li>
                               
                                 
                                 <li>
-                                Descripton:<%= Html.TextArea("dt", rm.Dtion1, new { @class = "aa", @readonly = "readonly" })%><br /> 
+                                Descripton:<%= Html.TextArea("dt", rm.Dtion1, new { @class = "aa"})%><br /> 
                                 </li>
                                  <li>Stationery Items</li>
                                 <li>
@@ -93,7 +93,7 @@
 						    <th>Stationery Name</th> 
 						    <th>Quantity</th> 
 						    <th>Rate</th>
-						    <th>Arise</th>
+						   
 						    <%--<th>Description</th>--%>
 						    
 						   
@@ -101,7 +101,9 @@
 						</thead> 
 						<tbody> 
 	
-          <%foreach (Request_StationeryModel rq in (List<Request_StationeryModel>)ViewData["if1"])
+          <%
+              double total = 0;
+                  foreach (Request_StationeryModel rq in (List<Request_StationeryModel>)ViewData["if1"])
             {%>
 						<tr>
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
@@ -110,7 +112,7 @@
 						    <td><%=rq.Qty1%></td> 
 						    <td><%=rq.Rte1%></td> 
                            
-						    <td><%=rq.Ar1%></td> 
+						   <%total = total + Convert.ToDouble(rq.Qty1 * rq.Rte1);%>
 						   
 						</tr> 
 						<% }%>
@@ -138,7 +140,8 @@
 									<option value="20">20 results</option>
 									<option value="30">30 results</option>
 									<option value="40">40 results</option>
-								</select>								
+								</select>	
+								<a><span style="float:none">Total Money:<%=total%></span></a>							
 						</div>
 					</form>
 
@@ -168,16 +171,16 @@
                            
                             <%--sumit2--%>
 					   
-					       <% using (Html.BeginForm("update5", "default1"))
+					       <% using (Html.BeginForm("update55", "default1",FormMethod.Post))
               {%>
                             <% RequestModel rmm = (RequestModel)ViewData["if"];
                                List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
-                                <ul>
-                                
+                             <ul>
+                                <%=Html.Hidden("st6", rmm.Stte1)%>
                                 <%= Html.Hidden("requestid", rmm.RId1)%> 
                                 
                                 
-                               <%= Html.Hidden("da", rmm.DApprove1)%>
+                               
                               
                                 <%if (a.Equals("2"))
                                  {%>
@@ -197,8 +200,8 @@
                                 
                                 <%}%>
                     
-                                <%=Html.Hidden("st",rmm.Stte1)%>
-                                     <%=Html.Hidden("acc",rmm.Acc1)%>
+                               
+                                    
                                  
                                 <%= Html.Hidden("en", rmm.ENumber1)%>
                                    <%= Html.Hidden("ctid", rmm.CRQId1)%>
@@ -208,10 +211,9 @@
                                
                                
                                 
-                                <%= Html.Hidden("dd", rmm.DDispatch1.ToString("dd-MM-yyyy"))%>
+                                <%= Html.Hidden("dd", rmm.DDispatch1)%>
                                
-                                     <%= Html.Hidden("da", DateTime.Now.ToString("dd-MM-yyyy"))%>
-                                        
+                                    
                                 
                                
                                 
@@ -221,6 +223,7 @@
                                 
                                
                                 <%= Html.Hidden("dt", rmm.Dtion1)%>
+                               
                                 <%Employee em1 = (Employee)Session["Employee"];
                    if (!(a.Equals("7") && b == false) && !(a.Equals("9") && b == false))
                                   {%>
@@ -232,6 +235,7 @@
                               <%}else if(em1.RoleId==1){%>
                                 <li style="float:left;margin-left: 254px;margin-top: -40px">
                                 <input type="submit" name="submitButton" value="    No Approved     "/>
+                                </li>
                               <%} %>
                                
                                 </ul>

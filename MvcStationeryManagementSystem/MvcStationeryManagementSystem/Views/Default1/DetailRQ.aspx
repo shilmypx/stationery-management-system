@@ -10,12 +10,12 @@
 					<div class="portlet-header ui-widget-header">Form elements in box</div>
 					<div class="portlet-content">
 					 <% RequestModel rm = (RequestModel)ViewData["if"];
-         Employee eml = (Employee)Session["Employee"];		     
-        
-             using (Html.BeginForm("update11", "default1",FormMethod.Post))
-             {
+         Employee eml = (Employee)Session["Employee"];
 
-                 List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
+         using (Html.BeginForm("update11", "default1", FormMethod.Post, new {@id="fdraw"}))
+         {
+
+             List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
                                 <ul>
                                 
                                 <%= Html.Hidden("requestid", rm.RId1)%> 
@@ -56,12 +56,12 @@
                                
                                 </li>
                                 <li>
-                                Reques Content: <%= Html.TextArea("rc", rm.RContent1, new { @class = "aa"})%><br /> 
+                                Reques Content: <%= Html.TextArea("rc", rm.RContent1, new { @class = "aa",@id="rc"})%><br /> 
                                 </li>
                               
                                 
                                 <li>
-                                Descripton:<%= Html.TextArea("dt", rm.Dtion1, new { @class = "aa"})%><br /> 
+                                Descripton:<%= Html.TextArea("dt", rm.Dtion1, new { @class = "aa", @id = "dt" })%><br /> 
                                 </li>
                                  <li>Stationery Items</li>
                                 <li>
@@ -83,9 +83,9 @@
 						<tbody> 
 	
           <%
-              double total = 0;
-                 foreach (Request_StationeryModel rq in (List<Request_StationeryModel>)ViewData["if1"])
-            {%>
+                         double total = 0;
+                         foreach (Request_StationeryModel rq in (List<Request_StationeryModel>)ViewData["if1"])
+                         {%>
 						<tr>
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.CtalogeName1%></td> 
@@ -132,14 +132,15 @@
 					
 				</div>
                                 </li>
-                                 <% if (rm.Stte1.Equals("1")||(rm.Stte1.Equals("5") && eml.RoleId==3))
+                                 <% if (rm.Stte1.Equals("1") || (rm.Stte1.Equals("5") && eml.RoleId == 3))
                                     {%>
                                 <li style="width:1007px">
                                 <input type="submit" name="submitButton" style="margin-left: 90px" value="WithdrawRequest"/>
                               
                                 </li>
                               <%}
-                                    else {%> 
+                                    else
+                                    {%> 
                                    <li style="width:1007px">
                                 
                               
@@ -174,10 +175,27 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
-<script language="javascript" type="text/javascript">
-    function xl() {
-        alert("ssss");
-    }
+ <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
+<script src="../../Scripts/jquery.validate.js" type="text/javascript"></script>
+   
+<script type="text/javascript" language="javascript">
+    $(document).ready(function() {
+        $('#fdraw').validate({
+            rules: {
+                rc: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 500
+                },
+                dt: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 200
+                }
+               
+            }
+    });
+});
 </script>
-    <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
+   
 </asp:Content>

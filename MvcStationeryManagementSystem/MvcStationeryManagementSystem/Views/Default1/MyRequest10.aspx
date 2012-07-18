@@ -16,7 +16,7 @@
 					<%if (Convert.ToInt32(Session["email"]) == 2) {%> 
 					<div class="response-msg error ui-corner-all">
 									<span>Error message</span>
-									Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+									Work of you have failed.Unable to send a email.
 								</div>
 								<%Session.Remove("email");%>
 					<%}
@@ -26,7 +26,7 @@
      			
 					<div class="response-msg success ui-corner-all">
 									<span>Success message</span>
-									Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+									Work of you have successfully. A email has been sent successfully.
 								</div>
 								<%Session.Remove("email");%>
 						<%} %>
@@ -316,12 +316,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.RName1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else
@@ -413,12 +413,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.RName1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else
@@ -511,12 +511,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.Rname1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else
@@ -707,12 +707,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.Rname1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else
@@ -805,12 +805,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.Rname1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else
@@ -903,12 +903,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.Rname1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else
@@ -1003,12 +1003,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.Rname1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else
@@ -1200,12 +1200,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.RName1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else
@@ -1297,12 +1297,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.RName1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else
@@ -1395,12 +1395,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.Rname1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else
@@ -1495,12 +1495,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.Rname1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else
@@ -1592,12 +1592,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.Rname1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else
@@ -1689,12 +1689,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.Rname1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else
@@ -1786,12 +1786,12 @@
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.Rname1%></td> 
 						    <td><%=rq.CRQName1%></td> 
-						    <td><%=rq.DDispatch1.ToString("dd-MM-yyyy")%></td> 
+						    <td><%=rq.DDispatch1%></td> 
 						   
 						    <%if (!rq.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
                                  <td>
-                                <%=rq.DApprove1.ToString("dd-MM-yyyy")%>
+                                <%=rq.DApprove1%>
                                  </td>
                            <% }
                                 else
