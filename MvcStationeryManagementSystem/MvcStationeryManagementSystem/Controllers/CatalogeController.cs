@@ -71,7 +71,7 @@ namespace MvcStationeryManagementSystem.Controllers
             }
             catch
             {
-                Session["kt"] = "Message:This Cataloge can not be removed";
+                Session["kt"] = "<div class='response-msg error ui-corner-all'><span>Error message</span>Message:This Cataloge can not be removed</div>";
                 return RedirectToAction("Cataloge");
             }
         }
