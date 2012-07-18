@@ -67,7 +67,7 @@ namespace MvcStationeryManagementSystem.Controllers
             }
             catch
             {
-                Session["kt"] = "Message:This CatalogeRQ can not be removed";
+                Session["kt"] = "<div class='response-msg error ui-corner-all'><span>Error message</span>Message:This CatalogeRQ can not be removed</div>";
                 return RedirectToAction("CatalogeRQ");
             
             }
