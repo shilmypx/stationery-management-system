@@ -26,20 +26,17 @@ namespace MvcStationeryManagementSystem.Controllers
           
             ViewData["data"] = vrd.ro(Convert.ToInt32(eml.RoleId));
 
-            Role r = vrd.ro(Convert.ToInt32(eml.RoleId));
-            Response.Write(Convert.ToString(r.RoleName));
-            
+            Role r = vrd.ro(Convert.ToInt32(eml.RoleId));            
             return View("ViewRole");
         }
 
         
-        public ActionResult ViewRole111111111111111111111111111(string id, int role)
+        public ActionResult ViewRole(string id, int role)
         {
             return null;
         }
 
-        //lay gia tri role name + amount
-
+        
 
 
     }
