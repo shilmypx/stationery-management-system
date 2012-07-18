@@ -5,27 +5,54 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+ <script src="../../Content/js/jquery.validate.js" type="text/javascript"></script>
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function() {
+            $('#MyClass').validate({
+                rules: {
+                    Pass: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 20
+                    },
+                    password: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 20
+                    },
+                    Pw: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 20
+                    }
+                },
+                messages: {
+                Pass: {
+                },
+                password: {
+            },
+            Pw: {
+        }
 
+    }
+});
+});
+    </script>
 
         <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
-					<div class="portlet-header ui-widget-header">Form Change PassWords</div>
-					<div class="portlet-content-new">
-											        <% using (Html.BeginForm("ChangePass", "ChangePass", FormMethod.Post, new { @id = "f1" }))
+		<div class="portlet-header ui-widget-header">Form Change PassWords</div>
+		<div class="portlet-content-new">
+		 <% using (Html.BeginForm("ChangePass", "ChangePass", FormMethod.Post, new { @id = "MyClass" }))
      {%>
-									<ul>
+							<ul>
 							    <li>
-		
-   
 							        <label class="desc">
 							            Username:
 							        </label>
 							        <div>
 							        <% Employee el = (Employee)Session["Employee"];%>
-							            <input type="text" name="EmployeeNumber"  id="EmployeeNumber" class="field text medium" value='<%=  el.EmployeeNumber %>' readonly="readonly" tabindex="1" maxlength="50" />
-							           
-							        </div>
-							       
-							        
+							            <input type="text" name="EmployeeNumber"  id="myuser" class="field text medium" value='<%=  el.EmployeeNumber %>' readonly="readonly" tabindex="1" maxlength="50" />							           
+							        </div>				        
 							    </li>
 								<li>
 									<label class="desc">
