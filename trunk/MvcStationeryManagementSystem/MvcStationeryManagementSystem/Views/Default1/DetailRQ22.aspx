@@ -15,14 +15,16 @@
                             string a = r.Stte1; bool b = r.Acc1;
                           
 					    %>
-					      <% using (Html.BeginForm("update2", "default1", FormMethod.Post))
+					      <% using (Html.BeginForm("update2", "default1", FormMethod.Post, new {@id="formm"}))
               {%>
+           
                             <% RequestModel rm = (RequestModel)ViewData["if"];
+
                                List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
                                 <ul>
-                                
+                                <%=Html.Hidden("st1", rm.Stte1)%>
                                 <%= Html.Hidden("requestid", rm.RId1)%> 
-                                <%if (a.Equals("2") ||(a.Equals("9") && b==false))
+                                <%if (a.Equals("2") || (a.Equals("9") && b == false))
                                   {%>
                                 
                                  <%= Html.Hidden("st", 4)%>  
@@ -51,7 +53,7 @@
                                  <li>Employee Name:<%= Html.TextBox("b", rm.FName1, new { @class = "aa", @readonly = "readonly" })%>
                                  </li>
                                 <li>
-                                DateDispatch: <%= Html.TextBox("dd", rm.DDispatch1.ToString("dd-MM-yyyy"), new { @class = "aa", @readonly = "readonly" })%>
+                                DateDispatch: <%= Html.TextBox("dd", rm.DDispatch1, new { @class = "aa", @readonly = "readonly" })%>
                                 </li>
                                 
                                 <li>
@@ -75,7 +77,7 @@
                               
                                 
                                 <li>
-                                Descripton:<%= Html.TextArea("dt", rm.Dtion1, new { @class = "aa"})%><br /> 
+                                Descripton:<%= Html.TextArea("dt", rm.Dtion1, new { @class = "aa" })%><br /> 
                                 </li>
                                  <li>Stationery Items</li>
                                 <li>
@@ -99,9 +101,9 @@
 						<tbody> 
 	
           <%
-              double total = 0;
-                  foreach (Request_StationeryModel rq in (List<Request_StationeryModel>)ViewData["if1"])
-            {%>
+                              double total = 0;
+                              foreach (Request_StationeryModel rq in (List<Request_StationeryModel>)ViewData["if1"])
+                              {%>
 						<tr>
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
 						    <td><%=rq.CtalogeName1%></td> 
@@ -147,29 +149,30 @@
 				</div>
                                 </li>
                                  <%
-                  Employee em=(Employee)Session["Employee"];
-                  if (!a.Equals("6")&& em.RoleId!=2)
-                                   {  %> 
+                              Employee em = (Employee)Session["Employee"];
+                              if (!a.Equals("6") && em.RoleId != 2)
+                              {  %> 
                                 <li style="float:left;margin-left:102px">
                                 <input type="submit" name="submitButton" value="     Accept     "/>
                              
                                 
                                 </li>
                               <%}
-                  else if (a.Equals("6") && em.RoleId != 2) { %>
+                              else if (a.Equals("6") && em.RoleId != 2)
+                              { %>
                    
                     <li style="float:left;margin-left:102px">
                                 <input type="submit" name="submitButton" value="     Accept     "/>
                                 </li>
                   <%}
-                  else if (em.RoleId == 2 && a.Equals("2") && b == true)
-                  {%>
+                              else if (em.RoleId == 2 && a.Equals("2") && b == true)
+                              {%>
                       <li style="float:left;margin-left:102px">
                                 <input type="submit" name="submitButton" value="     Accept     "/>
                                 </li>
                    <%}
-                  else if ((em.RoleId == 2 && a.Equals("2") && b == false) || (em.RoleId == 2 && a.Equals("9") && b == false))
-                  { %>
+                              else if ((em.RoleId == 2 && a.Equals("2") && b == false) || (em.RoleId == 2 && a.Equals("9") && b == false))
+                              { %>
                   
                       <li style="float:left;margin-left:102px">
                                 <input type="submit" name="submitButton" value="     Accept     "/>
@@ -186,7 +189,7 @@
                             <% RequestModel rm = (RequestModel)ViewData["if"];
                                List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
                                 <ul>
-                                
+                                <%=Html.Hidden("st2",rm.Stte1)%>
                                 <%= Html.Hidden("requestid", rm.RId1)%> 
                                   <%if (a.Equals("2"))
                                     {%>
@@ -212,7 +215,7 @@
                                 
                                 <%= Html.Hidden("rname", rm.RName1)%>
                                
-                               <%= Html.Hidden("dd", rm.DDispatch1.ToString("dd-MM-yyyy"))%>
+                               <%= Html.Hidden("dd", rm.DDispatch1)%>
                                
                                
                                  <%if (!rm.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
@@ -305,5 +308,26 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
+<script src="../../Scripts/jquery.validate.js" type="text/javascript"></script>
+   
+<script type="text/javascript" language="javascript">
+    $(document).ready(function() {
+        $('#formm').validate({
+            rules: {
+                rc: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 500
+                },
+                dt: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 200
+                }
+               
+            }
+    });
+});
+</script>
 <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
 </asp:Content>

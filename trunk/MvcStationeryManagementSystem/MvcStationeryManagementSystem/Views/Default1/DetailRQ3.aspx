@@ -35,7 +35,7 @@
                                  <li>Employee Name:<%= Html.TextBox("b", rm.FName1, new { @class = "aa", @readonly = "readonly" })%>
                                  </li>
                                 <li>
-                                DateDispatch: <%= Html.TextBox("dd", rm.DDispatch1.ToString("dd-MM-yyyy"), new { @class = "aa", @readonly = "readonly" })%>
+                                DateDispatch: <%= Html.TextBox("dd", rm.DDispatch1, new { @class = "aa", @readonly = "readonly" })%>
                                 </li>
                                 
                                 <li>

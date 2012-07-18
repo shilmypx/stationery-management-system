@@ -29,7 +29,7 @@
                             <% RequestModel rm = (RequestModel)ViewData["if"];
                                List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
                                 <ul>
-                                
+                                <%=Html.Hidden("st3",rm.Stte1)%>
                                 <%= Html.Hidden("requestid", rm.RId1)%> 
                                 
                                 
@@ -64,7 +64,7 @@
                                  <li>Employee Name:<%= Html.TextBox("b", rm.FName1, new { @class = "aa", @readonly = "readonly" })%>
                                  </li>
                                 <li>
-                                DateDispatch: <%= Html.TextBox("dd", rm.DDispatch1.ToString("dd-MM-yyyy"), new { @class = "aa", @readonly = "readonly" })%>
+                                DateDispatch: <%= Html.TextBox("dd", rm.DDispatch1, new { @class = "aa", @readonly = "readonly" })%>
                                 </li>
                                 
                                 <li>
@@ -171,12 +171,13 @@
                            
                             <%--sumit2--%>
 					   
-					       <% using (Html.BeginForm("update44", "default1"))
+					       <% using (Html.BeginForm("update44", "default1",FormMethod.Post))
               {%>
                             <% RequestModel rmm = (RequestModel)ViewData["if"];
                                List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
                                 <ul>
                                 
+                                <%= Html.Hidden("st4", rmm.Stte1)%> 
                                 <%= Html.Hidden("requestid", rmm.RId1)%> 
                                 
                                 
@@ -205,7 +206,7 @@
                                
                                
                                 
-                                <%= Html.Hidden("dd", rmm.DDispatch1.ToString("dd-MM-yyyy"))%>
+                                <%= Html.Hidden("dd", rmm.DDispatch1)%>
                                
                                      <%= Html.Hidden("da",rmm.DApprove1)%>
                                         
@@ -237,7 +238,7 @@
                                   Employee em = (Employee)Session["Employee"];
                                   if (em.RoleId != 1)
                                   {
-                                      using (Html.BeginForm("update2", "default1"))
+                                      using (Html.BeginForm("update23", "default1", FormMethod.Post))
                                       {%>
                             <% RequestModel rm = (RequestModel)ViewData["if"];
                                List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
@@ -256,7 +257,7 @@
                                 
                                 <%= Html.Hidden("rname", rm.RName1)%>
                                
-                               <%= Html.Hidden("dd", rm.DDispatch1.ToString("dd-MM-yyyy"))%>
+                               <%= Html.Hidden("dd", rm.DDispatch1)%>
                                
                                
                                  <%if (!rm.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
