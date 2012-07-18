@@ -45,15 +45,16 @@ namespace MvcStationeryManagementSystem.Controllers
             return View("Update");
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult ProcessUpdate(int id, string ProductName, double Rate, int Quantity, int CatalogeId, string Description)
+        public ActionResult ProcessUpdate(int id, string ProductName, double Rate, int Quantity,double Arise, int CatalogeId, string Description)
         {
                 List<Stationery> ls = st.ListStationery();
-                st.Edit(id, ProductName, Rate, Quantity, CatalogeId, Description);
+                st.Edit(id, ProductName, Rate, Quantity, Arise, CatalogeId, Description);
                 Stationery s12 = ls.Where(x => x.ProductId == id).FirstOrDefault();
                 ls.RemoveAll(x1=>x1.ProductId==id);
                 ls.Insert(0, s12);
-
+                
                 ViewData["count"] = st.count();
+                ViewData["sum"] = st.count3();
                 ViewData["HHCC"] = ls;
                 Session.Remove("kt");
                 return View("Statioery");
@@ -74,8 +75,10 @@ namespace MvcStationeryManagementSystem.Controllers
             }
             catch
             {
-                Session["kt"] = "Message:This product can not be removed";
+                Session["kt"] = "<div class='response-msg error ui-corner-all'><span>Error message</span>Message:This product can not be removed</div>";
                 return RedirectToAction("Statioery");
+
+                 
             }
            
             
