@@ -103,7 +103,18 @@ namespace MvcStationeryManagementSystem.Controllers
             {
                 return RedirectToAction("Login", "Default1");
             }
-            ViewData["ListAccount"] = em.ListEmployee();
+           
+            //ViewData["ListAccount"] = em.ListEmployee().Where(e=>e.RegistrationNumber.Equals(eml.EmployeeNumber));
+           
+            Employee eml = (Employee)Session["Employee"];
+            if (eml.RoleId != 1)
+            {
+                ViewData["ListAccount"] = dcs.Employees.OrderByDescending(e => e.DateBuild).Where(e => e.RegistrationNumber.Equals(eml.EmployeeNumber)).ToList();
+            }
+            else
+            {
+                ViewData["ListAccount"] = dcs.Employees.OrderByDescending(e => e.DateBuild).ToList();
+            }
             string str = "";
             var ds = em.Total().Count;
             str += ds;
