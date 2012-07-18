@@ -28,7 +28,7 @@
 
     });
 </script>
-<div class="portlet-content-new">    <label class="kk">    <%=Session["kt"]%></label>	</div>					
+   <%=Session["kt"]%>				
    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form  Stationey</div>
 					<div class="portlet-content-new">

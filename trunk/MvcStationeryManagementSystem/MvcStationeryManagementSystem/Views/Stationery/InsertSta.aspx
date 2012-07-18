@@ -174,7 +174,7 @@
                     });
 
             });
-            $('#ck').submit(function() {
+            $('#ck').click(function() {
                 a = $('#a').attr("value");
                 if (a == 1)
                     return true;

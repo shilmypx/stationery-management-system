@@ -30,7 +30,8 @@
 
     });
 </script>
- <div class="portlet-content-new">    <label class="kk">    <%=Session["kt"]%></label>	</div>					
+<%-- <div class="portlet-content-new">    <label class="kk">    <%=Session["kt"]%></label>	</div>--%>	
+<%=Session["kt"]%>				
    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form  Stationey</div>
 					<div class="portlet-content-new">
@@ -54,7 +55,9 @@
 						</tr> 
 						</thead> 
 						<tbody id = "hh"> 
-						<% foreach (Stationery s in (List<Stationery>)ViewData["HHCC"])
+						<% decimal total = 0;
+						    
+						    foreach (Stationery s in (List<Stationery>)ViewData["HHCC"])
                         {%>
                        
 						<tr>
@@ -62,9 +65,13 @@
 						    <td><%=s.ProductName %></td> 
 						    <td><%=s.Rate %></td>
 						     <td><%=s.Quantity %></td>
-						     <td><%{%>
+						     <td><%{
+                    
+                     %>
 						     <% decimal a = Convert.ToDecimal((s.Arise * 100) / s.Rate);%>
 						     <%=a.ToString("F4")+"%" %>
+						     <% decimal c =Convert.ToDecimal(s.Rate); %>   
+						     <span style="display:none">    <% total = total + a;%></span>
 						     <%}%></td>
 						     <td><%=s.CatalogeId %></td>
 						     <td><%=s.Description %></td>
@@ -105,20 +112,16 @@
 									<option value="20">20 results</option>
 									<option value="30">30 results</option>
 									<option value="40">40 results</option>
-								</select>	<%= Html.ActionLink("Insert Stationery", "InsertSta", "Stationery", null, new { @class = "D1" })%>|<span class="lk">ToTal Stationery: <%= ViewData["count"]%>...</span><span class="lk">Total Money Rate:<%=ViewData["sum"]%> VND</span>						
+								</select>	<span class="lk">ToTal Stationery: <%= ViewData["count"]%>||</span><span class="lk">Total Money Rate:<%=ViewData["sum"]%> VND||</span><span class="lk">Total Percent Arise:<%=total.ToString("F4")+"%"%></span>	
+													
 						</div>
                         
 					
-					
+			
 					
 				</div>
-               
+               <div class="portlet-content-new"><%= Html.ActionLink("Insert Stationery", "InsertSta", "Stationery", null, new { @class = "D1" })%></div>
     </div>
-  
-     
-
-
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
     <link href="../../Content/css/tables.css" type="text/css" />
@@ -128,17 +131,6 @@
 
            $('.xoa').click(function() {
                return confirm("are you Sure Delete");
-               //              var id = $(this).siblings('.emno').text();
-               //               $.ajax({
-               //              type: "GET",
-               //              url: "/Stationery/DeleteStationery/" + id,
-               //               success: function(msg) {
-               //               alert(msg);
-               //                               }
-               //                         });
-               //                  return false;
-
-
            });
 
            $('.D1').css({
@@ -158,6 +150,14 @@
                'color': 'Blue',
                'font-size': '18px'
 
+           });
+           $('.lk').css({
+           
+           'font-size':'14px',
+	       'font-family':'Verdana',
+	       'font-style':'italic',
+	       'color':'Blue'
+           
            });
 
        });
