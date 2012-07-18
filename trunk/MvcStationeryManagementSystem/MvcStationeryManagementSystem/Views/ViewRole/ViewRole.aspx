@@ -16,12 +16,11 @@
 							        <label class="desc">
 							            Role Name
 							        </label>
-							        <div>
-							        <% %>
+							        <div>							        
 							            <% string sr = (string)ViewData["roleid"]; %>
 							            <% Role el = (Role)ViewData["data"] ; %>
 							            
-							            <input type="text" name="RoleName" id="" class="field text medium" value="<%= el.RoleName %>" readonly="readonly" tabindex="1" />
+							            <input type="text" name="RoleName" id="myuser" class="field text medium" value="<%= el.RoleName %>" readonly="readonly" tabindex="1" />
 							            <label id="text" class="mytext"></label>							           
 							        </div>
 							    </li>	
@@ -30,7 +29,7 @@
 							            Amount can accept
 							        </label>
 							        <div>
-							            <input type="text" name="Amount" id="" class="field text medium" value="<%= el.Amount %>" readonly="readonly" tabindex="1" />
+							            <input type="text" name="Amount" id="myuser" class="field text medium" value="<%= el.Amount %>" readonly="readonly" tabindex="1" />
 							            <label id="Label1" class="mytext"></label>							           
 							        </div>
 							    </li>								    							    
