@@ -77,6 +77,7 @@
     <Compile Include="Controllers\Error404Controller.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Controllers\StationeryController.cs" />
     <Compile Include="Controllers\ViewRoleController.cs" />
     <Compile Include="Global.asax.cs">
@@ -249,6 +250,7 @@
     <Content Include="Views\Request\test.aspx" />
     <Content Include="Views\Role\Rolement.aspx" />
     <Content Include="Views\Role\UpdateRole.aspx" />
+    <Content Include="Views\Setting\Setting.aspx" />
     <Content Include="Views\Shared\ViewUserControl1.ascx" />
     <Content Include="Views\Stationery\InsertSta.aspx" />
     <Content Include="Views\Stationery\Statioery.aspx" />
