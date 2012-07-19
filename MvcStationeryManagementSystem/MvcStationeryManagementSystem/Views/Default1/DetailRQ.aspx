@@ -12,7 +12,7 @@
 					 <% RequestModel rm = (RequestModel)ViewData["if"];
          Employee eml = (Employee)Session["Employee"];
 
-         using (Html.BeginForm("update11", "default1", FormMethod.Post, new {@id="fdraw"}))
+         using (Html.BeginForm("update11", "default1", FormMethod.Post, new {@enctype="multipart/form-data", @class="forms", @name="form"}))
          {
 
              List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
@@ -28,27 +28,28 @@
                                 <%= Html.Hidden("en", rm.ENumber1)%>
                                    <%= Html.Hidden("ctid", rm.CRQId1)%>
                                 <li>
-                                CatalogRequestName:<%= Html.TextBox("aa", rm.CRQName1, new { @class = "aa", @readonly = "readonly" })%>
+                                <label class="desc">CatalogRequestName:</label><%= Html.TextBox("aa", rm.CRQName1, new { @class = "large", @readonly = "readonly" })%>
                                 </li>
                                
                                 <li>
-                                RequestName:<%= Html.TextBox("rname", rm.RName1, new { @class = "aa", @readonly = "readonly" })%>
+                                <label class="desc">RequestName:</label><%= Html.TextBox("rname", rm.RName1, new { @class = "large", @readonly = "readonly" })%>
                                 </li>
-                                 <li>Employee Name:<%= Html.TextBox("b", rm.FName1, new { @class = "aa", @readonly = "readonly" })%>
+                                 <li>
+                                 <label class="desc">Employee Name:</label><%= Html.TextBox("b", rm.FName1, new { @class = "large", @readonly = "readonly" })%>
                                  </li>
                                 <li>
-                                DateDispatch: <%= Html.TextBox("dd", rm.DDispatch1, new { @class = "aa", @readonly = "readonly" })%>
+                                <label class="desc">DateDispatch:</label> <%= Html.TextBox("dd", rm.DDispatch1, new { @class = "large", @readonly = "readonly" })%>
                                 </li>
                                 
                                 <li>
-                                DateApproved: 
+                                <label class="desc">DateApproved: </label>
                                  <%if (!rm.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                                    {%>
-                                 <%= Html.TextBox("da", rm.DApprove1, new { @class = "aa", @readonly = "readonly" })%>
+                                 <%= Html.TextBox("da", rm.DApprove1, new { @class = "large", @readonly = "readonly" })%>
                            <% }
                                    else
                                    { %>
-                                     <%= Html.TextBox("da", " ", new { @class = "aa", @readonly = "readonly" })%>
+                                     <%= Html.TextBox("da", " ", new { @class = "large", @readonly = "readonly" })%>
                                         
                                 
                                    <% }
@@ -56,16 +57,16 @@
                                
                                 </li>
                                 <li>
-                                Reques Content: <%= Html.TextArea("rc", rm.RContent1, new { @class = "aa",@id="rc"})%><br /> 
+                                <label class="desc">Reques Content:</label> <%= Html.TextArea("rc", rm.RContent1, new { @class = "small", @id = "rc" })%><br /> 
                                 </li>
                               
                                 
                                 <li>
-                                Descripton:<%= Html.TextArea("dt", rm.Dtion1, new { @class = "aa", @id = "dt" })%><br /> 
+                                <label class="desc">Descripton:</label><%= Html.TextArea("dt", rm.Dtion1, new { @class = "small", @id = "dt" })%><br /> 
                                 </li>
                                  <li>Stationery Items</li>
                                 <li>
-                    <div class="hastable" style="width:278%">
+                    <div class="hastable">
 					<form name="myform" class="pager-form" method="post" action="#">
 						<table id="sort-table"> 
 						<thead> 
@@ -123,7 +124,7 @@
 									<option value="40">40 results</option>
 								</select>
 								<a>
-								<span style="float:none">Total Money:<%=total%></span>								
+								<span style="float:right">Total Money:<%=total%></span>								
 								</a>
 						</div>
 					</form>
@@ -175,7 +176,7 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
- <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
 <script src="../../Scripts/jquery.validate.js" type="text/javascript"></script>
    
 <script type="text/javascript" language="javascript">

@@ -237,5 +237,21 @@ namespace MvcStationeryManagementSystem.Models
             }
             return bl;
         }
+        public bool DeleteRQ(int id)
+        {
+            bool rs = false;
+            try
+            {
+                Request rq = dc.Requests.Where(r => r.RequestId == id).First();
+                dc.Requests.DeleteOnSubmit(rq);
+                dc.SubmitChanges();
+                rs = true;
+            }
+            catch
+            {
+                rs = false;
+            }
+            return rs;
+        }
     }
 }

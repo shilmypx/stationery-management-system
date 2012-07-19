@@ -2,37 +2,65 @@
 <%@ Import Namespace="MvcStationeryManagementSystem.Models"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	MyRequest10
-</asp:Content>
+	MyRequest10</asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<%if (Session["email"] != null)
+<%if (Session["email"] != null || Session["dlrequest"] !=null)
   { %>
 
   <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Messages</div>
 					<div class="portlet-content">
-					<%if (Convert.ToInt32(Session["email"]) == 2) {%> 
+					<%if (Convert.ToInt32(Session["email"]) == 2)
+       {%> 
 					<div class="response-msg error ui-corner-all">
 									<span>Error message</span>
 									Work of you have failed.Unable to send a email.
 								</div>
 								<%Session.Remove("email");%>
+								
+								
+								
 					<%}
-                       else if (Convert.ToInt32(Session["email"]) == 1)
-                                        
-                       {%> 
+       else if (Convert.ToInt32(Session["email"]) == 1)
+       {%> 
      			
 					<div class="response-msg success ui-corner-all">
 									<span>Success message</span>
 									Work of you have successfully. A email has been sent successfully.
 								</div>
 								<%Session.Remove("email");%>
-						<%} %>
+								
+						<%}
+      else if (Convert.ToInt32(Session["dlrequest"]) == 1)
+       {%> 
+     			
+					<div class="response-msg success ui-corner-all">
+									<span>Success message</span>
+									Delete have successfully !!!!.
+								</div>
+								
+								<%Session.Remove("dlrequest");%>
+						<%}
+      else if (Convert.ToInt32(Session["dlrequest"]) == 2)
+       {%> 
+     			
+				<div class="response-msg error ui-corner-all">
+									<span>Error message</span>
+									Delete failed !!!!!!1.
+								</div>
+							
+								<%Session.Remove("dlrequest");%>
+						<%}
+      
+      %>
+      
 					</div>
-				</div>
-    <%}%>
+  </div>
+  
+  <%}%>
+   
     <div id="tabs" >
     <%string ss = Session["ac"]==null ? "0" : (string)(Session["ac"]);%>
       <%=Html.Hidden("ac", ss, new {@id="idtabs"})%>
@@ -95,7 +123,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <th style="width:30px">Options</t> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -684,7 +712,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <th style="width:30px">Options</th> 
+						    <th style="width:90px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -727,7 +755,10 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-								<%=Html.ActionLink("Select", "DetailRQ3/" + rq.RId1, "Default1")%>
+								<%=Html.ActionLink("Detail", "DetailRQ3/" + rq.RId1, "Default1")%>
+								<a>|</a>
+								<%=Html.ActionLink("Delete", "DeleteRQ3/" + rq.RId1, "Default1",null ,new { @id = "mydelet" })%>
+								
 							</td>
 							
 							
@@ -1854,9 +1885,14 @@
 <script language="javascript" type="text/javascript">
    
     $(document).ready(function() {
-        
-     
-    });
+
+
+});
+$('#mydelet').click(function() {
+    //alert("aaaaa");
+    return confirm('Are you sure Delete?');
+
+});
     
         function xl1() {
            
@@ -1934,7 +1970,7 @@
             //$('#tabs-13').show();
             $('#tabs').tabs('option', 'selected', 3);
         }
-        
+       
         
     </script>
 </asp:Content>

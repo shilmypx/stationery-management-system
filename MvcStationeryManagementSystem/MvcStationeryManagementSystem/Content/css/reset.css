@@ -33,7 +33,6 @@ ol, ul {
 table {
 	border-collapse: separate;
 	border-spacing: 0;
-	text-align:center;
 }
 caption, th, td {
 	text-align: left;
@@ -71,19 +70,12 @@ html, body {
 p {
 	padding:10px 0;
 	line-height:1.6em;
-	text-decoration:none;
 }
 
 .clearfix {
 
 	clear:both;
 
-}
-
-
-#pager a.D1
-{
-	color:Red;
 }
 
 

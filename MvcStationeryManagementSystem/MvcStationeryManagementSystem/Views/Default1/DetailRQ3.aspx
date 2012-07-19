@@ -26,27 +26,28 @@
                                 <%= Html.Hidden("en", rm.ENumber1)%>
                                    <%= Html.Hidden("ctid", rm.CRQId1)%>
                                 <li>
-                                CatalogRequestName:<%= Html.TextBox("a", rm.CRQName1, new { @class = "aa", @readonly = "readonly" })%>
+                                 <label class="desc">CatalogRequestName:</label><%= Html.TextBox("aa", rm.CRQName1, new { @class = "large", @readonly = "readonly" })%>
                                 </li>
                                
                                 <li>
-                                RequestName:<%= Html.TextBox("rname", rm.RName1, new { @class = "aa", @readonly = "readonly" })%>
+                                 <label class="desc">RequestName:</label><%= Html.TextBox("rname", rm.RName1, new { @class = "large", @readonly = "readonly" })%>
                                 </li>
-                                 <li>Employee Name:<%= Html.TextBox("b", rm.FName1, new { @class = "aa", @readonly = "readonly" })%>
+                                 <li>
+                                  <label class="desc">Employee Name:</label><%= Html.TextBox("b", rm.FName1, new { @class = "large", @readonly = "readonly" })%>
                                  </li>
                                 <li>
-                                DateDispatch: <%= Html.TextBox("dd", rm.DDispatch1, new { @class = "aa", @readonly = "readonly" })%>
+                                 <label class="desc">DateDispatch:</label> <%= Html.TextBox("dd", rm.DDispatch1, new { @class = "large", @readonly = "readonly" })%>
                                 </li>
                                 
                                 <li>
-                                DateApproved: 
+                                 <label class="desc">DateApproved:</label>
                                  <%if (!rm.DApprove1.ToString("dd-MM-yyyy").Equals("01-01-0001"))
                              {%>
-                                 <%= Html.TextBox("da", rm.DApprove1, new { @class = "aa", @readonly = "readonly" })%>
+                                 <%= Html.TextBox("da", rm.DApprove1, new { @class = "large", @readonly = "readonly" })%>
                            <% }
                                 else
                                 { %>
-                                     <%= Html.TextBox("da", "null", new { @class = "aa", @readonly = "readonly" })%>
+                                     <%= Html.TextBox("da", "null", new { @class = "large", @readonly = "readonly" })%>
                                         
                                 
                                    <% }
@@ -54,16 +55,17 @@
                                
                                 </li>
                                 <li>
-                                Reques Content: <%= Html.TextArea("rc", rm.RContent1, new { @class = "aa", @readonly = "readonly" })%><br /> 
+                                 <label class="desc">Reques Content:</label> <%= Html.TextArea("rc", rm.RContent1, new { @class = "small", @readonly = "readonly" })%><br /> 
                                 </li>
                               
                                 
                                 <li>
-                                Descripton:<%= Html.TextArea("dt", rm.Dtion1, new { @class = "aa", @readonly = "readonly" })%><br /> 
+                                 <label class="desc">Descripton:</label><%= Html.TextArea("dt", rm.Dtion1, new { @class = "small", @readonly = "readonly" })%><br /> 
                                 </li>
-                                 <li>Stationery Items</li>
+                                 <li>
+                                  <label class="desc">Stationery Items</label></li>
                                 <li>
-                    <div class="hastable" style="width:278%">
+                    <div class="hastable">
 					<form name="myform" class="pager-form" method="post" action="#">
 						<table id="sort-table"> 
 						<thead> 
@@ -74,7 +76,7 @@
 						    <th>Stationery Name</th> 
 						    <th>Quantity</th> 
 						    <th>Rate</th>
-						    <th>Arise</th>
+						    
 						    <%--<th>Description</th>--%>
 						    
 						   
@@ -82,7 +84,9 @@
 						</thead> 
 						<tbody> 
 	
-          <%foreach (Request_StationeryModel rq in (List<Request_StationeryModel>)ViewData["if1"])
+          <%
+              double total = 0;
+                  foreach (Request_StationeryModel rq in (List<Request_StationeryModel>)ViewData["if1"])
             {%>
 						<tr>
 							<%--<td class="center"><input type="checkbox" value="1" name="list" class="checkbox"/></td> --%>
@@ -91,7 +95,7 @@
 						    <td><%=rq.Qty1%></td> 
 						    <td><%=rq.Rte1%></td> 
                            
-						    <td><%=rq.Ar1%></td> 
+						  <%total = total + Convert.ToDouble(rq.Qty1 * rq.Rte1);%>
 						   
 						</tr> 
 						<% }%>
@@ -119,7 +123,8 @@
 									<option value="20">20 results</option>
 									<option value="30">30 results</option>
 									<option value="40">40 results</option>
-								</select>								
+								</select>	
+								<a><span style="float:right">Total Money: <%=total%></span></a>							
 						</div>
 					</form>
 
@@ -149,5 +154,5 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
- <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
 </asp:Content>
