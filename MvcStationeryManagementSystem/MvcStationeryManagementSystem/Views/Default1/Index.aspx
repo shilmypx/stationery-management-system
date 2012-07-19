@@ -34,7 +34,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -120,7 +120,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -207,7 +207,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -292,7 +292,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -377,7 +377,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -463,7 +463,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -548,7 +548,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -645,7 +645,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -742,7 +742,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 

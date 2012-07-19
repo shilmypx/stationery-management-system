@@ -95,7 +95,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</t> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -194,7 +194,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -293,7 +293,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -390,7 +390,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -488,7 +488,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -586,7 +586,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -684,7 +684,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -782,7 +782,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -880,7 +880,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -979,7 +979,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -1078,7 +1078,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -1177,7 +1177,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -1274,7 +1274,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -1372,7 +1372,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -1472,7 +1472,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -1569,7 +1569,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -1666,7 +1666,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -1763,7 +1763,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <td style="width:30px">Options</td> 
+						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -1850,6 +1850,7 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
+    <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript">
    
     $(document).ready(function() {
