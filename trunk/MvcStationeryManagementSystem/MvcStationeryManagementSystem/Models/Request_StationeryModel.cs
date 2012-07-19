@@ -138,6 +138,23 @@ namespace MvcStationeryManagementSystem.Models
             dc.SubmitChanges();
 
         }
+        //delete request_stationery
+        public bool DeleteRQ_st(int id)
+        {
+            bool rs = false;
+            try
+            {
+                Request_Stationery rsr = dc.Request_Stationeries.Where(r => r.RequestId == id).First();
+                dc.Request_Stationeries.DeleteOnSubmit(rsr);
+                dc.SubmitChanges();
+                rs = true;
+            }
+            catch
+            {
+                rs = false;
+            }
+            return rs;
+        }
     }
 
 }

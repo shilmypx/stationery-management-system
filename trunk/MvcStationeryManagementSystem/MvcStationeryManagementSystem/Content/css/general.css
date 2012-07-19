@@ -1,8 +1,4 @@
 	/* Layout helpers */
-.portlet-content-new {
-	margin:0;
-	padding:0 100px 25px 350px;
-}
 
 .ui-helper-hidden {
 	display:none;
@@ -281,17 +277,13 @@
 	/* Tabs */
 
 .ui-tabs { 
-	padding:.2em;
-	zoom:1;
-	width: 1070px;
-	margin-left: 4px;
+	padding:.2em;zoom:1;
 }
 
 .ui-tabs .ui-tabs-nav {
 	list-style:none;
 	position:relative;
 	padding:.2em .2em 0;
-	height:25px;
 }
 
 .ui-tabs .ui-tabs-nav li {
@@ -523,20 +515,18 @@ button { float: right; margin: .5em .4em .5em 0; cursor: pointer; padding: .2em 
 
 	/* Main content */
 
-#page-wrapper 
-{
-	float:left;
+#page-wrapper {
 
 }
 
 #page-wrapper #main-wrapper {
 	float:left;
 
-	width:81%;
+	width:100%;
 }
 
 #page-wrapper #main-wrapper #main-content {
-	margin-right:0px;
+	margin-right:242px;
 	padding:10px 10px 10px;
 }
 
@@ -685,7 +675,7 @@ button { float: right; margin: .5em .4em .5em 0; cursor: pointer; padding: .2em 
 	background-image:url('../images/icons/Mail_compose.png');
 }
 
-#page-wrapper #main-wrapper #main-content 26age-title .other ul#dashboard-buttons li a.Star {
+#page-wrapper #main-wrapper #main-content .page-title .other ul#dashboard-buttons li a.Star {
 	background-image:url('../images/icons/Star.png');
 }
 
@@ -719,7 +709,7 @@ button { float: right; margin: .5em .4em .5em 0; cursor: pointer; padding: .2em 
 	/* Main content grid */
 
 .column {
-		width:25%;
+		width:33%;
 		float:left;
 }
 
@@ -737,8 +727,8 @@ button { float: right; margin: .5em .4em .5em 0; cursor: pointer; padding: .2em 
 	width:25%;
 }
 
-.three-column-small .column-b19 {
-	width:198;
+.three-column-small .column-big {
+	width:49%;
 }
 
 .portlet {
@@ -749,10 +739,6 @@ button { float: right; margin: .5em .4em .5em 0; cursor: pointer; padding: .2em 
 	margin:0;
 	padding:7px;
 }
-.portlet-content #a
-{
-	color:Blue!important;
-	}
 
 .portlet-header .ui-icon { 
 	float:right;
@@ -800,8 +786,8 @@ button { float: right; margin: .5em .4em .5em 0; cursor: pointer; padding: .2em 
 
 #page-wrapper #sidebar {
 	float:left;
-	/*margin:0 0 0 7px;*/
-	width:234px;
+	margin:0 0 0 -241px;
+	width:220px;
 	padding:10px;
 	border-left-width:1px;
 	border-bottom-width:1px;
@@ -847,4 +833,3 @@ button { float: right; margin: .5em .4em .5em 0; cursor: pointer; padding: .2em 
 #footer #menu a {
 	margin:0 5px;
 }
- 

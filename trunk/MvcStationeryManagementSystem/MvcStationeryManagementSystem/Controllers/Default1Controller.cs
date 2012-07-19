@@ -76,7 +76,7 @@ namespace MvcStationeryManagementSystem.Controllers
         }
         public ActionResult Back()
         {
-            return RedirectToAction("myrequest10");
+            return RedirectToAction("Myrequest10");
         }
         //bat dau
         public ActionResult DetailRQ(int id)
@@ -306,6 +306,29 @@ namespace MvcStationeryManagementSystem.Controllers
             ViewData["if1"] = rm1.ListR_S(id);
 
             return View();
+        }
+        public ActionResult DeleteRQ3(int id)
+        {
+            
+            Request_StationeryModel rs = new Request_StationeryModel();
+            RequestModel rq = new RequestModel();
+            List<Request_Stationery> rstm = dc.Request_Stationeries.ToList();
+         
+                foreach (Request_Stationery rst in rstm)
+                {
+                   if (id == rst.RequestId)
+                    rs.DeleteRQ_st(id);   
+                }
+                if (rq.DeleteRQ(id))
+                {
+                    Session["dlrequest"] = 1;
+                }
+                else
+                {
+                    Session["dlrequest"] = 2;
+                }
+
+                return RedirectToAction("Myrequest10/#tabs-7");
         }
         public ActionResult update3(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
         {
