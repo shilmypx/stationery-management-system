@@ -120,7 +120,11 @@
 				
 			</li>
 			<li>
-						<%=Html.ActionLink("Setting", "setting", "setting")%>
+				<a href="#">Setting</a>      
+						<ul>
+						    <li><%= Html.ActionLink("Create Config", "AddConfig", "setting")%></li>
+						    <li><%=Html.ActionLink("List Config", "setting", "setting")%></li>
+						</ul>
 						
 			</li>
 			<li>
