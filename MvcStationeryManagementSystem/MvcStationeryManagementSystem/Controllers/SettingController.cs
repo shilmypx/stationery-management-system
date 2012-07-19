@@ -16,6 +16,9 @@ namespace MvcStationeryManagementSystem.Controllers
             ViewData["st"] = dc.Configs.ToList();
             return View();
         }
-
+        public ActionResult AddConfig()
+        {
+            return View();
+        }
     }
 }
