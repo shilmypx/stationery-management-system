@@ -1,21 +1,23 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Template.Master" Inherits="System.Web.Mvc.ViewPage" %>
-
+<%@ Import Namespace="MvcStationeryManagementSystem.Models" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Setting
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<%@ Import Namespace="MvcStationeryManagementSystem.Models" %>
 
+<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+					<div class="portlet-header ui-widget-header">Form elements in box</div>
+					<div class="portlet-content">
    <div class="hastable">
 						<table id="sort-table"> 
 						<thead> 
 						<tr>
-							<th class="header">Employee Number</th>
-						    <th class="header">Full Name</th>
-						    <th class="header">Address</th> 
-						    <th class="header">Phone</th>
-							<th style="width:132px" class="">Options</th> 
+							<th class="header">MailName</th>
+						    <th class="header">MailNetwork</th>
+						    <th class="header">Ports</th> 
+						    <th class="header">Type</th>
+							<td style="width:132px" class="">Options</td> 
 						</tr> 
 						</thead> 
 						<tbody id="mytbody"> 
@@ -24,8 +26,8 @@
 						<tr>
 							<td><%=am.MailName%></td> 
 						    <td><%=am.MailNetwork%></td> 
-						    <td><%=am.Password%></td> 
-						    <td><%=am.Ports%></td>
+						    <td><%=am.Ports%></td> 
+						    <td><%=am.Type%></td>
 						    <td>
 								<a >
                                     <%= Html.ActionLink("Edit", "EditEmployee/", "Employee")%>
@@ -69,6 +71,8 @@
 					Sort multiple columns simultaneously by holding down the shift key and clicking a second, third or even fourth column header! 
 					
 				</div>
+	</div>
+	</div>			
 
 </asp:Content>
 
