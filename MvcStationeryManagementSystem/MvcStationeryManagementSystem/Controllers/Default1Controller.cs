@@ -98,7 +98,7 @@ namespace MvcStationeryManagementSystem.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult update11(FormCollection form)
         {
-                Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
+                Setting cf = dc.Settings.OrderByDescending(c => c.BuildDate).ToList().First();
                 RequestModel rq = new RequestModel();
                 Employee e = (Employee)Session["Employee"];
                 Employee e1 = dc.Employees.Where(ee => ee.EmployeeNumber == e.RegistrationNumber).ToList().First();
@@ -166,7 +166,7 @@ namespace MvcStationeryManagementSystem.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult update2(FormCollection form)
         {
-            Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
+            Setting cf = dc.Settings.OrderByDescending(c => c.BuildDate).ToList().First();
             RequestModel rq = new RequestModel();
             RequestModel22 rq22 = new RequestModel22();
             Employee e = (Employee)Session["Employee"];
@@ -217,7 +217,7 @@ namespace MvcStationeryManagementSystem.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult update23(FormCollection form)
         {
-            Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
+            Setting cf = dc.Settings.OrderByDescending(c => c.BuildDate).ToList().First();
             RequestModel rq = new RequestModel();
             RequestModel22 rq22 = new RequestModel22();
             Employee e = (Employee)Session["Employee"];
@@ -254,7 +254,7 @@ namespace MvcStationeryManagementSystem.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult update22(FormCollection form)
         {
-            Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
+            Setting cf = dc.Settings.OrderByDescending(c => c.BuildDate).ToList().First();
             RequestModel rq = new RequestModel();
             RequestModel22 rq22 = new RequestModel22();
             Employee e = (Employee)Session["Employee"];
@@ -361,7 +361,7 @@ namespace MvcStationeryManagementSystem.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult update4(FormCollection form)
         {
-            Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
+            Setting cf = dc.Settings.OrderByDescending(c => c.BuildDate).ToList().First();
             RequestModel rq = new RequestModel();
             Employee e = (Employee)Session["Employee"];
             Employee e1 = (Employee)Session["eplo"];
@@ -417,7 +417,7 @@ namespace MvcStationeryManagementSystem.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult update44(FormCollection form)
         {
-            Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
+            Setting cf = dc.Settings.OrderByDescending(c => c.BuildDate).ToList().First();
             RequestModel rq = new RequestModel();
             Employee e = (Employee)Session["Employee"];
             RequestModel22 rq22 = new RequestModel22();
@@ -478,7 +478,7 @@ namespace MvcStationeryManagementSystem.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult update5(FormCollection form)
         {
-            Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
+            Setting cf = dc.Settings.OrderByDescending(c => c.BuildDate).ToList().First();
             RequestModel22 rq22 = new RequestModel22();
             RequestModel rq = new RequestModel();
             Employee e = (Employee)Session["Employee"];
@@ -526,7 +526,7 @@ namespace MvcStationeryManagementSystem.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult update55(FormCollection form)
         {
-            Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
+            Setting cf = dc.Settings.OrderByDescending(c => c.BuildDate).ToList().First();
             RequestModel22 rq22 = new RequestModel22();
             RequestModel rq = new RequestModel();
             Employee e = (Employee)Session["Employee"];

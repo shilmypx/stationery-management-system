@@ -148,7 +148,7 @@ namespace MvcStationeryManagementSystem.Controllers
             HttpPostedFileBase uploadedFile = Request.Files["fileUpload"];
             if (uploadedFile.ContentLength == 0)
             {
-                em.EditEm(EmployeeNumber, FullName, Email, Address, DateBirth, Phone, Images, RegistrationNumber);
+                em.EditEm(EmployeeNumber, FullName, DateTime.Now, Email, Address, DateBirth, Phone, uploadedFile.FileName, RegistrationNumber);
                 return RedirectToAction("ManageEmployee");
             }
             if (uploadedFile.ContentLength > 0)
@@ -156,7 +156,7 @@ namespace MvcStationeryManagementSystem.Controllers
                 var fileName = Path.GetFileName(fileUpload.FileName);
                 var path = Path.Combine(Server.MapPath("~/Content/Upload"), fileName);
                 fileUpload.SaveAs(path);
-                em.EditEm(EmployeeNumber, FullName, Email, Address, DateBirth, Phone, uploadedFile.FileName, RegistrationNumber);
+                em.EditEm(EmployeeNumber, FullName, DateTime.Now, Email, Address, DateBirth, Phone, uploadedFile.FileName, RegistrationNumber);
             }
             //em.EditEm(EmployeeNumber, FullName, Email, Address, DateBirth, Phone, fileUpload.FileName, RegistrationNumber);
             return RedirectToAction("ManageEmployee");
