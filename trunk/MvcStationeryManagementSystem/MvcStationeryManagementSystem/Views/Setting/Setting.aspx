@@ -21,7 +21,7 @@
 						</tr> 
 						</thead> 
 						<tbody id="mytbody"> 
-						<% foreach (Config am in (List<Config>)ViewData["st"])
+						<% foreach (Setting am in (List<Setting>)ViewData["st"])
          {%>
 						<tr>
 							<td><%=am.MailName%></td> 
@@ -30,13 +30,13 @@
 						    <td><%=am.Type%></td>
 						    <td>
 								<a >
-                                    <%= Html.ActionLink("Edit", "EditEmployee/", "Employee")%>
+                                    <%= Html.ActionLink("Edit", "EditSet/" + am.Id, "Setting")%>
 								</a>&nbsp|&nbsp
 								<a >
-								    <%= Html.ActionLink("Delete", "Delete/", "Employee", null ,new { @class = "mydel" })%>
+								    <%= Html.ActionLink("Delete", "DeleteId/" + am.Id, "Setting", null, new { @class = "mydel" })%>
 								</a>&nbsp|&nbsp
 								<a>
-								    <%= Html.ActionLink("Detail", "Detail/", "Employee")%>
+								    <%= Html.ActionLink("Detail", "Details/" + am.Id, "Setting")%>
 								</a>
 								
 							</td>
@@ -77,4 +77,12 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
+<script language="javascript" type="text/javascript">
+    $(document).ready(function() {
+        $('.mydel').click(function() {
+            return confirm('Are you sure Delete?');
+
+    });
+    });
+</script>
 </asp:Content>
