@@ -72,10 +72,11 @@ namespace MvcStationeryManagementSystem.Models
                 dcs.SubmitChanges();
         }
 
-        public void EditEm(string employeeNumber, string fullname, string email, string address, DateTime dateBirth, string phone, string images, string registrationNumber)
+        public void EditEm(string employeeNumber, string fullname, DateTime datebuild, string email, string address, DateTime dateBirth, string phone, string images, string registrationNumber)
         {
             Employee e = dcs.Employees.Where(em => em.EmployeeNumber == employeeNumber).SingleOrDefault();
             e.FullName = fullname;
+            e.DateBuild = datebuild;
             e.DateBirth = dateBirth;
             e.Email = email;
             e.Address = address;
