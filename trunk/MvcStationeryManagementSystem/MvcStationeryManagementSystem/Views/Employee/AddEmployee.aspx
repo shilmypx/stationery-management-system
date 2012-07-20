@@ -145,25 +145,21 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="bb"></div>
-    <%int i =Session["kt"]==null ? 1 : 0;%>
-        <%=Html.Hidden("v",i,new{@id="id1"})%>
-    <% using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post, new { @id = "MyClass", @name = "MyClass", @class = "MyClass", enctype = "multipart/form-data" }))
-       {%>  
-    <div id="addemployee">
-        <div class="portlet ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+   <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form elements in box</div>
-					<div class="portlet-content-new">
-							<ul>
+					<div class="portlet-content">
+					<% using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post, new { @id = "MyClass", @name = "MyClass", @class = "MyClass", enctype = "multipart/form-data" }))
+        {%>
+					    <ul class="addform">
 							    <li>
 							        <label class="desc">
 							            Username
 							        </label>
 							        <div>
 							            <input type="text" name="EmployeeNumber" id="EmployeeNumber" class="field text medium" value="" tabindex="1" />
-							            <label id="text" class="mytext"></label>
+							            <label id="text" class="mytexts"></label>
 							            <% string emm = (string)Session["Username"]; %>
-							            <%=Html.Hidden("b", emm, new {@id="bbb" })%>
+							            <%=Html.Hidden("b", emm, new { @id = "bbb" })%>
 							            
 							        </div>
 							    </li>
@@ -187,14 +183,15 @@
 								</li>
 								
 								
-								
-								<li class="date">
-									<label class="desc" id="title2" for="Field2">
+								<li>
+									<label class="desc">
 										DateBirth
 									</label>
-										<input type="text" name="DateBirth" id="DateBirth" class="field text medium" value="" readonly="readonly" size="2" maxlength="50" tabindex="4" />
-										
+									<div>
+										<input type="text" name="DateBirth" id="DateBirth" class="field text medium" value="" maxlength="255" readonly="readonly" tabindex="6" />
+									</div>
 								</li>
+								
 								<li>
 									<label class="desc">
 										Email
@@ -267,10 +264,9 @@
 									<input type="submit" class="submit" id="idd" name="idd" value="Insert" tabindex="11" />
 								</li>
 							</ul>
+					<%} %>
 					</div>
-				</div>
-    </div>
-    <%}%>
+	</div>				
 
 </asp:Content>
 

@@ -77,24 +77,25 @@
 						<form action="#" method="post" enctype="multipart/form-data" class="forms" name="form" >
 							<ul>
 								<li>
-								    <div class="divs">
-									    <label class="dec">
+								    <div class="divsearch">
+									    <label class="decc">
 										    Search with username:
 									    </label>
+									    <div class="find_rs">
+									        <input type="text" name="employee" id="employee" class="field text medium" value="" tabindex="1" />
+										    <input type="submit" value="Search" class="ssubmit" id="submit" />
+										</div>
+									</div>	
 									    <% string rs2 = (string)ViewData["countrs"]; %>
-									    <label class="dec">
+									    <label class="decc">
 									            Total Account: <%= rs2 %>      
 									    </label>
-									    <div class="find_rs">
-										    <input type="text" name="employee" id="employee" class="field text medium" value="" tabindex="1" />
-										    <input type="submit" value="Search" class="ssubmit" id="submit" />
-										    
-										</div>
+									    
     									<div class="count">
 									        <% string rs = (string)ViewData["total"]; %>
 									        <label id="texte"><%= rs %></label>
 									    </div>
-									</div>
+									
 								</li>
 							</ul>
 						</form>
@@ -109,7 +110,7 @@
 						    <th class="header">Full Name</th>
 						    <th class="header">Address</th> 
 						    <th class="header">Phone</th>
-							<th style="width:132px" class="">Options</th> 
+							<td style="width:132px" class="">Options</td> 
 						</tr> 
 						</thead> 
 						<tbody id="mytbody"> 
