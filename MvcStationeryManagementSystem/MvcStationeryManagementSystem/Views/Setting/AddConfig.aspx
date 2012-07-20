@@ -9,7 +9,7 @@
     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form elements in box</div>
 					<div class="portlet-content">
-    <% using (Html.BeginForm("InsertConfig", "Setting",FormMethod.Post, new { @name = "form", enctype = "multipart/form-data" }))
+    <% using (Html.BeginForm("InsertSet", "Setting", FormMethod.Post, new { @name = "form",@id="FormConfig", enctype = "multipart/form-data" }))
          {%>
 							<ul class="configs">
 								<li>
@@ -17,7 +17,8 @@
 										MailName
 									</label>
 									<div>
-										<input type="text" tabindex="1" maxlength="255" value="" class="field text large" name="MailName" />
+										<input type="text" tabindex="1" maxlength="255" value="" class="field text large" name="MailName" id="MailName" />
+									    <label id="ii"></label>
 									</div>
 								</li>
 								<li>
@@ -25,7 +26,8 @@
 										MailNetwork
 									</label>
 									<div>
-										<input type="text" tabindex="2" maxlength="255" value="" class="field text large" name="MailNetwork" />
+										<input type="text" tabindex="2" maxlength="255" value="" class="field text large" name="MailNetwork" id="MailNetwork" />
+									    <label id="mailnet"></label>
 									</div>
 								</li>
 								<li>
@@ -33,7 +35,7 @@
 										Password
 									</label>
 									<div>
-										<input type="text" tabindex="3" maxlength="255" value="" class="field text large" name="Password" />
+										<input type="password" tabindex="3" maxlength="255" value="" class="field text large" name="Password" />
 									</div>
 								</li>
 								<li>
@@ -52,14 +54,7 @@
 										<input type="text" tabindex="5" maxlength="255" value="" class="field text large" name="Type" />
 									</div>
 								</li>
-								<li>
-									<label  class="desc">
-										Build date
-									</label>
-									<div>
-										<input type="text" tabindex="6" maxlength="255" value="" id="BuildDate" readonly="readonly" class="field text large" name="BuildDate" />
-									</div>
-								</li>
+								
 								<li>
 									<label  class="desc">
 										Description
@@ -80,4 +75,65 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
+<script language="javascript" type="text/javascript">
+    $(document).ready(function() {
+        $('#FormConfig').validate({
+            rules: {
+                MailName: {
+                    required: true,
+                    maxlength: 50,
+                    email: true
+                },
+                MailNetwork: {
+                    required: true,
+                    maxlength: 50,
+                    email: true
+                },
+                Password: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 20
+                },
+                Ports: {
+                    required: true,
+                    number: true,
+                    minlength: 4,
+                    maxlength: 5
+                },
+                Type: {
+                    required: true
+                }
+            },
+            messages: {
+                EmployeeNumber: {
+            }
+        }
+    });
+
+    $('#MailName').keyup(function() {
+        var id = $("#MailName").val();
+        $.ajax({
+            type: 'GET',
+            url: '/Setting/IdenEmail/' + id,
+            success: function(data) {
+            $('#ii').html(data);
+            }
+        });
+    });
+
+    $('#MailNetwork').keyup(function() {
+    var idd = $("#MailNetwork").val();
+    //$('#mailnet').html(idd);
+        $.ajax({
+                type: 'GET',
+                url: '/Setting/IdenEmail/' + idd,
+                success: function(data) {
+                    $('#mailnet').html(data);
+            }
+        });
+    });
+    
+
+});
+</script>
 </asp:Content>
