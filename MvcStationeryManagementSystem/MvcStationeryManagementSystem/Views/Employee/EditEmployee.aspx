@@ -92,7 +92,7 @@
 					        <p align="center"><b>Images</b></p>
 								        <img src="../../Content/Upload/<%= em.Images %>" alt="" class="myimages" />
 								    </div>
-							<ul>
+							<ul class="editem">
 							    <li>
 							        <label class="desc">
 							            Username
@@ -146,7 +146,7 @@
 								        Images
 								    </label>
 								    <div>
-								        <%= Html.Hidden("Images", em.Images)%>
+								        <%= Html.Hidden("fileUpload", em.Images)%>
 								        Select a file: <input type="file" name="fileUpload" id="fileUpload" tabindex="6"/>
 								    </div>
 								</li>

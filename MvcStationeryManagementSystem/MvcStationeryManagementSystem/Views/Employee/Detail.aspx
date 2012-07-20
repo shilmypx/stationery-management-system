@@ -21,7 +21,7 @@
 					        <p align="center"><b>Images</b></p>
 								        <img src="../../Content/Upload/<%= em.Images %>" alt="" class="myimages" />
 								    </div>
-							<ul>
+							<ul class="editem">
 							    <li>
 							        <label class="desc">
 							            Username
