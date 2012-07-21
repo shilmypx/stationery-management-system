@@ -14,6 +14,7 @@ namespace MvcStationeryManagementSystem.Controllers
        //lop chua cac method mahoa va giai ma
         private DescyptandEnscryt de = new DescyptandEnscryt();
         private DataClassesStationeryDataContext dc = new DataClassesStationeryDataContext();
+        //private bool result = false;
         public ActionResult Index()
         {
             return View();
@@ -57,6 +58,7 @@ namespace MvcStationeryManagementSystem.Controllers
             ViewData["lst8"] = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("4") && r1.Acc1 == true) || (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("7") && r1.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
             // 
             ViewData["lst88"] = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("4") && r1.Acc1 == true) || (r1.Stte1.Equals("7") && r1.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
+         
           /*  if (Session["email"] == null)
             {
                 Response.Write(" ");
@@ -247,6 +249,7 @@ namespace MvcStationeryManagementSystem.Controllers
 
         }
         //
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult update22()
         {
             return View();
@@ -276,20 +279,20 @@ namespace MvcStationeryManagementSystem.Controllers
                 if (rq.Send1(From, To, cc, Subject, Message, type, post, mailnetword, pass))
                 {
                     rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
-                    Session["email"] = 1;
+                    Session["email"] = 3;
                 }
                 else
-                    Session["email"] = 2;
+                    Session["email"] = 4;
             }
             else
             {
                 if (rq.Send(From, To, Subject, Message, type, post, mailnetword, pass))
                  {
                     rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
-                    Session["email"] = 1;
+                    Session["email"] = 3;
                 }
                 else
-                    Session["email"] = 2;
+                    Session["email"] = 4;
             }
             //
             //rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
@@ -307,7 +310,25 @@ namespace MvcStationeryManagementSystem.Controllers
 
             return View();
         }
-        public ActionResult DeleteRQ3(int id)
+        //
+        public ActionResult DetailRQ33(int id)
+        {
+            RequestModel rm = new RequestModel();
+            Request_StationeryModel rm1 = new Request_StationeryModel();
+            ViewData["if"] = rm.Infomation(id);
+            ViewData["if1"] = rm1.ListR_S(id);
+
+            return View();
+        }
+        //
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult DeleteRQ3()
+        {
+            return View();
+        }
+        //
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DeleteRQ3(FormCollection form)
         {
             
             Request_StationeryModel rs = new Request_StationeryModel();
@@ -316,10 +337,10 @@ namespace MvcStationeryManagementSystem.Controllers
          
                 foreach (Request_Stationery rst in rstm)
                 {
-                   if (id == rst.RequestId)
-                    rs.DeleteRQ_st(id);   
+                    if (Convert.ToInt32(form["requestid"]) == rst.RequestId)
+                        rs.DeleteRQ_st(Convert.ToInt32(form["requestid"]));   
                 }
-                if (rq.DeleteRQ(id))
+                if (rq.DeleteRQ(Convert.ToInt32(form["requestid"])))
                 {
                     Session["dlrequest"] = 1;
                 }
@@ -361,8 +382,12 @@ namespace MvcStationeryManagementSystem.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult update4(FormCollection form)
         {
+            Request_StationeryModel rm1 = new Request_StationeryModel();
+            
+            List<Stationery> lstr = dc.Stationeries.ToList();
             Config cf = dc.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
             RequestModel rq = new RequestModel();
+            StationeryModel stmd = new StationeryModel();
             Employee e = (Employee)Session["Employee"];
             Employee e1 = (Employee)Session["eplo"];
             Employee e2 = dc.Employees.Where(ee => ee.EmployeeNumber == e1.RegistrationNumber).ToList().First();
@@ -379,28 +404,97 @@ namespace MvcStationeryManagementSystem.Controllers
             string pass = cf.Password;
             string Subject = "Approved Request " + form["rname"].ToString();
             string Message = "<span><b>From:</b> " + e.FullName + "</span><br/>" + "<b>Date Dispatch:</b> " + form["dd"].ToString() + "<br/>" + "<b>Content:</b> " + form["rc"].ToString() + "<br/>" + "<b>Description:</b> " + form["dt"].ToString();
-            if (form["st3"].Equals("5"))
+            //mail
+            List<Request_Stationery> rqs = dc.Request_Stationeries.Where(s => s.RequestId == Convert.ToInt32(form["requestid"])).ToList();
+            string str = " ";
+            Session["result"] = true;
+            //test
+            foreach (Stationery st in lstr)
             {
-                if (rq.Send1(From, To, cc, Subject, Message, type, post, mailnetword, pass))
+                foreach (Request_Stationery rs in rqs)
                 {
-                    rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
-                    Session["email"] = 1;
+                   
+                    if (st.ProductId == rs.ProductId && rs.Quantity > st.Quantity)
+                    {
+                        Session["result"] = false;
+                        break;
+                    }
+                   
                 }
-                else
-                    Session["email"] = 2;
-                //
                
             }
-            else
+            //
+            //print item
+            if (Convert.ToBoolean(Session["result"]) == false)
             {
-                if (rq.Send(From, To, Subject, Message, type, post, mailnetword, pass))
+                foreach (Stationery st in lstr)
                 {
-                    rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
-                    Session["email"] = 1;
+                    foreach (Request_Stationery rs in rqs)
+                    {
+                        if (st.ProductId == rs.ProductId && rs.Quantity > st.Quantity)
+                        {
+                            str = str + st.ProductName.ToString() + "&nbsp_&nbsp";
+                        }
+                    }
+                }
+            }
+            else if (Convert.ToBoolean(Session["result"]) == true)
+            {
+                if (form["st3"].Equals("5"))
+                {
+                    if (rq.Send1(From, To, cc, Subject, Message, type, post, mailnetword, pass))
+                    {
+                        //////
+                        List<Stationery> stnr = dc.Stationeries.ToList();
+                        List<Request_Stationery> listrq = dc.Request_Stationeries.Where(l => l.RequestId == Convert.ToInt32(form["requestid"])).ToList();
+                        //
+                        foreach (Stationery s in stnr)
+                       {
+                           foreach (Request_Stationery v in listrq)
+                           {
+                               if (s.ProductId == v.ProductId)
+                                   stmd.EditST_RQ(v.ProductId, Convert.ToInt32(s.Quantity - v.Quantity));
+                           }
+                        }
+
+                        
+                      
+                        //
+                        rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
+                       
+                        Session["email"] = 1;
+                    }
+                    else
+                        Session["email"] = 2;
+                    //
+
                 }
                 else
-                    Session["email"] = 2;
+                {
+                    if (rq.Send(From, To, Subject, Message, type, post, mailnetword, pass))
+                    {
+                        List<Stationery> stnr = dc.Stationeries.ToList();
+                        List<Request_Stationery> listrq = dc.Request_Stationeries.Where(l => l.RequestId == Convert.ToInt32(form["requestid"])).ToList();
+                        //
+                        foreach (Stationery s in stnr)
+                        {
+                            foreach (Request_Stationery v in listrq)
+                            {
+                                if(s.ProductId==v.ProductId)
+                                stmd.EditST_RQ(v.ProductId, Convert.ToInt32(s.Quantity-v.Quantity));
+                            }
+                        }
+
+                        
+                        rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
+                        Session["email"] = 1;
+                    }
+                    else
+                        Session["email"] = 2;
+                }
             }
+            //mail
+            Session["qty"] = str;
             //
             
             return RedirectToAction("MyRequest10");
@@ -498,21 +592,54 @@ namespace MvcStationeryManagementSystem.Controllers
             {
                 if (rq.Send1(From, To, cc, Subject, Message, type, post, mailnetword, pass))
                 {
+                    StationeryModel stmd = new StationeryModel();
+                    List<Stationery> stnr = dc.Stationeries.ToList();
+                    List<Request_Stationery> listrq = dc.Request_Stationeries.Where(l => l.RequestId == Convert.ToInt32(form["requestid"])).ToList();
+                    //
+                    foreach (Stationery s in stnr)
+                    {
+                        foreach (Request_Stationery v in listrq)
+                        {
+                            if (s.ProductId == v.ProductId)
+                                stmd.EditST_RQ(v.ProductId, Convert.ToInt32(s.Quantity + v.Quantity));
+                        }
+                    }
+                    //
                     rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
                     Session["email"] = 1;
+                    Session["email1"] = 1;
+
                 }
                 else
                     Session["email"] = 2;
+               
             }
             else
             {
                 if (rq.Send(From, To, Subject, Message, type, post, mailnetword, pass))
                 {
+                    //
+                    StationeryModel stmd = new StationeryModel();
+                    List<Stationery> stnr = dc.Stationeries.ToList();
+                    List<Request_Stationery> listrq = dc.Request_Stationeries.Where(l => l.RequestId == Convert.ToInt32(form["requestid"])).ToList();
+                    //
+                    foreach (Stationery s in stnr)
+                    {
+                        foreach (Request_Stationery v in listrq)
+                        {
+                            if (s.ProductId == v.ProductId)
+                                stmd.EditST_RQ(v.ProductId, Convert.ToInt32(s.Quantity + v.Quantity));
+                           
+                        }
+                    }
+                    //
                     rq.update(Convert.ToInt32(form["requestid"]), form["rname"].ToString(), form["st"].ToString(), Convert.ToDateTime(form["dd"]), DateTime.Now, Convert.ToBoolean(form["acc"]), form["rc"].ToString(), form["en"].ToString(), form["dt"].ToString(), Convert.ToInt32(form["ctid"]));
+                    Session["email1"] = 1;
                     Session["email"] = 1;
                 }
                 else
                     Session["email"] = 2;
+               
             }
             return RedirectToAction("MyRequest10");
 
@@ -567,73 +694,7 @@ namespace MvcStationeryManagementSystem.Controllers
 
         }
        
-        //
-        //6
-        //public ActionResult DetailRQ6(int id)
-        //{
-        //    RequestModel rm = new RequestModel();
-        //    Request_StationeryModel rm1 = new Request_StationeryModel();
-        //    ViewData["if"] = rm.Infomation(id);
-        //    ViewData["if1"] = rm1.ListR_S(id);
-
-        //    return View();
-        //}
-        //public ActionResult update6(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
-        //{
-        //    RequestModel rq = new RequestModel();
-        //    Employee e = (Employee)Session["Employee"];
-
-        //    ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("1")).OrderByDescending(r => r.DDispatch1).ToList();
-
-        //    rq.update(requestid, rname, st, dd, da, acc, rc, en, dt, ctid);
-        //    return RedirectToAction("MyRequest10");
-
-        //}
-        ////
-        ////7
-        //public ActionResult DetailRQ7(int id)
-        //{
-        //    RequestModel rm = new RequestModel();
-        //    Request_StationeryModel rm1 = new Request_StationeryModel();
-        //    ViewData["if"] = rm.Infomation(id);
-        //    ViewData["if1"] = rm1.ListR_S(id);
-
-        //    return View();
-        //}
-        //public ActionResult update7(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
-        //{
-        //    RequestModel rq = new RequestModel();
-        //    Employee e = (Employee)Session["Employee"];
-
-        //    ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("1")).OrderByDescending(r => r.DDispatch1).ToList();
-
-        //    rq.update(requestid, rname, st, dd, da, acc, rc, en, dt, ctid);
-        //    return RedirectToAction("MyRequest10");
-
-        //}
-        ////
-        ////8
-        //public ActionResult DetailRQ8(int id)
-        //{
-        //    RequestModel rm = new RequestModel();
-        //    Request_StationeryModel rm1 = new Request_StationeryModel();
-        //    ViewData["if"] = rm.Infomation(id);
-        //    ViewData["if1"] = rm1.ListR_S(id);
-
-        //    return View();
-        //}
-        //public ActionResult update8(int requestid, string rname, string st, DateTime dd, DateTime da, bool acc, string rc, string en, string dt, int ctid)
-        //{
-        //    RequestModel rq = new RequestModel();
-        //    Employee e = (Employee)Session["Employee"];
-
-        //    ViewData["lst"] = rq.ListRQ().Where(r => e.EmployeeNumber.Equals(r.ENumber1) && r.Stte1.Equals("1")).OrderByDescending(r => r.DDispatch1).ToList();
-
-        //    rq.update(requestid, rname, st, dd, da, acc, rc, en, dt, ctid);
-        //    return RedirectToAction("MyRequest10");
-
-        //}
-        ////
+        
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Login()
         {

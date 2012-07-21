@@ -135,7 +135,7 @@ $(document).ready(function() {
 
 
 	/* Table Sorter */
-	$("#sort-table,#sort-table1,#sort-table2,#sort-table3,#sort-table4,#sort-table5,#sort-table6,#sort-table7,#sort-table8,#sort-table9,#sort-table10,#sort-table11,#sort-table12,#sort-table13")
+	$("#sort-table,#sort-table1,#sort-table2,#sort-table3,#sort-table4,#sort-table5,#sort-table6,#sort-table7,#sort-table8,#sort-table9,#sort-table10,#sort-table11,#sort-table12,#sort-table13,#sort-table14")
 	.tablesorter({
 		widgets: ['zebra'],
 		headers: { 
@@ -148,8 +148,8 @@ $(document).ready(function() {
 		            } 
 		        } 
 	})
-	
-	.tablesorterPager({container: $("#pager,#pager1,#pager2,#pager3,#pager4,#pager5,#pager6,#pager7,#pager8,#pager9,#pager10,#pager11,#pager12,#pager13")});
+
+	.tablesorterPager({ container: $("#pager,#pager1,#pager2,#pager3,#pager4,#pager5,#pager6,#pager7,#pager8,#pager9,#pager10,#pager11,#pager12,#pager13,#pager14") });
 	
 	
 	$(".header").append('<span class="ui-icon ui-icon-carat-2-n-s"></span>');

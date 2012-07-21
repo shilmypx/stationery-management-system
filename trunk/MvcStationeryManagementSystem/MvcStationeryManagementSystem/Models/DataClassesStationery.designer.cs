@@ -33,12 +33,12 @@ namespace MvcStationeryManagementSystem.Models
     partial void InsertCataloge(Cataloge instance);
     partial void UpdateCataloge(Cataloge instance);
     partial void DeleteCataloge(Cataloge instance);
-    partial void InsertStationery(Stationery instance);
-    partial void UpdateStationery(Stationery instance);
-    partial void DeleteStationery(Stationery instance);
     partial void InsertCatalogeRQ(CatalogeRQ instance);
     partial void UpdateCatalogeRQ(CatalogeRQ instance);
     partial void DeleteCatalogeRQ(CatalogeRQ instance);
+    partial void InsertConfig(Config instance);
+    partial void UpdateConfig(Config instance);
+    partial void DeleteConfig(Config instance);
     partial void InsertEmployee(Employee instance);
     partial void UpdateEmployee(Employee instance);
     partial void DeleteEmployee(Employee instance);
@@ -51,9 +51,9 @@ namespace MvcStationeryManagementSystem.Models
     partial void InsertRole(Role instance);
     partial void UpdateRole(Role instance);
     partial void DeleteRole(Role instance);
-    partial void InsertSetting(Setting instance);
-    partial void UpdateSetting(Setting instance);
-    partial void DeleteSetting(Setting instance);
+    partial void InsertStationery(Stationery instance);
+    partial void UpdateStationery(Stationery instance);
+    partial void DeleteStationery(Stationery instance);
     #endregion
 		
 		public DataClassesStationeryDataContext() : 
@@ -94,19 +94,19 @@ namespace MvcStationeryManagementSystem.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Stationery> Stationeries
-		{
-			get
-			{
-				return this.GetTable<Stationery>();
-			}
-		}
-		
 		public System.Data.Linq.Table<CatalogeRQ> CatalogeRQs
 		{
 			get
 			{
 				return this.GetTable<CatalogeRQ>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Config> Configs
+		{
+			get
+			{
+				return this.GetTable<Config>();
 			}
 		}
 		
@@ -142,11 +142,11 @@ namespace MvcStationeryManagementSystem.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Setting> Settings
+		public System.Data.Linq.Table<Stationery> Stationeries
 		{
 			get
 			{
-				return this.GetTable<Setting>();
+				return this.GetTable<Stationery>();
 			}
 		}
 	}
@@ -265,281 +265,6 @@ namespace MvcStationeryManagementSystem.Models
 		}
 	}
 	
-	[Table(Name="dbo.Stationery")]
-	public partial class Stationery : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ProductId;
-		
-		private string _ProductName;
-		
-		private System.Nullable<decimal> _Rate;
-		
-		private System.Nullable<int> _Quantity;
-		
-		private System.Nullable<decimal> _Arise;
-		
-		private System.Nullable<int> _CatalogeId;
-		
-		private string _Description;
-		
-		private EntitySet<Request_Stationery> _Request_Stationeries;
-		
-		private EntityRef<Cataloge> _Cataloge;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnProductIdChanging(int value);
-    partial void OnProductIdChanged();
-    partial void OnProductNameChanging(string value);
-    partial void OnProductNameChanged();
-    partial void OnRateChanging(System.Nullable<decimal> value);
-    partial void OnRateChanged();
-    partial void OnQuantityChanging(System.Nullable<int> value);
-    partial void OnQuantityChanged();
-    partial void OnAriseChanging(System.Nullable<decimal> value);
-    partial void OnAriseChanged();
-    partial void OnCatalogeIdChanging(System.Nullable<int> value);
-    partial void OnCatalogeIdChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    #endregion
-		
-		public Stationery()
-		{
-			this._Request_Stationeries = new EntitySet<Request_Stationery>(new Action<Request_Stationery>(this.attach_Request_Stationeries), new Action<Request_Stationery>(this.detach_Request_Stationeries));
-			this._Cataloge = default(EntityRef<Cataloge>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_ProductId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ProductId
-		{
-			get
-			{
-				return this._ProductId;
-			}
-			set
-			{
-				if ((this._ProductId != value))
-				{
-					this.OnProductIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProductId = value;
-					this.SendPropertyChanged("ProductId");
-					this.OnProductIdChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_ProductName", DbType="NVarChar(50)")]
-		public string ProductName
-		{
-			get
-			{
-				return this._ProductName;
-			}
-			set
-			{
-				if ((this._ProductName != value))
-				{
-					this.OnProductNameChanging(value);
-					this.SendPropertyChanging();
-					this._ProductName = value;
-					this.SendPropertyChanged("ProductName");
-					this.OnProductNameChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Rate", DbType="Money")]
-		public System.Nullable<decimal> Rate
-		{
-			get
-			{
-				return this._Rate;
-			}
-			set
-			{
-				if ((this._Rate != value))
-				{
-					this.OnRateChanging(value);
-					this.SendPropertyChanging();
-					this._Rate = value;
-					this.SendPropertyChanged("Rate");
-					this.OnRateChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Quantity", DbType="Int")]
-		public System.Nullable<int> Quantity
-		{
-			get
-			{
-				return this._Quantity;
-			}
-			set
-			{
-				if ((this._Quantity != value))
-				{
-					this.OnQuantityChanging(value);
-					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Arise", DbType="Money")]
-		public System.Nullable<decimal> Arise
-		{
-			get
-			{
-				return this._Arise;
-			}
-			set
-			{
-				if ((this._Arise != value))
-				{
-					this.OnAriseChanging(value);
-					this.SendPropertyChanging();
-					this._Arise = value;
-					this.SendPropertyChanged("Arise");
-					this.OnAriseChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_CatalogeId", DbType="Int")]
-		public System.Nullable<int> CatalogeId
-		{
-			get
-			{
-				return this._CatalogeId;
-			}
-			set
-			{
-				if ((this._CatalogeId != value))
-				{
-					if (this._Cataloge.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCatalogeIdChanging(value);
-					this.SendPropertyChanging();
-					this._CatalogeId = value;
-					this.SendPropertyChanged("CatalogeId");
-					this.OnCatalogeIdChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[Association(Name="Stationery_Request_Stationery", Storage="_Request_Stationeries", ThisKey="ProductId", OtherKey="ProductId")]
-		public EntitySet<Request_Stationery> Request_Stationeries
-		{
-			get
-			{
-				return this._Request_Stationeries;
-			}
-			set
-			{
-				this._Request_Stationeries.Assign(value);
-			}
-		}
-		
-		[Association(Name="Cataloge_Stationery", Storage="_Cataloge", ThisKey="CatalogeId", OtherKey="CatalogeId", IsForeignKey=true)]
-		public Cataloge Cataloge
-		{
-			get
-			{
-				return this._Cataloge.Entity;
-			}
-			set
-			{
-				Cataloge previousValue = this._Cataloge.Entity;
-				if (((previousValue != value) 
-							|| (this._Cataloge.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Cataloge.Entity = null;
-						previousValue.Stationeries.Remove(this);
-					}
-					this._Cataloge.Entity = value;
-					if ((value != null))
-					{
-						value.Stationeries.Add(this);
-						this._CatalogeId = value.CatalogeId;
-					}
-					else
-					{
-						this._CatalogeId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Cataloge");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Request_Stationeries(Request_Stationery entity)
-		{
-			this.SendPropertyChanging();
-			entity.Stationery = this;
-		}
-		
-		private void detach_Request_Stationeries(Request_Stationery entity)
-		{
-			this.SendPropertyChanging();
-			entity.Stationery = null;
-		}
-	}
-	
 	[Table(Name="dbo.CatalogeRQ")]
 	public partial class CatalogeRQ : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -654,6 +379,236 @@ namespace MvcStationeryManagementSystem.Models
 		}
 	}
 	
+	[Table(Name="dbo.Config")]
+	public partial class Config : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _MailName;
+		
+		private string _MailNetwork;
+		
+		private string _Password;
+		
+		private string _Ports;
+		
+		private string _Type;
+		
+		private System.Nullable<System.DateTime> _BuildDate;
+		
+		private string _Description;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnMailNameChanging(string value);
+    partial void OnMailNameChanged();
+    partial void OnMailNetworkChanging(string value);
+    partial void OnMailNetworkChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnPortsChanging(string value);
+    partial void OnPortsChanged();
+    partial void OnTypeChanging(string value);
+    partial void OnTypeChanged();
+    partial void OnBuildDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnBuildDateChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    #endregion
+		
+		public Config()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_MailName", DbType="VarChar(50)")]
+		public string MailName
+		{
+			get
+			{
+				return this._MailName;
+			}
+			set
+			{
+				if ((this._MailName != value))
+				{
+					this.OnMailNameChanging(value);
+					this.SendPropertyChanging();
+					this._MailName = value;
+					this.SendPropertyChanged("MailName");
+					this.OnMailNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_MailNetwork", DbType="VarChar(50)")]
+		public string MailNetwork
+		{
+			get
+			{
+				return this._MailNetwork;
+			}
+			set
+			{
+				if ((this._MailNetwork != value))
+				{
+					this.OnMailNetworkChanging(value);
+					this.SendPropertyChanging();
+					this._MailNetwork = value;
+					this.SendPropertyChanged("MailNetwork");
+					this.OnMailNetworkChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Password", DbType="VarChar(50)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Ports", DbType="VarChar(50)")]
+		public string Ports
+		{
+			get
+			{
+				return this._Ports;
+			}
+			set
+			{
+				if ((this._Ports != value))
+				{
+					this.OnPortsChanging(value);
+					this.SendPropertyChanging();
+					this._Ports = value;
+					this.SendPropertyChanged("Ports");
+					this.OnPortsChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Type", DbType="VarChar(50)")]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_BuildDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> BuildDate
+		{
+			get
+			{
+				return this._BuildDate;
+			}
+			set
+			{
+				if ((this._BuildDate != value))
+				{
+					this.OnBuildDateChanging(value);
+					this.SendPropertyChanging();
+					this._BuildDate = value;
+					this.SendPropertyChanged("BuildDate");
+					this.OnBuildDateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Description", DbType="NChar(10)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[Table(Name="dbo.Employee")]
 	public partial class Employee : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -761,7 +716,7 @@ namespace MvcStationeryManagementSystem.Models
 			}
 		}
 		
-		[Column(Storage="_DateBuild", DbType="DateTime")]
+		[Column(Storage="_DateBuild", DbType="Date")]
 		public System.Nullable<System.DateTime> DateBuild
 		{
 			get
@@ -1685,7 +1640,7 @@ namespace MvcStationeryManagementSystem.Models
 			OnCreated();
 		}
 		
-		[Column(Storage="_RoleId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[Column(Storage="_RoleId", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int RoleId
 		{
 			get
@@ -1791,191 +1746,177 @@ namespace MvcStationeryManagementSystem.Models
 		}
 	}
 	
-	[Table(Name="dbo.Setting")]
-	public partial class Setting : INotifyPropertyChanging, INotifyPropertyChanged
+	[Table(Name="dbo.Stationery")]
+	public partial class Stationery : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _Id;
+		private int _ProductId;
 		
-		private string _MailName;
+		private string _ProductName;
 		
-		private string _MailNetwork;
+		private System.Nullable<decimal> _Rate;
 		
-		private string _Password;
+		private System.Nullable<int> _Quantity;
 		
-		private string _Ports;
+		private System.Nullable<decimal> _Arise;
 		
-		private string _Type;
-		
-		private System.Nullable<System.DateTime> _BuildDate;
+		private System.Nullable<int> _CatalogeId;
 		
 		private string _Description;
+		
+		private EntitySet<Request_Stationery> _Request_Stationeries;
+		
+		private EntityRef<Cataloge> _Cataloge;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnMailNameChanging(string value);
-    partial void OnMailNameChanged();
-    partial void OnMailNetworkChanging(string value);
-    partial void OnMailNetworkChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnPortsChanging(string value);
-    partial void OnPortsChanged();
-    partial void OnTypeChanging(string value);
-    partial void OnTypeChanged();
-    partial void OnBuildDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnBuildDateChanged();
+    partial void OnProductIdChanging(int value);
+    partial void OnProductIdChanged();
+    partial void OnProductNameChanging(string value);
+    partial void OnProductNameChanged();
+    partial void OnRateChanging(System.Nullable<decimal> value);
+    partial void OnRateChanged();
+    partial void OnQuantityChanging(System.Nullable<int> value);
+    partial void OnQuantityChanged();
+    partial void OnAriseChanging(System.Nullable<decimal> value);
+    partial void OnAriseChanged();
+    partial void OnCatalogeIdChanging(System.Nullable<int> value);
+    partial void OnCatalogeIdChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
     #endregion
 		
-		public Setting()
+		public Stationery()
 		{
+			this._Request_Stationeries = new EntitySet<Request_Stationery>(new Action<Request_Stationery>(this.attach_Request_Stationeries), new Action<Request_Stationery>(this.detach_Request_Stationeries));
+			this._Cataloge = default(EntityRef<Cataloge>);
 			OnCreated();
 		}
 		
-		[Column(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
+		[Column(Storage="_ProductId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ProductId
 		{
 			get
 			{
-				return this._Id;
+				return this._ProductId;
 			}
 			set
 			{
-				if ((this._Id != value))
+				if ((this._ProductId != value))
 				{
-					this.OnIdChanging(value);
+					this.OnProductIdChanging(value);
 					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
+					this._ProductId = value;
+					this.SendPropertyChanged("ProductId");
+					this.OnProductIdChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_MailName", DbType="VarChar(50)")]
-		public string MailName
+		[Column(Storage="_ProductName", DbType="NVarChar(50)")]
+		public string ProductName
 		{
 			get
 			{
-				return this._MailName;
+				return this._ProductName;
 			}
 			set
 			{
-				if ((this._MailName != value))
+				if ((this._ProductName != value))
 				{
-					this.OnMailNameChanging(value);
+					this.OnProductNameChanging(value);
 					this.SendPropertyChanging();
-					this._MailName = value;
-					this.SendPropertyChanged("MailName");
-					this.OnMailNameChanged();
+					this._ProductName = value;
+					this.SendPropertyChanged("ProductName");
+					this.OnProductNameChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_MailNetwork", DbType="VarChar(50)")]
-		public string MailNetwork
+		[Column(Storage="_Rate", DbType="Money")]
+		public System.Nullable<decimal> Rate
 		{
 			get
 			{
-				return this._MailNetwork;
+				return this._Rate;
 			}
 			set
 			{
-				if ((this._MailNetwork != value))
+				if ((this._Rate != value))
 				{
-					this.OnMailNetworkChanging(value);
+					this.OnRateChanging(value);
 					this.SendPropertyChanging();
-					this._MailNetwork = value;
-					this.SendPropertyChanged("MailNetwork");
-					this.OnMailNetworkChanged();
+					this._Rate = value;
+					this.SendPropertyChanged("Rate");
+					this.OnRateChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_Password", DbType="VarChar(50)")]
-		public string Password
+		[Column(Storage="_Quantity", DbType="Int")]
+		public System.Nullable<int> Quantity
 		{
 			get
 			{
-				return this._Password;
+				return this._Quantity;
 			}
 			set
 			{
-				if ((this._Password != value))
+				if ((this._Quantity != value))
 				{
-					this.OnPasswordChanging(value);
+					this.OnQuantityChanging(value);
 					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_Ports", DbType="VarChar(50)")]
-		public string Ports
+		[Column(Storage="_Arise", DbType="Money")]
+		public System.Nullable<decimal> Arise
 		{
 			get
 			{
-				return this._Ports;
+				return this._Arise;
 			}
 			set
 			{
-				if ((this._Ports != value))
+				if ((this._Arise != value))
 				{
-					this.OnPortsChanging(value);
+					this.OnAriseChanging(value);
 					this.SendPropertyChanging();
-					this._Ports = value;
-					this.SendPropertyChanged("Ports");
-					this.OnPortsChanged();
+					this._Arise = value;
+					this.SendPropertyChanged("Arise");
+					this.OnAriseChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_Type", DbType="VarChar(50)")]
-		public string Type
+		[Column(Storage="_CatalogeId", DbType="Int")]
+		public System.Nullable<int> CatalogeId
 		{
 			get
 			{
-				return this._Type;
+				return this._CatalogeId;
 			}
 			set
 			{
-				if ((this._Type != value))
+				if ((this._CatalogeId != value))
 				{
-					this.OnTypeChanging(value);
+					if (this._Cataloge.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCatalogeIdChanging(value);
 					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_BuildDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> BuildDate
-		{
-			get
-			{
-				return this._BuildDate;
-			}
-			set
-			{
-				if ((this._BuildDate != value))
-				{
-					this.OnBuildDateChanging(value);
-					this.SendPropertyChanging();
-					this._BuildDate = value;
-					this.SendPropertyChanged("BuildDate");
-					this.OnBuildDateChanged();
+					this._CatalogeId = value;
+					this.SendPropertyChanged("CatalogeId");
+					this.OnCatalogeIdChanged();
 				}
 			}
 		}
@@ -2000,6 +1941,53 @@ namespace MvcStationeryManagementSystem.Models
 			}
 		}
 		
+		[Association(Name="Stationery_Request_Stationery", Storage="_Request_Stationeries", ThisKey="ProductId", OtherKey="ProductId")]
+		public EntitySet<Request_Stationery> Request_Stationeries
+		{
+			get
+			{
+				return this._Request_Stationeries;
+			}
+			set
+			{
+				this._Request_Stationeries.Assign(value);
+			}
+		}
+		
+		[Association(Name="Cataloge_Stationery", Storage="_Cataloge", ThisKey="CatalogeId", OtherKey="CatalogeId", IsForeignKey=true)]
+		public Cataloge Cataloge
+		{
+			get
+			{
+				return this._Cataloge.Entity;
+			}
+			set
+			{
+				Cataloge previousValue = this._Cataloge.Entity;
+				if (((previousValue != value) 
+							|| (this._Cataloge.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Cataloge.Entity = null;
+						previousValue.Stationeries.Remove(this);
+					}
+					this._Cataloge.Entity = value;
+					if ((value != null))
+					{
+						value.Stationeries.Add(this);
+						this._CatalogeId = value.CatalogeId;
+					}
+					else
+					{
+						this._CatalogeId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Cataloge");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2018,6 +2006,18 @@ namespace MvcStationeryManagementSystem.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Request_Stationeries(Request_Stationery entity)
+		{
+			this.SendPropertyChanging();
+			entity.Stationery = this;
+		}
+		
+		private void detach_Request_Stationeries(Request_Stationery entity)
+		{
+			this.SendPropertyChanging();
+			entity.Stationery = null;
 		}
 	}
 }

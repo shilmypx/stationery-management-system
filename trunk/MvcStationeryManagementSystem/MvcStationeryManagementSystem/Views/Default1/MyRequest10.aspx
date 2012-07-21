@@ -5,11 +5,12 @@
 	MyRequest10</asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<%
+   
+        if (Session["email"] != null || Session["dlrequest"] != null)
+        { %>
 
-<%if (Session["email"] != null || Session["dlrequest"] !=null)
-  { %>
-
-  <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+            <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Messages</div>
 					<div class="portlet-content">
 					<%if (Convert.ToInt32(Session["email"]) == 2)
@@ -23,6 +24,17 @@
 								
 								
 					<%}
+       else if (Convert.ToInt32(Session["email"]) == 1 && Convert.ToInt32(Session["email1"]) == 1)
+       {%> 
+     			
+					<div class="response-msg success ui-corner-all">
+									<span>Success message</span>
+									Work of you have successfully. Quality Of Product Has Been Suppress. 
+								</div>
+								<%Session.Remove("email");%>
+								<%Session.Remove("email1");%>
+								
+						<%}
        else if (Convert.ToInt32(Session["email"]) == 1)
        {%> 
      			
@@ -31,9 +43,33 @@
 									Work of you have successfully. A email has been sent successfully.
 								</div>
 								<%Session.Remove("email");%>
+								<%Session.Remove("email1");%>
+								<%}
+       else if (Convert.ToInt32(Session["email"]) == 3)
+       {%> 
+     			
+					<div class="response-msg success ui-corner-all">
+									<span>Success message</span>
+									Work of you have successfully.
+									Your request is waiting to be processed. Requirements still exist in your data.
+									A email has been sent successfully.
+								</div>
+								<%Session.Remove("email");%>
 								
 						<%}
-      else if (Convert.ToInt32(Session["dlrequest"]) == 1)
+       else if (Convert.ToInt32(Session["email"]) == 4)
+       {%> 
+					<div class="response-msg error ui-corner-all">
+									<span>Error message</span>
+									Work of you have failed.Unable to send a email.
+								</div>
+								<%Session.Remove("email");%>
+								
+								
+								
+					<%}
+
+       else if (Convert.ToInt32(Session["dlrequest"]) == 1)
        {%> 
      			
 					<div class="response-msg success ui-corner-all">
@@ -43,23 +79,40 @@
 								
 								<%Session.Remove("dlrequest");%>
 						<%}
-      else if (Convert.ToInt32(Session["dlrequest"]) == 2)
+       else if (Convert.ToInt32(Session["dlrequest"]) == 2)
        {%> 
      			
 				<div class="response-msg error ui-corner-all">
 									<span>Error message</span>
-									Delete failed !!!!!!1.
+									Deleted Failed!!!.
 								</div>
 							
 								<%Session.Remove("dlrequest");%>
 						<%}
       
+      
       %>
       
 					</div>
   </div>
-  
-  <%}%>
+            <%Session.Remove("qty");%>
+        <%}
+    
+   
+    else if(Session["qty"]!=null)
+    {%> 
+       <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+					<div class="portlet-header ui-widget-header">Messages</div>
+					<div class="portlet-content">
+					<div class="response-msg error ui-corner-all">
+									<span>Error message</span>
+									<%=Session["qty"].ToString()%> :&nbsp IS The Product Of Quality Not Enough.
+								</div>
+					</div> 
+					</div>
+	    <%Session.Remove("qty");%>
+   <%}
+    %>
    
     <div id="tabs" >
     <%string ss = Session["ac"]==null ? "0" : (string)(Session["ac"]);%>
@@ -93,6 +146,7 @@
           <%  }
         else if (e.RoleId == 1)
         { %>
+                          
                         <li id="t10"><a href="#tabs-10">New Requests</a></li>
                         <li id="t11"><a href="#tabs-11">Withdraw Requests</a></li>
 						<li id="t12"><a href="#tabs-12">Cancel Requests</a></li>
@@ -364,7 +418,7 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-								 <%=Html.ActionLink("Select","DetailRQ3/"+rq.RId1,"Default1")%>
+								 <%=Html.ActionLink("Select","DetailRQ33/"+rq.RId1,"Default1")%>
 							</td>
 							
 							<%--<td><%=Session["Employee"].ToString()%></td>--%>
@@ -461,7 +515,7 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-								 <%=Html.ActionLink("Select","DetailRQ3/"+rq.RId1,"Default1")%>
+								 <%=Html.ActionLink("Select","DetailRQ33/"+rq.RId1,"Default1")%>
 							</td>
 							
 							<%--<td><%=Session["Employee"].ToString()%></td>--%>
@@ -559,7 +613,7 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-								 <%=Html.ActionLink("Select","DetailRQ3/"+rq.RId1,"Default1")%>
+								 <%=Html.ActionLink("Select","DetailRQ33/"+rq.RId1,"Default1")%>
 							</td>
 							
 							<%--<td><%=Session["Employee"].ToString()%></td>--%>
@@ -755,9 +809,8 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-								<%=Html.ActionLink("Detail", "DetailRQ3/" + rq.RId1, "Default1")%>
-								<a>|</a>
-								<%=Html.ActionLink("Delete", "DeleteRQ3/" + rq.RId1, "Default1",null ,new { @id = "mydelet" })%>
+								<a><%=Html.ActionLink("Select", "DetailRQ3/" + rq.RId1, "Default1")%></a>
+								
 								
 							</td>
 							
@@ -954,7 +1007,7 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-								<%=Html.ActionLink("Select", "DetailRQ3/" + rq.RId1, "Default1")%>
+								<%=Html.ActionLink("Select", "DetailRQ33/" + rq.RId1, "Default1")%>
 							</td>
 							
 							<%--<td><%=Session["Employee"].ToString()%></td>--%>
@@ -1251,7 +1304,7 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-								 <%=Html.ActionLink("Select","DetailRQ3/"+rq.RId1,"Default1")%>
+								 <%=Html.ActionLink("Select","DetailRQ33/"+rq.RId1,"Default1")%>
 							</td>
 							
 							<%--<td><%=Session["Employee"].ToString()%></td>--%>
@@ -1348,7 +1401,7 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-								 <%=Html.ActionLink("Select","DetailRQ3/"+rq.RId1,"Default1")%>
+								 <%=Html.ActionLink("Select","DetailRQ33/"+rq.RId1,"Default1")%>
 							</td>
 							
 							<%--<td><%=Session["Employee"].ToString()%></td>--%>
@@ -1446,7 +1499,7 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-								 <%=Html.ActionLink("Select","DetailRQ3/"+rq.RId1,"Default1")%>
+								 <%=Html.ActionLink("Select","DetailRQ33/"+rq.RId1,"Default1")%>
 							</td>
 							
 							<%--<td><%=Session["Employee"].ToString()%></td>--%>
@@ -1488,6 +1541,7 @@
     <%}
         else if (e.RoleId == 1)
         { %>
+    
     <div id="tabs-10">
         <div class="hastable">
 					<form name="myform" class="pager-form" method="post" action="#">
@@ -1837,7 +1891,7 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-								<%=Html.ActionLink("Select", "DetailRQ3/" + rq.RId1, "Default1")%>
+								<%=Html.ActionLink("Select", "DetailRQ33/" + rq.RId1, "Default1")%>
 							</td>
 							
 							<%--<td><%=Session["Employee"].ToString()%></td>--%>
@@ -1888,11 +1942,7 @@
 
 
 });
-$('#mydelet').click(function() {
-    //alert("aaaaa");
-    return confirm('Are you sure Delete?');
 
-});
     
         function xl1() {
            

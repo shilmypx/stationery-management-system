@@ -8,7 +8,7 @@
 					<div class="portlet-content">
 						<ul class="side-menu">
 							
-							<li id="fi" onclick="xl9()" >
+							<li id="fii" onclick="xl9()" >
 								<a href="javascript:void(0);" title="Fixed Layout"><%=Html.ActionLink("New  Requests", "myrequest10/#tabs-10", "default1")%></a>
 								
 							</li>

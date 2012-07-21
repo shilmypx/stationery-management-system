@@ -2,15 +2,15 @@
 <%@ Import Namespace="MvcStationeryManagementSystem.Models" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	DetailRQ3
+	DetailRQ33
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+      <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form elements in box</div>
 					<div class="portlet-content">
-					      <% using (Html.BeginForm("DeleteRQ3", "default1", FormMethod.Post))
+					      <% using (Html.BeginForm("DetailRQ33", "default1"))
               {%>
                             <% RequestModel rm = (RequestModel)ViewData["if"];
                                List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
@@ -132,12 +132,7 @@
 					
 				</div>
                                 </li>
-                                
-                                <li style="float:left; margin-left:90px">
-                                <input type="submit" name="submitButton" onclick = "return confirm('Are you sure you wish to delete this module?');" value="     Delete     "/>
-                             
-                                
-                                </li>
+                              
                               
                                
                                 </ul>
@@ -148,7 +143,7 @@
              {%>
                                 <ul>
                              
-                                     <li style="float:left;margin-top: -40px">
+                                     <li style="float:left;margin-top: -10px">
                                  <input type="submit" name="submitButton" value="      Back      "/>
                                  </li>
                                 </ul>
@@ -163,5 +158,5 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
-    <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
+<link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
 </asp:Content>
