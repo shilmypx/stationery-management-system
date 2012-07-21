@@ -17,7 +17,7 @@
 							            Role Name
 							        </label>
 							        <div>							        
-							            <% string sr = (string)ViewData["roleid"]; %>
+							           <%-- <% string sr = (string)ViewData["roleid"]; %>--%>
 							            <% Role el = (Role)ViewData["data"] ; %>
 							            
 							            <input type="text" name="RoleName" id="myuser" class="field text medium" value="<%= el.RoleName %>" readonly="readonly" tabindex="1" />
