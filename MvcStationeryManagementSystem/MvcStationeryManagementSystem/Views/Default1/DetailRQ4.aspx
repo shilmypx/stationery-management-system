@@ -11,6 +11,7 @@
 					<div class="portlet-header ui-widget-header">Form elements in box</div>
 					<div class="portlet-content">
 					 <% 
+			DataClassesStationeryDataContext dc=new DataClassesStationeryDataContext();		     
                         // Employee ep = (Employee)Session["eplo"];
 					     
 					     RequestModel r = (RequestModel)ViewData["if"];
@@ -27,8 +28,13 @@
 					      <% using (Html.BeginForm("update4", "default1",FormMethod.Post))
               {%>
                             <% RequestModel rm = (RequestModel)ViewData["if"];
-                               List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];%>
-                                <ul>
+                               StationeryModel smd = new StationeryModel();             
+                                List<Request_StationeryModel> rm1 = (List<Request_StationeryModel>)ViewData["if1"];
+                                List<Stationery> l = dc.Stationeries.ToList();
+                             
+                             
+                  %>
+                                  <ul>
                                 <%=Html.Hidden("st3",rm.Stte1)%>
                                 <%= Html.Hidden("requestid", rm.RId1)%> 
                                 
@@ -216,11 +222,11 @@
                                 
                                 <%= Html.Hidden("rc", rmm.RContent1)%>
 
-                              
+                              <%Employee emn = (Employee)Session["Employee"];%>
                                 
                                
                                 <%= Html.Hidden("dt", rmm.Dtion1)%>
-                               <%if (total < amount)
+                               <%if (total < amount || emn.RoleId==1)
                                  {%> 
                                 <li style="float:left;margin-left: 254px;margin-top: -40px">
                                 <input type="submit" name="submitButton" value="    No Approved     "/>

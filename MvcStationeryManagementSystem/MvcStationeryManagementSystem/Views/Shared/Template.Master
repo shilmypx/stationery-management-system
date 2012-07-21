@@ -59,7 +59,7 @@
 		<div id="sitename">
 			<a href="index.html" class="logo float-left" title="Admintasia">Admintasia</a>
 			<div class="button float-right">
-				<a href="#" id="dialog_link" class="btn ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span>Open Dialog</a>
+				<%--<a href="#" id="dialog_link" class="btn ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span>Open Dialog</a>--%>
 				<a href="#" id="login_dialog" class="btn ui-state-default ui-corner-all"><span class="ui-icon ui-icon-image"></span>Open Login Box</a>
 			</div>
 			<div id="login" title="Members Login">

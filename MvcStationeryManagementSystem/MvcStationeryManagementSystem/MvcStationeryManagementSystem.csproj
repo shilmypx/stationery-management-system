@@ -246,6 +246,7 @@
     <Content Include="Views\Default1\DetailRQ.aspx" />
     <Content Include="Views\Default1\DetailRQ22.aspx" />
     <Content Include="Views\Default1\DetailRQ3.aspx" />
+    <Content Include="Views\Default1\DetailRQ33.aspx" />
     <Content Include="Views\Default1\DetailRQ4.aspx" />
     <Content Include="Views\Default1\DetailRQ5.aspx" />
     <Content Include="Views\Default1\Index.aspx" />

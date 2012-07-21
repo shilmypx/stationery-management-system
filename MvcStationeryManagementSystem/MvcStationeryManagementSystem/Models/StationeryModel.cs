@@ -58,6 +58,18 @@ namespace MvcStationeryManagementSystem.Models
             dct.SubmitChanges();
 
         }
+        //tuan
+      
+        public void EditST_RQ(int id, int Quantity)
+        {
+            Stationery sta = dct.Stationeries.Where(st => st.ProductId == id).ToList().First();
+          
+            sta.Quantity = Convert.ToInt32(Quantity);
+         
+            dct.SubmitChanges();
+
+        }
+        //
         public int count()
         {
             int tas = dct.Stationeries.Count();

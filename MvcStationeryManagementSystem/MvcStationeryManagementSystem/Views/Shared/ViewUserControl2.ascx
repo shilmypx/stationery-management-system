@@ -18,7 +18,7 @@
 								<a href="javascript:void(0);" title="Fixed Layout"><%=Html.ActionLink("Cancel Requests","Myrequest10/#tabs-8","default1")%> </a>
 							</li>
 							<li id="Li4" onclick="xl8()">
-								<a href="javascript:void(0);" title="Fixed Layout"><%=Html.ActionLink("Accept Requests","Myrequest10/#tabs-2","default1")%> </a>
+								<a href="javascript:void(0);" title="Fixed Layout"><%=Html.ActionLink("Accept Requests","Myrequest10/#tabs-9","default1")%> </a>
 							</li>
 						</ul>
 					</div>

@@ -25,5 +25,7 @@ namespace MvcStationeryManagementSystem.Models
             r.RoleName = rname;
             dct.SubmitChanges();
         }
+       
+
     }
 }

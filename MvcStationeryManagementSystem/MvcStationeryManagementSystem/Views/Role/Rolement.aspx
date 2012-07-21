@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+ <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 <div class="portlet-header ui-widget-header">Form Role</div>
 				
         <div class="hastable">
