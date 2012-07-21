@@ -12,7 +12,7 @@
 					<div class="portlet-content">
     <% using (Html.BeginForm("Setting", "Setting", FormMethod.Post, new { @name = "form", @id = "FormConfigs", enctype = "multipart/form-data" }))
          {%>
-         <% Setting s = (Setting)ViewData["detail"]; %>
+         <% Config s = (Config)ViewData["detail"]; %>
 							<ul class="configs">
 								<li>
 									<label  class="desc">

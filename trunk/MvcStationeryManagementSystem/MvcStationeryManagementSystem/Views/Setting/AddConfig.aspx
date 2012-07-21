@@ -64,7 +64,7 @@
 									</div>
 								</li>
 								<li class="buttons">
-									<input type="submit" tabindex="8" value="Submit" class="submit" />
+									<input type="submit" tabindex="8" value="Save" class="submit" />
 								</li>
 							</ul>
 						

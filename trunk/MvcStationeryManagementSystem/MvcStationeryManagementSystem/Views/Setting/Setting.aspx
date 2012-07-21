@@ -21,7 +21,7 @@
 						</tr> 
 						</thead> 
 						<tbody id="mytbody"> 
-						<% foreach (Setting am in (List<Setting>)ViewData["st"])
+						<% foreach (Config am in (List<Config>)ViewData["st"])
          {%>
 						<tr>
 							<td><%=am.MailName%></td> 
