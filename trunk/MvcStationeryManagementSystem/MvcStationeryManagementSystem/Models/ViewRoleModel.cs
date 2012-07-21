@@ -22,10 +22,10 @@ namespace MvcStationeryManagementSystem.Models
             return dcsd.Roles.ToList();
         }
 
-        public Role quyen(int id)
-        {
-            return dcsd.Roles.Where(r => r.RoleId == id).FirstOrDefault();
-        }
+        //public Role quyen(int id)
+        //{
+        //    return dcsd.Roles.Where(r => r.RoleId == id).FirstOrDefault();
+        //}
 
 
         public Role ro(int id)
