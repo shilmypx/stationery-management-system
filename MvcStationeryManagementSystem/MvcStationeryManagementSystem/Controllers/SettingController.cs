@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcStationeryManagementSystem.Models;
+
 namespace MvcStationeryManagementSystem.Controllers
 {
     public class SettingController : Controller
@@ -11,10 +12,10 @@ namespace MvcStationeryManagementSystem.Controllers
         //
         // GET: /Setting/
         private DataClassesStationeryDataContext dc=new DataClassesStationeryDataContext();
-        private SettingModel se = new SettingModel();
+        private ConfigModel se = new ConfigModel();
         public ActionResult Setting()
         {
-            ViewData["st"] = dc.Settings.OrderByDescending(o=>o.BuildDate).ToList();
+            ViewData["st"] = dc.Configs.OrderByDescending(o=>o.BuildDate).ToList();
             return View();
         }
         public ActionResult AddConfig()
@@ -56,8 +57,8 @@ namespace MvcStationeryManagementSystem.Controllers
         public ActionResult IdenEmail(string id)
         {
             string email = "";
-            var rs2 = dc.Settings.Where(dd => dd.MailName == id).ToList();
-            var rs3 = dc.Settings.Where(d => d.MailNetwork == id).ToList();
+            var rs2 = dc.Configs.Where(dd => dd.MailName == id).ToList();
+            var rs3 = dc.Configs.Where(d => d.MailNetwork == id).ToList();
             if (rs2.Count > 0 || rs3.Count >0)
             {
                 email += "Email " + "<b>" + id + "</b>" + " has been used! please enter another email";
