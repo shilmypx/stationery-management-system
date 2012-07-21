@@ -6,14 +6,14 @@ using MvcStationeryManagementSystem.Models;
 
 namespace MvcStationeryManagementSystem.Models
 {
-    public class SettingModel
+    public class ConfigModel
     {
         private DataClassesStationeryDataContext dcs = new DataClassesStationeryDataContext();
         
 
         public void AddConfig(string mailname, string mailnetwork, string password, string ports, string type, DateTime builddate, string description)
         {
-            Setting c = new Setting();
+            Config c = new Config();
             c.MailName = mailname;
             c.MailNetwork = mailnetwork;
             c.Password = password;
@@ -21,13 +21,13 @@ namespace MvcStationeryManagementSystem.Models
             c.Type = type;
             c.BuildDate = builddate;
             c.Description = description;
-            dcs.Settings.InsertOnSubmit(c);
+            dcs.Configs.InsertOnSubmit(c);
             dcs.SubmitChanges();
         }
 
         public void Edit(int id, string mailname, string mailnetwork, string ports, string type, DateTime builddate, string description)
         {
-            Setting c = dcs.Settings.Where(eml => eml.Id == id).FirstOrDefault();
+            Config c = dcs.Configs.Where(eml => eml.Id == id).FirstOrDefault();
             c.MailName = mailname;
             c.MailNetwork = mailnetwork;
             c.Ports = ports;
@@ -37,15 +37,15 @@ namespace MvcStationeryManagementSystem.Models
             dcs.SubmitChanges();
         }
 
-        public Setting InfoSet(int id)
+        public Config InfoSet(int id)
         {
-            return dcs.Settings.Where(e => e.Id==id).FirstOrDefault();
+            return dcs.Configs.Where(e => e.Id==id).FirstOrDefault();
         }
 
         public void Delete(int id)
         {
-            Setting set = dcs.Settings.Where(i => i.Id == id).FirstOrDefault();
-            dcs.Settings.DeleteOnSubmit(set);
+            Config set = dcs.Configs.Where(i => i.Id == id).FirstOrDefault();
+            dcs.Configs.DeleteOnSubmit(set);
             dcs.SubmitChanges();
         }
 
