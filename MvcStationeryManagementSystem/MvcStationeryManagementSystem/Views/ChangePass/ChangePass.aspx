@@ -41,10 +41,10 @@
 
         <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 		<div class="portlet-header ui-widget-header">Form Change PassWords</div>
-		<div class="portlet-content-new">
+		<div class="portlet-content">
 		 <% using (Html.BeginForm("ChangePass", "ChangePass", FormMethod.Post, new { @id = "MyClass" }))
      {%>
-							<ul>
+							<ul class="addform">
 							    <li>
 							        <label class="desc">
 							            Username:
