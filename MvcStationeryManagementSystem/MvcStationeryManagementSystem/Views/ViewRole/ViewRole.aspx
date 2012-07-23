@@ -10,8 +10,8 @@
     <div id="addemployee">
         <div class="portlet ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form elements in box</div>
-					<div class="portlet-content-new">
-							<ul>
+					<div class="portlet-content">
+							<ul class="addform">
 							    <li>
 							        <label class="desc">
 							            Role Name
