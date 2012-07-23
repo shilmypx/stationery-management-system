@@ -23,3 +23,8 @@ D:\newpro\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcSta
 D:\newpro\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\ResolveAssemblyReference.cache
 D:\newpro\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.dll
 D:\newpro\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.pdb
+D:\newpro - Copy\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcStationeryManagementSystem.dll
+D:\newpro - Copy\MvcStationeryManagementSystem\MvcStationeryManagementSystem\bin\MvcStationeryManagementSystem.pdb
+D:\newpro - Copy\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\ResolveAssemblyReference.cache
+D:\newpro - Copy\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.dll
+D:\newpro - Copy\MvcStationeryManagementSystem\MvcStationeryManagementSystem\obj\Debug\MvcStationeryManagementSystem.pdb

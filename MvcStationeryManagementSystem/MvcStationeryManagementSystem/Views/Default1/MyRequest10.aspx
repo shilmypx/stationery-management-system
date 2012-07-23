@@ -463,7 +463,7 @@
 						<table id="sort-table3"> 
 						<thead> 
 						<tr>
-							<%--<th><input type="checkbox" value="check_none" onclick="this.value=check(this.form.list)" class="submit"/></th>--%>
+							
 						    <th>RequestName</th> 
 						    <%--<th>CatalogRequestName</th> --%>
 						    <th>CatalogRequestName</th> 
@@ -561,7 +561,7 @@
 						<table id="sort-table4"> 
 						<thead> 
 						<tr>
-							<%--<th><input type="checkbox" value="check_none" onclick="this.value=check(this.form.list)" class="submit"/></th>--%>
+						
 						    <th>RequestName</th> 
 						    <%--<th>CatalogRequestName</th> --%>
 						    <th>CatalogRequestName</th> 
@@ -654,24 +654,27 @@
     </div>
     
     <div id="tabs-6">
+    	<div>
+					<label class="desc" >Search Request Name:</label>
+						<input type="text" name="CatalogeName" class="keysearch" value=""  tabindex="2" />							
+					</div>	   	
         <div class="hastable">
 					<form name="myform" class="pager-form" method="post" action="#">
 						<table id="sort-table5"> 
 						<thead> 
 						<tr>
-							<%--<th><input type="checkbox" value="check_none" onclick="this.value=check(this.form.list)" class="submit"/></th>--%>
+							
 						    <th>RequestName</th> 
-						    <%--<th>CatalogRequestName</th> --%>
+						   
 						    <th>CatalogRequestName</th> 
 						    <th>DateDispatch</th> 
 						    <th>DateApprove</th>
 						    <th>RequestContent</th>
-						    <%--<th>Description</th>--%>
-						    
+						   
 						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
-						<tbody> 
+						<tbody id="hh1"> 
 	         <%List<RequestModel22> g = (List<RequestModel22>)ViewData["lst5"];
                         if(g.Count()==0)
                         {%>
@@ -1054,7 +1057,7 @@
 						<table id="sort-table"> 
 						<thead> 
 						<tr>
-							<%--<th><input type="checkbox" value="check_none" onclick="this.value=check(this.form.list)" class="submit"/></th>--%>
+							
 						    <th>RequestName</th> 
 						    <%--<th>CatalogRequestName</th> --%>
 						    <th>CatalogRequestName</th> 
@@ -1063,7 +1066,7 @@
 						    <th>RequestContent</th>
 						    <%--<th>Description</th>--%>
 						    
-						    <th style="width:30px">Options</th> 
+						    <th style="width:90px">Options</th> 
 						</tr> 
 						</thead> 
 						<tbody> 
@@ -1107,10 +1110,14 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-						        <%=Html.ActionLink("Select","DetailRQ/"+rq.RId1,"Default1")%>
+						    
+						      <a><%=Html.ActionLink("Select","DetailRQ/"+rq.RId1,"Default1")%></a>
+						      
+						    
+						         
 							</td>
 							
-							<%--<td><%=Session["Employee"].ToString()%></td>--%>
+						
 						</tr> 
 						<% }%>
 						
@@ -1543,25 +1550,28 @@
         { %>
     
     <div id="tabs-10">
+    	<div>
+					<label class="d5" >Search Request Name:</label>
+						<input type="text" name="CatalogeName" class="keysearch" value=""  tabindex="2" />							
+					</div>	   	
         <div class="hastable">
 					<form name="myform" class="pager-form" method="post" action="#">
 						<table id="sort-table9"> 
 						<thead> 
 						<tr>
-							<%--<th><input type="checkbox" value="check_none" onclick="this.value=check(this.form.list)" class="submit"/></th>--%>
+							
 						    <th>RequestName</th> 
-						    <%--<th>CatalogRequestName</th> --%>
+						   
 						    <th>CatalogRequestName</th> 
 						    <th>DateDispatch</th> 
 						    <th>DateApprove</th>
 						    <th>RequestContent</th>
-						    <%--<th>Description</th>--%>
-						    
+						   
 						    <th style="width:30px">Options</th> 
 						</tr> 
 						</thead> 
-						<tbody> 
-	         <%List<RequestModel22> gg = (List<RequestModel22>)ViewData["lst55"];
+						<tbody id="hh"> 
+	                         <%List<RequestModel22> gg = (List<RequestModel22>)ViewData["lst55"];
                         if(gg.Count()==0)
                         {%>
                              <tr>
@@ -1608,6 +1618,7 @@
 						<% }%>
 						
 						</tbody>
+						
 						</table>
 						<div id="pager9">
 					
@@ -1939,7 +1950,38 @@
 <script language="javascript" type="text/javascript">
    
     $(document).ready(function() {
+    $('.keysearch').keyup(function() {
+        var keysearch = $(this).val();
+        $.ajax({
+            type: 'GET',
+            url: '/Default1/Search/' + keysearch,
+            success: function(data) {
+                $("tbody#hh").html("");
+                $("tbody#hh").html(data);
 
+            }
+
+
+        });
+
+    });
+    //
+    $('.keysearch').keyup(function() {
+        var keysearch = $(this).val();
+        $.ajax({
+            type: 'GET',
+            url: '/Default1/Search1/' + keysearch,
+            success: function(data) {
+                $("tbody#hh1").html("");
+                $("tbody#hh1").html(data);
+
+            }
+
+
+        });
+
+    });
+    //
 
 });
 

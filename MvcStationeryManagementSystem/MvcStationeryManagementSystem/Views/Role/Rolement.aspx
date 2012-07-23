@@ -15,7 +15,7 @@
 							<th class="header">RoleID </th>
 						    <th class="style1">RoleName</th>
 						    <th class="style1">Amount</th> 
-							<th style="width:132px" class="">Options</th> 
+							<td style="width:132px" class="">Options</td> 
 						</tr> 
 						</thead> 
 						<tbody id = "hh"> 

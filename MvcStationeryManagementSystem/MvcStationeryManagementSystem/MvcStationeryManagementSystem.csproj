@@ -74,6 +74,7 @@
     <Compile Include="Controllers\Default1Controller.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\Error404Controller.cs" />
+    <Compile Include="Controllers\mystationeryController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\GiohangModel.cs" />
     <Compile Include="Models\mahoa_giaima.cs" />
+    <Compile Include="Models\Mystationerymodel.cs" />
     <Compile Include="Models\RequestModel.cs" />
     <Compile Include="Models\RequestModel22.cs" />
     <Compile Include="Models\Request_StationeryModel.cs" />
@@ -249,13 +251,14 @@
     <Content Include="Views\Default1\DetailRQ33.aspx" />
     <Content Include="Views\Default1\DetailRQ4.aspx" />
     <Content Include="Views\Default1\DetailRQ5.aspx" />
-    <Content Include="Views\Default1\Index.aspx" />
+    <Content Include="Views\Default1\Help.aspx" />
     <Content Include="Views\Default1\MyRequest10.aspx" />
     <Content Include="Views\Employee\AddEmployee.aspx" />
     <Content Include="Views\Employee\Detail.aspx" />
     <Content Include="Views\Employee\EditEmployee.aspx" />
     <Content Include="Views\Employee\ManageEmployee.aspx" />
     <Content Include="Views\Error404\Error.ascx" />
+    <Content Include="Views\mystationery\MyStationery.aspx" />
     <Content Include="Views\Request\Index.aspx" />
     <Content Include="Views\Request\test.aspx" />
     <Content Include="Views\Role\Rolement.aspx" />
@@ -305,7 +308,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>54008</DevelopmentServerPort>
+          <DevelopmentServerPort>65068</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
