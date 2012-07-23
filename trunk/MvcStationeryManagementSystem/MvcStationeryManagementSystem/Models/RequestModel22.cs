@@ -135,5 +135,20 @@ namespace MvcStationeryManagementSystem.Models
             }
             return listrq;
         }
+
+        //
+        public List<RequestModel22> search(string RequestName)
+        {
+            List<RequestModel22> ls = null;
+            try
+            {
+                ls = Listrq2().Where(n => n.Rname.Trim().ToLower().Contains(RequestName.Trim().ToLower())).ToList();
+
+            }
+            catch
+            {
+            }
+            return ls;
+        }
     }
 }

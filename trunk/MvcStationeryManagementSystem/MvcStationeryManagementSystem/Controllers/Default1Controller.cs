@@ -15,11 +15,122 @@ namespace MvcStationeryManagementSystem.Controllers
         private DescyptandEnscryt de = new DescyptandEnscryt();
         private DataClassesStationeryDataContext dc = new DataClassesStationeryDataContext();
         //private bool result = false;
-        public ActionResult Index()
+        public ActionResult Help()
         {
             return View();
         }
        
+        public ActionResult Search(string id)
+        {
+         
+
+                RequestModel22 rq22 = new RequestModel22();
+                Employee e = (Employee)Session["Employee"];
+                if (id != null)
+                {
+                    List<RequestModel22> ls = rq22.search(id).Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("1") && r1.Acc1 == true) || (r1.Stte1.Equals("5") && r1.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
+                    string chuoi = "";
+
+                    foreach (RequestModel22 s in ls)
+                    {
+                        chuoi += "<tr>";
+                        // chuoi += "<td>" + s.RId1 + "</td>";
+                        chuoi += "<td>" + s.Rname1 + "</td>";
+                        chuoi += "<td>" + s.CRQName1 + "</td>";
+                        chuoi += "<td>" + s.DDispatch1 + "</td>";
+                        //  chuoi += "<td>" + s.Arise + "</td>";
+                        chuoi += "<td>" + s.DApprove1 + "</td>";
+                        chuoi += "<td>" + s.RContent1 + "</td>";
+                        //("Select","DetailRQ4/"+rq.RId1,"Default1")
+                        chuoi += "<td><a href='/Default1/DetailRQ4/" + s.RId1 + "'>Select</a></td>";
+                        chuoi += "</tr>";
+                    }
+
+                    Response.Write(chuoi);
+                }
+                else
+                {
+                    List<RequestModel22> ls = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("1") && r1.Acc1 == true) || (r1.Stte1.Equals("5") && r1.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
+                    string chuoi = "";
+
+                    foreach (RequestModel22 s in ls)
+                    {
+                        chuoi += "<tr>";
+                        // chuoi += "<td>" + s.RId1 + "</td>";
+                        chuoi += "<td>" + s.Rname1 + "</td>";
+                        chuoi += "<td>" + s.CRQName1 + "</td>";
+                        chuoi += "<td>" + s.DDispatch1 + "</td>";
+                        //  chuoi += "<td>" + s.Arise + "</td>";
+                        chuoi += "<td>" + s.DApprove1 + "</td>";
+                        chuoi += "<td>" + s.RContent1 + "</td>";
+                        //("Select","DetailRQ4/"+rq.RId1,"Default1")
+                        chuoi += "<td><a href='/Default1/DetailRQ4/" + s.RId1 + "'>Select</a></td>";
+                        chuoi += "</tr>";
+                    }
+
+                    Response.Write(chuoi);
+                }
+           
+            return null;
+        }
+        //
+        public ActionResult Search1(string id)
+        {
+
+
+            RequestModel22 rq22 = new RequestModel22();
+            Employee e = (Employee)Session["Employee"];
+            if (id != null)
+            {
+                List<RequestModel22> ls = rq22.search(id).Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("1") && r1.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
+                string chuoi = "";
+
+                foreach (RequestModel22 s in ls)
+                {
+                    chuoi += "<tr>";
+                    // chuoi += "<td>" + s.RId1 + "</td>";
+                    chuoi += "<td>" + s.Rname1 + "</td>";
+                    chuoi += "<td>" + s.CRQName1 + "</td>";
+                    chuoi += "<td>" + s.DDispatch1 + "</td>";
+                    //  chuoi += "<td>" + s.Arise + "</td>";
+                    chuoi += "<td>" + s.DApprove1 + "</td>";
+                    chuoi += "<td>" + s.RContent1 + "</td>";
+                    //("Select","DetailRQ4/"+rq.RId1,"Default1")
+                    chuoi += "<td><a href='/Default1/DetailRQ4/" + s.RId1 + "'>Select</a></td>";
+                    chuoi += "</tr>";
+                }
+
+                Response.Write(chuoi);
+            }
+            else
+            {
+                List<RequestModel22> ls = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("1") && r1.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
+                string chuoi = "";
+
+                foreach (RequestModel22 s in ls)
+                {
+                    chuoi += "<tr>";
+                    // chuoi += "<td>" + s.RId1 + "</td>";
+                    chuoi += "<td>" + s.Rname1 + "</td>";
+                    chuoi += "<td>" + s.CRQName1 + "</td>";
+                    chuoi += "<td>" + s.DDispatch1 + "</td>";
+                    //  chuoi += "<td>" + s.Arise + "</td>";
+                    chuoi += "<td>" + s.DApprove1 + "</td>";
+                    chuoi += "<td>" + s.RContent1 + "</td>";
+                    //("Select","DetailRQ4/"+rq.RId1,"Default1")
+                    chuoi += "<td><a href='/Default1/DetailRQ4/" + s.RId1 + "'>Select</a></td>";
+                    chuoi += "</tr>";
+                }
+
+                Response.Write(chuoi);
+            }
+
+            return null;
+        }
+        //
+        //
+       
+        //
         public ActionResult MyRequest10(string id)
         {
             Session["ac"] = id;
@@ -48,6 +159,8 @@ namespace MvcStationeryManagementSystem.Controllers
             ViewData["lst55"] = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("1") && r1.Acc1 == true) || (r1.Stte1.Equals("5") && r1.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
             //Withdraw Request/
             ViewData["lst6"] = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("1") && r1.Acc1 == false) || (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("5") && r1.Acc1 == false)).OrderByDescending(r => r.DDispatch1).ToList();
+            //
+           
             //
             ViewData["lst66"] = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("1") && r1.Acc1 == false) || (r1.Stte1.Equals("5") && r1.Acc1 == false)).OrderByDescending(r => r.DDispatch1).ToList();
            //Cancel Request/

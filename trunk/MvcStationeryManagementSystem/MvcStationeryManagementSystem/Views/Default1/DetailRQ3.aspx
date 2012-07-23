@@ -133,7 +133,7 @@
 				</div>
                                 </li>
                                 
-                                <li style="float:left; margin-left:90px">
+                                <li style="float:left; margin-left:98px">
                                 <input type="submit" name="submitButton" onclick = "return confirm('Are you sure you wish to delete this module?');" value="     Delete     "/>
                              
                                 

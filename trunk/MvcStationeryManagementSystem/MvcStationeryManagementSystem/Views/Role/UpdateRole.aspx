@@ -14,11 +14,9 @@
 							  
 						<ul id="f1">
 							    <li>
-							        <label class="desc">
-							            RoleID:
-							        </label>
+							       
 							        <div >
-							        <%=Html.TextBox("role", hdt.RoleId, new { @class = "aa", @readonly = "readonly", @name = "RoleId", @ID = "RoleId" })%>
+							        <%=Html.Hidden("role", hdt.RoleId, new { @class = "aa", @readonly = "readonly", @name = "RoleId", @ID = "RoleId" })%>
 							        </div>
 							    </li>
 								<li>

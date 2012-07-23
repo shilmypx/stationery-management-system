@@ -108,7 +108,7 @@
 				<a href="#">Request</a>
 				<ul>
 				    <li>
-				        <%=Html.ActionLink("CatalogeRQ", "CatalogeRQ", "CatalogeRQ")%>
+				        <%=Html.ActionLink("CatalogeRequest", "CatalogeRQ", "CatalogeRQ")%>
 				    </li>
 					
 					<li>
@@ -129,7 +129,7 @@
 				<a href="#">Stationery Items</a>
 				    <ul>
 				            <li><%= Html.ActionLink("Cataloge", "Cataloge", "Cataloge")%></li>
-							<li><a href="#">My Stationery Items</a></li>
+							<li><%= Html.ActionLink("My Stationery Items", "mystationery", "mystationery")%></li>
 							<li><%= Html.ActionLink("Manage  Stationery Items", "Statioery", "Stationery")%></li>
 				    </ul>
 				
@@ -142,8 +142,9 @@
 						</ul>
 						
 			</li>
+			
 			<li>
-				<a href="#">Helps</a>
+				<%= Html.ActionLink("Help", "Help", "Default1")%>
 				
 			</li>
 		</ul>
