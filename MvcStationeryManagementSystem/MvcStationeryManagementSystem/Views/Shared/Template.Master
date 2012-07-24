@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<%@ Import Namespace="MvcStationeryManagementSystem.Models" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -23,6 +24,7 @@
 	<script type="text/javascript" src="../../Content/js/tablesorter-pager.js"></script>
 	<script type="text/javascript" src="../../Content/js/cookie.js"></script>
 	<script type="text/javascript" src="../../Content/js/custom.js"></script>
+	
 	<!--[if IE 6]>
 	<link href="css/ie6.css" rel="stylesheet" media="all" />
 	
@@ -46,21 +48,23 @@
         Response.AddHeader("Cache-Control", "no-store, no-cache, must-revalidate");
         Response.AddHeader("Pragma", "no-cache");
      %>
+     
      <div id="header">
 		<div id="top-menu">
-			<a href="#" title="My account">My account</a> |
+			<%--<a href="#" title="My account">My account</a> |
 			<a href="#" title="Settings">Settings</a> |
-			<a href="#" title="Contact us">Contact us</a>
+			<a href="#" title="Contact us">Contact us</a>--%>
 			
 			<span>Welcome <a href="#" title="Welcome"><% Response.Write(Session["username"].ToString()); %></a></span>
 			|<%= Html.ActionLink("Edit Passwords", "ChangePass", "ChangePass")%>
 			|   <%= Html.ActionLink("Logout" , "logout" ,"default1") %><%--<a href="#" title="Logout">Logout</a>--%>
 		</div>
+		<%Employee ee = (Employee)Session["Employee"];%>
 		<div id="sitename">
 			<a href="index.html" class="logo float-left" title="Admintasia">Admintasia</a>
 			<div class="button float-right">
 				<%--<a href="#" id="dialog_link" class="btn ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span>Open Dialog</a>--%>
-				<a href="#" id="login_dialog" class="btn ui-state-default ui-corner-all"><span class="ui-icon ui-icon-image"></span>Open Login Box</a>
+				<%--<a href="#" id="login_dialog" class="btn ui-state-default ui-corner-all"><span class="ui-icon ui-icon-image"></span>Open Login Box</a>--%>
 			</div>
 			<div id="login" title="Members Login">
 				<form action="#" method="post" enctype="multipart/form-data" class="forms" name="form" >
@@ -94,10 +98,21 @@
 	        <a href="#">Account</a>
              <ul>
 		        <li><%= Html.ActionLink("Change Passwords", "ChangePass", "ChangePass")%></li>
-		        <li><%= Html.ActionLink("Eligibility Details", "ViewRole", "ViewRole")%></li>
+		        <li><%=Html.ActionLink("Eligibility Details","Emdetail","EmDetail")%></li>
+		      <%if (ee.RoleId == 1)
+          {%>
 		         <li><%= Html.ActionLink("Manage Role", "Rolement", "Role")%> </li>
+<<<<<<< .mine
+		         <li><%= Html.ActionLink("Create Employee", "AddEmployee", "Employee")%></li>
+        <%} %>
+            <%if(ee.RoleId !=3) {%>    
+            
+=======
 		         <li><%= Html.ActionLink("Create Employee", "AddEmployees", "Employee") %></li>
+>>>>>>> .r188
                 <li><%= Html.ActionLink("Manage Employee", "ManageEmployee", "Employee") %></li>
+                <%} %>
+	        
 	        </ul>
         </li>
 			
@@ -107,10 +122,12 @@
 			<li>
 				<a href="#">Request</a>
 				<ul>
+				<%if (ee.RoleId != 3)
+      { %>
 				    <li>
 				        <%=Html.ActionLink("CatalogeRequest", "CatalogeRQ", "CatalogeRQ")%>
 				    </li>
-					
+					<%} %>
 					<li>
 						<%--<a href="#"></a>--%>
 						<%= Html.ActionLink("Create Request","Index", "Request")%>
@@ -128,16 +145,29 @@
 			<li>
 				<a href="#">Stationery Items</a>
 				    <ul>
+				    <%if (ee.RoleId != 3)
+          { %>
 				            <li><%= Html.ActionLink("Cataloge", "Cataloge", "Cataloge")%></li>
+				            <%} %>
 							<li><%= Html.ActionLink("My Stationery Items", "mystationery", "mystationery")%></li>
+							<%if (ee.RoleId != 3)
+         { %>
 							<li><%= Html.ActionLink("Manage  Stationery Items", "Statioery", "Stationery")%></li>
+							<%} %>
 				    </ul>
 				
 			</li>
-			<li>
-			    <%=Html.ActionLink("Setting", "setting", "setting")%>
+			
+			<%if (ee.RoleId == 1)
+     { %>
 				
-			</li>
+						
+						   <li>   <%=Html.ActionLink("Setting", "setting", "setting")%></li>
+						
+						<%} %>
+			 
+				
+			
 			
 			<li>
 				<%= Html.ActionLink("Help", "Help", "Default1")%>

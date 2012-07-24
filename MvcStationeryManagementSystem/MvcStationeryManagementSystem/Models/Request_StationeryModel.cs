@@ -155,6 +155,12 @@ namespace MvcStationeryManagementSystem.Models
             }
             return rs;
         }
+        //lay thong tin cap tren
+        public Employee informationxep(string resg)
+        {
+            return dc.Employees.Where(el => el.RegistrationNumber.Equals(resg)).Single();
+
+        }
     }
 
 }

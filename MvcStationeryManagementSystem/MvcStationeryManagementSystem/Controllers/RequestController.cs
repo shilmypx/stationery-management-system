@@ -11,6 +11,7 @@ namespace MvcStationeryManagementSystem.Controllers
 
         private StationeryModelcs s = new StationeryModelcs();
         private StationeryModel s1 = new StationeryModel();
+        private Request_StationeryModel rsm = new Request_StationeryModel();
 
 
         //mo ve view Request
@@ -24,6 +25,9 @@ namespace MvcStationeryManagementSystem.Controllers
                 return RedirectToAction("Login" , "Default1");
             }
             ViewData["sanpham"] = s.ListStationery();
+            CatalogeModel clm = new CatalogeModel();
+            ViewData["dsachcata"] = clm.Listcataloge();
+
             ViewData["count"] = s1.count();
             return View();
         }
@@ -268,7 +272,7 @@ namespace MvcStationeryManagementSystem.Controllers
                    ls.Add(s);
                }
                string chuoi = "";
-
+               Employee el = (Employee)Session["Employee"];//form
                Request_StationeryModel rsm = new Request_StationeryModel();
                Request r = new Request();
                string[] kq = a.Split('|');
@@ -277,6 +281,10 @@ namespace MvcStationeryManagementSystem.Controllers
                r.RequestContent = kq[1];
                r.Description = kq[2];
                r.DateDispatch = DateTime.Now;
+               r.Accept = true;
+               r.State = "1";
+               r.CatalogRQId = Convert.ToInt32(kq[3]);
+               r.EmployeeNumber = el.EmployeeNumber;
                rsm.inserdata(r);
                int a1 = r.RequestId;
                foreach( Request_Stationery r1 in ls )
@@ -285,6 +293,20 @@ namespace MvcStationeryManagementSystem.Controllers
                    rsm.insert2(r1);
                }
                Response.Write(ls.Count);
+              RequestModel rm = new RequestModel();
+            
+              string ixep = el.RegistrationNumber;
+              Employee xep = rsm.informationxep(ixep);
+              DataClassesStationeryDataContext dtdc = new DataClassesStationeryDataContext();
+               Config c1 = dtdc.Configs.First();
+               if (rm.Send(el.Email, xep.Email, kq[0], kq[1], c1.Type,Convert.ToInt32(c1.Ports), c1.MailNetwork, c1.Password))
+               {
+                   Redirect("Default1/MyRequest10");
+               }
+
+
+
+
            }
             return null;
         }

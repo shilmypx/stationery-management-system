@@ -14,9 +14,11 @@ namespace MvcStationeryManagementSystem.Controllers
        //lop chua cac method mahoa va giai ma
         private DescyptandEnscryt de = new DescyptandEnscryt();
         private DataClassesStationeryDataContext dc = new DataClassesStationeryDataContext();
+
         //private bool result = false;
         public ActionResult Help()
         {
+
             return View();
         }
        
@@ -131,9 +133,9 @@ namespace MvcStationeryManagementSystem.Controllers
         //
        
         //
-        public ActionResult MyRequest10(string id)
+        public ActionResult MyRequest10()
         {
-            Session["ac"] = id;
+            //Session["ac"] = id;
             if (Session["Employee"] == null)
             {
                 return RedirectToAction("Login");
@@ -160,8 +162,6 @@ namespace MvcStationeryManagementSystem.Controllers
             //Withdraw Request/
             ViewData["lst6"] = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("1") && r1.Acc1 == false) || (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("5") && r1.Acc1 == false)).OrderByDescending(r => r.DDispatch1).ToList();
             //
-           
-            //
             ViewData["lst66"] = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("1") && r1.Acc1 == false) || (r1.Stte1.Equals("5") && r1.Acc1 == false)).OrderByDescending(r => r.DDispatch1).ToList();
            //Cancel Request/
             ViewData["lst7"] = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("2") && r1.Acc1 == false) || (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("7") && r1.Acc1 == false)).OrderByDescending(r => r.DDispatch1).ToList();
@@ -172,21 +172,7 @@ namespace MvcStationeryManagementSystem.Controllers
             // 
             ViewData["lst88"] = rq22.Listrq2().Where(r1 => (e.EmployeeNumber.Equals(r1.RNumber1) && r1.Stte1.Equals("4") && r1.Acc1 == true) || (r1.Stte1.Equals("7") && r1.Acc1 == true)).OrderByDescending(r => r.DDispatch1).ToList();
          
-          /*  if (Session["email"] == null)
-            {
-                Response.Write(" ");
-            }
-            else if (Convert.ToInt32(Session["email"]) == 1)
-            {
-                Response.Write("<Script type='text/javascript'>alert('Succesfull')</script>");
-                Session.Remove("email");
-            }
-            else
-            {
-                Response.Write("<Script type='text/javascript'>alert('No Succesfull')</script>");
-                Session.Remove("email");
-            }*/
-            //Request_Stationery
+        
             return View("myrequest10");
         }
         public ActionResult Back()

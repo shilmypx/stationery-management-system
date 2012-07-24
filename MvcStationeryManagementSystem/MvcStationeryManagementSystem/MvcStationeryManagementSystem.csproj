@@ -72,6 +72,7 @@
     <Compile Include="Controllers\CatalogeRQController.cs" />
     <Compile Include="Controllers\ChangePasswordsController.cs" />
     <Compile Include="Controllers\Default1Controller.cs" />
+    <Compile Include="Controllers\EmDetailController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\Error404Controller.cs" />
     <Compile Include="Controllers\mystationeryController.cs" />
@@ -79,7 +80,6 @@
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Controllers\StationeryController.cs" />
-    <Compile Include="Controllers\ViewRoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,7 +252,9 @@
     <Content Include="Views\Default1\DetailRQ4.aspx" />
     <Content Include="Views\Default1\DetailRQ5.aspx" />
     <Content Include="Views\Default1\Help.aspx" />
+    <Content Include="Views\Default1\Index.aspx" />
     <Content Include="Views\Default1\MyRequest10.aspx" />
+    <Content Include="Views\EmDetail\Emdetail.aspx" />
     <Content Include="Views\Employee\AddEmployee.aspx" />
     <Content Include="Views\Employee\Detail.aspx" />
     <Content Include="Views\Employee\EditEmployee.aspx" />
@@ -276,7 +278,6 @@
     <Content Include="Views\Stationery\InsertSta.aspx" />
     <Content Include="Views\Stationery\Statioery.aspx" />
     <Content Include="Views\Stationery\Update.aspx" />
-    <Content Include="Views\ViewRole\ViewRole.aspx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\DataClassesStationery.dbml">
@@ -308,7 +309,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>65068</DevelopmentServerPort>
+          <DevelopmentServerPort>51965</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
