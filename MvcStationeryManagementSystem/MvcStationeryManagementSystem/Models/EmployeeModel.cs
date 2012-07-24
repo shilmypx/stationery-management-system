@@ -115,6 +115,7 @@ namespace MvcStationeryManagementSystem.Models
 
         public List<Employee> SearchEmloyee(string employee)
         {
+            //ViewData["ListAccount"] = dcs.Employees.OrderByDescending(e => e.DateBuild).Where(e => e.RegistrationNumber.Equals(eml.EmployeeNumber)).ToList();
              return dcs.Employees.Where(e => e.EmployeeNumber.Trim().ToLower().Contains(employee.Trim().ToLower())).ToList();
         }
 
