@@ -27,7 +27,7 @@ namespace MvcStationeryManagementSystem.Controllers
         {
             
             se.AddConfig(mailname, mailnetwork, mahoa_giaima.maHoa(password), ports, type, DateTime.Now, description);
-            return RedirectToAction("Setting");
+            return RedirectToAction("Setting#tabs-1");
         }
 
         public ActionResult EditSet(int id)
@@ -39,7 +39,7 @@ namespace MvcStationeryManagementSystem.Controllers
         public ActionResult EditSetting(int id, string mailname, string mailnetwork, string ports, string type, string description)
         {
             se.Edit(id, mailname, mailnetwork, ports, type, DateTime.Now, description);
-            return RedirectToAction("Setting");
+            return RedirectToAction("Setting#tabs-1");
         }
 
         public ActionResult Details(int id)
@@ -51,7 +51,7 @@ namespace MvcStationeryManagementSystem.Controllers
         public ActionResult DeleteId(int id)
         {
             se.Delete(id);
-            return RedirectToAction("Setting");
+            return RedirectToAction("Setting#tabs-1");
         }
 
         public ActionResult IdenEmail(string id)
