@@ -65,6 +65,7 @@
 								</li>
 								<li class="buttons">
 									<input type="submit" tabindex="8" value="Save" class="submit" />
+									<input type"reset" tabindex="9" value="Reset" class="submit" />
 								</li>
 							</ul>
 						
