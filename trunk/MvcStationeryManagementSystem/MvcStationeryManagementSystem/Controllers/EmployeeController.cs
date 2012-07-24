@@ -19,6 +19,8 @@ namespace MvcStationeryManagementSystem.Controllers
             return View();
         }
 
+        
+
         //Upload imeges
         [HttpPost]
         public ActionResult ProcessUpload(HttpPostedFileBase fileUpload)
@@ -33,7 +35,7 @@ namespace MvcStationeryManagementSystem.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddEmployee()
+        public ActionResult AddEmployees()
         {
             if (Session["Employee"] == null)
             {
@@ -78,18 +80,18 @@ namespace MvcStationeryManagementSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddEmployee(string EmployeeNumber, string fullname, DateTime dateBirth, string email, string address, string phone, string images, int roleid, string password, string RegistrationNumber, HttpPostedFileBase fileUpload)
+        public ActionResult AddEmployee(string submit, string EmployeeNumber, string fullname, DateTime dateBirth, string email, string address, string phone, string images, int roleid, string password, string RegistrationNumber, HttpPostedFileBase fileUpload)
         {
-                if (fileUpload.ContentLength > 0)
-                {
-                    var fileName = Path.GetFileName(fileUpload.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/Upload"), fileName);
-                    fileUpload.SaveAs(path);
-                }
-                em.ThemTK(EmployeeNumber, fullname, DateTime.Now, dateBirth, email, address, phone, fileUpload.FileName, roleid, mahoa_giaima.maHoa(password), RegistrationNumber);
-                Response.Write("<script type='text/javascript'>alert('Add Account successfull')</script>");    
-                Response.Write("<script type='text/javascript'>window.location.href = '/Employee/ManageEmployee';</script>");
-                return null;
+            if (fileUpload.ContentLength > 0)
+                        {
+                            var fileName = Path.GetFileName(fileUpload.FileName);
+                            var path = Path.Combine(Server.MapPath("~/Content/Upload"), fileName);
+                            fileUpload.SaveAs(path);
+                        }
+                        em.ThemTK(EmployeeNumber, fullname, DateTime.Now, dateBirth, email, address, phone, fileUpload.FileName, roleid, mahoa_giaima.maHoa(password), RegistrationNumber);
+                        Response.Write("<script type='text/javascript'>alert('Add Account successfull')</script>");
+                        Response.Write("<script type='text/javascript'>window.location.href = '/Employee/ManageEmployee';</script>");
+                        return null;
             //return RedirectToAction("ManageEmployee");
         }
 
@@ -97,31 +99,27 @@ namespace MvcStationeryManagementSystem.Controllers
 
         //Ket thuc Tao employee
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ManageEmployee(string employee)
+        public ActionResult ManageEmployee()
         {
             if (Session["Employee"] == null)
             {
                 return RedirectToAction("Login", "Default1");
             }
-           
-            //ViewData["ListAccount"] = em.ListEmployee().Where(e=>e.RegistrationNumber.Equals(eml.EmployeeNumber));
-           
             Employee eml = (Employee)Session["Employee"];
-            if (eml.RoleId != 1)
-            {
-                ViewData["ListAccount"] = dcs.Employees.OrderByDescending(e => e.DateBuild).Where(e => e.RegistrationNumber.Equals(eml.EmployeeNumber)).ToList();
-            }
-            else
+            string str = dcs.Employees.Where(e => e.RegistrationNumber.Equals(eml.EmployeeNumber)).ToList().Count.ToString();
+            if (eml.RoleId == 1)
             {
                 ViewData["ListAccount"] = dcs.Employees.OrderByDescending(e => e.DateBuild).ToList();
+                string stri = dcs.Employees.ToList().Count.ToString();
+                ViewData["countrs"] = stri;
+                return View("ManageEmployee");
             }
-            string str = "";
-            var ds = em.Total().Count;
-            str += ds;
+            ViewData["ListAccount"] = dcs.Employees.OrderByDescending(e => e.DateBuild).Where(e => e.RegistrationNumber.Equals(eml.EmployeeNumber)).ToList();
             ViewData["countrs"] = str;
             return View("ManageEmployee");
         }
 
+        
         public ActionResult Role(int id)
         {
             ViewData["dsrole"] = em.ListRole();
@@ -148,7 +146,7 @@ namespace MvcStationeryManagementSystem.Controllers
             HttpPostedFileBase uploadedFile = Request.Files["fileUpload"];
             if (uploadedFile.ContentLength == 0)
             {
-                em.EditEm(EmployeeNumber, FullName, DateTime.Now, Email, Address, DateBirth, Phone, uploadedFile.FileName, RegistrationNumber);
+                em.EditEm(EmployeeNumber, FullName, DateTime.Now, Email, Address, DateBirth, Phone, Images, RegistrationNumber);
                 return RedirectToAction("ManageEmployee");
             }
             if (uploadedFile.ContentLength > 0)
@@ -158,7 +156,6 @@ namespace MvcStationeryManagementSystem.Controllers
                 fileUpload.SaveAs(path);
                 em.EditEm(EmployeeNumber, FullName, DateTime.Now, Email, Address, DateBirth, Phone, uploadedFile.FileName, RegistrationNumber);
             }
-            //em.EditEm(EmployeeNumber, FullName, Email, Address, DateBirth, Phone, fileUpload.FileName, RegistrationNumber);
             return RedirectToAction("ManageEmployee");
         }
 
@@ -189,18 +186,12 @@ namespace MvcStationeryManagementSystem.Controllers
                 return RedirectToAction("Login");
             }
             ViewData["ct"] = em.ttct(id);
-            //return View("Detail");
             return View();
         }
 
         public ActionResult BackSubmit()
         {
-            string str = "";
-            var rs = em.Total().Count();
-            str += rs;
-            ViewData["countrs"] = str;
-            ViewData["ListAccount"] = em.ListEmployee();
-            return View("ManageEmployee");
+            return RedirectToAction("ManageEmployee");
         }
 
         public ActionResult Search(string employee)
@@ -211,24 +202,23 @@ namespace MvcStationeryManagementSystem.Controllers
             }
             else
             {
-                ViewData["ListAccount"] = em.SearchEmloyee(employee).ToList();
-                //dem ket qua tim thay
                 string str = "";
-                string strs = "";
                 var rs = em.SearchEmloyee(employee).Count();
                 var ds = em.Total().Count;
+                Employee eml = (Employee)Session["Employee"];
+                string strs = dcs.Employees.Where(e => e.RegistrationNumber.Equals(eml.EmployeeNumber)).ToList().Count.ToString();
                 if (ds == rs)
                 {
                     ViewData["total"] = "Enter the username to search...";
-                    strs+= ds;
                     ViewData["countrs"] = strs;
+                    ViewData["ListAccount"] = dcs.Employees.OrderByDescending(e => e.DateBuild).Where(e => e.RegistrationNumber.Equals(eml.EmployeeNumber)).ToList();
                     return View("ManageEmployee");
                 }
-                str += "with " + rs + " results for keywords " + "<b>" + employee + "</b>";
+                List<Employee> rss = dcs.Employees.OrderByDescending(e => e.DateBuild).Where(e => e.RegistrationNumber.Equals(eml.EmployeeNumber)).ToList();
+                ViewData["ListAccount"] = rss.Where(e => e.EmployeeNumber.Trim().ToLower().Contains(employee.Trim().ToLower())).ToList();
+                string kqtt = rss.Where(e => e.EmployeeNumber.Trim().ToLower().Contains(employee.Trim().ToLower())).ToList().Count.ToString();
+                str += "with " + kqtt + " results for keywords " + "<b>" + employee + "</b>";
                 ViewData["total"] = str;
-                //dem tong tai khoan
-
-                strs += ds;
                 ViewData["countrs"] = strs;
                 return View("ManageEmployee");
             }
@@ -245,30 +235,53 @@ namespace MvcStationeryManagementSystem.Controllers
         }
         public ActionResult Search2(string id)
         {
-
-            if (id == null)
+            Employee eml = (Employee)Session["Employee"];
+            if (id != null)
             {
-                Response.Write("");
+                List<Employee> ds = new List<Employee>();
+                if (eml.RoleId == 1)
+                {
+                    List<Employee> dsv0 = dcs.Employees.ToList();
+                    List<Employee> dsv01 = dsv0.Where(e => e.EmployeeNumber.Trim().ToLower().Contains(id.Trim().ToLower())).ToList();
+                    string result0 = "";
+                    foreach (Employee b in dsv01)
+                    {
+                        result0 = "<tr>";
+                        result0 += "<td>" + b.EmployeeNumber + "</td>";
+                        result0 += "<td>" + b.FullName + "</td>";
+                        result0 += "<td>" + b.Address + "</td>";
+                        result0 += "<td>" + b.Phone + "</td>";
+                        result0 += "<td><a href='/Employee/EditEmployee/" + b.EmployeeNumber + "'>Edit</a> | <a href='/Employee/Delete/" + b.EmployeeNumber + "', class='mydel'>Delete</a> | <a href='Detail/" + b.EmployeeNumber + "'>Detail</a></td>";
+                        result0 += "</tr>";
+                    }
+
+                    Response.Write(result0);
+                }
+                else
+                {
+                    //Su dung tim kiem theo quyen RoleId
+                    List<Employee> rss = dcs.Employees.Where(e => e.RegistrationNumber.Equals(eml.EmployeeNumber)).ToList();
+                    List<Employee> dsv2 = rss.Where(e => e.EmployeeNumber.Trim().ToLower().Contains(id.Trim().ToLower())).ToList();
+                    //ds = bm.ListEmployeeSearch(id);
+                    string result = "";
+                    foreach (Employee b in dsv2)
+                    {
+                        result = "<tr>";
+                        result += "<td>" + b.EmployeeNumber + "</td>";
+                        result += "<td>" + b.FullName + "</td>";
+                        result += "<td>" + b.Address + "</td>";
+                        result += "<td>" + b.Phone + "</td>";
+                        result += "<td><a href='/Employee/EditEmployee/" + b.EmployeeNumber + "'>Edit</a> | <a href='/Employee/Delete/" + b.EmployeeNumber + "', class='mydel'>Delete</a> | <a href='Detail/" + b.EmployeeNumber + "'>Detail</a></td>";
+                        result += "</tr>";
+                    }
+
+                    Response.Write(result);
+                }
+            }
+            else
+            {
                 return null;
             }
-            List<Employee> ds = new List<Employee>();
-            EmployeeModel bm = new EmployeeModel();
-            ds = bm.ListEmployeeSearch(id);
-            string result = "";
-            foreach (Employee b in ds)
-            {
-                 result = "<tr>";
-                result += "<td>" + b.EmployeeNumber + "</td>";
-                result += "<td>" + b.FullName + "</td>";
-                result += "<td>" + b.Address + "</td>";
-                result += "<td>" + b.Phone + "</td>";
-                result += "<td><a href='/Employee/ProcessingEmployee/" + b.EmployeeNumber + "'>Edit</a> | <a href='/Employee/Delete/" + b.EmployeeNumber + "'>Delete</a> | <a href='Employee/Detail/" + b.EmployeeNumber + "'>Detail</a></td>";
-                //"<td><a href='/Stationery/ProcessUpdate/" + s.ProductId + "'>Edit</a>|<a href='/Stationery/DeleteStationery/" + s.ProductId + "'>Delete</a></td>";
-
-                result += "</tr>";
-            }
-           
-            Response.Write(result);
             return null;
         }
 
