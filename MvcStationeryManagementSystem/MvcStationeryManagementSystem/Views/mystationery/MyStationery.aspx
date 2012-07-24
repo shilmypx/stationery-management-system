@@ -28,11 +28,11 @@
 						<tbody id="mytbody"> 
 						<%
                             //List<Mystationerymodel> ls = (List < Mystationerymodel >) ViewData["stn"];
-                            if (ViewData["stn"] != null)
+                            if (Session["stn"] != null)
                             {			    
 						    			     %>
 						
-						<% foreach (Mystationerymodel am in (List<Mystationerymodel>)ViewData["stn"])
+						<% foreach (Mystationerymodel am in (List<Mystationerymodel>)Session["stn"])
          {%>
 						<tr>
 							<td><%=am.Productname%></td> 
@@ -44,8 +44,8 @@
 						   
 						</tr> 
 						<%}
-         //Session.Remove("stn");    
-                            }%>
+						 }%>
+						 
 						</tbody>
 						</table>
 						<%

@@ -38,7 +38,7 @@ namespace MvcStationeryManagementSystem.Controllers
                             }
                         }
                     }
-                    ViewData["stn"] = st1;
+                    Session["stn"] = st1;
                 }
             }
                 return View();
@@ -53,47 +53,57 @@ namespace MvcStationeryManagementSystem.Controllers
             Employee e = (Employee)Session["Employee"];
             if (id != null)
             {
-                List<Mystationerymodel> lmd = (List<Mystationerymodel>)ViewData["stn"];
-                List<Mystationerymodel> lm = lmd.Where(l => l.Productname.Trim().ToLower().Contains(id.Trim().ToLower())).ToList();
-                string chuoi = "";
-
-                foreach (Mystationerymodel s in lm)
+                if (Session["stn"] != null)
                 {
-                    chuoi += "<tr>";
-                    // chuoi += "<td>" + s.RId1 + "</td>";
-                    chuoi += "<td>" + s.Productname + "</td>";
-                    chuoi += "<td>" + s.Rate + "</td>";
-                    chuoi += "<td>" + s.Quantity + "</td>";
-                    //  chuoi += "<td>" + s.Arise + "</td>";
-                    chuoi += "<td>" + s.Arise + "</td>";
-                    chuoi += "<td>" + s.Description + "</td>";
+                    List<Mystationerymodel> lmd = (List<Mystationerymodel>)Session["stn"];
+                    List<Mystationerymodel> lm = lmd.Where(l => l.Productname.Trim().ToLower().Contains(id.Trim().ToLower())).ToList();
+                    //}
+                    string chuoi = "";
 
-                    chuoi += "</tr>";
+                    foreach (Mystationerymodel s in lm)
+                    {
+                        chuoi += "<tr>";
+                        // chuoi += "<td>" + s.RId1 + "</td>";
+                        chuoi += "<td>" + s.Productname + "</td>";
+                        chuoi += "<td>" + s.Rate + "</td>";
+                        chuoi += "<td>" + s.Quantity + "</td>";
+                        //  chuoi += "<td>" + s.Arise + "</td>";
+                        chuoi += "<td>" + s.Arise + "</td>";
+                        chuoi += "<td>" + s.Description + "</td>";
+
+                        chuoi += "</tr>";
+                    }
+
+
+                    Response.Write(chuoi);
                 }
-
-                Response.Write(chuoi);
-            }
+                }
+           
             else
             {
-                List<Mystationerymodel> lmd = (List<Mystationerymodel>)ViewData["stn"];
-                string chuoi = "";
-
-                foreach (Mystationerymodel s in lmd)
+                if (Session["stn"]!=null)
                 {
-                    chuoi += "<tr>";
-                    // chuoi += "<td>" + s.RId1 + "</td>";
-                    chuoi += "<td>" + s.Productname + "</td>";
-                    chuoi += "<td>" + s.Rate + "</td>";
-                    chuoi += "<td>" + s.Quantity + "</td>";
-                    //  chuoi += "<td>" + s.Arise + "</td>";
-                    chuoi += "<td>" + s.Arise + "</td>";
-                    chuoi += "<td>" + s.Description + "</td>";
+                    List<Mystationerymodel> lmd = (List<Mystationerymodel>)Session["stn"];
+                    string chuoi = "";
 
-                    chuoi += "</tr>";
+                    foreach (Mystationerymodel s in lmd)
+                    {
+                        chuoi += "<tr>";
+                        // chuoi += "<td>" + s.RId1 + "</td>";
+                        chuoi += "<td>" + s.Productname + "</td>";
+                        chuoi += "<td>" + s.Rate + "</td>";
+                        chuoi += "<td>" + s.Quantity + "</td>";
+                        //  chuoi += "<td>" + s.Arise + "</td>";
+                        chuoi += "<td>" + s.Arise + "</td>";
+                        chuoi += "<td>" + s.Description + "</td>";
+
+                        chuoi += "</tr>";
+                    }
+                    // Session["total"] = lmd.Count;
+                    Response.Write(chuoi);
                 }
-               // Session["total"] = lmd.Count;
-                Response.Write(chuoi);
-            }
+                }
+            
 
             return null;
         }

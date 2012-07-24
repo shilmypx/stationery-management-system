@@ -7,8 +7,8 @@ to use a different color start by replacing all instances of
 
 a:link
 {
-    color: #034af3;
-    text-decoration: underline;
+    
+    text-decoration: none;
 }
 a:visited
 {
