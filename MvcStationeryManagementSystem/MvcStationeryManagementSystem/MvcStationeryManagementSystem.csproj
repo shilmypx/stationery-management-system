@@ -278,6 +278,7 @@
     <Content Include="Views\Stationery\InsertSta.aspx" />
     <Content Include="Views\Stationery\Statioery.aspx" />
     <Content Include="Views\Stationery\Update.aspx" />
+    <Content Include="Views\ViewRole\ViewRole.aspx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\DataClassesStationery.dbml">
@@ -309,7 +310,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51965</DevelopmentServerPort>
+          <DevelopmentServerPort>49303</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

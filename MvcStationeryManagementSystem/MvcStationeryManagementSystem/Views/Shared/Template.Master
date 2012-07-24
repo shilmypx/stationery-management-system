@@ -102,14 +102,11 @@
 		      <%if (ee.RoleId == 1)
           {%>
 		         <li><%= Html.ActionLink("Manage Role", "Rolement", "Role")%> </li>
-<<<<<<< .mine
 		         <li><%= Html.ActionLink("Create Employee", "AddEmployee", "Employee")%></li>
         <%} %>
             <%if(ee.RoleId !=3) {%>    
             
-=======
-		         <li><%= Html.ActionLink("Create Employee", "AddEmployees", "Employee") %></li>
->>>>>>> .r188
+		         
                 <li><%= Html.ActionLink("Manage Employee", "ManageEmployee", "Employee") %></li>
                 <%} %>
 	        
@@ -128,10 +125,13 @@
 				        <%=Html.ActionLink("CatalogeRequest", "CatalogeRQ", "CatalogeRQ")%>
 				    </li>
 					<%} %>
+					<%if (ee.RoleId != 1)
+       { %>
 					<li>
-						<%--<a href="#"></a>--%>
-						<%= Html.ActionLink("Create Request","Index", "Request")%>
+					
+						<%= Html.ActionLink("Create Request", "Index", "Request")%>
 					</li>
+					<%} %>
 					<li>
 						<%=Html.ActionLink("Views Request", "myrequest10", "default1")%>
 					</li>
@@ -149,7 +149,10 @@
           { %>
 				            <li><%= Html.ActionLink("Cataloge", "Cataloge", "Cataloge")%></li>
 				            <%} %>
+				            <%if (ee.RoleId != 1)
+                  {%>
 							<li><%= Html.ActionLink("My Stationery Items", "mystationery", "mystationery")%></li>
+							<%} %>
 							<%if (ee.RoleId != 3)
          { %>
 							<li><%= Html.ActionLink("Manage  Stationery Items", "Statioery", "Stationery")%></li>
