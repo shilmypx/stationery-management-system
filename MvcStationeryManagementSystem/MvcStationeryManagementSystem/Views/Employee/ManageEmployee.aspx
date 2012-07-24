@@ -10,7 +10,7 @@
     <script src="../../Content/js/jquery.validate.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
     $(document).ready(function() {
-        $('#MyClass').validate({
+        /*$('#MyClass').validate({
             rules: {
                 employee: {
                     //required: true,
@@ -21,11 +21,13 @@
                 employee: {
             }
         }
-    });
+
+    });*/
+
 
     $('.mydel').click(function() {
         return confirm('Are you sure Delete?');
-        
+
     });
 
     /*
@@ -39,28 +41,32 @@
     });
     });
     */
-    $('#employee').keyup(function() {
-        $('#texte').html("");
-    });
+//    $('#employee').keyup(function() {
+//        $('#texte').html("");
+//    });   
 
     //search auto complete
-    /*
+    
     $('#employee').keyup(function() {
 
-            var keysearch = $(this).val();
+        var keysearch = $(this).val();
 
-            $.ajax({
-    //   type: 'GET',
-    url: '/Employee/Search2/' + keysearch,
-    success: function(data) {
-    //    alert(data);
-    $('tbody#mytbody').html("");
-    $('tbody#mytbody').html(data);
-    }
+        $.ajax({
+            type: 'GET',
+            url: '/Employee/Search2/' + keysearch,
+            success: function(data) {
+                //    alert(data);
+                $('tbody#mytbody').html("");
+                $('tbody#mytbody').html(data);
+                $('.mydel').click(function() {
+                   return confirm('Are you sure Delete?');
+
+                });
+            }
+        });
+
     });
 
-        });
-    */
 
 
 });
@@ -68,7 +74,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <% using (Html.BeginForm("Search", "Employee",FormMethod.Post ,new {@id="MyClass"}))
+    <% using (Html.BeginForm("Search2", "Employee", FormMethod.Post, new { @id = "MyClass" }))
        {%>
    
     <div class="portlet ui-widget-content ui-helper-clearfix ui-corner-all form-container">
@@ -83,7 +89,7 @@
 									    </label>
 									    <div class="find_rs">
 									        <input type="text" name="employee" id="employee" class="field text medium" value="" tabindex="1" />
-										    <input type="submit" value="Search" class="ssubmit" id="submit" />
+										    <input type="hidden" value="Search" class="ssubmit" id="submit"/>
 										</div>
 									</div>	
 									    <% string rs2 = (string)ViewData["countrs"]; %>
@@ -133,10 +139,11 @@
 								</a>
 								
 							</td>
-						</tr> 
+						</tr>
 						<%}%>
 						</tbody>
 						</table>
+						
 						<div id="pager">
 					
 								<a class="btn_no_text btn ui-state-default ui-corner-all first" title="First Page" href="#">
