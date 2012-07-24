@@ -1,4 +1,13 @@
 /* General */
+#text
+{
+	font-family: Verdana;
+	font-size: 12px;
+	color:Red;
+	width: 200%;
+	
+}
+
 form.MyClass li div label, form li span label {
 	margin: 0;
 	padding-top: 10px;
@@ -26,14 +35,7 @@ form.MyClass li div label, form li span label {
 	color: Red;	
 }
 
-.mytexts
-{
-	font-family: Verdana;
-	font-size: 12px;
-	color:Red;
-	width: 200%;
-	
-}
+
 
 .addform
 {
