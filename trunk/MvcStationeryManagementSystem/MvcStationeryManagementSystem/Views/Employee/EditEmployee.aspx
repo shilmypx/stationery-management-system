@@ -84,9 +84,9 @@
     <% using (Html.BeginForm("ProcessingEmployee", "Employee", FormMethod.Post, new { @id = "MyClassb", enctype = "multipart/form-data" }))
        {%>
     <%  Employee em = (Employee)ViewData["info"]; %>
-    <div class="portlet ui-widget-content ui-helper-clearfix ui-corner-all form-container">
-					<div class="portlet-header ui-widget-header"><span class="ui-icon ui-icon-circle-arrow-s"></span>Form registering employee</div>
-					
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+					<div class="portlet-header ui-widget-header">Form Edit Account</div>
+					<div class="portlet-content">
 					    <div class="portlet-content-new" style="display: block;">
 					    <div class="myimg">
 					        <p align="center"><b>Images</b></p>
@@ -146,7 +146,7 @@
 								        Images
 								    </label>
 								    <div>
-								        <%= Html.Hidden("fileUpload", em.Images)%>
+								        <%= Html.Hidden("Images", em.Images)%>
 								        Select a file: <input type="file" name="fileUpload" id="fileUpload" tabindex="6"/>
 								    </div>
 								</li>

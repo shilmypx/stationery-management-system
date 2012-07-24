@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Template.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Template.Master" Inherits="System.Web.Mvc.ViewPage" %>
 <%@ Import Namespace="MvcStationeryManagementSystem.Models" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 
@@ -188,7 +188,7 @@
 										DateBirth
 									</label>
 									<div>
-										<input type="text" name="DateBirth" id="DateBirth" class="field text medium" value="" maxlength="255" readonly="readonly" tabindex="6" />
+										<input type="text" name="DateBirth" id="DateBirth" class="field text medium" value="" maxlength="255" readonly="readonly" tabindex="4" />
 									</div>
 								</li>
 								
@@ -261,7 +261,10 @@
 								</li>
 								
 								<li class="buttons">
-									<input type="submit" class="submit" id="idd" name="idd" value="Insert" tabindex="11" />
+								    <div>
+								        <input type="submit" class="submit" id="idd" name="idd" value="Insert" tabindex="11" />
+								        <input type="reset" class="submit" id="Reset" name="idd" value="Reset" tabindex="12" />
+								    </div>
 								</li>
 							</ul>
 					<%} %>

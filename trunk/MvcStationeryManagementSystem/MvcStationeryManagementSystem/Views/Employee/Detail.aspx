@@ -12,9 +12,9 @@
     <%  Employee em = (Employee)ViewData["ct"]; %>
     
     
-    <div class="portlet ui-widget-content ui-helper-clearfix ui-corner-all form-container">
-					<div class="portlet-header ui-widget-header"><span class="ui-icon ui-icon-circle-arrow-s"></span>Form registering employee</div>
-					<div class="mydiv1">
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+					<div class="portlet-header ui-widget-header">Form elements in box</div>
+					<div class="portlet-content">
 					    <div class="portlet-content-new" style="display: block;">
 					        
 					        <div class="myimg">
@@ -114,8 +114,7 @@
 					</div>
 				</div>
             <%} %>
-   
-    </label>
+           
    
 </asp:Content>
 
