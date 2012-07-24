@@ -96,7 +96,7 @@
 		        <li><%= Html.ActionLink("Change Passwords", "ChangePass", "ChangePass")%></li>
 		        <li><%= Html.ActionLink("Eligibility Details", "ViewRole", "ViewRole")%></li>
 		         <li><%= Html.ActionLink("Manage Role", "Rolement", "Role")%> </li>
-		         <li><%= Html.ActionLink("Create Employee", "AddEmployee", "Employee") %></li>
+		         <li><%= Html.ActionLink("Create Employee", "AddEmployees", "Employee") %></li>
                 <li><%= Html.ActionLink("Manage Employee", "ManageEmployee", "Employee") %></li>
 	        </ul>
         </li>
@@ -135,12 +135,8 @@
 				
 			</li>
 			<li>
-				<a href="#">Config</a>      
-						<ul>
-						    <li><%= Html.ActionLink("Create Config", "AddConfig", "setting")%></li>
-						    <li><%=Html.ActionLink("List Config", "setting", "setting")%></li>
-						</ul>
-						
+			    <%=Html.ActionLink("Setting", "setting", "setting")%>
+				
 			</li>
 			
 			<li>
@@ -205,7 +201,7 @@
 			<a href="#" title="Settings">Settings</a>
 			<a href="#" title="Contact">Contact</a>
 		</div>
-		Copyright &copy; 2009 - Horia Simon (WebDesignChimera.com)
+		Copyright &copy; 2012 - Stationery Management System
 	</div>
 	</div>
 
