@@ -654,10 +654,17 @@
     </div>
     
     <div id="tabs-6">
-    	<div>
+    
+				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+					<div class="portlet-header ui-widget-header">Search</div>
+					<div class="portlet-content">
+					<div>
 					<label class="desc" >Search Request Name:</label>
 						<input type="text" name="CatalogeName" class="keysearch" value=""  tabindex="2" />							
 					</div>	   	
+					</div>
+					</div>
+    	
         <div class="hastable">
 					<form name="myform" class="pager-form" method="post" action="#">
 						<table id="sort-table5"> 
@@ -1550,10 +1557,16 @@
         { %>
     
     <div id="tabs-10">
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+					<div class="portlet-header ui-widget-header">Search</div>
+					<div class="portlet-content">
     	<div>
 					<label class="d5" >Search Request Name:</label>
 						<input type="text" name="CatalogeName" class="keysearch" value=""  tabindex="2" />							
 					</div>	   	
+					</div>
+					</div>
+					
         <div class="hastable">
 					<form name="myform" class="pager-form" method="post" action="#">
 						<table id="sort-table9"> 
@@ -1985,7 +1998,7 @@
 
 });
 
-    
+       
         function xl1() {
            
             $('#t2').show();

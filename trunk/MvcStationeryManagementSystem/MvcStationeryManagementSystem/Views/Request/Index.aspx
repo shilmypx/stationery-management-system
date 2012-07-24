@@ -126,12 +126,14 @@
                 var value = $("iframe#id_description1").contents().find("body").html();
                 var value1 = $("iframe#id_description").contents().find("body").html();
                 var value2 = $("#vaname").attr("value");
+                var value3 = $("#cata").val();
+                alert(value3);
                 if (value === '<br>' || value1 === '<br>' || value2 === '') {
                     $(".loi").html("<b>Vui long kiem tra lai thong tin<b>");
                     return false;
                 }
                 else {
-                    data1 = value2 + '|' + value1 + '|' + value;
+                    data1 = value2 + '|' + value1 + '|' + value +"|"+value3;
                     // alert(value2 + " | " + value + " | " + value1);
                     $(".loi").html("");
                     $.ajax({
@@ -193,6 +195,12 @@
                                   <tr align="center">
                                     <td class="td1" ><p class="tp2"> Name: </p></td>
                                     <td > <input name="textfield" id="vaname"   />
+                                    <select name="cata" id="cata">
+                                        <% foreach (Cataloge c1 in (List<Cataloge>)ViewData["dsachcata"])
+                                           { %>
+                                           <option value="<%= c1.CatalogeId %>"><%= c1.CatalogeName  %></option>
+                                        <%} %>
+                                    </select>
                                   
                                     
                                      </td>

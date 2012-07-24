@@ -54,14 +54,7 @@ namespace MvcStationeryManagementSystem.Controllers
             if (id != null)
             {
                 List<Mystationerymodel> lmd = (List<Mystationerymodel>)ViewData["stn"];
-               // List<Mystationerymodel> lm = null;
-
-
-
                 List<Mystationerymodel> lm = lmd.Where(l => l.Productname.Trim().ToLower().Contains(id.Trim().ToLower())).ToList();
-
-                //Session["total"] = lm.Count;
-                
                 string chuoi = "";
 
                 foreach (Mystationerymodel s in lm)
