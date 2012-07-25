@@ -13,7 +13,7 @@
 					 <% 
 			DataClassesStationeryDataContext dc=new DataClassesStationeryDataContext();		     
                         // Employee ep = (Employee)Session["eplo"];
-					     
+            Employee e = (Employee)Session["Employee"];
 					     RequestModel r = (RequestModel)ViewData["if"];
                             string a = r.Stte1; bool b = r.Acc1;
                             Role rr = (Role)ViewData["role"];
@@ -162,13 +162,21 @@
 					
 				</div>
                                 </li>
-                                <%if (total < amount)
+                                <%if (total < amount && e.RoleId==2)
                                   {%> 
                                     <li style="float:left;margin-left: 120px">
                                     <input type="submit" name="submitButton" value="     Approved     "/>
                       
                                 </li>
-                                <%}%>
+                                <%}
+                                  else if (e.RoleId == 1)
+                                  {%> 
+                                     <li style="float:left;margin-left: 120px">
+                                    <input type="submit" name="submitButton" value="     Approved     "/>
+                      
+                                </li>
+                                  <%}
+                  %>
                               
                                
                                 </ul>

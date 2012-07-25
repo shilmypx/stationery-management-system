@@ -27,6 +27,7 @@
 						</thead> 
 						<tbody id="mytbody"> 
 						<%
+                            int total = 0;			    
                             //List<Mystationerymodel> ls = (List < Mystationerymodel >) ViewData["stn"];
                             if (Session["stn"] != null)
                             {			    
@@ -40,7 +41,7 @@
 						    <td><%=am.Quantity%></td> 
 						    <td><%=am.Arise%></td> 
 						    <td><%=am.Description%></td> 
-						    
+						    <%total = total + am.Quantity;%>
 						   
 						</tr> 
 						<%}
@@ -48,15 +49,7 @@
 						 
 						</tbody>
 						</table>
-						<%
-                            int total = 0;
-                            if (ViewData["stn"] != null)
-                            {
-                                List<Mystationerymodel> l = (List<Mystationerymodel>)ViewData["stn"];
-                                 total = l.Count;
-                            }
-        
-						    			    %>
+						
 						<div id="pager">
 					
 								<a class="btn_no_text btn ui-state-default ui-corner-all first" title="First Page" href="#">
@@ -80,7 +73,7 @@
 									<option value="40">40 results</option>
 								</select>								
 								<a>
-								    <span style="float:right">Total Iems : <%=total%></span>
+								    <span style="float:right">Total Quantity : <%=total%></span>
 								</a>
 						</div>
 

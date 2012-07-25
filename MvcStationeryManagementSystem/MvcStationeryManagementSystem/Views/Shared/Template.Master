@@ -183,8 +183,8 @@
 			
 			<div id="main-content">
 				<div class="title">
-					<h3>Table examples</h3>
-					Below you will find <b>Admintasia</b> table examples.
+					<h3>Stationery Management system</h3>
+					
 				</div>
 				
 					<div>
@@ -209,8 +209,8 @@
 			<div class="side-col ui-sortable">
 			    <div class="other-box yellow-box ui-corner-all">
 					<div class="cont tooltip ui-corner-all" title="Tooltips, tooltips, tooltips !">
-						<h3>Tooltip !</h3>
-						<p>This is a sample tooltip !</p>
+						
+						<p>Webssite developed by group pro !</p>
 					</div>
 				</div>
 				    <%Html.RenderPartial("ViewUserControl1");%>

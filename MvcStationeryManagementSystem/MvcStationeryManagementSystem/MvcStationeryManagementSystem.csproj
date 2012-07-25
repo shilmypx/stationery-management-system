@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -227,28 +227,26 @@
     <Content Include="Content\Upload\h6.png" />
     <Content Include="Content\Upload\h7.png" />
     <Content Include="Content\Upload\munich.jpg" />
-    <Content Include="Views\CatalogeRQ\CatalogeRQ.aspx" />
-    <Content Include="Views\CatalogeRQ\insertRQ.aspx" />
-    <Content Include="Views\CatalogeRQ\updateRQ.aspx" />
-    <Content Include="Views\Cataloge\Cataloge.aspx" />
-    <Content Include="Views\Cataloge\InsertCataloge.aspx" />
-    <Content Include="Views\Cataloge\updateCataloge.aspx" />
-    <Content Include="bin\MvcStationeryManagementSystem.dll" />
+ 
+          
+<Content Include="bin\MvcStationeryManagementSystem.dll" />
     <Content Include="bin\MvcStationeryManagementSystem.pdb" />
     <Content Include="Content\js\jquery-1.4.2.min.js" />
     <Content Include="Content\js\jquery.validate.js" />
     <Content Include="Views\ChangePass\ChangePass.aspx" />
+
     <Content Include="Views\CatalogeRQ\CatalogeRQ.aspx" />
     <Content Include="Views\CatalogeRQ\insertRQ.aspx" />
     <Content Include="Views\CatalogeRQ\updateRQ.aspx" />
+
     <Content Include="Views\Cataloge\Cataloge.aspx" />
     <Content Include="Views\Cataloge\InsertCataloge.aspx" />
     <Content Include="Views\Cataloge\updateCataloge.aspx" />
-    <Content Include="Views\ChangePasswords\ChangePasswords.aspx" />
     <Content Include="Views\Default1\DetailRQ.aspx" />
     <Content Include="Views\Default1\DetailRQ22.aspx" />
     <Content Include="Views\Default1\DetailRQ3.aspx" />
     <Content Include="Views\Default1\DetailRQ33.aspx" />
+    <Content Include="Views\Default1\DetailRQ333.aspx" />
     <Content Include="Views\Default1\DetailRQ4.aspx" />
     <Content Include="Views\Default1\DetailRQ5.aspx" />
     <Content Include="Views\Default1\Help.aspx" />
@@ -270,15 +268,19 @@
     <Content Include="Views\Setting\EditSet.aspx" />
     <Content Include="Views\Setting\Setting.aspx" />
     <Content Include="Views\Shared\ViewUserControl1.ascx" />
-    <Content Include="Views\Stationery\InsertSta.aspx" />
-    <Content Include="Views\Stationery\Statioery.aspx" />
-    <Content Include="Views\Stationery\Update.aspx" />
+    
     <Content Include="Views\Shared\ViewUserControl2.ascx" />
+
     <Content Include="Views\Shared\ViewUserControl3.ascx" />
+
     <Content Include="Views\Stationery\InsertSta.aspx" />
+
     <Content Include="Views\Stationery\Statioery.aspx" />
+
     <Content Include="Views\Stationery\Update.aspx" />
+
     <Content Include="Views\ViewRole\ViewRole.aspx" />
+
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\DataClassesStationery.dbml">

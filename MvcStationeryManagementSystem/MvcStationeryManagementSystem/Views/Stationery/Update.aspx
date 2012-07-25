@@ -13,6 +13,7 @@
      <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form Update Stationey</div>
 					<div class="portlet-content">
+					<div style="margin-left:30%">
 							<ul>
 							<li><%=Html.Hidden("ProductId",s.ProductId) %> </li>
 							    <li>
@@ -89,7 +90,7 @@
 									<input type="submit" class="submit" value="Update" tabindex="11">
 								</li>
 							</ul>
-						
+						</div>
 					</div>
 				</div>
   

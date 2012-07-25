@@ -10,8 +10,8 @@
    
         <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form Insert Stationey</div>
-					<div class="portlet-content-new">
-						
+					<div class="portlet-content">
+						<div style="margin-left:30%">
 									<ul>
 							    <li>
 							        <label class="desc">
@@ -85,7 +85,7 @@
 									<input type="submit" class="submit" id="ck" value="Insert" tabindex="11"/>
 								</li>
 							</ul>
-						
+						</div>
 					</div>
 				</div>
 

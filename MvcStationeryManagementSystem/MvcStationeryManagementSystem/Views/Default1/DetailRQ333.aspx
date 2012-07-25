@@ -2,12 +2,12 @@
 <%@ Import Namespace="MvcStationeryManagementSystem.Models" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	DetailRQ3
+	DetailRQ333
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+  <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form elements in box</div>
 					<div class="portlet-content">
 					      <%Employee epl = (Employee)Session["Employee"];
@@ -135,13 +135,14 @@
 					
 				</div>
                                 </li>
-                                
+                                <%if (epl.EmployeeNumber == rm.ENumber1)
+                                  { %>
                                 <li style="float:left; margin-left:98px">
                                 <input type="submit" name="submitButton" onclick = "return confirm('Are you sure you wish to delete this module?');" value="     Delete     "/>
                              
                                 
                                 </li>
-                           
+                           <%} %>
                                
                                 </ul>
                             <%}%>
@@ -151,11 +152,18 @@
 					    <% using (Html.BeginForm("back", "default1"))
              {%>
                                 <ul>
-                            
+                              <%if (epl.EmployeeNumber == rm.ENumber1)
+                                { %>
                                      <li style="float:left;margin-top: -40px">
                                  <input type="submit" name="submitButton" value="      Back      "/>
                                  </li>
-                                 
+                                 <%}
+                                else
+                                {
+                %>
+                <li style="float:left;margin-top: -12px">
+                                 <input type="submit" name="submitButton" value="      Back      "/>
+                <%} %>
                                 </ul>
                             <%}%>
                             <%Html.EndForm();%>
@@ -168,5 +176,6 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="css" runat="server">
-    <link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
+<link href="../../Content/css/neewnew.css" rel="stylesheet" type="text/css" />
+
 </asp:Content>

@@ -34,7 +34,7 @@
 <%=Session["kt"]%>				
    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form  Stationey</div>
-					<div class="portlet-content-new">
+					<div class="portlet-content">
 					<div>
 					<label class="d5" >Search ProductName:</label>
 						<input type="text" name="CatalogeName" id="CatalogeName" class="keysearch" value=""  tabindex="2" />							

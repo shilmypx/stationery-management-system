@@ -10,7 +10,7 @@
       <div id="addemployee">
          <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form Insert CatalogeRQ</div>
-					<div class="portlet-content-new">
+					<div class="portlet-content">
 						<form action="#" method="post" enctype="multipart/form-data" class="forms" name="form" >
 							
 							<ul>
@@ -19,7 +19,7 @@
 										CatalogRQName
 									</label>
 									<div>
-										<input type="text" name="CatalogRQName" id="CatalogRQName" class="field text medium" value="" tabindex="1" maxlength="50"/>
+										<input type="text" name="CatalogRQName" id="CatalogRQName" class="large" value="" tabindex="1" maxlength="50"/>
 										 <p class="aaaa" id="bb"></p>
 							             <p id="a"></p>
 									</div>
@@ -29,6 +29,7 @@
 									<input type="submit" id="ck" class="submit" value="Insert" tabindex="11"/>
 								</li>
 							</ul>
+							
 						</form>
 					</div>
 				</div>
