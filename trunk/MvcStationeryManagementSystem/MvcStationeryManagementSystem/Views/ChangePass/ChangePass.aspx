@@ -42,6 +42,7 @@
         <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 		<div class="portlet-header ui-widget-header">Form Change PassWords</div>
 		<div class="portlet-content">
+		<div id="f1">
 		 <% using (Html.BeginForm("ChangePass", "ChangePass", FormMethod.Post, new { @id = "MyClass" }))
      {%>
 							<ul class="addform">
@@ -90,6 +91,7 @@
 								</li>
 							</ul>
 						<%}%>
+						</div>
 					</div>
 				</div>
 
@@ -186,7 +188,7 @@
                           type: "GET",
                           url: "/ChangePass/Doipw/" + pw,
                           success: function(msg) {
-                              $("#f1").html("<div class='response-msg success ui-corner-all'><span>Success message</span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>");
+                              $("#f1").html("<div class='response-msg success ui-corner-all'><span>Success message</span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. A email sent.</div>");
                           }
                       });
                       //alert("pok");

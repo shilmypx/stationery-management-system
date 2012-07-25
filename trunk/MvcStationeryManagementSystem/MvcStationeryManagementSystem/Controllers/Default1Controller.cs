@@ -420,6 +420,17 @@ namespace MvcStationeryManagementSystem.Controllers
             return View();
         }
         //
+        //
+        public ActionResult DetailRQ333(int id)
+        {
+            RequestModel rm = new RequestModel();
+            Request_StationeryModel rm1 = new Request_StationeryModel();
+            ViewData["if"] = rm.Infomation(id);
+            ViewData["if1"] = rm1.ListR_S(id);
+
+            return View();
+        }
+        //
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult DeleteRQ3()
         {

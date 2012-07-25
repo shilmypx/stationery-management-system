@@ -515,7 +515,7 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-								 <%=Html.ActionLink("Select","DetailRQ33/"+rq.RId1,"Default1")%>
+								 <%=Html.ActionLink("Select","DetailRQ3/"+rq.RId1,"Default1")%>
 							</td>
 							
 							<%--<td><%=Session["Employee"].ToString()%></td>--%>
@@ -613,7 +613,7 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-								 <%=Html.ActionLink("Select","DetailRQ33/"+rq.RId1,"Default1")%>
+								 <%=Html.ActionLink("Select","DetailRQ333/"+rq.RId1,"Default1")%>
 							</td>
 							
 							<%--<td><%=Session["Employee"].ToString()%></td>--%>
@@ -1415,7 +1415,7 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-								 <%=Html.ActionLink("Select","DetailRQ33/"+rq.RId1,"Default1")%>
+								 <%=Html.ActionLink("Select","DetailRQ3/"+rq.RId1,"Default1")%>
 							</td>
 							
 							<%--<td><%=Session["Employee"].ToString()%></td>--%>
@@ -1513,7 +1513,7 @@
 						    <td><%=rq.RContent1%></td> 
 						    <%--<td><%=rq.Dtion1%></td> --%>
 						    <td>
-								 <%=Html.ActionLink("Select","DetailRQ33/"+rq.RId1,"Default1")%>
+								 <%=Html.ActionLink("Select","DetailRQ3/"+rq.RId1,"Default1")%>
 							</td>
 							
 							<%--<td><%=Session["Employee"].ToString()%></td>--%>

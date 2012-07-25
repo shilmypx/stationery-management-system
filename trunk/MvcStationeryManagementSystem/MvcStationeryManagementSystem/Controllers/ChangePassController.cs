@@ -20,7 +20,9 @@ namespace MvcStationeryManagementSystem.Controllers
         }
         public ActionResult ChangePass()
         {
+            
             return View("ChangePass");
+
         }
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Change(string user, string password)
@@ -30,6 +32,8 @@ namespace MvcStationeryManagementSystem.Controllers
             {
                 em.changepass(user, mahoa_giaima.maHoa(password));
             }
+
+            Session.Remove("Employee");
             return View("ChangePass");
 
         }
@@ -37,9 +41,22 @@ namespace MvcStationeryManagementSystem.Controllers
 
         public ActionResult Doipw(string id)
         {
+            Config cf = dct.Configs.OrderByDescending(c => c.BuildDate).ToList().First();
             Employee el = (Employee)Session["Employee"];
-
-            em.changepass(el.EmployeeNumber,mahoa_giaima.maHoa(id));
+            Employee el2 = dct.Employees.Where(e => e.EmployeeNumber == el.RegistrationNumber).First();
+            RequestModel rq = new RequestModel();
+           
+            string From = cf.MailName;
+            string To = el2.Email;
+            //string cc = e2.Email;
+            string type = cf.Type;
+            int post = Convert.ToInt32(cf.Ports);
+            string mailnetword = cf.MailNetwork;
+            string pass = cf.Password;
+            string Subject = el.FullName + "Change Password";
+            string Message = "<span><b>From:</b> " + el.FullName + "</span><br/>" + "<b>Date Dispatch:</b> " + DateTime.Now + "<br/>";
+            em.changepass(el.EmployeeNumber, mahoa_giaima.maHoa(id));
+            rq.Send(From, To, Subject, Message, type, post, mailnetword, pass);
             Response.Write("Da change Password thanh cong");
             return null;
         }

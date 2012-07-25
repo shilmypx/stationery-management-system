@@ -29,16 +29,18 @@
     });
 </script>
  <div class="portlet-content-new">    <label class="kk">    <%=Session["kt"]%></label>	</div>					
-   <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
-					<div class="portlet-header ui-widget-header">Form  CatalogeRQ</div>
-					<div class="portlet-content-new">
+    <div class="portlet ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+					<div class="portlet-header ui-widget-header">Form Catalog Request</div>
+					<div class="portlet-content">
 					<div>
 					<label class="d5" >Search ProductName:</label>
 						<input type="text" name="CatalogeName" id="CatalogeName" class="keysearch" value=""  tabindex="2" />		
 					</div>		   
-							
-					</div>
-        <div class="hastable">
+				    
+				    <%Session.Remove("kt"); %>
+					</div>                    
+    </div>
+     <div class="hastable">
 					
 						<table id="sort-table1"> 
 						<thead> 
@@ -98,8 +100,6 @@
 					
 					
 				</div>
-               
-    </div>
 
 </asp:Content>
 

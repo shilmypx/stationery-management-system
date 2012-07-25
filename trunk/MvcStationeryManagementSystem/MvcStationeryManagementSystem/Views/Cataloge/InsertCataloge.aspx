@@ -11,7 +11,7 @@
      <div id="Insert">
         <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
 					<div class="portlet-header ui-widget-header">Form Insert Cataloge</div>
-					<div class="portlet-content-new">
+					<div class="portlet-content">
 						<form action="#" method="post" enctype="multipart/form-data" class="forms" name="form" >
 								
 							<ul>
@@ -20,7 +20,7 @@
 										CatalogeName
 									</label>
 									<div>
-										<input type="text" name="CatalogeName" id="CatalogeName" class="field text medium" value="" tabindex="1" maxlength="50"/>
+										<input type="text" name="CatalogeName" id="CatalogeName" class="large" value="" tabindex="1" maxlength="50"/>
 										
 									</div>
 									 <p class="aaaa" id="bb"></p>

@@ -29,9 +29,9 @@
     });
 </script>
    <%=Session["kt"]%>				
-   <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
-					<div class="portlet-header ui-widget-header">Form  Stationey</div>
-					<div class="portlet-content-new">
+   <div class="portlet ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+					<div class="portlet-header ui-widget-header">Form Catalog Stationery</div>
+					<div class="portlet-content">
 							<div>
 					<label class="d5" >Search Cataloge:</label>
 						<input type="text" name="CatalogeName" id="CatalogeName" class="keysearch" value=""  tabindex="2" />
@@ -40,6 +40,7 @@
 							
 					</div>	
 						
+					</div>
 					</div>
         <div class="hastable">
 					
@@ -100,8 +101,8 @@
 
 					
 				</div>
-               
-    </div>
+               <%Session.Remove("kt"); %>
+    
 
 </asp:Content>
 
