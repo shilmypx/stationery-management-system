@@ -102,7 +102,7 @@
 		      <%if (ee.RoleId == 1)
           {%>
 		         <li><%= Html.ActionLink("Manage Role", "Rolement", "Role")%> </li>
-		         <li><%= Html.ActionLink("Create Employee", "AddEmployee", "Employee")%></li>
+		         <li><%= Html.ActionLink("Create Employee", "AddEmployees", "Employee")%></li>
         <%} %>
             <%if(ee.RoleId !=3) {%>    
             
