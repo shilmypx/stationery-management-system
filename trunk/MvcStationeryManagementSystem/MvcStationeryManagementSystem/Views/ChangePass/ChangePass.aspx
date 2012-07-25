@@ -52,7 +52,7 @@
 							        </label>
 							        <div>
 							        <% Employee el = (Employee)Session["Employee"];%>
-							            <input type="text" name="EmployeeNumber"  id="myuser" class="field text medium" value='<%=  el.EmployeeNumber %>' readonly="readonly" tabindex="1" maxlength="50" />							           
+							            <input type="text" name="EmployeeNumber"  id="aaaa" class="field text medium" value='<%=  el.EmployeeNumber %>' readonly="readonly" tabindex="1" maxlength="50" />							           
 							        </div>				        
 							    </li>
 								<li>
