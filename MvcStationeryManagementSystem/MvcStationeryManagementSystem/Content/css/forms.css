@@ -1,4 +1,13 @@
 /* General */
+#aaaa
+{
+	color:Black ; 
+	background-color:#DFEFFC ;
+	font-family: Verdana ;
+	font-weight:bold ;
+	font-style:italic ;
+}
+
 #text
 {
 	font-family: Verdana;
@@ -315,14 +324,7 @@ form span.req{
 	
 	
 	
-#myuser
-{
-	color:Black;
-	background-color:#DFEFFC;
-	font-family: Verdana;
-	font-weight:bold;
-	font-style:italic;
-}
+
 	
 .myimg
 {
